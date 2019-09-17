@@ -183,7 +183,6 @@
      "M-r"      'helm-sage-command-history
      "C-c o"    'helm-sage-output-history))
 
-
 (require 'sage-shell-mode)
 
 ;; Run SageMath by M-x run-sage instead of M-x sage-shell:run-sage
