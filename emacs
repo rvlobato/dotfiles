@@ -15,7 +15,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (git-auto-commit-mode git-commit helm-company python-mode with-editor yasnippet anaconda-mode async company company-math dash define-word helm helm-core ivy jedi-core julia-mode jupyter math-symbol-lists websocket zmq virtualenv langtool magit magit-popup pythonic real-auto-save synosaurus apiwrap auctex auto-complete auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable dash-functional deferred epc f fortpy function-args ghub graphql helm-css-scss helm-sage inflections jedi julia-shell ob-ipython ob-sagemath popup pos-tip python-environment s sage-shell-mode treepy writegood-mode ghub+ diminish cl-generic direx folding let-alist request request-deferred simple-httpd skewer-mode swiper python3-info python-x log4e jedi-direx gntp ein ac-anaconda)))
+    (company-c-headers git-auto-commit-mode git-commit helm-company python-mode with-editor yasnippet anaconda-mode async company company-math dash define-word helm helm-core ivy jedi-core julia-mode jupyter math-symbol-lists websocket zmq virtualenv langtool magit magit-popup pythonic real-auto-save synosaurus apiwrap auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable dash-functional deferred epc f fortpy function-args ghub graphql helm-css-scss helm-sage inflections jedi julia-shell ob-ipython ob-sagemath popup pos-tip python-environment s sage-shell-mode treepy writegood-mode ghub+ diminish cl-generic direx folding let-alist request request-deferred simple-httpd skewer-mode swiper python3-info python-x log4e jedi-direx gntp ein ac-anaconda)))
  '(vc-annotate-background "#ffffff")
  '(vc-annotate-color-map
    (quote
@@ -52,7 +52,7 @@
 
 
 ; list the packages
-(setq package-list '(jupyter langtool magit real-auto-save synosaurus jedi jedi-core anaconda-mode writegood-mode python-mode ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell helm helm-core helm-sage helm-company helm-css-scss git-auto-commit-mode fortpy define-word company company-math company-anaconda company-auctex auto-package-update auto-complete auto-complete-sage function-args inflections math-symbol-lists))
+(setq package-list '(auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers jupyter langtool magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell helm helm-core helm-sage helm-company helm-css-scss git-auto-commit-mode fortpy define-word function-args inflections math-symbol-lists))
 
 ;;Marmalade and Melpa
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -100,6 +100,29 @@
 
 ; anaconda-mode
 (add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+
+; company-mode
+(add-hook 'after-init-hook 'global-company-mode)
+
+; company-anaconda
+(eval-after-load "company"
+'(add-to-list 'company-backends 'company-anaconda))
+
+; company-web
+(require 'company)                                   ; load company mode
+(require 'company-web-html)                          ; load company mode html backend
+
+; company-math
+;; global activation of the unicode symbol completion 
+(add-to-list 'company-backends 'company-math-symbols-unicode)
+
+; company-auctex
+(require 'company-auctex)
+(company-auctex-init)
+
+; company-c-headers
+(add-to-list 'company-backends 'company-c-headers)
 
 ; Fortran
 ; Standard fortpy.el setting
@@ -110,22 +133,6 @@
 ; Latex
 (require 'package)
 (package-initialize)
-
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
-
-; company-mode
-(add-hook 'after-init-hook 'global-company-mode)
-
-; company-math
-; global activation of the unicode symbol completion 
-(eval-after-load "company"
-'(add-to-list 'company-backends 'company-math-symbols-latex))
-
-; company-anaconda
-(eval-after-load "company"
-'(add-to-list 'company-backends 'company-anaconda))
 
 ; Julia
 (add-to-list 'load-path "path-to-julia-shell-mode")
@@ -168,13 +175,6 @@
 
 ;;auto revert mode refresh
 (global-auto-revert-mode 1)
-
-;;auto-complete Sage
-(add-hook 'sage-shell:sage-mode-hook 'ac-sage-setup)
-(add-hook 'sage-shell-mode-hook 'ac-sage-setup)
-
-;;(eval-after-load "auto-complete-sage"
-;;  '(setq sage-shell:completion-function 'completion-at-point))
 
 (eval-after-load "sage-shell-mode"
   '(sage-shell:define-keys sage-shell-mode-map
