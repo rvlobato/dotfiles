@@ -9,7 +9,7 @@ aspell-pt
 autoconf
 automake
 bash
-bbswitch
+bbswitch-dkms
 biber
 binutils
 bison
@@ -33,6 +33,7 @@ epiphany
 evince
 evolution
 fakeroot
+feedreader
 file
 filesystem
 findutils
@@ -97,9 +98,11 @@ jfsutils
 jre8-openjdk-headless
 julia
 jupyterlab
+keepassxc
 keybase-gui
 languagetool
 less
+libreoffice-fresh
 libtool
 libva-intel-driver
 libva-vdpau-driver
@@ -179,6 +182,7 @@ tilix
 tk
 tlp
 tlp-rdw
+transmission-gtk
 ttf-bitstream-vera
 ttf-dejavu
 ttf-droid
@@ -198,4 +202,3 @@ xdg-user-dirs
 xf86-video-intel
 xfsprogs
 yay
-zotero
