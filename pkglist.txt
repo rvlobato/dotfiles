@@ -1,5 +1,7 @@
 acpi
 android-tools
+anki
+arc-gtk-theme
 aspell-de
 aspell-en
 aspell-es
@@ -15,7 +17,9 @@ binutils
 bison
 bleachbit
 bzip2
+calibre
 clamav
+clementine
 cling-jupyter-git
 conky
 coreutils
@@ -52,6 +56,7 @@ gawk
 gcc
 gcc-fortran
 gcc-libs
+gconf
 gdm-prime
 gettext
 gimp
@@ -66,6 +71,7 @@ gnome-online-accounts
 gnome-online-miners
 gnome-photos
 gnome-power-manager
+gnome-shell-extension-dash-to-dock-git
 gnome-shell-pomodoro
 gnome-software
 gnome-tweaks
@@ -95,6 +101,7 @@ iproute2
 iputils
 jami-gnome
 jfsutils
+joplin
 jre8-openjdk-headless
 julia
 jupyterlab
@@ -165,11 +172,14 @@ sed
 shadow
 smartmontools
 snapd
+snes9x-gtk
 sudo
+syncthing
 sysfsutils
 systemd
 systemd-sysvcompat
 tar
+telegram-desktop
 texinfo
 texlive-bibtexextra
 texlive-bin
@@ -194,6 +204,7 @@ usbutils
 util-linux
 vi
 vim
+vlc
 which
 wordnet-cli
 wordnet-tk
@@ -202,3 +213,4 @@ xdg-user-dirs
 xf86-video-intel
 xfsprogs
 yay
+zotero
