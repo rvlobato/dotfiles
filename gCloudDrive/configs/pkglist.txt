@@ -6,6 +6,7 @@ aspell-es
 aspell-fr
 aspell-it
 aspell-pt
+aurutils
 autoconf
 automake
 base
@@ -47,7 +48,6 @@ gcc
 gcc-fortran
 gdm-prime
 gimp
-git
 gnome-clocks
 gnome-contacts
 gnome-control-center
@@ -64,6 +64,7 @@ gnu-free-fonts
 gnupg
 gnuplot
 go
+gpmdp
 groff
 gvfs-goa
 gvfs-google
@@ -79,6 +80,7 @@ julia
 jupyterlab
 keybase-gui
 languagetool
+libgdm-prime
 libreoffice-fresh
 libtool
 libva-intel-driver
@@ -89,6 +91,8 @@ linux-clear
 linux-clear-headers
 linux-firmware
 linux-headers
+linux-lts
+linux-lts-headers
 m4
 make
 man-db
@@ -114,19 +118,16 @@ pandoc
 pandoc-citeproc
 pandoc-crossref
 patch
+pcloud-drive
 pkgconf
-python
 python-astropy
-python-matplotlib
 python-nautilus
 python-palettable
 python-pip
 python-sympy
 python-virtualenv
 python2-palettable
-r
 reflector
-riot-desktop
 sagemath
 sagemath-jupyter
 seahorse
@@ -162,5 +163,4 @@ wordnet-cli
 wordnet-tk
 wxmaxima
 xdg-user-dirs
-yay
 zotero
