@@ -121,3 +121,12 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+function pip() {
+      if [[ "$1" == "install" ]]; then
+          shift 1
+          command pip install --user "$@"
+      else
+          command pip "$@"
+      fi
+}
