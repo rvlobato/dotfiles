@@ -19,6 +19,7 @@ calibre-python3
 clamav
 conky
 cpupower
+cython
 dnscrypt-proxy
 doxygen
 emacs
@@ -26,8 +27,8 @@ eog
 epiphany
 evince
 evolution
+evolution-bogofilter
 evolution-ews
-evolution-spamassassin
 fakeroot
 feedreader
 firefox
@@ -73,7 +74,6 @@ iio-sensor-proxy
 inkscape
 insync
 intel-ucode
-jami-gnome
 jre8-openjdk-headless
 julia
 jupyterlab
@@ -123,11 +123,12 @@ python-astropy
 python-nautilus
 python-palettable
 python-pip
+python-pkgconfig
 python-sympy
 python-virtualenv
 python2-palettable
 reflector
-sagemath
+riot-desktop
 sagemath-jupyter
 seahorse
 snapd
