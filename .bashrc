@@ -140,7 +140,8 @@ fi
 #fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-#pip user
+
+##pip user
 function pip() {
       if [[ "$1" == "install" ]]; then
           shift 1
