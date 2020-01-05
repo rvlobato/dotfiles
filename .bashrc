@@ -37,17 +37,7 @@ shopt -s histappend
 #PROMPT_COMMAND='history -a'
 
 # Change the window title of X terminals 
-case ${TERM} in
-	[aEkx]term*|rxvt*|gnome*|konsole*|interix)
-		PS1='\[\033]0;\u@\h:\w\007\]'
-		;;
-	screen*)
-		PS1='\[\033k\u@\h:\w\033\\\]'
-		;;
-	*)
-		unset PS1
-		;;
-esac
+
 
 # Set colorful PS1 only on colorful terminals.
 # dircolors --print-database uses its own built-in database
@@ -89,18 +79,7 @@ if ${use_color} ; then
 	    #PS1+='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 	fi
 
-	alias ls='ls --color=auto'
-	alias grep='grep --colour=auto'
-	alias egrep='egrep --colour=auto'
-	alias fgrep='fgrep --colour=auto'
-	alias emacs='emacs -nw'
-	alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-	export EDITOR=vim
-	export HOME_LORENE=$HOME/gCloudDrive/research/codes/numerical_relativity/Lorene
-	export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/pluto-4.2/PLUTO
-	export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
-	export R_LIBS=$HOME/Documents/R/library
-else
+	else
 	if [[ ${EUID} == 0 ]] ; then
 		# show root@ when we don't have colors
 		PS1+='\u@\h \W \$ '
@@ -113,7 +92,36 @@ for sh in /etc/bash/bashrc.d/* ; do
 	[[ -r ${sh} ]] && source "${sh}"
 done
 
-# Try to keep environment pollution down, EPA loves us.
+#------------------------------
+# Alias stuff
+#------------------------------
+	alias ls='ls --color=auto'
+	alias ll='ls --color -lh'
+	alias grep='grep --colour=always'
+	alias egrep='egrep --colour=auto'
+	alias fgrep='fgrep --colour=auto'
+	alias emacs='emacs -nw'
+	alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+	export BROWSER=firefox
+	export DE=gnome	
+	export EDITOR=vim
+	export HOME_LORENE=$HOME/gCloudDrive/research/codes/numerical_relativity/Lorene
+	export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/pluto-4.2/PLUTO
+	export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+	export R_LIBS=$HOME/Documents/R/library
+
+# moving in dirs
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+# Dir colors
+eval $(dircolors -b $HOME/.dircolors)
+
+# Try to keep environment pollution down.
 unset use_color sh
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
@@ -121,3 +129,12 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+function pip() {
+      if [[ "$1" == "install" ]]; then
+          shift 1
+          command pip install --user "$@"
+      else
+          command pip "$@"
+      fi
+}
