@@ -1,3 +1,5 @@
+plugins=(… zsh-completions)
+autoload -U compinit && compinit
 #------------------------------
 # History stuff
 #------------------------------
@@ -14,29 +16,8 @@ export LS_COLORS
 #------------------------------
 # Keybindings
 #------------------------------
-bindkey -v
-typeset -g -A key
-
-bindkey '^[[3~' delete-char
-
-# Up/Down line history arrow up/down
-bindkey '^[[B' down-line-or-history
-bindkey '^[[A' up-line-or-search
-
-# Beginning of line also ctrl+e/a ctrl+up/down
-bindkey "^E" end-of-line
-bindkey "^A" beginning-of-line
-bindkey "^[^?" backward-kill-word
-
-# Ctrl+r history search
+## Ctrl+r history search
 bindkey "^R" history-incremental-search-backward
-
-# History search (usually up/down key)
-bindkey '^P' up-line-or-search
-bindkey '^N' down-line-or-search
-
-bindkey "^[[1;5D" emacs-backward-word
-bindkey "^[[1;5C" emacs-forward-word
 
 #------------------------------
 # History

@@ -1,3 +1,6 @@
+#Command not found
+#source /usr/share/doc/pkgfile/command-not-found.bash
+
 # If not running, don't do anything
 if [[ $- != *i* ]] ; then
 	 	return
@@ -11,9 +14,11 @@ shopt -s checkwinsize
 shopt -s no_empty_cmd_completion
 
 # History
-HISTFILE=~/.histfile
 HISTSIZE=5000000
 SAVEHIST=5000000
+
+##Disable duplicate command
+export HISTCONTROL=ignoredups
 
 ## Enable history appending instead of overwriting when exiting.  #139609
 shopt -s histappend
