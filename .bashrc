@@ -23,6 +23,8 @@ export HISTCONTROL=ignoredups
 ## Enable history appending instead of overwriting when exiting.  #139609
 shopt -s histappend
 
+#autocd
+shopt -s autocd
 
 # Set colorful PS1 only on colorful terminals.
 # dircolors --print-database uses its own built-in database
