@@ -1,8 +1,11 @@
 plugins=(… zsh-completions)
 autoload -U compinit && compinit
 
-source $HOME/.fzf/shell/key-bindings.zsh
-source $HOME/.fzf/shell/completion.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 #------------------------------
 # History stuff
