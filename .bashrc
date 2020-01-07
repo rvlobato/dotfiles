@@ -79,15 +79,15 @@ for sh in /etc/bash/bashrc.d/* ; do
 done
 
 #------------------------------
-# Alias stuff
+# Alias 
 #------------------------------
 	alias ls='ls --color=auto'
 	alias ll='ls --color -lh'
 	alias grep='grep --colour=always'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
-	alias emacs='emacs -nw'
-	alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+#more alias
+[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 
 #Environment variables
 #---------------------------------
@@ -103,28 +103,6 @@ done
 	export R_LIBS=$HOME/Documents/R/library
 	export PATH=$PATH:$HOME/.local/bin
 
-#-----------------
-#More alis
-## pacman
-  alias pacup='sudo pacman -Syu '
-  alias pacs='pacman -Ss'
-  alias pacr='sudo pacman -Rnsc'
-  
-## git
-  alias gam='git commit --amend '
-  alias gcm='git checkout master'
-  alias gfu='git fetch upstream'
-  alias grm='git rebase -i master '
-  alias gm='git merge '
-
-
-# moving in dirs
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-
 # Dir colors
 eval $(dircolors -b $HOME/.dircolors)
 
@@ -136,6 +114,7 @@ eval $(dircolors -b $HOME/.dircolors)
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
+
 #----------------------------------------
 ##fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
