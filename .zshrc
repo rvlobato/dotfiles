@@ -1,9 +1,17 @@
 plugins=(… zsh-completions)
 autoload -U compinit && compinit
 
+<<<<<<< HEAD
 #fzf
 source $HOME/.fzf/shell/key-bindings.zsh
 source $HOME/.fzf/shell/completion.zsh
+=======
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+>>>>>>> 63243974cfe71526b49bd4a1d5cf9c8a9b5767d5
 
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
