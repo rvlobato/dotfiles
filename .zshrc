@@ -1,6 +1,8 @@
 plugins=(… zsh-completions)
 autoload -U compinit && compinit
 
+source $HOME/.aliases
+
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -53,17 +55,8 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history
 
-#------------------------------
-# Alias stuff
-#------------------------------
-alias ls="ls --color -F"
-alias ll="ls --color -lh"
-alias grep="grep --color=always"
-alias egrep='egrep --colour=auto'
-alias fgrep='fgrep --colour=auto'	
-alias emacs='emacs -nw'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
+#Environment variables
+##---------------------
 export BROWSER=firefox
 export DE=gnome
 export EDITOR=vim
@@ -71,27 +64,7 @@ export HOME_LORENE=$HOME/gCloudDrive/research/codes/numerical_relativity/Lorene
 export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/pluto-4.2/PLUTO
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 export R_LIBS=$HOME/Documents/R/library
-export PATH=$PATH:$HOME/.local/bin
-
-# pacman
-alias pacup='sudo pacman -Syu '
-alias pacs='pacman -Ss'
-alias pacr='sudo pacman -Rnsc'
-
-# git
-alias gam='git commit --amend '
-alias gcm='git checkout master'
-alias gfu='git fetch upstream'
-alias grm='git rebase -i master '
-alias gm='git merge '
-
-
-# moving in dirs
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
+#export PATH=$PATH:$HOME/.local/bin
 
 # Dir colors
 eval $(dircolors -b $HOME/.dircolors)

@@ -1,6 +1,14 @@
 alias emacs='emacs -nw'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
+alias p='python'
+
+## colors
+alias ls="ls --color -F"
+alias ll="ls --color -lh"
+alias grep='grep --colour=always'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
 
 ## pacman
 alias pacup='sudo pacman -Syu '
@@ -14,10 +22,24 @@ alias gfu='git fetch upstream'
 alias grm='git rebase -i master '
 alias gm='git merge '
   
-# moving in dirs
+## moving in dirs
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+
+#Environment variables
+#------------------------
+export BROWSER=firefox
+export DE=gnome
+export EDITOR=vim
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export GCC_COLORS=1
+export HOME_LORENE=$HOME/gCloudDrive/research/codes/numerical_relativity/Lorene
+export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/pluto-4.2/PLUTO
+export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+export R_LIBS=$HOME/Documents/R/library
+export PATH=$PATH:$HOME/.local/bin
 

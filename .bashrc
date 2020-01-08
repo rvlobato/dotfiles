@@ -80,28 +80,7 @@ done
 
 #------------------------------
 # Alias 
-#------------------------------
-	alias ls='ls --color=auto'
-	alias ll='ls --color -lh'
-	alias grep='grep --colour=always'
-	alias egrep='egrep --colour=auto'
-	alias fgrep='fgrep --colour=auto'
-#more alias
-[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
-
-#Environment variables
-#---------------------------------
-	export BROWSER=firefox
-	export DE=gnome	
-	export EDITOR=vim
-	export XDG_CONFIG_HOME=$HOME/.config
-	export XDG_DATA_HOME=$HOME/.local/share
-	export GCC_COLORS=1
-	export HOME_LORENE=$HOME/gCloudDrive/research/codes/numerical_relativity/Lorene
-	export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/pluto-4.2/PLUTO
-	export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
-	export R_LIBS=$HOME/Documents/R/library
-	export PATH=$PATH:$HOME/.local/bin
+[ -f $HOME/.aliases ] && source $HOME/.aliases
 
 # Dir colors
 eval $(dircolors -b $HOME/.dircolors)
