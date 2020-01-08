@@ -15,7 +15,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (lsp-treemacs lsp-ui company-lsp flycheck company dash dash-functional f git-commit ivy js2-mode julia-mode markdown-mode polymode pos-tip transient websocket with-editor ob-sagemath python-mode synosaurus magit auctex auto-complete company-web web-completion-data company-c-headers git-auto-commit-mode helm-company yasnippet anaconda-mode async company-math define-word helm helm-core jedi-core jupyter math-symbol-lists zmq virtualenv langtool magit-popup pythonic real-auto-save apiwrap auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable deferred epc fortpy function-args ghub graphql helm-css-scss helm-sage inflections jedi julia-shell ob-ipython popup python-environment s sage-shell-mode treepy writegood-mode ghub+ diminish cl-generic direx folding let-alist request request-deferred simple-httpd skewer-mode swiper python3-info python-x log4e jedi-direx gntp ein ac-anaconda)))
+    (lsp-ivy helm-lsp dap-mode lsp-treemacs lsp-ui company-lsp flycheck company dash dash-functional f git-commit ivy js2-mode julia-mode markdown-mode polymode pos-tip transient websocket with-editor ob-sagemath python-mode synosaurus magit auctex auto-complete company-web web-completion-data company-c-headers git-auto-commit-mode helm-company yasnippet anaconda-mode async company-math define-word helm helm-core jedi-core jupyter math-symbol-lists zmq virtualenv langtool magit-popup pythonic real-auto-save apiwrap auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable deferred epc fortpy function-args ghub graphql helm-css-scss helm-sage inflections jedi julia-shell ob-ipython popup python-environment s sage-shell-mode treepy writegood-mode ghub+ diminish cl-generic direx folding let-alist request request-deferred simple-httpd skewer-mode swiper python3-info python-x log4e jedi-direx gntp ein ac-anaconda)))
  '(vc-annotate-background "#ffffff")
  '(vc-annotate-color-map
    (quote
@@ -52,7 +52,7 @@
 
 
 ; list the packages
-(setq package-list '(auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp flycheck helm-lsp jupyter langtool lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell helm helm-core helm-sage helm-company helm-css-scss git-auto-commit-mode define-word function-args inflections math-symbol-lists))
+(setq package-list '(auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck helm helm-company helm-core helm-css-scss helm-lsp helm-sage jupyter langtool lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists))
 
 ;;Marmalade and Melpa
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -132,6 +132,10 @@
 (add-hook 'python-mode-hook #'lsp)
 (add-hook 'fortran-mode-hook #'lsp)
 (add-hook 'c++-mode-hook #'lsp)
+
+; dap-mode
+(add-hook 'dap-stopped-hook
+          (lambda (arg) (call-interactively #'dap-hydra)))
 
 ; Latex
 (require 'package)
