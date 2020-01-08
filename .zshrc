@@ -55,17 +55,6 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history
 
-#Environment variables
-##---------------------
-export BROWSER=firefox
-export DE=gnome
-export EDITOR=vim
-export HOME_LORENE=$HOME/gCloudDrive/research/codes/numerical_relativity/Lorene
-export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/pluto-4.2/PLUTO
-export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
-export R_LIBS=$HOME/Documents/R/library
-#export PATH=$PATH:$HOME/.local/bin
-
 # Dir colors
 eval $(dircolors -b $HOME/.dircolors)
 
