@@ -1,43 +1,30 @@
-# /etc/bash/bashrc
-#
-# This file is sourced by all *interactive* bash shells on startup,
-# including some apparently interactive shells such as scp and rcp
-# that can't tolerate any output.  So make sure this doesn't display
-# anything or bad things will happen !
+#Command not found
+#source /usr/share/doc/pkgfile/command-not-found.bash
 
-
-# Test for an interactive shell.  There is no need to set anything
-# past this point for scp and rcp, and it's important to refrain from
-# outputting anything in those cases.
+# If not running, don't do anything
 if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
-	return
+	 	return
 fi
 
-# Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
-# it regains control.  #65623
-# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
 shopt -s checkwinsize
 
 # Disable completion when the input buffer is empty.  i.e. Hitting tab
 # and waiting a long time for bash to expand all of $PATH.
 shopt -s no_empty_cmd_completion
 
-# Enable history appending instead of overwriting when exiting.  #139609
+# History
+HISTSIZE=5000000
+SAVEHIST=5000000
+
+##Disable duplicate command
+export HISTCONTROL=ignoredups
+
+## Enable history appending instead of overwriting when exiting.  #139609
 shopt -s histappend
 
-# Save each command to the history file as it's executed.  #517342
-# This does mean sessions get interleaved when reading later on, but this
-# way the history is always up to date.  History is not synced across live
-# sessions though; that is what `history -n` does.
-# Disabled by default due to concerns related to system recovery when $HOME
-# is under duress, or lives somewhere flaky (like NFS).  Constantly syncing
-# the history will halt the shell prompt until it's finished.
-#PROMPT_COMMAND='history -a'
-
-# Change the window title of X terminals 
-
+#autocd
+shopt -s autocd
 
 # Set colorful PS1 only on colorful terminals.
 # dircolors --print-database uses its own built-in database
@@ -76,8 +63,7 @@ if ${use_color} ; then
 	    PS1+='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
 	else
 	    PS1="\[$(tput setaf 2)\][\[$(tput setaf 3)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 6)\]\W\[$(tput setaf 2)\]]\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
-	    #PS1+='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
-	fi
+	    	fi
 
 	else
 	if [[ ${EUID} == 0 ]] ; then
@@ -93,43 +79,46 @@ for sh in /etc/bash/bashrc.d/* ; do
 done
 
 #------------------------------
-# Alias stuff
-#------------------------------
-	alias ls='ls --color=auto'
-	alias ll='ls --color -lh'
-	alias grep='grep --colour=always'
-	alias egrep='egrep --colour=auto'
-	alias fgrep='fgrep --colour=auto'
-	alias emacs='emacs -nw'
-	alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-	export BROWSER=firefox
-	export DE=gnome	
-	export EDITOR=vim
-	export HOME_LORENE=$HOME/gCloudDrive/research/codes/numerical_relativity/Lorene
-	export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/pluto-4.2/PLUTO
-	export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
-	export R_LIBS=$HOME/Documents/R/library
-
-# moving in dirs
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
+# Alias 
+[ -f $HOME/.aliases ] && source $HOME/.aliases
 
 # Dir colors
 eval $(dircolors -b $HOME/.dircolors)
 
-# Try to keep environment pollution down.
-unset use_color sh
+#------------------------------
+# Functions
+#------------------------------
 
+#tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
 
+#----------------------------------------
+##fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+
+# Options to fzf command
+export FZF_COMPLETION_OPTS='+c -x'
+
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+#----------------------------------------------------------------------------
+##pip user
 function pip() {
       if [[ "$1" == "install" ]]; then
           shift 1

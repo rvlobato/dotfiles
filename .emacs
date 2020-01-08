@@ -126,9 +126,9 @@
 
 ; Fortran
 ; Standard fortpy.el setting
-(add-hook 'f90-mode-hook 'fortpy-setup)
-(setq fortpy-complete-on-percent t)
-(setq fortpy-complete-on-bracket t)
+;(add-hook 'f90-mode-hook 'fortpy-setup)
+;(setq fortpy-complete-on-percent t)
+;(setq fortpy-complete-on-bracket t)
 
 ; Latex
 (require 'package)
