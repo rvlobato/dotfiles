@@ -1,0 +1,10 @@
+[user]
+	name = ronaldo
+	email = vieira.lobato@gmail.com
+	signingkey = 09C4A9DC137CBBAB
+[color]
+	ui = true
+[tag]
+	forceSignAnnotated = true
+[commit]
+	gpgsign = true
