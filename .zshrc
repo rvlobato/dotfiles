@@ -99,18 +99,3 @@ setprompt () {
         #PS2=$'%_>'
 }
 setprompt
-
-#------------------------------
-# Functions
-#------------------------------
-
-#pip user
-function pip() {
-        if [[ "$1" == "install" ]]; then
-            shift 1
-            command pip install --user "$@"
-        else
-            command pip "$@"
-        fi
-}
-      

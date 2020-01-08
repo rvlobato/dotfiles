@@ -116,14 +116,3 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
-
-#----------------------------------------------------------------------------
-##pip user
-function pip() {
-      if [[ "$1" == "install" ]]; then
-          shift 1
-          command pip install --user "$@"
-      else
-          command pip "$@"
-      fi
-}
