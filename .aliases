@@ -43,3 +43,18 @@ export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 export R_LIBS=$HOME/Documents/R/library
 export PATH=$PATH:$HOME/.local/bin
 
+
+#------------------------------
+  # Functions
+  #------------------------------
+  
+  #pip user
+  function pip() {
+          if [[ "$1" == "install" ]]; then
+              shift 1
+              command pip install --user "$@"
+          else
+              command pip "$@"
+          fi
+  }
+

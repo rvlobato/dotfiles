@@ -1,1 +1,0 @@
-sdiff -s <(pacman -Qqe) pkglist.txt
