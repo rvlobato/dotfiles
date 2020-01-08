@@ -52,7 +52,7 @@
 
 
 ; list the packages
-(setq package-list '(auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp flycheck jupyter langtool lsp-mode lsp-ui lsp-treemacs magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell helm helm-core helm-sage helm-company helm-css-scss git-auto-commit-mode fortpy define-word function-args inflections math-symbol-lists))
+(setq package-list '(auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp flycheck helm-lsp jupyter langtool lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell helm helm-core helm-sage helm-company helm-css-scss git-auto-commit-mode define-word function-args inflections math-symbol-lists))
 
 ;;Marmalade and Melpa
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -123,12 +123,6 @@
 
 ; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
-
-; Fortran
-; Standard fortpy.el setting
-;(add-hook 'f90-mode-hook 'fortpy-setup)
-;(setq fortpy-complete-on-percent t)
-;(setq fortpy-complete-on-bracket t)
 
 ; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
