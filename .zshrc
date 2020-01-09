@@ -99,3 +99,5 @@ setprompt () {
         #PS2=$'%_>'
 }
 setprompt
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
