@@ -3,6 +3,9 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
 alias p='python'
 
+
+alias pkglist-update='pacman -Qqe > gCloudDrive/configs/pkglist.txt && dotfiles commit -am "pkglist update" && dotfiles push github master && dotfiles push gitlab master'
+
 ## colors
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
