@@ -20,6 +20,7 @@ btrtl
 btusb
 ccm
 cdc_acm
+cdc_ether
 cfg80211
 cmac
 coretemp
@@ -48,6 +49,8 @@ ghash_clmulni_intel
 glue_helper
 hid
 hid_generic
+hid_logitech_dj
+hid_logitech_hidpp
 hid_multitouch
 hid_sensor_accel_3d
 hid_sensor_custom
@@ -128,6 +131,7 @@ mei
 mei_hdcp
 mei_me
 memstick
+mii
 mmc_core
 mousedev
 mxm_wmi
@@ -155,6 +159,7 @@ pinctrl_intel
 pinctrl_sunrisepoint
 processor_thermal_device
 psmouse
+r8152
 rfcomm
 rfkill
 rng_core
@@ -179,6 +184,8 @@ snd_hwdep
 snd_intel_nhlt
 snd_pcm
 snd_pcm_dmaengine
+snd_rawmidi
+snd_seq_device
 snd_soc_acpi
 snd_soc_acpi_intel_match
 snd_soc_core
@@ -188,6 +195,8 @@ snd_soc_skl_ipc
 snd_soc_sst_dsp
 snd_soc_sst_ipc
 snd_timer
+snd_usb_audio
+snd_usbmidi_lib
 soundcore
 sparse_keymap
 squashfs
@@ -203,6 +212,7 @@ tpm_tis_core
 uas
 uinput
 usbhid
+usbnet
 usb_storage
 uvcvideo
 vfat
