@@ -52,7 +52,7 @@
 
 
 ; list the packages
-(setq package-list '(auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck helm helm-company helm-core helm-css-scss helm-lsp helm-sage jupyter langtool lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists))
+(setq package-list '(auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck helm helm-company helm-core helm-css-scss helm-lsp helm-sage jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists))
 
 ;;Marmalade and Melpa
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
