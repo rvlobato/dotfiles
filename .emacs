@@ -130,11 +130,8 @@
 ; lsp-mode
 (require 'lsp-mode)
 (add-hook 'prog-mode-hook #'lsp)
-;(add-hook 'python-mode-hook #'lsp)
-;(add-hook 'fortran-mode-hook #'lsp)
-;(add-hook 'c++-mode-hook #'lsp)
 
-; projectile
+;projectile
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
