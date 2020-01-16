@@ -5,6 +5,7 @@ alias p='python'
 
 
 alias pkglist-update='pacman -Qqe > $HOME/gCloudDrive/configs/pkglist.txt && dotfiles commit -am "update" && dotfiles push github master && dotfiles push gitlab master'
+alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/gCloudDrive/configs/pkglist.txt'
 
 ## colors
 alias ls="ls --color -F"
