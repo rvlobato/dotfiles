@@ -18,6 +18,7 @@ alias fgrep='fgrep --colour=auto'
 alias pacup='sudo pacman -Syu '
 alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
+alias pacsc='sudo pacman -Sc'
  
 ## git
 alias gam='git commit --amend '
@@ -47,6 +48,9 @@ export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 export R_LIBS=$HOME/Documents/R/library
 export PATH=$PATH:$HOME/.local/bin
 
+# For NPM
+export PREFIX=~/.local
+export NODE_PATH=~/.local/lib/node_modules/
 
 #------------------------------
   # Functions
