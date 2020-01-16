@@ -48,7 +48,7 @@
     ("#cc1f24" "#bb3e06" "#a67c00" "#4f6600" "#a8b84b" "#005797" "#11948b" "#c42475" "#5e65b6")))
  '(package-selected-packages
    (quote
-    (zenburn-theme rainbow-mode monokai-theme rainbow-delimiters projectile lsp-ivy helm-lsp lsp-ui company-lsp flycheck dash dash-functional f js2-mode ob-sagemath synosaurus auctex auto-complete company-web web-completion-data company-c-headers helm-company anaconda-mode company-math define-word jedi-core jupyter math-symbol-lists zmq virtualenv pythonic real-auto-save apiwrap auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable deferred epc fortpy function-args graphql helm-sage inflections jedi julia-shell ob-ipython popup python-environment s sage-shell-mode treepy writegood-mode diminish cl-generic direx folding let-alist request-deferred simple-httpd python3-info python-x log4e jedi-direx gntp ac-anaconda)))
+    (flycheck-pos-tip flycheck-color-mode-line helm-org zenburn-theme rainbow-mode monokai-theme rainbow-delimiters projectile lsp-ivy helm-lsp lsp-ui company-lsp flycheck dash dash-functional f js2-mode ob-sagemath synosaurus auctex auto-complete company-web web-completion-data company-c-headers helm-company anaconda-mode company-math define-word jedi-core jupyter math-symbol-lists zmq virtualenv pythonic real-auto-save apiwrap auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable deferred epc fortpy function-args graphql helm-sage inflections jedi julia-shell ob-ipython popup python-environment s sage-shell-mode treepy writegood-mode diminish cl-generic direx folding let-alist request-deferred simple-httpd python3-info python-x log4e jedi-direx gntp ac-anaconda)))
  '(pos-tip-background-color "#f4eedb")
  '(pos-tip-foreground-color "#5d737a")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#778c00" "#f4eedb" 0.2))
@@ -87,8 +87,8 @@
  ;; If there is more than one, they won't work right.
  '(rainbow-delimiters-base-error-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
  '(rainbow-delimiters-base-face ((t (:inherit nil))))
- '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
- '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "cyan"))))
+ '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "cyan"))))
+ '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
  '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta3"))))
  '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "green"))))
  '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "tomato"))))
@@ -108,7 +108,7 @@
 
 
 ; list the packages
-(setq package-list '(auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck helm helm-company helm-core helm-css-scss helm-lsp helm-sage jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode))
+(setq package-list '(async auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode))
 
 ;;Marmalade and Melpa
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -120,6 +120,11 @@
 
 ;theme
 (load-theme 'monokai t)
+
+;async 
+(autoload 'dired-async-mode "dired-async.el" nil t)
+(dired-async-mode 1)
+(async-bytecomp-package-mode 1)
 
 ;fetch the list of packages available
 (unless package-archive-contents
@@ -186,15 +191,24 @@
 
 ; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(require 'flycheck-color-mode-line)
+(eval-after-load "flycheck"
+  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
 
 ; lsp-mode
 (require 'lsp-mode)
 (add-hook 'prog-mode-hook #'lsp)
 
-;projectile
-(projectile-mode +1)
+					; helm
+(require 'helm-config)
+
+					;projectile
+(require 'projectile)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(projectile-mode +1)
 
 ; dap-mode
 (add-hook 'dap-stopped-hook
