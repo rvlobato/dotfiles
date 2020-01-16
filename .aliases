@@ -49,7 +49,7 @@ export R_LIBS=$HOME/Documents/R/library
 export PATH=$PATH:$HOME/.local/bin
 
 # For NPM
-export PREFIX=~/.local
+export NPM_CONFIG_PREFIX=$HOME/.local
 export NODE_PATH=~/.local/lib/node_modules/
 
 #------------------------------
