@@ -1,13 +1,19 @@
 plugins=(… zsh-completions)
 autoload -U compinit && compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+_comp_options+=(globdots)	
+autoload -U colors && colors
 
-source $HOME/.aliases
+#Sources: Aliases and FZF
+[ -f $HOME/.aliases ] && source $HOME/.aliases
+[ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #---------------------------------------
-#fzf
+#FZF
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
@@ -66,38 +72,4 @@ hist_dedup() {
 #------------------------------
 # Prompt
 #------------------------------
-setprompt () {
-        # load some modules
-        autoload -U zsh/terminfo # Used in the colour alias below
-        # Use colorized output, necessary for prompts and completions.
-        autoload -U colors && colors
-        setopt prompt_subst
-
-        # make some aliases for the colours: (coud use normal escap.seq's too)
-        for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-                eval PR_$color='%{$fg[${(L)color}]%}'
-        done
-        PR_NO_COLOR="%{$terminfo[sgr0]%}"
-
-        # Check the UID
-        if [[ $UID -ge 1000 ]]; then # normal user
-                eval PR_USER='${PR_GREEN}%n${PR_NO_COLOR}'
-                eval PR_USER_OP='${PR_GREEN}%#${PR_NO_COLOR}'
-        elif [[ $UID -eq 0 ]]; then # root
-                eval PR_USER='${PR_RED}%n${PR_NO_COLOR}'
-                eval PR_USER_OP='${PR_RED}%#${PR_NO_COLOR}'
-        fi      
-
-        # Check if we are on SSH or not  --{FIXME}--  always goes to |no SSH|
-        if [[ -z "$SSH_CLIENT"  ||  -z "$SSH2_CLIENT" ]]; then 
-                eval PR_HOST='${PR_GREEN}%M${PR_NO_COLOR}' # no SSH
-        else 
-                eval PR_HOST='${PR_YELLOW}%M${PR_NO_COLOR}' #SSH
-        fi
-        # set the prompt
-        PS1=$'${PR_CYAN}[${PR_USER}${PR_CYAN}@${PR_HOST}${PR_CYAN}][${PR_BLUE}%~${PR_CYAN}]${PR_USER_OP} '
-        #PS2=$'%_>'
-}
-setprompt
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+PS1="%B%{$fg[red]%}[%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
