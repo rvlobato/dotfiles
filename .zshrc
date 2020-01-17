@@ -74,4 +74,4 @@ hist_dedup() {
 #------------------------------
 # Prompt
 #------------------------------
-PS1="%B%{$fg[red]%}[%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[green]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[red]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[blue]%}]%{$reset_color%}$%b "

@@ -145,7 +145,6 @@ ttf-dejavu
 ttf-droid
 ttf-liberation
 ttf-roboto
-tusk
 ufw
 unrar
 vim
