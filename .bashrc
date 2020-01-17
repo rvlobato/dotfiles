@@ -96,7 +96,8 @@ fi
 
 #----------------------------------------
 ##fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source /usr/share/fzf/key-bindings.bash 2>/dev/null
+source /usr/share/fzf/completion.bash 2>/dev/null
 
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'

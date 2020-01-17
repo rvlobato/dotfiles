@@ -10,6 +10,7 @@ alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
 ## colors
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
+alias la="ls --color -al"
 alias grep='grep --colour=always'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
