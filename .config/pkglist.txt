@@ -60,8 +60,6 @@ gnome-shell-pomodoro
 gnome-software
 gnome-tweaks
 gnome-weather
-gnu-free-fonts
-gnupg
 gnuplot
 gpmdp
 groff
@@ -92,7 +90,6 @@ linux-lts-headers
 linux-zen
 linux-zen-headers
 man-pages
-mathematica
 mathpix-snipping-tool
 mbedtls
 mlocate
@@ -114,13 +111,13 @@ pandoc-citeproc
 pandoc-crossref
 pcloud-drive
 pkgconf
+pocket-casts-linux-bin
 posix-c-development
 posix-software-development
 pyls-mypy
 python-astropy
 python-black
 python-jupytext
-python-language-server
 python-mccabe
 python-nautilus
 python-palettable
