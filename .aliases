@@ -1,8 +1,7 @@
 alias emacs='emacs -nw'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
-alias p='python'
-
+alias py='python'
 
 alias pkglist-update='pacman -Qqe > $HOME/.config/pkglist.txt && dotfiles commit -am "update" && dotfiles push github master && dotfiles push gitlab master'
 alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
@@ -22,7 +21,10 @@ alias pacup='sudo pacman -Syu '
 alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
 alias pacsc='sudo pacman -Sc'
- 
+
+alias aurup='aur sync -us'
+alias aurs='aur search'
+
 ## git
 alias gam='git commit --amend '
 alias gcm='git checkout master'
@@ -56,16 +58,15 @@ export NPM_CONFIG_PREFIX=$HOME/.local
 export NODE_PATH=~/.local/lib/node_modules/
 
 #------------------------------
-  # Functions
-  #------------------------------
+# Functions
+#------------------------------
   
-  #pip user
-  function pip() {
+#pip user
+function pip() {
           if [[ "$1" == "install" ]]; then
               shift 1
               command pip install --user "$@"
           else
               command pip "$@"
           fi
-  }
-
+}
