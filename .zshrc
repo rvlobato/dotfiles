@@ -74,4 +74,9 @@ hist_dedup() {
 #------------------------------
 # Prompt
 #------------------------------
-PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[red]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[blue]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[red]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%1~%{$fg[blue]%}]%{$reset_color%}$%b "
+
+#tilix
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
