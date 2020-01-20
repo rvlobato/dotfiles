@@ -21,9 +21,16 @@ alias pacup='sudo pacman -Syu '
 alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
 alias pacsc='sudo pacman -Sc'
+alias pacqe='pacman -Qe'
 
+#aur
 alias aurup='aur sync -us'
 alias aurs='aur search'
+
+#up: jupyter, pip and npm
+alias jupup='jupyter labextension update --all'
+alias pipup='pipugrade --user'
+alias npmup='npm update -g'
 
 ## git
 alias gam='git commit --amend '

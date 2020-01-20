@@ -16,7 +16,6 @@ biber
 bleachbit
 calibre-python3
 ccls
-chromium
 clamav
 conky
 cpupower
@@ -25,6 +24,7 @@ dnscrypt-proxy
 doxygen
 emacs
 eog
+epiphany
 evince
 evolution
 evolution-bogofilter
@@ -61,7 +61,6 @@ gnome-software
 gnome-tweaks
 gnome-weather
 gnuplot
-gpmdp
 groff
 gvfs-goa
 gvfs-google
@@ -117,7 +116,6 @@ posix-software-development
 pyls-mypy
 python-astropy
 python-black
-python-jupytext
 python-mccabe
 python-nautilus
 python-palettable
