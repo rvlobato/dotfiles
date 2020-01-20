@@ -17,7 +17,7 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
 ## pacman
-alias pacup='sudo pacman -Syu '
+alias pacup='sudo pacman -Syu'
 alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
 alias pacsc='sudo pacman -Sc'
@@ -31,6 +31,8 @@ alias aurs='aur search'
 alias jupup='jupyter labextension update --all'
 alias pipup='pipugrade --user'
 alias npmup='npm update -g'
+alias jupin='jupyter labextension install $(cat $HOME/gCloudDrive/configs/labext.txt)'
+alias pipin='pip install -r $HOME/gCloudDrive/configs/pkgpip.txt'
 
 ## git
 alias gam='git commit --amend '
