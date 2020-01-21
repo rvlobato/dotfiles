@@ -1,4 +1,0 @@
-jupyter-lsp
-jupyterlab_code_formatter
-jupytext
-nbdime
