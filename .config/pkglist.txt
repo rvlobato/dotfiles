@@ -61,6 +61,7 @@ gnome-software
 gnome-tweaks
 gnome-weather
 gnuplot
+gparted
 gpmdp
 groff
 gvfs-goa
