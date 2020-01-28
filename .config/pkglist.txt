@@ -21,7 +21,6 @@ conky
 cython
 dnscrypt-proxy
 doxygen
-dracut
 emacs
 eog
 epiphany
@@ -37,7 +36,6 @@ firefox-dark-reader
 firefox-decentraleyes
 firefox-extension-https-everywhere
 firefox-extension-privacybadger
-firefox-tree-style-tab
 firefox-ublock-origin
 flake8
 flatpak
@@ -50,9 +48,6 @@ gimp
 gnome-clocks
 gnome-contacts
 gnome-control-center
-gnome-keyring
-gnome-online-accounts
-gnome-online-miners
 gnome-photos
 gnome-power-manager
 gnome-shell-pomodoro
@@ -61,6 +56,7 @@ gnome-tweaks
 gnome-weather
 gnuplot
 gparted
+gpmdp
 groff
 gvfs-goa
 gvfs-google

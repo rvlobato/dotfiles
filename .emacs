@@ -15,6 +15,7 @@
  '(cua-read-only-cursor-color "#778c00")
  '(custom-enabled-themes (quote (monokai)))
  '(fci-rule-color "#f4eedb")
+ '(flycheck-checker-error-threshold 1000)
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(font-use-system-font nil)
  '(frame-background-mode (quote dark))
