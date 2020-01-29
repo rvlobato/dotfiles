@@ -181,6 +181,7 @@ snd_hda_core
 snd_hda_ext_core
 snd_hda_intel
 snd_hwdep
+snd_intel_dspcfg
 snd_intel_nhlt
 snd_pcm
 snd_pcm_dmaengine
@@ -237,5 +238,6 @@ xt_conntrack
 xt_hl
 xt_limit
 xt_LOG
+xt_multiport
 xt_recent
 xt_tcpudp
