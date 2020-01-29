@@ -80,7 +80,8 @@
  '(xterm-color-names-bright
    ["#fffce9" "#bb3e06" "#98a6a6" "#88999b" "#596e76" "#5e65b6" "#5d737a" "#00212b"]))
 
-
+;no mod above					;
+;
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -97,6 +98,10 @@
  '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "medium spring green"))))
  '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "gainsboro")))))
 
+
+					;
+					;rainbow conf above
+
 (add-to-list 'load-path "/folder/containing/file")
 (require 'python)
 
@@ -111,18 +116,26 @@
 ; list the packages
 (setq package-list '(async auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode))
 
-;;Marmalade and Melpa
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
 
-;add below
+;mod test
+;;Marmalade and Melpa
+;(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+;                         ("melpa" . "https://melpa.org/packages/")))
+
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+;(package-refresh-contents)
+
+; add below
 ; activate all the packages (in particular autoloads)
 (package-initialize)
 
 ;theme
 (load-theme 'monokai t)
 
-;async 
+; async
 (autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
 (async-bytecomp-package-mode 1)
@@ -136,9 +149,10 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;mod teste
 ; orgmode.org hosts org elpa archives.
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;(require 'package)
+;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
 ; auto-package-update
 (auto-package-update-maybe)
