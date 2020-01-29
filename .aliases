@@ -2,6 +2,7 @@ alias emacs='emacs -nw'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
 alias py='python'
+alias jl='jupyter lab & exit'
 
 alias pkglist-update='pacman -Qqe > $HOME/.config/pkglist.txt && dotfiles commit -am "update" && dotfiles push github master && dotfiles push gitlab master'
 alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
@@ -52,7 +53,7 @@ alias ......="cd ../../../../.."
 #------------------------
 export BROWSER=firefox
 export DE=gnome
-export EDITOR=vim
+export EDITOR=vi
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export GCC_COLORS=1
