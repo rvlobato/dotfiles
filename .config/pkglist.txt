@@ -1,4 +1,3 @@
-android-tools
 anki
 aspell-de
 aspell-en
@@ -11,9 +10,9 @@ autoconf
 automake
 base
 bash-completion
+bbswitch-dkms
 biber
 bleachbit
-cadabra2
 ccls
 clamav
 conky
@@ -60,12 +59,14 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy
 inkscape
 insync
 intel-ucode
 jre8-openjdk-headless
 julia
 jupyterlab
+keybase-gui
 languagetool
 libgdm-prime
 libreoffice-fresh
@@ -74,13 +75,17 @@ libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
 linux-clear
+linux-clear-headers
 linux-firmware
 linux-lts
+linux-lts-headers
 linux-zen
+linux-zen-headers
 man-pages
 mathpix-snipping-tool
 mbedtls
 mlocate
+modprobed-db
 nautilus
 neofetch
 networkmanager
@@ -88,9 +93,11 @@ noto-fonts
 noto-fonts-emoji
 npm
 ntfs-3g
+nvidia-dkms
 octave
 openmp
 openssh
+optimus-manager
 p3x-onenote
 pandoc-citeproc
 pandoc-crossref
@@ -115,6 +122,7 @@ python-pylint
 python-rope
 python-sympy
 python-virtualenv
+python2-palettable
 reflector
 riot-desktop
 sagemath-jupyter
@@ -133,6 +141,7 @@ texlive-pstricks
 texlive-publishers
 tilix
 tk
+tlp-rdw
 transmission-gtk
 ttf-bitstream-vera
 ttf-dejavu

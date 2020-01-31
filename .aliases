@@ -2,7 +2,6 @@ alias emacs='emacs -nw'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
 alias py='python'
-alias jl='jupyter lab & exit'
 
 alias pkglist-update='pacman -Qqe > $HOME/.config/pkglist.txt && dotfiles commit -am "update" && dotfiles push github master && dotfiles push gitlab master'
 alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
