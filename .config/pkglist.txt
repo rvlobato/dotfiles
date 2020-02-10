@@ -15,7 +15,6 @@ biber
 bleachbit
 cadabra2
 ccls
-chromium
 clamav
 conky
 cython
@@ -23,6 +22,7 @@ dnscrypt-proxy
 doxygen
 emacs
 eog
+epiphany
 evince
 evolution
 evolution-bogofilter
@@ -31,11 +31,6 @@ fakeroot
 fd
 feedreader
 firefox
-firefox-dark-reader
-firefox-decentraleyes
-firefox-extension-https-everywhere
-firefox-extension-privacybadger
-firefox-ublock-origin
 flake8
 flatpak
 fortran-language-server
@@ -84,6 +79,7 @@ mlocate
 nautilus
 neofetch
 networkmanager
+nextcloud-client
 noto-fonts
 noto-fonts-emoji
 npm
