@@ -11,11 +11,13 @@ arc4
 atkbd
 battery
 bbswitch
+blake2b_generic
 bluetooth
 bnep
 bpfilter
 btbcm
 btintel
+btrfs
 btrtl
 btusb
 ccm
@@ -160,6 +162,7 @@ pinctrl_sunrisepoint
 processor_thermal_device
 psmouse
 r8152
+raid6_pq
 rfcomm
 rfkill
 rng_core
@@ -230,8 +233,10 @@ virt_dma
 wmi
 wmi_bmof
 x86_pkg_temp_thermal
+xfs
 xhci_hcd
 xhci_pci
+xor
 x_tables
 xt_addrtype
 xt_conntrack

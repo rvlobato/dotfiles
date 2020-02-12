@@ -30,11 +30,6 @@ fakeroot
 fd
 feedreader
 firefox
-firefox-dark-reader
-firefox-decentraleyes
-firefox-extension-https-everywhere
-firefox-extension-privacybadger
-firefox-ublock-origin
 flake8
 flatpak
 fortran-language-server
@@ -89,6 +84,7 @@ modprobed-db
 nautilus
 neofetch
 networkmanager
+nextcloud-client
 noto-fonts
 noto-fonts-emoji
 npm
