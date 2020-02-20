@@ -1,10 +1,9 @@
 #Command not found
 #source /usr/share/doc/pkgfile/command-not-found.bash
 
-# If not running, don't do anything
-if [[ $- != *i* ]] ; then
-	 	return
-fi
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
 
 # Enable checkwinsize so that bash will check the terminal size when
 shopt -s checkwinsize
@@ -64,3 +63,8 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+#------------------------------
+# Prompt
+#------------------------------
+PS1='\[\e[0;34m\][\[\e[0;33m\]\u\[\e[10;31m\]@\[\e[10;33m\]\h\[\e[01;35m\] \W\[\e[0;36m\]]\[\e[1;35m\]\$ '
