@@ -3,7 +3,7 @@
 
 # If not running interactively, do not do anything
 [[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+#[[ -z "$TMUX" ]] && exec tmux
 
 # Enable checkwinsize so that bash will check the terminal size when
 shopt -s checkwinsize
