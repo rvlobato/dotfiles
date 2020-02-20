@@ -26,54 +26,6 @@ shopt -s histappend
 #autocd
 shopt -s autocd
 
-# Set colorful PS1 only on colorful terminals.
-# dircolors --print-database uses its own built-in database
-# instead of using /etc/DIR_COLORS.  Try to use the external file
-# first to take advantage of user additions.
-use_color=false
-if type -P dircolors >/dev/null ; then
-	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-	LS_COLORS=
-	if [[ -f ~/.dir_colors ]] ; then
-		# If you have a custom file, chances are high that it's not the default.
-		used_default_dircolors="no"
-		eval "$(dircolors -b ~/.dir_colors)"
-	elif [[ -f /etc/DIR_COLORS ]] ; then
-		# People might have customized the system database.
-		used_default_dircolors="maybe"
-		eval "$(dircolors -b /etc/DIR_COLORS)"
-	else
-		used_default_dircolors="yes"
-		eval "$(dircolors -b)"
-	fi
-	if [[ -n ${LS_COLORS:+set} ]] ; then
-		use_color=true
-	fi
-	unset used_default_dircolors
-else
-	# Some systems (e.g. BSD & embedded) don't typically come with
-	# dircolors so we need to hardcode some terminals in here.
-	case ${TERM} in
-	[aEkx]term*|rxvt*|gnome*|konsole*|screen|cons25|*color) use_color=true;;
-	esac
-fi
-
-if ${use_color} ; then
-	if [[ ${EUID} == 0 ]] ; then
-	    PS1+='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-	else
-	    PS1="\[$(tput setaf 9)\][\[$(tput setaf 3)\]\u\[$(tput setaf 9)\]@\[$(tput setaf 3)\]\h \[$(tput setaf 69)\]\W\[$(tput setaf 9)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-	    	fi
-
-	else
-	if [[ ${EUID} == 0 ]] ; then
-		# show root@ when we don't have colors
-		PS1+='\u@\h \W \$ '
-	else
-		PS1+='\u@\h \w \$ '
-	fi
-fi
-
 for sh in /etc/bash/bashrc.d/* ; do
 	[[ -r ${sh} ]] && source "${sh}"
 done
@@ -88,11 +40,6 @@ eval $(dircolors -b $HOME/.dircolors)
 #------------------------------
 # Functions
 #------------------------------
-
-#tilix
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
 
 #----------------------------------------
 ##fzf
