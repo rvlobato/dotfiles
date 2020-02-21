@@ -1,3 +1,4 @@
+alacritty
 anki
 aspell-de
 aspell-en
@@ -13,6 +14,7 @@ bash-completion
 bbswitch-dkms
 biber
 bleachbit
+cadabra2
 ccls
 clamav
 conky
@@ -127,7 +129,6 @@ sagemath-jupyter
 seahorse
 signal-desktop
 sudo
-syncthing
 telegram-desktop
 texinfo
 texlive-bibtexextra
@@ -137,9 +138,9 @@ texlive-fontsextra
 texlive-latexextra
 texlive-pstricks
 texlive-publishers
-tilix
 tk
 tlp-rdw
+tmux
 transmission-gtk
 ttf-bitstream-vera
 ttf-dejavu
