@@ -88,6 +88,7 @@ modprobed-db
 nautilus
 neofetch
 networkmanager
+networkmanager-openvpn
 noto-fonts
 noto-fonts-emoji
 npm
@@ -106,12 +107,10 @@ pocket-casts-linux-bin
 posix-c-development
 posix-software-development
 posix-user-portability
-protonvpn-cli-ng
 pyls-mypy
 python-astropy
 python-black
 python-mccabe
-python-nautilus
 python-palettable
 python-pip
 python-pkgconfig
