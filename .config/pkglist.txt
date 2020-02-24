@@ -48,7 +48,6 @@ gnome-control-center
 gnome-photos
 gnome-power-manager
 gnome-shell-pomodoro
-gnome-software
 gnome-todo
 gnome-tweaks
 gnome-weather
@@ -103,7 +102,6 @@ pyls-mypy
 python-astropy
 python-black
 python-mccabe
-python-nautilus
 python-palettable
 python-pip
 python-pkgconfig
