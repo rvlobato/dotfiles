@@ -19,14 +19,12 @@ ccls
 clamav
 conky
 cython
-ddclient
 dnscrypt-proxy
 doxygen
 emacs
 eog
 epiphany
 evince
-evolution
 evolution-bogofilter
 evolution-ews
 fakeroot
