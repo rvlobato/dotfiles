@@ -9,10 +9,11 @@ export GCC_COLORS=1
 export HOME_LORENE=$HOME/gCloudDrive/research/codes/numerical_relativity/Lorene
 export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/pluto-4.2/PLUTO
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
-export R_LIBS=$HOME/Documents/R/library
+export R_LIBS=$HOME/.R/library
 export PATH=$PATH:$HOME/.local/bin
 
 # For NPM
 export NPM_CONFIG_PREFIX=$HOME/.local
 export NODE_PATH=$HOME/.local/lib/node_modules/
+# For GO
 export GOPATH=$HOME/.go

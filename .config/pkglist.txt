@@ -13,7 +13,6 @@ automake
 base
 bash-completion
 biber
-bleachbit
 cadabra2
 ccls
 clamav
@@ -39,7 +38,6 @@ fwupd
 fzf
 gcc-fortran
 gdm-prime
-gimp
 gnome-calendar
 gnome-clocks
 gnome-contacts
@@ -57,7 +55,6 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-inkscape
 insync
 intel-ucode
 jre8-openjdk-headless
