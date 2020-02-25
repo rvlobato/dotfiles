@@ -14,4 +14,5 @@ export PATH=$PATH:$HOME/.local/bin
 
 # For NPM
 export NPM_CONFIG_PREFIX=$HOME/.local
-export NODE_PATH=~/.local/lib/node_modules/
+export NODE_PATH=$HOME/.local/lib/node_modules/
+export GOPATH=$HOME/.go
