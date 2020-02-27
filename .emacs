@@ -14,6 +14,8 @@
  '(cua-overwrite-cursor-color "#a67c00")
  '(cua-read-only-cursor-color "#778c00")
  '(custom-enabled-themes (quote (monokai)))
+ '(display-time-24hr-format t)
+ '(display-time-day-and-date t)
  '(fci-rule-color "#f4eedb")
  '(flycheck-checker-error-threshold 1000)
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
@@ -128,6 +130,8 @@
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 ;(package-refresh-contents)
 
+
+(display-time-mode 1)
 ; add below
 ; activate all the packages (in particular autoloads)
 (package-initialize)
