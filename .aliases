@@ -22,6 +22,7 @@ alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
 alias pacsc='sudo pacman -Sc'
 alias pacqe='pacman -Qe'
+alias pacqt='sudo pacman -Rns $(pacman -Qttdq)'
 
 #aur
 alias aurup='aur sync -us'
@@ -47,7 +48,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-
 
 #------------------------------
 # Functions
