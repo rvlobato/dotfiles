@@ -11,6 +11,7 @@ export PLUTO_DIR=$HOME/gCloudDrive/research/codes/numerical_relativity/pluto/plu
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 export R_LIBS=$HOME/.R/library
 export PATH=$PATH:$HOME/.local/bin
+export MOZ_USE_XINPUT2=1
 
 # For NPM
 export NPM_CONFIG_PREFIX=$HOME/.local

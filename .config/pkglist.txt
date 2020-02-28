@@ -44,7 +44,6 @@ gnome-contacts
 gnome-control-center
 gnome-photos
 gnome-power-manager
-gnome-shell-pomodoro
 gnome-todo
 gnome-tweaks
 gnome-weather
