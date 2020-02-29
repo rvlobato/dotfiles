@@ -12,7 +12,6 @@ autoconf
 automake
 base
 bash-completion
-bbswitch-dkms
 biber
 cadabra2
 ccls
