@@ -13,7 +13,6 @@ export R_LIBS=$HOME/.R/library
 export PATH=$PATH:$HOME/.local/bin
 
 export MOZ_USE_XINPUT2=1
-#export QT_QPA_PLATFORM=wayland-egl
 
 # For NPM
 export NPM_CONFIG_PREFIX=$HOME/.local
