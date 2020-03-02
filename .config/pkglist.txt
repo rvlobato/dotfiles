@@ -18,7 +18,6 @@ ccls
 clamav
 conky
 cython
-ddclient
 dnscrypt-proxy
 doxygen
 emacs
@@ -37,7 +36,7 @@ fortran-language-server
 fwupd
 fzf
 gcc-fortran
-gdm-prime
+gdm
 gnome-calendar
 gnome-clocks
 gnome-contacts
@@ -74,6 +73,7 @@ man-pages
 mathpix-snipping-tool
 mbedtls
 mlocate
+mullvad-vpn
 nautilus
 neofetch
 networkmanager
@@ -97,7 +97,6 @@ pyls-mypy
 python-astropy
 python-black
 python-mccabe
-python-palettable
 python-pip
 python-pkgconfig
 python-pycodestyle
