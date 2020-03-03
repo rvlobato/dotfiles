@@ -59,6 +59,7 @@ intel-ucode
 jre8-openjdk-headless
 julia
 jupyterlab
+keybase-gui
 languagetool
 libreoffice-fresh
 libtool
