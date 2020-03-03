@@ -53,13 +53,14 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy
 insync
 intel-ucode
 jre8-openjdk-headless
 julia
 jupyterlab
+keybase-gui
 languagetool
-libgdm-prime
 libreoffice-fresh
 libtool
 libva-intel-driver
@@ -73,6 +74,7 @@ man-pages
 mathpix-snipping-tool
 mbedtls
 mlocate
+modprobed-db
 mullvad-vpn
 nautilus
 neofetch
@@ -97,6 +99,7 @@ pyls-mypy
 python-astropy
 python-black
 python-mccabe
+python-palettable
 python-pip
 python-pkgconfig
 python-pycodestyle
@@ -122,6 +125,7 @@ texlive-latexextra
 texlive-pstricks
 texlive-publishers
 tk
+tlp-rdw
 tmux
 transmission-gtk
 ttf-bitstream-vera
