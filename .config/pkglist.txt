@@ -37,6 +37,7 @@ fwupd
 fzf
 gcc-fortran
 gdm
+geary
 gnome-calendar
 gnome-clocks
 gnome-contacts

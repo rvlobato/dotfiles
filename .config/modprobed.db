@@ -156,6 +156,7 @@ nft_ct
 nls_cp437
 nls_iso8859_1
 nls_utf8
+nouveau
 nvidiafb
 pcbc
 pcc_cpufreq
@@ -216,6 +217,7 @@ tpm
 tpm_crb
 tpm_tis
 tpm_tis_core
+ttm
 tun
 uas
 uinput
