@@ -99,7 +99,6 @@ pyls-mypy
 python-astropy
 python-black
 python-mccabe
-python-palettable
 python-pip
 python-pkgconfig
 python-pycodestyle
