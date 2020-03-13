@@ -12,6 +12,7 @@ autoconf
 automake
 base
 bash-completion
+bash-language-server
 biber
 cadabra2
 ccls
