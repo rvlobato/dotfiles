@@ -68,15 +68,12 @@ libtool
 libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
-linux-clear
 linux-firmware
 linux-lts
 linux-zen
-man-pages
 mathpix-snipping-tool
 mbedtls
 mlocate
-modprobed-db
 mullvad-vpn
 nautilus
 neofetch
