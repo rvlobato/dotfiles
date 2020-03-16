@@ -55,7 +55,6 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-iio-sensor-proxy
 insync
 intel-ucode
 jre8-openjdk-headless
@@ -123,7 +122,6 @@ texlive-latexextra
 texlive-pstricks
 texlive-publishers
 tk
-tlp-rdw
 tmux
 transmission-gtk
 ttf-bitstream-vera
