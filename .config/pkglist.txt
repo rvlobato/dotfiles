@@ -18,6 +18,7 @@ cadabra2
 ccls
 clamav
 conky
+cvs
 cython
 dnscrypt-proxy
 doxygen
@@ -88,6 +89,7 @@ p3x-onenote
 pandoc-citeproc
 pandoc-crossref
 pcloud-drive
+pgplot
 pkgconf
 pocket-casts-linux-bin
 posix-c-development
