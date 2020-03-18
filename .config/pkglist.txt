@@ -16,6 +16,7 @@ bash-language-server
 biber
 cadabra2
 ccls
+chromium
 clamav
 conky
 cython
@@ -23,7 +24,6 @@ dnscrypt-proxy
 doxygen
 emacs
 eog
-epiphany
 evince
 evolution-bogofilter
 evolution-ews
@@ -38,7 +38,6 @@ fwupd
 fzf
 gcc-fortran
 gdm
-geary
 gnome-calendar
 gnome-clocks
 gnome-contacts
@@ -60,6 +59,7 @@ insync
 intel-ucode
 jre8-openjdk-headless
 julia
+jupyter-octave_kernel
 jupyterlab
 keybase-gui
 languagetool
