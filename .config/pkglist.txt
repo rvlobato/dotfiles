@@ -19,6 +19,7 @@ ccls
 chromium
 clamav
 conky
+cvs
 cython
 dnscrypt-proxy
 doxygen
@@ -54,7 +55,6 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-iio-sensor-proxy
 insync
 intel-ucode
 jre8-openjdk-headless
@@ -89,6 +89,7 @@ p3x-onenote
 pandoc-citeproc
 pandoc-crossref
 pcloud-drive
+pgplot
 pkgconf
 pocket-casts-linux-bin
 posix-c-development
@@ -107,7 +108,6 @@ python-pylint
 python-rope
 python-sympy
 python-virtualenv
-qt5-wayland
 reflector
 riot-desktop
 sagemath-jupyter
@@ -124,7 +124,6 @@ texlive-latexextra
 texlive-pstricks
 texlive-publishers
 tk
-tlp-rdw
 tmux
 transmission-gtk
 ttf-bitstream-vera
