@@ -16,10 +16,13 @@ HISTSIZE=5000000
 SAVEHIST=5000000
 
 ##Disable duplicate command
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoredups:erasedups
 
-## Enable history appending instead of overwriting when exiting.  #139609
+# When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
+
+# After each command, append to the history file and reread it
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 #autocd
 shopt -s autocd
