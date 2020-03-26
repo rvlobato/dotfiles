@@ -21,13 +21,11 @@ clamav
 conky
 cvs
 cython
-dnscrypt-proxy
 doxygen
 emacs
 eog
 evince
 evolution-bogofilter
-evolution-ews
 fakeroot
 fd
 feedreader
@@ -144,7 +142,6 @@ wordnet-tk
 wxmaxima
 xdg-user-dirs
 yapf
-zotero
 zsh
 zsh-autosuggestions
 zsh-completions
