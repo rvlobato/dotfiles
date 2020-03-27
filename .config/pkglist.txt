@@ -107,7 +107,6 @@ python-pylint
 python-rope
 python-sympy
 python-virtualenv
-qt5-wayland
 reflector
 riot-desktop
 sagemath-jupyter
