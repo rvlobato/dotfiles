@@ -98,6 +98,7 @@ pyls-mypy
 python-astropy
 python-black
 python-mccabe
+python-pandas
 python-pip
 python-pkgconfig
 python-pycodestyle
@@ -105,6 +106,7 @@ python-pydocstyle
 python-pyflakes
 python-pylint
 python-rope
+python-statsmodels
 python-sympy
 python-virtualenv
 reflector
