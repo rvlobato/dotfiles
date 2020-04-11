@@ -15,6 +15,7 @@ bash-completion
 bash-language-server
 biber
 cadabra2
+calibre
 ccls
 chromium
 clamav
@@ -37,6 +38,7 @@ fwupd
 fzf
 gcc-fortran
 gdm
+gimp
 gnome-calendar
 gnome-clocks
 gnome-contacts
@@ -54,8 +56,10 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 iio-sensor-proxy
+inkscape
 insync
 intel-ucode
+jami-gnome
 jre8-openjdk-headless
 julia
 jupyter-octave_kernel
@@ -109,6 +113,7 @@ python-rope
 python-statsmodels
 python-sympy
 python-virtualenv
+qt5-wayland
 reflector
 riot-desktop
 sagemath-jupyter
@@ -143,6 +148,7 @@ wordnet-tk
 wxmaxima
 xdg-user-dirs
 yapf
+zotero
 zsh
 zsh-autosuggestions
 zsh-completions

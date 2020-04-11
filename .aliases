@@ -1,10 +1,11 @@
-alias emacs='emacs -nw'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
 alias py='python'
 
 alias pkglist-update='dotfiles pull gitlab master && pacman -Qqe > $HOME/.config/pkglist.txt && dotfiles commit -am "update" && dotfiles push gitlab master && dotfiles push github master'
 alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
+
+alias blueon='sudo modprobe btusb && sudo modprobe bluetooth && sudo systemctl start bluetooth'
 
 ## colors
 alias ls="ls --color -F"

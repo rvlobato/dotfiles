@@ -112,7 +112,9 @@
       '(
         (width . 140) ; character
         (height . 40) ; lines
-        ))
+	(top . 100)
+        (left . 250)
+	))
 
 
 ; list the packages
