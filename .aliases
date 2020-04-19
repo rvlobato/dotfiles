@@ -6,6 +6,7 @@ alias pkglist-update='dotfiles pull gitlab master && pacman -Qqe > $HOME/.config
 alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
 
 alias blueon='sudo modprobe btusb && sudo modprobe bluetooth && sudo systemctl start bluetooth'
+alias myip='curl ipinfo.io/ip'
 
 ## colors
 alias ls="ls --color -F"
@@ -62,4 +63,10 @@ function pip() {
           else
               command pip "$@"
           fi
+}
+
+#mkdir cd
+mkcd ()
+{
+  mkdir -p -- "$1" && cd -P -- "$1"
 }

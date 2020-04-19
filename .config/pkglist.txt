@@ -76,7 +76,6 @@ linux-lts
 linux-zen
 mathpix-snipping-tool
 mbedtls
-mlocate
 mullvad-vpn
 nautilus
 neofetch

@@ -162,6 +162,7 @@
 
 ; auto-package-update
 (auto-package-update-maybe)
+;(auto-package-update-now)
 (setq auto-package-update-interval 7)
 (setq auto-package-update-prompt-before-update t)
 (setq auto-package-update-delete-old-versions t)
