@@ -19,7 +19,7 @@ calibre
 ccls
 chromium
 clamav
-conky-git
+conky
 cvs
 cython
 doxygen

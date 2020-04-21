@@ -51,7 +51,7 @@
     ("#cc1f24" "#bb3e06" "#a67c00" "#4f6600" "#a8b84b" "#005797" "#11948b" "#c42475" "#5e65b6")))
  '(package-selected-packages
    (quote
-    (org-caldav window-numbering flycheck-pos-tip flycheck-color-mode-line helm-org zenburn-theme rainbow-mode monokai-theme rainbow-delimiters projectile lsp-ivy helm-lsp lsp-ui company-lsp flycheck dash dash-functional f js2-mode ob-sagemath synosaurus auctex auto-complete company-web web-completion-data company-c-headers helm-company anaconda-mode company-math define-word jedi-core jupyter math-symbol-lists zmq virtualenv pythonic real-auto-save apiwrap auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable deferred epc fortpy function-args graphql helm-sage inflections jedi julia-shell ob-ipython popup python-environment s sage-shell-mode treepy writegood-mode diminish cl-generic direx folding let-alist request-deferred simple-httpd python3-info python-x log4e jedi-direx gntp ac-anaconda)))
+    (auctex company-math dash dash-functional define-word diminish f flycheck helm-org jedi jedi-core js2-mode jupyter lsp-ivy lsp-ui math-symbol-lists monokai-theme ob-sagemath projectile pythonic rainbow-mode sage-shell-mode simple-httpd synosaurus treepy zmq async company dap-mode ghub git-auto-commit-mode helm-core ht ivy julia-mode lsp-treemacs lv markdown-mode pos-tip request swiper with-editor yasnippet ace-window epl git-commit helm lsp-mode pkg-info polymode spinner transient websocket python-mode magit lsp-julia langtool helm-css-scss org-caldav window-numbering flycheck-pos-tip flycheck-color-mode-line zenburn-theme rainbow-delimiters helm-lsp company-lsp auto-complete company-web web-completion-data company-c-headers helm-company anaconda-mode virtualenv apiwrap auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable deferred epc fortpy function-args graphql helm-sage inflections julia-shell ob-ipython popup python-environment s writegood-mode cl-generic direx folding let-alist request-deferred python3-info python-x log4e jedi-direx gntp ac-anaconda)))
  '(pos-tip-background-color "#f4eedb")
  '(pos-tip-foreground-color "#5d737a")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#778c00" "#f4eedb" 0.2))
@@ -116,9 +116,20 @@
         (left . 250)
 	))
 
+;; Disable startup message
+(setq inhibit-splash-screen t
+      initial-scratch-message nil)
+
+;; My personal information
+(setq user-full-name "Ronaldo Lobato"
+      user-mail-address "vieira.lobato@gmail.com"
+      calendar-latitude 33.2471
+      calendar-longitude 95.9000
+      calendar-location-name "Commerce, Texas")
+
 
 ; list the packages
-(setq package-list '(async auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit real-auto-save synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode window-numbering))
+(setq package-list '(async auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode window-numbering))
 
 
 ;mod test
@@ -176,10 +187,8 @@
 (setq ispell-dictionary "english")    ;set the default dictionary
 
 ;;auto-save
-(require 'real-auto-save)
-(add-hook 'prog-mode-hook 'real-auto-save-mode)
-(add-hook 'LaTeX-mode-hook 'real-auto-save-mode)
-(setq real-auto-save-interval 60)
+(setq auto-save-visited-file-name t)
+(setq auto-save-visited-interval 60)
 
 ; Python autocompletation
 (add-hook 'python-mode-hook 'jedi:setup)
