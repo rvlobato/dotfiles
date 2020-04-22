@@ -14,6 +14,7 @@ base
 bash-completion
 bash-language-server
 biber
+bleachbit
 cadabra2
 calibre
 ccls
@@ -34,6 +35,7 @@ firefox
 flake8
 flatpak
 fortran-language-server
+fractal
 fwupd
 fzf
 gcc-fortran
@@ -76,6 +78,7 @@ linux-lts
 linux-zen
 mathpix-snipping-tool
 mbedtls
+mpv
 mullvad-vpn
 nautilus
 neofetch
@@ -114,7 +117,6 @@ python-sympy
 python-virtualenv
 qt5-wayland
 reflector
-riot-desktop
 sagemath-jupyter
 seahorse
 signal-desktop
