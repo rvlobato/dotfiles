@@ -83,8 +83,6 @@ mullvad-vpn
 nautilus
 neofetch
 networkmanager
-noto-fonts
-noto-fonts-emoji
 npm
 ntfs-3g
 octave
@@ -134,11 +132,6 @@ tk
 tlp-rdw
 tmux
 transmission-gtk
-ttf-bitstream-vera
-ttf-dejavu
-ttf-droid
-ttf-liberation
-ttf-roboto
 ufw
 unrar
 vlc
