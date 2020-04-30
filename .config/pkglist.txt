@@ -89,6 +89,7 @@ npm
 ntfs-3g
 nvidia-dkms
 nvidia-prime
+nvidia-settings
 octave
 openmp
 openssh
