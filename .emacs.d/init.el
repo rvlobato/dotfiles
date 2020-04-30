@@ -1,94 +1,9 @@
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(beacon-color "#cc6666")
- '(compilation-message-face (quote default))
- '(cua-global-mark-cursor-color "#11948b")
- '(cua-normal-cursor-color "#596e76")
- '(cua-overwrite-cursor-color "#a67c00")
- '(cua-read-only-cursor-color "#778c00")
- '(custom-enabled-themes (quote (monokai)))
- '(display-time-24hr-format t)
- '(display-time-day-and-date t)
- '(fci-rule-color "#f4eedb")
- '(flycheck-checker-error-threshold 1000)
- '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
- '(font-use-system-font nil)
- '(frame-background-mode (quote dark))
- '(highlight-changes-colors (quote ("#c42475" "#5e65b6")))
- '(highlight-symbol-colors
-   (quote
-    ("#ec90da49b1e9" "#ccb4e1bdd0ac" "#fb9eca14b38f" "#d89bd3eadcf9" "#de29dee7b293" "#f675cca1ae79" "#d05fdab7e079")))
- '(highlight-symbol-foreground-color "#5d737a")
- '(highlight-tail-colors
-   (quote
-    (("#f4eedb" . 0)
-     ("#a8b84b" . 20)
-     ("#66c1b3" . 30)
-     ("#6fa5e7" . 50)
-     ("#d6a549" . 60)
-     ("#ed6e3e" . 70)
-     ("#f46495" . 85)
-     ("#f4eedb" . 100))))
- '(hl-bg-colors
-   (quote
-    ("#d6a549" "#ed6e3e" "#ff6243" "#f46495" "#837bdf" "#6fa5e7" "#66c1b3" "#a8b84b")))
- '(hl-fg-colors
-   (quote
-    ("#fffce9" "#fffce9" "#fffce9" "#fffce9" "#fffce9" "#fffce9" "#fffce9" "#fffce9")))
- '(hl-paren-colors (quote ("#11948b" "#a67c00" "#007ec4" "#5e65b6" "#778c00")))
- '(inhibit-startup-screen t)
- '(lsp-ui-doc-border "#5d737a")
- '(magit-diff-use-overlays nil)
- '(nrepl-message-colors
-   (quote
-    ("#cc1f24" "#bb3e06" "#a67c00" "#4f6600" "#a8b84b" "#005797" "#11948b" "#c42475" "#5e65b6")))
- '(package-selected-packages
-   (quote
-    (auctex company-math dash dash-functional define-word diminish f flycheck helm-org jedi jedi-core js2-mode jupyter lsp-ivy lsp-ui math-symbol-lists monokai-theme ob-sagemath projectile pythonic rainbow-mode sage-shell-mode simple-httpd synosaurus treepy zmq async company dap-mode ghub git-auto-commit-mode helm-core ht ivy julia-mode lsp-treemacs lv markdown-mode pos-tip request swiper with-editor yasnippet ace-window epl git-commit helm lsp-mode pkg-info polymode spinner transient websocket python-mode magit lsp-julia langtool helm-css-scss org-caldav window-numbering flycheck-pos-tip flycheck-color-mode-line zenburn-theme rainbow-delimiters helm-lsp company-lsp auto-complete company-web web-completion-data company-c-headers helm-company anaconda-mode virtualenv apiwrap auto-complete-sage auto-package-update company-anaconda company-auctex concurrent ctable deferred epc fortpy function-args graphql helm-sage inflections julia-shell ob-ipython popup python-environment s writegood-mode cl-generic direx folding let-alist request-deferred python3-info python-x log4e jedi-direx gntp ac-anaconda)))
- '(pos-tip-background-color "#f4eedb")
- '(pos-tip-foreground-color "#5d737a")
- '(smartrep-mode-line-active-bg (solarized-color-blend "#778c00" "#f4eedb" 0.2))
- '(term-default-bg-color "#fffce9")
- '(term-default-fg-color "#596e76")
- '(vc-annotate-background "#ffffff")
- '(vc-annotate-background-mode nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#ab4642")
-     (50 . "#dc9656")
-     (80 . "#f7ca88")
-     (110 . "#a1b56c")
-     (140 . "#86c1b9")
-     (170 . "#7cafc2")
-     (200 . "#ba8baf")
-     (230 . "#a16046")
-     (260 . "#181818")
-     (290 . "#282828")
-     (320 . "#383838")
-     (350 . "#585858"))))
- '(vc-annotate-very-old-color "#585858")
- '(weechat-color-list
-   (quote
-    (unspecified "#fffce9" "#f4eedb" "#990001" "#cc1f24" "#4f6600" "#778c00" "#785700" "#a67c00" "#005797" "#007ec4" "#93004d" "#c42475" "#006d68" "#11948b" "#596e76" "#88999b")))
- '(xterm-color-names
-   ["#f4eedb" "#cc1f24" "#778c00" "#a67c00" "#007ec4" "#c42475" "#11948b" "#002b37"])
- '(xterm-color-names-bright
-   ["#fffce9" "#bb3e06" "#98a6a6" "#88999b" "#596e76" "#5e65b6" "#5d737a" "#00212b"]))
+;;; Configs --- my emacs configs::
+;;; Commentary:
 
-;no mod above					;
-;
+;;; Code:
+;;; rainbow colors conf:
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(rainbow-delimiters-base-error-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
  '(rainbow-delimiters-base-face ((t (:inherit nil))))
  '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "cyan"))))
@@ -99,10 +14,7 @@
  '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "gold"))))
  '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "medium spring green"))))
  '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "gainsboro")))))
-
-
-					;
-					;rainbow conf above
+					
 
 (add-to-list 'load-path "/folder/containing/file")
 (require 'python)
@@ -116,11 +28,11 @@
         (left . 250)
 	))
 
-;; Disable startup message
+;;; Disable startup message
 (setq inhibit-splash-screen t
       initial-scratch-message nil)
 
-;; My personal information
+;;; My personal information
 (setq user-full-name "Ronaldo Lobato"
       user-mail-address "vieira.lobato@gmail.com"
       calendar-latitude 33.2471
@@ -128,7 +40,7 @@
       calendar-location-name "Commerce, Texas")
 
 
-; list the packages
+;;; List of my packages:
 (setq package-list '(async auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode window-numbering))
 
 
@@ -171,7 +83,7 @@
 ;(require 'package)
 ;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
-; auto-package-update
+;;; auto-package-update
 (auto-package-update-maybe)
 ;(auto-package-update-now)
 (setq auto-package-update-interval 7)
