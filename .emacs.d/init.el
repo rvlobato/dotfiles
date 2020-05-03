@@ -24,7 +24,7 @@
       '(
         (width . 140) ; character
         (height . 40) ; lines
-	(top . 100)
+	(top . 100) ; position on the screen
         (left . 250)
 	))
 
@@ -256,3 +256,11 @@
 
 ;; Show images after evaluating code blocks.
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (auto-package-update company dash define-word flycheck ghub git-auto-commit-mode helm helm-core helm-lsp ivy js2-mode lsp-mode lsp-ui magit markdown-mode polymode projectile python-mode swiper transient with-editor anaconda-mode async auctex auto-complete concurrent ctable dash-functional deferred direx epc epl f folding git-commit ht jedi jedi-core julia-mode lsp-treemacs lv math-symbol-lists pkg-info popup pos-tip python-environment pythonic request s sage-shell-mode simple-httpd spinner treepy web-completion-data websocket yasnippet zmq writegood-mode window-numbering virtualenv synosaurus request-deferred rainbow-mode rainbow-delimiters python-x ob-sagemath ob-ipython monokai-theme lsp-julia lsp-ivy log4e langtool jupyter julia-shell jedi-direx inflections helm-sage helm-org helm-css-scss helm-company graphql gntp function-args fortpy flycheck-pos-tip flycheck-color-mode-line diminish dap-mode company-web company-math company-lsp company-c-headers company-auctex company-anaconda apiwrap ace-window))))
