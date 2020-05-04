@@ -23,6 +23,7 @@ clamav
 conky
 cvs
 cython
+dnscrypt-proxy
 doxygen
 emacs
 eog
@@ -57,7 +58,6 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-iio-sensor-proxy
 inkscape
 insync
 intel-ucode
@@ -75,9 +75,7 @@ libva-vdpau-driver
 libvdpau-va-gl
 linux-firmware
 linux-lts
-linux-lts-headers
 linux-zen
-linux-zen-headers
 mathpix-snipping-tool
 mbedtls
 mpv
@@ -87,9 +85,6 @@ neofetch
 networkmanager
 npm
 ntfs-3g
-nvidia-dkms
-nvidia-prime
-nvidia-settings
 octave
 openmp
 openssh
@@ -134,7 +129,6 @@ texlive-latexextra
 texlive-pstricks
 texlive-publishers
 tk
-tlp-rdw
 tmux
 transmission-gtk
 ufw
