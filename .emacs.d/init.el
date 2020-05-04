@@ -4,6 +4,10 @@
 ;;; Code:
 ;;; rainbow colors conf:
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(rainbow-delimiters-base-error-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
  '(rainbow-delimiters-base-face ((t (:inherit nil))))
  '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "cyan"))))
@@ -41,7 +45,7 @@
 
 
 ;;; List of my packages:
-(setq package-list '(async auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode window-numbering zotxt-emacs))
+(setq package-list '(async auto-package-update anaconda-mode company company-anaconda company-web company-math company-auctex company-c-headers company-lsp dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode window-numbering zotxt))
 
 
 ;mod test
@@ -267,4 +271,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (auto-package-update company dash define-word flycheck ghub git-auto-commit-mode helm helm-core helm-lsp ivy js2-mode lsp-mode lsp-ui magit markdown-mode polymode projectile python-mode swiper transient with-editor anaconda-mode async auctex auto-complete concurrent ctable dash-functional deferred direx epc epl f folding git-commit ht jedi jedi-core julia-mode lsp-treemacs lv math-symbol-lists pkg-info popup pos-tip python-environment pythonic request s sage-shell-mode simple-httpd spinner treepy web-completion-data websocket yasnippet zmq writegood-mode window-numbering virtualenv synosaurus request-deferred rainbow-mode rainbow-delimiters python-x ob-sagemath ob-ipython monokai-theme lsp-julia lsp-ivy log4e langtool jupyter julia-shell jedi-direx inflections helm-sage helm-org helm-css-scss helm-company graphql gntp function-args fortpy flycheck-pos-tip flycheck-color-mode-line diminish dap-mode company-web company-math company-lsp company-c-headers company-auctex company-anaconda apiwrap ace-window))))
+    (auto-complete-sage avy bui hydra org-caldav pfuture real-auto-save treemacs zenburn-theme zotxt auto-package-update company dash define-word flycheck ghub git-auto-commit-mode helm helm-core helm-lsp ivy js2-mode lsp-mode lsp-ui magit markdown-mode polymode projectile python-mode swiper transient with-editor anaconda-mode async auctex auto-complete concurrent ctable dash-functional deferred direx epc epl f folding git-commit ht jedi jedi-core julia-mode lsp-treemacs lv math-symbol-lists pkg-info popup pos-tip python-environment pythonic request s sage-shell-mode simple-httpd spinner treepy web-completion-data websocket yasnippet zmq writegood-mode window-numbering virtualenv synosaurus request-deferred rainbow-mode rainbow-delimiters python-x ob-sagemath ob-ipython monokai-theme lsp-julia lsp-ivy log4e langtool jupyter julia-shell jedi-direx inflections helm-sage helm-org helm-css-scss helm-company graphql gntp function-args fortpy flycheck-pos-tip flycheck-color-mode-line diminish dap-mode company-web company-math company-lsp company-c-headers company-auctex company-anaconda apiwrap ace-window))))
