@@ -76,7 +76,6 @@ libvdpau-va-gl
 linux-clear
 linux-clear-headers
 linux-firmware
-linux-lts
 linux-zen
 mathpix-snipping-tool
 mbedtls
