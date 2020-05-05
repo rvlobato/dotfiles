@@ -78,7 +78,6 @@ linux-clear-headers
 linux-firmware
 linux-lts
 linux-zen
-linux-zen-headers
 mathpix-snipping-tool
 mbedtls
 modprobed-db
