@@ -16,9 +16,8 @@ bash-language-server
 biber
 bleachbit
 cadabra2
-calibre
+calibre-python3
 ccls
-chromium
 clamav
 conky
 cvs
@@ -26,6 +25,7 @@ cython
 doxygen
 emacs
 eog
+epiphany
 evince
 evolution-bogofilter
 fakeroot
@@ -61,7 +61,6 @@ iio-sensor-proxy
 inkscape
 insync
 intel-ucode
-jami-gnome
 jre8-openjdk-headless
 julia
 jupyter-octave_kernel
@@ -119,6 +118,7 @@ python-statsmodels
 python-sympy
 python-virtualenv
 reflector
+riot-desktop
 sagemath-jupyter
 seahorse
 signal-desktop
