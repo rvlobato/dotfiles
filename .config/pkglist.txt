@@ -71,10 +71,10 @@ libtool
 libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
-linux-clear
-linux-clear-headers
 linux-firmware
+linux-lts
 linux-zen
+linux-zen-headers
 mathpix-snipping-tool
 mbedtls
 modprobed-db
