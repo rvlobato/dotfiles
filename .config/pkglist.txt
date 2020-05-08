@@ -79,7 +79,6 @@ linux-zen
 linux-zen-headers
 mathpix-snipping-tool
 mbedtls
-mpv
 mullvad-vpn
 nautilus
 neofetch
@@ -122,6 +121,7 @@ riot-desktop
 sagemath-jupyter
 seahorse
 signal-desktop
+smplayer
 snes9x
 sudo
 syncthing
@@ -141,7 +141,6 @@ tootle
 transmission-gtk
 ufw
 unrar
-vlc
 vulkan-intel
 which
 wordnet-cli
