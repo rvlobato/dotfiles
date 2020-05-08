@@ -51,6 +51,7 @@ gnome-tweaks
 gnome-weather
 gnuplot
 gparted
+gpmdp-git
 groff
 gvfs-goa
 gvfs-google
@@ -118,9 +119,11 @@ python-sympy
 python-virtualenv
 reflector
 riot-desktop
+rust
 sagemath-jupyter
 seahorse
 signal-desktop
+snes9x
 sudo
 syncthing
 telegram-desktop
