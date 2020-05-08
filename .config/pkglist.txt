@@ -17,6 +17,7 @@ biber
 bleachbit
 cadabra2
 calibre-python3
+cawbird
 ccls
 clamav
 conky
