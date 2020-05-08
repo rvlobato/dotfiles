@@ -119,7 +119,6 @@ python-sympy
 python-virtualenv
 reflector
 riot-desktop
-rust
 sagemath-jupyter
 seahorse
 signal-desktop
