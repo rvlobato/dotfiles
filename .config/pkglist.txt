@@ -117,7 +117,6 @@ python-statsmodels
 python-sympy
 python-virtualenv
 reflector
-rhythmbox
 riot-desktop
 sagemath-jupyter
 seahorse
