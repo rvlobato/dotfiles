@@ -79,7 +79,6 @@ linux-zen
 linux-zen-headers
 mathpix-snipping-tool
 mbedtls
-modprobed-db
 mpv
 mullvad-vpn
 nautilus
@@ -138,6 +137,7 @@ texlive-publishers
 tk
 tlp-rdw
 tmux
+tootle
 transmission-gtk
 ufw
 unrar
