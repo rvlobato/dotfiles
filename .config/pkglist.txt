@@ -51,7 +51,6 @@ gnome-todo
 gnome-tweaks
 gnome-weather
 gnuplot
-gparted
 gpmdp-git
 groff
 gvfs-goa
