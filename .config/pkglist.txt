@@ -135,7 +135,6 @@ texlive-pstricks
 texlive-publishers
 tk
 tlp-rdw
-tmux
 tootle
 transmission-gtk
 ufw
