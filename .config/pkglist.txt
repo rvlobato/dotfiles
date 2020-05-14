@@ -23,6 +23,7 @@ clamav
 conky
 cvs
 cython
+dnscrypt-proxy
 doxygen
 emacs
 eog
@@ -57,7 +58,6 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-iio-sensor-proxy
 inkscape
 insync
 intel-ucode
@@ -65,6 +65,7 @@ jre8-openjdk-headless
 julia
 jupyter-octave_kernel
 jupyterlab
+keybase-gui
 languagetool
 libreoffice-fresh
 libva-intel-driver
@@ -73,7 +74,6 @@ libvdpau-va-gl
 linux-firmware
 linux-lts
 linux-zen
-linux-zen-headers
 mathpix-snipping-tool
 mbedtls
 mullvad-vpn
@@ -82,9 +82,6 @@ neofetch
 networkmanager
 npm
 ntfs-3g
-nvidia-dkms
-nvidia-prime
-nvidia-settings
 octave
 openmp
 p3x-onenote
@@ -129,7 +126,6 @@ texlive-latexextra
 texlive-pstricks
 texlive-publishers
 tk
-tlp-rdw
 tootle
 transmission-gtk
 ufw
