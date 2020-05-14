@@ -53,7 +53,6 @@ gnome-tweaks
 gnome-weather
 gnuplot
 gpmdp-git
-groff
 gvfs-goa
 gvfs-google
 gvfs-gphoto2
@@ -68,7 +67,6 @@ jupyterlab
 keybase-gui
 languagetool
 libreoffice-fresh
-libtool
 libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
@@ -81,12 +79,10 @@ mullvad-vpn
 nautilus
 neofetch
 networkmanager
-nodejs
 npm
 ntfs-3g
 octave
 openmp
-openssh
 p3x-onenote
 pandoc-citeproc
 pandoc-crossref
@@ -121,7 +117,6 @@ snes9x
 sudo
 syncthing
 telegram-desktop
-texinfo
 texlive-bibtexextra
 texlive-bin
 texlive-core
