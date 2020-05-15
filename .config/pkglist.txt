@@ -8,6 +8,7 @@ aspell-fr
 aspell-it
 aspell-pt
 aurutils
+authenticator-git
 autoconf
 automake
 base
@@ -118,6 +119,7 @@ seahorse
 signal-desktop
 smplayer
 snes9x
+steam
 sudo
 syncthing
 telegram-desktop
