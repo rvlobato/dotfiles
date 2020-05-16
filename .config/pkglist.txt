@@ -8,7 +8,6 @@ aspell-fr
 aspell-it
 aspell-pt
 aurutils
-authenticator-git
 autoconf
 automake
 base
