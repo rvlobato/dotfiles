@@ -36,7 +36,6 @@ feedreader
 firefox
 flake8
 fortran-language-server
-fwupd
 fzf
 gcc-fortran
 gdm
@@ -46,6 +45,7 @@ gnome-calendar
 gnome-clocks
 gnome-contacts
 gnome-control-center
+gnome-firmware
 gnome-photos
 gnome-power-manager
 gnome-todo
@@ -141,7 +141,6 @@ which
 wordnet-cli
 wordnet-tk
 wxmaxima
-xdg-user-dirs
 yapf
 zotero
 zsh
