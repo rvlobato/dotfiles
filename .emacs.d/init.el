@@ -4,7 +4,7 @@
 ;;; Code:
 ;; Set customization data in a specific file, without littering init files.
 (setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(ignore-errors (load custom-file))
 
 ;; Make all commands of the package module present.
 (require 'package)
@@ -36,13 +36,10 @@
   :config
   ;; Delete residual old versions
   (setq auto-package-update-delete-old-versions t)
-  ;; The periodicity (in days) of the update
-  (setq auto-package-update-interval 7)
-  ;; Manual prompt before automatic updates
-  (setq auto-package-update-prompt-before-update t)
+  ;; Do not bother me when updates have taken place.
+  (setq auto-package-update-hide-results t)
   ;; Update installed packages at startup if there is an update pending.
   (auto-package-update-maybe))
-;(auto-package-update-now)
 
 ;; Initial window size and position on screen
 (setq initial-frame-alist
@@ -55,8 +52,25 @@
 (setq inhibit-splash-screen t
       initial-scratch-message nil)
 
-;; Display of time in the modeline
-(display-time-mode 1)
+;;; Goes to the last place where it was when you previously visited the same file
+(setq-default save-place  t)
+(setq save-place-file "~/.emacs.d/etc/saveplace")
+
+;; Mods in the modeline
+(display-time-mode 1) ;; Display of time
+(tool-bar-mode   -1)  ;; No large icons
+(scroll-bar-mode -1)  ;; No visual indicator
+(menu-bar-mode   -1)  ;; The Mac OS top pane has menu options
+
+;; Highlight matching ‘parenthesis’
+(setq show-paren-delay  0)
+(setq show-paren-style 'mixed)
+(show-paren-mode)
+
+;; Change buffer names for files with the same name. Note that ‘uniquify’ is builtin.
+(require 'uniquify)
+(setq uniquify-separator "/"               ;; The separator in buffer names.
+      uniquify-buffer-name-style 'forward) ;; names/in/this/style
 
 ;; Make it easier to discover key shortcuts
 (use-package which-key
@@ -112,7 +126,7 @@
 
 ;;auto-save
 (setq auto-save-visited-file-name t)
-(setq auto-save-visited-interval 60)
+(setq auto-save-visited-interval 300)
 
 ; Python autocompletation
 (add-hook 'python-mode-hook 'jedi:setup)
