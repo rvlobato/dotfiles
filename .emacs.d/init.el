@@ -73,9 +73,9 @@
   (diminish 'org-indent-mode))
 
 ;; Magit
-(use-package magit
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status))
+;(use-package magit
+;  :config
+;  (global-set-key (kbd "C-x g") 'magit-status))
 
 ;; Switch windows with shift-arrows instead of "C-x o" all the time
 (windmove-default-keybindings)

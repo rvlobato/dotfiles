@@ -37,7 +37,6 @@ firefox
 flake8
 flatpak
 fortran-language-server
-fwupd
 fzf
 gcc-fortran
 gdm
@@ -47,6 +46,7 @@ gnome-calendar
 gnome-clocks
 gnome-contacts
 gnome-control-center
+gnome-firmware
 gnome-photos
 gnome-power-manager
 gnome-software
@@ -61,6 +61,7 @@ gvfs-mtp
 inkscape
 insync
 intel-ucode
+jami-gnome
 jre8-openjdk-headless
 julia
 jupyter-octave_kernel
@@ -79,7 +80,6 @@ mbedtls
 mullvad-vpn
 nautilus
 neofetch
-networkmanager
 npm
 ntfs-3g
 octave
@@ -126,16 +126,15 @@ texlive-latexextra
 texlive-pstricks
 texlive-publishers
 tk
+tlp-rdw
 tootle
 transmission-gtk
 ufw
 unrar
-vulkan-intel
 which
 wordnet-cli
 wordnet-tk
 wxmaxima
-xdg-user-dirs
 yapf
 zotero
 zsh
