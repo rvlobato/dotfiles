@@ -2,105 +2,113 @@
 ;;; Commentary:
 
 ;;; Code:
-;;; rainbow colors conf:
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(rainbow-delimiters-base-error-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
- '(rainbow-delimiters-base-face ((t (:inherit nil))))
- '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "cyan"))))
- '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
- '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta3"))))
- '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "green"))))
- '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "tomato"))))
- '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "gold"))))
- '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "medium spring green"))))
- '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "gainsboro")))))
-					
+;; Set customization data in a specific file, without littering init files.
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
-(add-to-list 'load-path "/folder/containing/file")
-(require 'python)
+;; Make all commands of the package module present.
+(require 'package)
 
-;; initial window
+;; Internet repositories for new packages.
+(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
+                         ("gnu"       . "http://elpa.gnu.org/packages/")
+                         ("melpa"     . "http://melpa.org/packages/")))
+
+;; Activate all the packages (in particular autoloads)
+(package-initialize)
+;; Fetch the list of packages available
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;;; List of my packages:
+(setq package-selected-packages '(async auto-package-update anaconda-mode company company-anaconda company-auctex company-c-headers company-math company-web dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell define-word function-args inflections math-symbol-lists rainbow-delimiters rainbow-mode window-numbering zotxt))
+
+;;; Install my packages
+(dolist (package package-selected-packages)
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (require 'use-package))
+(setq use-package-always-ensure t)
+
+;;; Auto package update
+(use-package auto-package-update
+  :defer 10
+  :config
+  ;; Delete residual old versions
+  (setq auto-package-update-delete-old-versions t)
+  ;; The periodicity (in days) of the update
+  (setq auto-package-update-interval 7)
+  ;; Manual prompt before automatic updates
+  (setq auto-package-update-prompt-before-update t)
+  ;; Update installed packages at startup if there is an update pending.
+  (auto-package-update-maybe))
+;(auto-package-update-now)
+
+;; Initial window size and position on screen
 (setq initial-frame-alist
-      '(
-        (width . 140) ; character
-        (height . 40) ; lines
-	(top . 100) ; position on the screen
-        (left . 250)
-	))
+      '((width . 145) ; character
+        (height . 45) ; lines
+	(top . 200)   ; position on the screen
+	(left . 350)))
 
 ;;; Disable startup message
 (setq inhibit-splash-screen t
       initial-scratch-message nil)
 
+;; Display of time in the modeline
+(display-time-mode 1)
+
+;; Make it easier to discover key shortcuts
+(use-package which-key
+  :diminish
+  :config
+  (which-key-mode)
+  (which-key-setup-side-window-bottom)
+  (setq which-key-idle-delay 0.5))
+
+;; Do not show some common modes in the modeline, to save space
+(use-package diminish
+  :defer 5
+  :config
+  (diminish 'org-indent-mode))
+
+;; Magit
+;(use-package magit
+;  :config
+;  (global-set-key (kbd "C-x g") 'magit-status))
+
+;; Switch windows with shift-arrows instead of "C-x o" all the time
+(windmove-default-keybindings)
+
+;; Theme
+(use-package flatland-theme
+  :config
+  (custom-theme-set-faces 'flatland
+   '(show-paren-match ((t (:background "dark gray" :foreground "black" :weight bold))))
+   '(show-paren-mismatch ((t (:background "firebrick" :foreground "orange" :weight bold))))))
+
 ;;; My personal information
-(setq user-full-name "Ronaldo Lobato"
+(setq user-full-name "Ronaldo V. Lobato"
       user-mail-address "vieira.lobato@gmail.com"
       calendar-latitude 33.2471
       calendar-longitude 95.9000
       calendar-location-name "Commerce, Texas")
+				
+;;; Desired colored output shell
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-
-;;; List of my packages:
-(setq package-list '(async auto-package-update anaconda-mode company company-anaconda company-auctex company-c-headers company-math company-web dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell git-auto-commit-mode define-word function-args inflections math-symbol-lists rainbow-delimiters monokai-theme rainbow-mode window-numbering zotxt))
-
-
-;mod test
-;;Marmalade and Melpa
-;(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-;                         ("melpa" . "https://melpa.org/packages/")))
-
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-;(package-refresh-contents)
-
-
-(display-time-mode 1)
-; add below
-; activate all the packages (in particular autoloads)
-(package-initialize)
-
-;theme
-(load-theme 'monokai t)
-
-; async
+; Async
 (autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
 (async-bytecomp-package-mode 1)
-
-;fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
-
-; install the missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
-
-;mod teste
-; orgmode.org hosts org elpa archives.
-;(require 'package)
-;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-
-;;; auto-package-update
-(auto-package-update-maybe)
-;(auto-package-update-now)
-(setq auto-package-update-interval 7)
-(setq auto-package-update-prompt-before-update t)
-(setq auto-package-update-delete-old-versions t)
 
 ; Emacs-langtool
 (require 'langtool)
 (setq langtool-java-classpath
       "/usr/share/languagetool:/usr/share/java/languagetool/*")
 
-; set the default dictionary ispell
-(setq ispell-dictionary "english")    ;set the default dictionary
+; Set the default dictionary ispell
+(setq ispell-dictionary "english")
 
 ;;auto-save
 (setq auto-save-visited-file-name t)
@@ -126,7 +134,7 @@
 (require 'company-web-html)                          ; load company mode html backend
 
 ; company-math
-;; global activation of the unicode symbol completion 
+;; global activation of the unicode symbol completion
 (add-to-list 'company-backends 'company-math-symbols-unicode)
 
 ; company-auctex
@@ -136,22 +144,51 @@
 ; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
 
-; Flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(require 'flycheck-color-mode-line)
-(eval-after-load "flycheck"
-  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
-(with-eval-after-load 'flycheck
-  (flycheck-pos-tip-mode))
+;;; Flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
 ; lsp-mode
 (require 'lsp-mode)
 (add-hook 'prog-mode-hook #'lsp)
 
-					; helm
-(require 'helm-config)
+;;; Helm
+(use-package helm
+ :diminish
+ :init (helm-mode t)
+ :bind (("M-x"     . helm-M-x)
+        ("C-x C-f" . helm-find-files)
+        ("C-x b"   . helm-mini)     ;; See buffers & recent files; more useful.
+        ("C-x r b" . helm-filtered-bookmarks)
+        ("C-x C-r" . helm-recentf)  ;; Search for recently edited files
+        ("C-c i"   . helm-imenu)
+        ("C-h a"   . helm-apropos)
+        ;; Look at what was cut recently & paste it in.
+        ("M-y" . helm-show-kill-ring)
 
-					;projectile
+        :map helm-map
+        ;; We can list ‘actions’ on the currently selected item by C-z.
+        ("C-z" . helm-select-action)
+        ;; Let's keep tab-completetion anyhow.
+        ("TAB"   . helm-execute-persistent-action)
+        ("<tab>" . helm-execute-persistent-action)))
+
+;; Ripgrep
+(use-package rg
+  :config
+  (global-set-key (kbd "M-s g") 'rg)
+  (global-set-key (kbd "M-s d") 'rg-dwim))
+(use-package helm-rg)
+
+;; Rustic, LSP
+(use-package rustic)
+(use-package lsp-ui)
+(use-package helm-lsp
+  :config
+  (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
+
+;;; Projectile
 (require 'projectile)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -161,12 +198,6 @@
 (add-hook 'dap-stopped-hook
           (lambda (arg) (call-interactively #'dap-hydra)))
 
-					;rainbow delimiters
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
-; Latex
-(require 'package)
-(package-initialize)
 
 ; Julia
 (add-to-list 'load-path "path-to-julia-shell-mode")
@@ -261,14 +292,26 @@
 ;; Show images after evaluating code blocks.
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 
-;;; ---------------------
-;;;
+;;; Rainbow mode
+(require 'rainbow-mode)
+(define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
+  (lambda () (rainbow-mode 1)))
+(my-global-rainbow-mode 1)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (auto-complete-sage avy bui hydra org-caldav pfuture real-auto-save treemacs zenburn-theme zotxt auto-package-update company dash define-word ghub git-auto-commit-mode helm-lsp js2-mode polymode with-editor anaconda-mode async auto-complete concurrent ctable dash-functional deferred direx epc epl f folding git-commit ht jedi jedi-core lsp-treemacs math-symbol-lists pkg-info popup pos-tip python-environment pythonic request s sage-shell-mode simple-httpd spinner treepy web-completion-data websocket yasnippet zmq writegood-mode window-numbering virtualenv synosaurus request-deferred rainbow-mode rainbow-delimiters python-x ob-sagemath ob-ipython monokai-theme lsp-julia lsp-ivy log4e langtool jupyter julia-shell jedi-direx inflections helm-sage helm-org helm-css-scss helm-company graphql gntp function-args fortpy flycheck-pos-tip flycheck-color-mode-line diminish dap-mode company-web company-math company-c-headers company-auctex company-anaconda apiwrap ace-window))))
+;;; Rainbow delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+;;; rainbow colors conf:
+(custom-set-faces
+ '(rainbow-delimiters-base-error-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
+ '(rainbow-delimiters-base-face ((t (:inherit nil))))
+ '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "cyan"))))
+ '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
+ '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta3"))))
+ '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "green"))))
+ '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "tomato"))))
+ '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "gold"))))
+ '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "medium spring green"))))
+ '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "gainsboro")))))
+
+;;; EOF
+;;; init.el ends here

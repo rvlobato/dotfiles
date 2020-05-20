@@ -14,7 +14,6 @@ base
 bash-completion
 bash-language-server
 biber
-bitwarden
 bleachbit
 cadabra2
 calibre-python3
@@ -35,6 +34,7 @@ fd
 feedreader
 firefox
 flake8
+flatpak
 fortran-language-server
 fzf
 gcc-fortran
@@ -52,7 +52,6 @@ gnome-todo
 gnome-tweaks
 gnome-weather
 gnuplot
-gpmdp-git
 gvfs-goa
 gvfs-google
 gvfs-gphoto2
@@ -80,7 +79,6 @@ mbedtls
 mullvad-vpn
 nautilus
 neofetch
-networkmanager
 npm
 ntfs-3g
 nvidia-dkms
@@ -112,6 +110,7 @@ python-rope
 python-statsmodels
 python-sympy
 python-virtualenv
+qt5-wayland
 reflector
 riot-desktop
 sagemath-jupyter
@@ -136,7 +135,6 @@ tootle
 transmission-gtk
 ufw
 unrar
-vulkan-intel
 which
 wordnet-cli
 wordnet-tk
