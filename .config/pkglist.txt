@@ -118,7 +118,6 @@ seahorse
 signal-desktop
 smplayer
 snes9x
-steam
 sudo
 syncthing
 telegram-desktop
