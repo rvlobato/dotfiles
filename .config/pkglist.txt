@@ -23,7 +23,6 @@ clamav
 conky
 cvs
 cython
-dnscrypt-proxy
 doxygen
 emacs
 eog
@@ -49,7 +48,6 @@ gnome-control-center
 gnome-firmware
 gnome-photos
 gnome-power-manager
-gnome-software
 gnome-todo
 gnome-tweaks
 gnome-weather
@@ -58,6 +56,7 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy
 inkscape
 insync
 intel-ucode
@@ -66,7 +65,6 @@ jre8-openjdk-headless
 julia
 jupyter-octave_kernel
 jupyterlab
-keybase-gui
 languagetool
 libreoffice-fresh
 libva-intel-driver
@@ -75,6 +73,7 @@ libvdpau-va-gl
 linux-firmware
 linux-lts
 linux-zen
+linux-zen-headers
 mathpix-snipping-tool
 mbedtls
 mullvad-vpn
@@ -82,6 +81,9 @@ nautilus
 neofetch
 npm
 ntfs-3g
+nvidia-dkms
+nvidia-prime
+nvidia-settings
 octave
 openmp
 p3x-onenote
