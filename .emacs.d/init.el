@@ -116,13 +116,25 @@
 (dired-async-mode 1)
 (async-bytecomp-package-mode 1)
 
-; Emacs-langtool
+;;; Emacs-langtool
 (require 'langtool)
 (setq langtool-java-classpath
       "/usr/share/languagetool:/usr/share/java/languagetool/*")
 
+;;; Flyspell mode
+(use-package flyspell
+  :diminish
+  :hook ((prog-mode . flyspell-prog-mode)
+         ((org-mode text-mode) . flyspell-mode)))
+
 ; Set the default dictionary ispell
 (setq ispell-dictionary "english")
+
+(use-package synosaurus
+  :diminish synosaurus-mode
+  :init    (synosaurus-mode)
+  :config  (setq synosaurus-choose-method 'popup) ;; 'ido is default.
+           (global-set-key (kbd "M-#") 'synosaurus-choose-and-replace))
 
 ;;auto-save
 (setq auto-save-visited-file-name t)
