@@ -43,5 +43,4 @@
 
 (org-babel-load-file "~/.emacs.d/configuration.org")
 
-;;; EOF
 ;;; init.el ends here
