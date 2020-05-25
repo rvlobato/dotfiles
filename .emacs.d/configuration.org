@@ -3,22 +3,71 @@
 #+EMAIL: vieira.lobato@gmail.com
 #+OPTIONS: toc:nil num:nil
 
-
 * Agenda & todo
 ** Agenda
 
 #+BEGIN_SRC emacs-lisp
+;; List of all the files & directories where todo items can be found. Only one
+;; for now: My default notes file.
+(setq org-agenda-files (list org-default-notes-file))
+;; Display tags really close to their tasks.
+(setq org-agenda-tags-column -10)
+;; How many days ahead the default agenda view should look
+(setq org-agenda-span 'day)
+;; May be any number; the larger the slower it takes to generate the view.
+;; One day is thus the fastest ^_^
+;; How many days early a deadline item will begin showing up in your agenda list.
+(setq org-deadline-warning-days 14)
+;; In the agenda view, days that have no associated tasks will still have a line showing the date.
+(setq org-agenda-show-all-dates t)
+;; Scheduled items marked as complete will not show up in your agenda view.
+(setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-skip-deadline-if-done  t)
+
+(setq org-agenda-start-on-weekday nil)
+#+END_SRC
+
+*** Super-agenda
+
+#+BEGIN_SRC emacs-lisp
+(use-package org-super-agenda
+  :hook (org-agenda-mode . origami-mode) ;; Easily fold groups via TAB.
+  :bind (:map org-super-agenda-header-map ("<tab>" . origami-toggle-node))
+  :config
+  (org-super-agenda-mode)
+  (setq org-super-agenda-groups
+	'((:name "Important" :priority "A")
+	  (:name "Personal" :habit t)
+	  ;; For everything else, nicely display their heading hierarchy list.
+	  (:auto-map (lambda (e) (org-format-outline-path (org-get-outline-path)))))))
+
+;; MA: No noticable effect when using org-super-agenda :/
+;;
+;; Leave new line at the end of an entry.
+;; (setq org-blank-before-new-entry '((heading . t) (plain-list-item . t)))
+#+END_SRC
+
+** TO-DO
+
+#+BEGIN_SRC emacs-lisp
 ;; Location of my todos/notes file
-(setq org-default-notes-file "~/gCloudDrive/notes/org/todo.org")
+(setq org-default-notes-file "~/gCloudDrive/notes/org/agenda.org")
 
 ;; “C-c c” to quickly capture a task/note
 (define-key global-map "\C-cc" #'my/org-capture) ;; See below.
 #+END_SRC
 
+*** TODO-s respect hierarchical structure
+#+BEGIN_SRC emacs-lisp
+;; Cannot mark an item DONE if it has a  TODO child.
+;; Conversely, all children must be DONE in-order for a parent to be DONE.
+(setq org-enforce-todo-dependencies t)
+#+END_SRC
+
 * Behaviour
 ** Auto-revert mode refresh
 
-#+BEGIN_SRC
+#+BEGIN_SRC emacs-lisp
 (global-auto-revert-mode 1)
 #+END_SRC
 
@@ -79,7 +128,7 @@
 
 ** Desired colored output shell
 
-#+BEGIN_SRC
+#+BEGIN_SRC emacs-lisp
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 #+END_SRC
 
@@ -150,16 +199,31 @@
 (tool-bar-mode   -1)  ;; No large icons
 (scroll-bar-mode -1)  ;; No visual indicator
 (menu-bar-mode   -1)  ;; The Mac OS top pane has menu options
+(add-hook 'prog-mode-hook #'which-function-mode)
+(add-hook 'org-mode-hook  #'which-function-mode)
 #+END_SRC
 
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
-(use-package flatland-theme
+(use-package doom-themes
   :config
-  (custom-theme-set-faces 'flatland
-   '(show-paren-match ((t (:background "dark gray" :foreground "black" :weight bold))))
-   '(show-paren-mismatch ((t (:background "firebrick" :foreground "orange" :weight bold))))))
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold nil    ; if nil, bold is universally disabled
+	doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-gruvbox t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  (doom-themes-treemacs-config)
+
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 #+END_SRC
 
 ** Highlight matching ‘parenthesis’
@@ -191,19 +255,8 @@
 ** Rainbow delimiters
 
 #+BEGIN_SRC emacs-lisp
+(use-package rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-; rainbow colors conf:
-(custom-set-faces
- '(rainbow-delimiters-base-error-face ((t (:inherit rainbow-delimiters-base-face :foreground "red"))))
- '(rainbow-delimiters-base-face ((t (:inherit nil))))
- '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "cyan"))))
- '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "yellow"))))
- '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "magenta3"))))
- '(rainbow-delimiters-depth-4-face ((t (:inherit rainbow-delimiters-base-face :foreground "green"))))
- '(rainbow-delimiters-depth-6-face ((t (:inherit rainbow-delimiters-base-face :foreground "tomato"))))
- '(rainbow-delimiters-depth-7-face ((t (:inherit rainbow-delimiters-base-face :foreground "gold"))))
- '(rainbow-delimiters-depth-8-face ((t (:inherit rainbow-delimiters-base-face :foreground "medium spring green"))))
- '(rainbow-delimiters-depth-9-face ((t (:inherit rainbow-delimiters-base-face :foreground "gainsboro")))))
 #+END_SRC
 
 ** Color Identifiers Mode gives unique highlighting to identifiers
@@ -233,6 +286,15 @@ window contains the buffer with the cursour in it."
     (other-window 1)))
 
 (global-set-key (kbd "C-|") 'my/ensure-two-vertical-windows)
+#+END_SRC
+
+** Visual line mode
+
+#+BEGIN_SRC emacs-lisp
+;; Bent arrows at the end and start of long lines.
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+(diminish 'visual-line-mode)
+(global-visual-line-mode 1)
 #+END_SRC
 
 * Git
@@ -367,6 +429,15 @@ window contains the buffer with the cursour in it."
 (use-package lorem-ipsum :defer t)
 #+END_SRC
 
+** Google translate
+
+#+BEGIN_SRC emacs-lisp
+(use-package google-translate
+ :defer t
+ :config
+   (global-set-key "\C-ct" 'google-translate-at-point))
+#+END_SRC
+
 * Frameworks & libraries
 ** Async
 
@@ -419,7 +490,6 @@ window contains the buffer with the cursour in it."
 (projectile-mode +1)
 #+END_SRC
 
-
 * Programming languages
 ** lsp-mode
 
@@ -445,8 +515,15 @@ window contains the buffer with the cursour in it."
 	  (lambda (arg) (call-interactively #'dap-hydra)))
 #+END_SRC
 
+** Eldoc
 
-** Minor mode - adds spacing around operators
+#+BEGIN_SRC emacs-lisp
+(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
+(add-hook 'ielm-mode-hook 'eldoc-mode)
+#+END_SRC
+
+** Adds spacing around operators
 
 #+BEGIN_SRC emacs-lisp
 (use-package electric-operator
@@ -473,7 +550,6 @@ window contains the buffer with the cursour in it."
 #+END_SRC
 
 * Old
-
 
 #+BEGIN_SRC emacs-lisp
 
@@ -595,3 +671,5 @@ window contains the buffer with the cursour in it."
 ;; Show images after evaluating code blocks.
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 #+END_SRC
+
+EOF
