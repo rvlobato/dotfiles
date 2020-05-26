@@ -104,7 +104,6 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
-  :diminish
   :config
   (which-key-mode)
   (which-key-setup-side-window-bottom)
@@ -224,15 +223,6 @@
 (show-paren-mode)
 #+END_SRC
 
-** Do not show modes in the modeline
-
-#+BEGIN_SRC emacs-lisp
-(use-package diminish
-  :defer 5
-  :config
-  (diminish 'org-indent-mode))
-#+END_SRC
-
 ** Rainbow delimiters
 
 #+BEGIN_SRC emacs-lisp
@@ -274,7 +264,6 @@ window contains the buffer with the cursour in it."
 #+BEGIN_SRC emacs-lisp
 ;; Bent arrows at the end and start of long lines.
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
-(diminish 'visual-line-mode)
 (global-visual-line-mode 1)
 #+END_SRC
 
@@ -309,7 +298,6 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package company
-  :diminish
   :config
   (global-company-mode 1)
   (setq ;; Only 2 letters required for completion to activate.
@@ -364,7 +352,6 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package flyspell
-  :diminish
   :hook ((prog-mode . flyspell-prog-mode)
 	 ((org-mode text-mode) . flyspell-mode)))
 #+END_SRC
@@ -379,7 +366,6 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package synosaurus
-  :diminish synosaurus-mode
   :init    (synosaurus-mode)
   :config  (setq synosaurus-choose-method 'popup) ;; 'ido is default.
 	   (global-set-key (kbd "M-#") 'synosaurus-choose-and-replace))
@@ -391,8 +377,6 @@ window contains the buffer with the cursour in it."
 (use-package writegood-mode
   ;; Load this whenver I'm composing prose.
   :hook (text-mode org-mode)
-  ;; Don't show me the “Wg” marker in the mode line
-  :diminish
   ;; Some additional weasel words.
   :config
   (--map (push it writegood-weasel-words)
@@ -433,7 +417,6 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package helm
- :diminish
  :init (helm-mode t)
  :bind (("M-x"     . helm-M-x)
 	("C-x C-f" . helm-find-files)
@@ -531,7 +514,6 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package electric-operator
-:diminish
 :hook (c-mode . electric-operator-mode))
 #+END_SRC
 
