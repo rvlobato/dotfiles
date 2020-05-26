@@ -1,6 +1,5 @@
 ;;; Configs --- my emacs configs::
 ;;; Commentary:
-
 ;;; Code:
 ;; Set customization data in a specific file, without littering init files.
 (setq custom-file "~/.emacs.d/custom.el")

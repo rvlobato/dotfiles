@@ -78,10 +78,11 @@
 (setq auto-save-visited-interval 300)
 #+END_SRC
 
-** Switch windows with shift-arrows instead of "C-x o" all the time
+** Window-numbering
 
 #+BEGIN_SRC emacs-lisp
-(windmove-default-keybindings)
+(use-package window-numbering)
+(window-numbering-mode 1)
 #+END_SRC
 
 ** Switch between recent buffers
@@ -94,8 +95,7 @@
     ("M-S-<tab>" . buffer-flip-backward)
     ("C-g"       . buffer-flip-abort))
   :config
-    (setq buffer-flip-skip-patterns
-	'("^\\*helm\\b")))
+    (setq buffer-flip-skip-patt	'("^\\*helm\\b")))
 ;; key to begin cycling buffers.
 (global-set-key (kbd "M-<tab>") 'buffer-flip)
 #+END_SRC
@@ -446,6 +446,7 @@ window contains the buffer with the cursour in it."
 #+END_SRC
 
 ** Helm
+*** General
 
 #+BEGIN_SRC emacs-lisp
 (use-package helm
@@ -467,6 +468,28 @@ window contains the buffer with the cursour in it."
 	;; Let's keep tab-completetion anyhow.
 	("TAB"   . helm-execute-persistent-action)
 	("<tab>" . helm-execute-persistent-action)))
+#+END_SRC
+
+***  Current buffers, recent files, and bookmarks
+
+#+BEGIN_SRC emacs-lisp
+(setq helm-mini-default-sources '(helm-source-buffers-list
+				    helm-source-recentf
+				    helm-source-bookmarks
+				    helm-source-bookmark-set
+				    helm-source-buffer-not-found))
+#+END_SRC
+
+***  Helm-swoop
+
+#+BEGIN_SRC emacs-lisp
+(use-package helm-swoop
+  :bind  (("C-s"     . 'helm-swoop)           ;; search current buffer
+	  ("C-M-s"   . 'helm-multi-swoop-all) ;; Search all buffer
+	  ;; Go back to last position where ‘helm-swoop’ was called
+	  ("C-S-s" . 'helm-swoop-back-to-last-point))
+  :custom (helm-swoop-speed-or-color nil "Give up colour for speed.")
+	  (helm-swoop-split-with-multiple-windows nil "Do not split window inside the current window."))
 #+END_SRC
 
 ** Ripgrep
@@ -616,7 +639,6 @@ window contains the buffer with the cursour in it."
 
 ;;ob-ipython
 (require 'ob-ipython)
-
 
 (eval-after-load "sage-shell-mode"
   '(sage-shell:define-keys sage-shell-mode-map
