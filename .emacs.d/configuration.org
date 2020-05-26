@@ -85,21 +85,6 @@
 (window-numbering-mode 1)
 #+END_SRC
 
-** Switch between recent buffers
-
-#+BEGIN_SRC emacs-lisp
-(use-package buffer-flip
-  :bind
-   (:map buffer-flip-map
-    ("M-<tab>"   . buffer-flip-forward)
-    ("M-S-<tab>" . buffer-flip-backward)
-    ("C-g"       . buffer-flip-abort))
-  :config
-    (setq buffer-flip-skip-patt	'("^\\*helm\\b")))
-;; key to begin cycling buffers.
-(global-set-key (kbd "M-<tab>") 'buffer-flip)
-#+END_SRC
-
 ** Change buffer names for files with the same name. Note that ‘uniquify’ is builtin.
 
 #+BEGIN_SRC emacs-lisp
