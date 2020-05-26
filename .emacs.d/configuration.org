@@ -116,10 +116,19 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 #+END_SRC
 
-** Modify the titlebar to contain the current file
+** Modify the titlebar & others
 
 #+BEGIN_SRC emacs-lisp
-(setq frame-title-format "%b")
+(setq frame-title-format `(,(user-login-name) "@" ,(system-name) "    %f" (dired-directory dired-directory "%b")))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(display-time-mode t) ;; Display of time
+(tool-bar-mode   -1)  ;; No large icons
+(scroll-bar-mode -1)  ;; No visual indicator
+(menu-bar-mode   -1)
+(add-hook 'prog-mode-hook #'which-function-mode)
+(add-hook 'org-mode-hook  #'which-function-mode)
 #+END_SRC
 
 ** Moving text around
@@ -182,15 +191,6 @@
 (use-package mood-line
   :config
   (mood-line-mode t))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(display-time-mode 1) ;; Display of time
-(tool-bar-mode   -1)  ;; No large icons
-(scroll-bar-mode -1)  ;; No visual indicator
-(menu-bar-mode   -1)
-(add-hook 'prog-mode-hook #'which-function-mode)
-(add-hook 'org-mode-hook  #'which-function-mode)
 #+END_SRC
 
 ** Theme
@@ -469,6 +469,37 @@ window contains the buffer with the cursour in it."
 #+END_SRC
 
 ** Projectile
+** Dired
+
+#+BEGIN_SRC emacs-lisp
+(use-package dired-subtree
+  :bind (:map dired-mode-map
+	      ("i" . dired-subtree-toggle)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package dired-collapse
+  :hook (dired-mode . dired-collapse-mode))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package dired-filter
+  :hook (dired-mode . (lambda () (dired-filter-group-mode)
+				 (dired-filter-by-garbage)))
+  :custom
+    (dired-garbage-files-regexp
+      "\\(?:\\.\\(?:aux\\|bak\\|dvi\\|log\\|orig\\|rej\\|toc\\|out\\)\\)\\'")
+    (dired-filter-group-saved-groups
+      '(("default"
+	 ("Org"    (extension "org"))
+	 ("Executables" (exexutable))
+	 ("Directories" (directory))
+	 ("PDF"    (extension "pdf"))
+	 ("LaTeX"  (extension "tex" "bib"))
+	 ("Images" (extension "png"))
+	 ("Code"   (extension "hs" "agda" "lagda"))
+	 ("Archives"(extension "zip" "rar" "gz" "bz2" "tar"))))))
+#+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 (require 'projectile)
