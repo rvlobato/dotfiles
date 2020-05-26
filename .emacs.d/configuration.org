@@ -199,6 +199,7 @@
 #+BEGIN_SRC emacs-lisp
 (use-package gruvbox-theme)
 (load-theme 'gruvbox-dark-hard t)
+(set-face-background 'mode-line "black")
 #+End_SRC
 
 ** Flashing when something goes wrong
@@ -538,7 +539,6 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck
-:diminish
 :ensure t
 :init (global-flycheck-mode)
 :custom (flycheck-display-errors-delay .3))
