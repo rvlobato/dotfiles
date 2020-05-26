@@ -180,10 +180,16 @@
 ** Mods in the modeline
 
 #+BEGIN_SRC emacs-lisp
+(use-package mood-line
+  :config
+  (mood-line-mode t))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
 (display-time-mode 1) ;; Display of time
 (tool-bar-mode   -1)  ;; No large icons
 (scroll-bar-mode -1)  ;; No visual indicator
-(menu-bar-mode   -1)  ;; The Mac OS top pane has menu options
+(menu-bar-mode   -1)
 (add-hook 'prog-mode-hook #'which-function-mode)
 (add-hook 'org-mode-hook  #'which-function-mode)
 #+END_SRC
@@ -193,14 +199,14 @@
 #+BEGIN_SRC emacs-lisp
 (use-package gruvbox-theme)
 (load-theme 'gruvbox-dark-hard t)
-#+END_SRC
+#+End_SRC
 
 ** Flashing when something goes wrong
 
-#+BEGIN_SRC emacs-lisp
-(setq visible-bell 1)
-(blink-cursor-mode 1)
-#+END_SRC
+ #+BEGIN_SRC emacs-lisp
+ (setq visible-bell 1)
+ (blink-cursor-mode 1)
+ #+END_SRC
 
 ** Dimming unused windows
 
@@ -217,22 +223,13 @@
 (show-paren-mode)
 #+END_SRC
 
-** Do not show some common modes in the modeline, to save space
+** Do not show modes in the modeline
 
 #+BEGIN_SRC emacs-lisp
 (use-package diminish
   :defer 5
   :config
   (diminish 'org-indent-mode))
-#+END_SRC
-
-** Rainbow mode
-
-#+BEGIN_SRC emacs-lisp
-(require 'rainbow-mode)
-(define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
-  (lambda () (rainbow-mode 1)))
-(my-global-rainbow-mode 1)
 #+END_SRC
 
 ** Rainbow delimiters
@@ -242,7 +239,7 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 #+END_SRC
 
-** Color Identifiers Mode gives unique highlighting to identifiers
+** Unique highlighting to identifiers
 
 #+BEGIN_SRC emacs-lisp
 (use-package color-identifiers-mode
@@ -251,7 +248,7 @@
 (run-with-idle-timer 5 t 'color-identifiers:refresh)
 #+END_SRC
 
-** Switching from 2 horizontal windows to 2 vertical windows
+** Switching from 2 horizontal windows to 2 vertical
 
 #+BEGIN_SRC emacs-lisp
 (defun my/ensure-two-vertical-windows ()
@@ -533,17 +530,18 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package electric-operator
-  :diminish
-  :hook (c-mode . electric-operator-mode))
+:diminish
+:hook (c-mode . electric-operator-mode))
 #+END_SRC
 
 ** Flycheck
 
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode)
-  :custom (flycheck-display-errors-delay .3))
+:diminish
+:ensure t
+:init (global-flycheck-mode)
+:custom (flycheck-display-errors-delay .3))
 #+END_SRC
 
 ** Documentation pop-up on a completion
