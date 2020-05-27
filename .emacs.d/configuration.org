@@ -393,6 +393,12 @@ window contains the buffer with the cursour in it."
 	   ;; ↯ What is the evidence of highighted phrase? ↯
 #+END_SRC
 
+** Define word
+
+#+BEGIN_SRC emacs-lisp
+(use-package define-word)
+#+END_SRC
+
 ** Placeholder Text
 
 #+BEGIN_SRC emacs-lisp

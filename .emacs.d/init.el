@@ -20,7 +20,7 @@
   (package-refresh-contents))
 
 ;;; List of my packages:
-(setq package-selected-packages '(anaconda-mode company-anaconda company-auctex company-c-headers company-math company-web flycheck-pos-tip helm-core helm-css-scss helm-sage helm-org jupyter lsp-julia jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell define-word function-args inflections math-symbol-lists zotxt))
+(setq package-selected-packages '(anaconda-mode company-anaconda company-auctex company-c-headers company-math company-web flycheck-pos-tip helm-core helm-css-scss helm-sage helm-org jupyter lsp-julia jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell function-args inflections math-symbol-lists zotxt))
 
 ;;; Install my packages
 (dolist (package package-selected-packages)
