@@ -10,8 +10,8 @@
 
 ;; Internet repositories for new packages.
 (setq package-archives '(("org"       . "http://orgmode.org/elpa/")
-                         ("gnu"       . "http://elpa.gnu.org/packages/")
-                         ("melpa"     . "http://melpa.org/packages/")))
+			 ("gnu"       . "http://elpa.gnu.org/packages/")
+			 ("melpa"     . "http://melpa.org/packages/")))
 
 ;; Activate all the packages (in particular autoloads)
 (package-initialize)
@@ -20,7 +20,7 @@
   (package-refresh-contents))
 
 ;;; List of my packages:
-(setq package-selected-packages '(async auto-package-update anaconda-mode company company-anaconda company-auctex company-c-headers company-math company-web dap-mode flycheck flycheck-color-mode-line flycheck-pos-tip helm helm-company helm-core helm-css-scss helm-lsp helm-sage helm-org jupyter langtool lsp-julia lsp-mode lsp-ui lsp-treemacs lsp-ivy magit synosaurus jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell define-word function-args inflections math-symbol-lists rainbow-delimiters rainbow-mode window-numbering zotxt))
+(setq package-selected-packages '(anaconda-mode company-anaconda company-auctex company-c-headers company-math company-web flycheck-pos-tip helm-core helm-css-scss helm-sage helm-org jupyter lsp-julia jedi jedi-core writegood-mode python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell define-word function-args inflections math-symbol-lists zotxt))
 
 ;;; Install my packages
 (dolist (package package-selected-packages)
@@ -40,6 +40,6 @@
   ;; Update installed packages at startup if there is an update pending.
   (auto-package-update-maybe))
 
+;;; Read my configs
 (org-babel-load-file "~/.emacs.d/configuration.org")
-
 ;;; init.el ends here

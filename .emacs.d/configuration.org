@@ -119,7 +119,7 @@
 ** Modify the titlebar & others
 
 #+BEGIN_SRC emacs-lisp
-(setq frame-title-format `(,(user-login-name) "@" ,(system-name) "    %f" (dired-directory dired-directory "%b")))
+(setq frame-title-format `(,(user-login-name) "@" ,(system-name) "    %f"))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
@@ -221,6 +221,11 @@
 (setq show-paren-delay  0)
 (setq show-paren-style 'mixed)
 (show-paren-mode)
+#+END_SRC
+
+** Rainbow-mode
+#+BEGIN_SRC emacs-lisp
+(use-package rainbow-mode)
 #+END_SRC
 
 ** Rainbow delimiters
@@ -407,6 +412,7 @@ window contains the buffer with the cursour in it."
 ** Async
 
 #+BEGIN_SRC emacs-lisp
+(use-package async)
 (autoload 'dired-async-mode "dired-async.el" nil t)
 (dired-async-mode 1)
 (async-bytecomp-package-mode 1)
@@ -436,7 +442,7 @@ window contains the buffer with the cursour in it."
 	("<tab>" . helm-execute-persistent-action)))
 #+END_SRC
 
-***  Current buffers, recent files, and bookmarks
+*** Current buffers, recent files, and bookmarks
 
 #+BEGIN_SRC emacs-lisp
 (setq helm-mini-default-sources '(helm-source-buffers-list
@@ -446,7 +452,15 @@ window contains the buffer with the cursour in it."
 				    helm-source-buffer-not-found))
 #+END_SRC
 
-***  Helm-swoop
+*** Helm-lsp
+
+#+BEGIN_SRC emacs-lisp
+(use-package helm-lsp
+  :config
+  (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
+#+END_SRC
+
+*** Helm-swoop
 
 #+BEGIN_SRC emacs-lisp
 (use-package helm-swoop
@@ -456,6 +470,16 @@ window contains the buffer with the cursour in it."
 	  ("C-S-s" . 'helm-swoop-back-to-last-point))
   :custom (helm-swoop-speed-or-color nil "Give up colour for speed.")
 	  (helm-swoop-split-with-multiple-windows nil "Do not split window inside the current window."))
+#+END_SRC
+
+*** Helm-company
+
+#+BEGIN_SRC emacs-lisp
+(use-package helm-company)
+(eval-after-load 'company
+  '(progn
+     (define-key company-mode-map (kbd "C-:") 'helm-company)
+     (define-key company-active-map (kbd "C-:") 'helm-company)))
 #+END_SRC
 
 ** Ripgrep
@@ -512,23 +536,33 @@ window contains the buffer with the cursour in it."
 ** lsp-mode
 
 #+BEGIN_SRC emacs-lisp
+(use-package lsp-mode)
 (require 'lsp-mode)
 (add-hook 'prog-mode-hook #'lsp)
+#+END_SRC
+
+** lsp-ui
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-ui)
+#+END_SRC
+
+** lsp-ivy
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-ivy)
 #+END_SRC
 
 ** Rust
 
 #+BEGIN_SRC emacs-lisp
 (use-package rustic)
-(use-package lsp-ui)
-(use-package helm-lsp
-  :config
-  (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
 #+END_SRC
 
 ** dap-mode
 
 #+BEGIN_SRC emacs-lisp
+(use-package dap-mode)
 (add-hook 'dap-stopped-hook
 	  (lambda (arg) (call-interactively #'dap-hydra)))
 #+END_SRC
