@@ -606,6 +606,91 @@ window contains the buffer with the cursour in it."
    (company-quickhelp-mode))
 #+END_SRC
 
+* Security
+
+#+BEGIN_SRC emacs-lisp
+(require 'epa-file)
+(epa-file-enable)
+#+END_SRC
+
+* Email
+
+#+BEGIN_SRC emacs-lisp
+(use-package gnus
+:config
+(setq user-mail-address "vieira.lobato@gmail.com"
+user-full-name "Ronaldo V. Lobato")
+
+(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+
+(setq gnus-select-method
+'(nnimap "gmail"
+(nnimap-address "imap.gmail.com")
+(nnimap-server-port "imaps")
+(nnimap-stream ssl)))
+
+(setq smtpmail-smtp-server "smtp.gmail.com"
+smtpmail-smtp-service 587
+gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+
+(setq send-mail-function		'smtpmail-send-it
+message-send-mail-function	'smtpmail-send-it)
+
+(defun my-message-mode-setup ()
+(setq fill-column 72)
+(turn-on-auto-fill))
+(add-hook 'message-mode-hook 'my-message-mode-setup)
+
+(setq mail-user-agent 'message-user-agent)
+(setq compose-mail-user-agent-warnings nil)
+(setq message-mail-user-agent nil)    ; default is `gnus'
+(setq mail-signature "Ronaldo V. Lobato\nrvlobato.com\n")
+(setq message-signature "Ronaldo V. Lobato\nrvlobato.com\n")
+(setq message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n")
+(setq message-citation-line-function
+'message-insert-formatted-citation-line)
+(setq message-confirm-send nil)
+(setq message-kill-buffer-on-exit t)
+(setq message-wide-reply-confirm-recipients t)
+(setq message-default-charset 'utf-8)
+(setq gnus-gcc-mark-as-read t)
+(setq gnus-agent t)
+(setq gnus-novice-user nil)
+;; checking sources
+(setq gnus-check-new-newsgroups 'ask-server)
+(setq gnus-read-active-file 'some)
+;; dribble
+
+(setq gnus-use-dribble-file nil)
+(setq gnus-use-cache 'use-as-much-cache-as-possible)
+(setq gnus-asynchronous t)
+(setq gnus-use-article-prefetch 15)
+
+(setq gnus-home-directory "~/.gnus"
+nnfolder-directory "~/.gnus/Mail/archive"
+message-directory "~/.gnus/Mail"
+nndraft-directory "~/.gnus/Drafts"
+gnus-cache-directory "~/.gnus/cache")
+
+:bind ("C-c m" . gnus))
+
+;mm-encode
+(setq mm-encrypt-option 'guided)
+
+;mml-sec
+(setq mml-secure-openpgp-encrypt-to-self t)
+(setq mml-secure-openpgp-sign-with-sender t)
+(setq mml-secure-smime-encrypt-to-self t)
+(setq mml-secure-smime-sign-with-sender t)
+
+(setq send-mail-function 'async-smtpmail-send-it)
+(setq message-send-mail-function 'async-smtpmail-send-it)
+
+(add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
+#+END_SRC
+
+
+
 * Old
 
 #+BEGIN_SRC emacs-lisp
