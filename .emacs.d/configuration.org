@@ -623,11 +623,13 @@ user-full-name "Ronaldo V. Lobato")
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
-(setq gnus-select-method
-'(nnimap "gmail"
+(setq gnus-select-method '(nnnil))
+(setq gnus-secondary-select-methods
+'((nntp "news.gwene.org")
+(nnimap "gmail"
 (nnimap-address "imap.gmail.com")
 (nnimap-server-port "imaps")
-(nnimap-stream ssl)))
+(nnimap-stream ssl))))
 
 (setq smtpmail-smtp-server "smtp.gmail.com"
 smtpmail-smtp-service 587
@@ -686,7 +688,6 @@ gnus-cache-directory "~/.gnus/cache")
 (setq send-mail-function 'async-smtpmail-send-it)
 (setq message-send-mail-function 'async-smtpmail-send-it)
 
-(add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
 #+END_SRC
 
 
