@@ -47,7 +47,6 @@
 ;; (setq org-blank-before-new-entry '((heading . t) (plain-list-item . t)))
 #+END_SRC
 
-
 ** TO-DO
 *** Capture
 
@@ -58,6 +57,7 @@
 ;; “C-c c” to quickly capture a task/note
 (global-set-key (kbd "C-c c") 'org-capture)
 #+END_SRC
+
 
 *** TODO-s respect hierarchical structure
 
