@@ -47,6 +47,7 @@
 ;; (setq org-blank-before-new-entry '((heading . t) (plain-list-item . t)))
 #+END_SRC
 
+
 ** TO-DO
 *** Capture
 
@@ -82,7 +83,7 @@
 
 ** Confirm to kill
 
-##+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (setq confirm-kill-emacs #'yes-or-no-p)
 #+END_SRC
 
@@ -851,18 +852,6 @@ gnus-cache-directory "~/.gnus/cache")
      (latex      . t)
      (org        . t)
      (makefile   . t)))
-#+END_SRC
-
-*** Seamless navigation between source blocks
-
-#+BEGIN_SRC emacs-lisp
-(use-package org
-  :bind (:map org-mode-map
-	      ("s-p" . org-babel-previous-src-block)
-	      ("s-n" . org-babel-next-src-block)
-	      ("s-e" . org-edit-src-code)
-	 :map org-src-mode-map
-	      ("s-e" . org-edit-src-exit)))
 #+END_SRC
 
 *** Keep the current heading stuck at the top of the window.
