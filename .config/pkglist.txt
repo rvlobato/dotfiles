@@ -75,6 +75,7 @@ linux-zen-headers
 mathpix-snipping-tool
 mbedtls
 mullvad-vpn
+nautilus
 neofetch
 nodejs
 npm
@@ -112,7 +113,6 @@ reflector
 riot-desktop
 sagemath-jupyter
 seahorse
-seahorse-nautilus
 signal-desktop
 skypeforlinux-preview-bin
 smplayer

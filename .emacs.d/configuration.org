@@ -58,6 +58,7 @@
 #+END_SRC
 
 *** TODO-s respect hierarchical structure
+
 #+BEGIN_SRC emacs-lisp
 ;; Cannot mark an item DONE if it has a  TODO child.
 ;; Conversely, all children must be DONE in-order for a parent to be DONE.
@@ -76,6 +77,12 @@
 #+BEGIN_SRC emacs-lisp
 (setq auto-save-visited-file-name t)
 (setq auto-save-visited-interval 300)
+#+END_SRC
+
+** Confirm to kill
+
+#+BEGIN_SRC emacs-lisp
+(setq confirm-kill-emacs #'yes-or-no-p)
 #+END_SRC
 
 ** Window-numbering
@@ -116,7 +123,7 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 #+END_SRC
 
-** Modify the titlebar & others
+** Modify the titlebar & others minor
 
 #+BEGIN_SRC emacs-lisp
 (setq frame-title-format `(,(user-login-name) "@" ,(system-name) "    %f"))
@@ -126,9 +133,7 @@
 (display-time-mode t) ;; Display of time
 (tool-bar-mode   -1)  ;; No large icons
 (scroll-bar-mode -1)  ;; No visual indicator
-(menu-bar-mode   -1)
-(add-hook 'prog-mode-hook #'which-function-mode)
-(add-hook 'org-mode-hook  #'which-function-mode)
+(menu-bar-mode   -1)  ;; No menu bar
 #+END_SRC
 
 ** Moving text around
@@ -137,6 +142,14 @@
 ;; M-↑,↓ moves line, or marked region; prefix is how many lines.
 (use-package move-text
   :config (move-text-default-bindings))
+#+END_SRC
+
+** Better text selection
+
+#+BEGIN_SRC emacs-lisp
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region))
 #+END_SRC
 
 ** Mouse editing support
@@ -172,8 +185,8 @@
 
 #+BEGIN_SRC emacs-lisp
 (setq initial-frame-alist
-      '((width . 145) ; character
-	(height . 45) ; lines
+      '((width . 145)
+	(height . 45)
 	(top . 200)   ; position on the screen
 	(left . 350)))
 #+END_SRC
@@ -276,9 +289,15 @@ window contains the buffer with the cursour in it."
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
-;(use-package magit
-;  :config
-;  (global-set-key (kbd "C-x g") 'magit-status))
+(use-package magit
+  :ensure t
+  :bind
+  ("C-x g" . magit-status)
+  ("C-c m" . magit-blame)
+  :config (magit-add-section-hook 'magit-status-sections-hook
+				    'magit-insert-unpushed-to-upstream
+				    'magit-insert-unpushed-to-upstream-or-recent
+				    'replace))
 #+END_SRC
 
 * Personal information
@@ -345,12 +364,34 @@ window contains the buffer with the cursour in it."
 ;; It's so fast that we don't need a key-binding to start it!
 #+END_SRC
 
+*** Quick help
+
+#+BEGIN_SRC emacs-lisp
+(use-package company-quickhelp
+  :ensure t
+  :init (company-quickhelp-mode))
+#+END_SRC
+
+** Yasnippet
+
+#+BEGIN_SRC emacs-lisp
+(use-package yasnippet
+  :ensure t
+  :init (yas-global-mode 1))
+#+END_SRC
+
 ** Emacs-langtool
 
 #+BEGIN_SRC emacs-lisp
 (require 'langtool)
 (setq langtool-java-classpath
       "/usr/share/languagetool:/usr/share/java/languagetool/*")
+#+END_SRC
+
+** Automatically “fill” text while editing
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 #+END_SRC
 
 ** Flyspell mode
@@ -499,6 +540,14 @@ window contains the buffer with the cursour in it."
 #+END_SRC
 
 ** Projectile
+
+#+BEGIN_SRC emacs-lisp
+(require 'projectile)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(projectile-mode +1)
+#+END_SRC
+
 ** Dired
 
 #+BEGIN_SRC emacs-lisp
@@ -531,14 +580,16 @@ window contains the buffer with the cursour in it."
 	 ("Archives"(extension "zip" "rar" "gz" "bz2" "tar"))))))
 #+END_SRC
 
+* Programming languages
+
+** Which function are we writing?
+; In the modeline, show the name of the function we’re currently writing.
+
 #+BEGIN_SRC emacs-lisp
-(require 'projectile)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(projectile-mode +1)
+(add-hook 'prog-mode-hook #'which-function-mode)
+(add-hook 'org-mode-hook  #'which-function-mode)
 #+END_SRC
 
-* Programming languages
 ** lsp-mode
 
 #+BEGIN_SRC emacs-lisp
@@ -557,6 +608,75 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-ivy)
+#+END_SRC
+
+** C
+
+#+BEGIN_SRC emacs-lisp
+(defun c-lineup-arglist-tabs-only (ignored)
+  "Line up argument lists by tabs, not spaces"
+  (let* ((anchor (c-langelem-pos c-syntactic-element))
+	   (column (c-langelem-2nd-pos c-syntactic-element))
+	   (offset (- (1+ column) anchor))
+	   (steps (floor offset c-basic-offset)))
+    (* (max steps 1)
+	 c-basic-offset)))
+
+(add-hook 'c-mode-common-hook
+	    (lambda ()
+	      ;; Add kernel style
+	      (c-add-style
+	       "linux-tabs-only"
+	       '("linux" (c-offsets-alist
+			  (arglist-cont-nonempty
+			   c-lineup-gcc-asm-reg
+			   c-lineup-arglist-tabs-only))))))
+
+(add-hook 'c-mode-hook (lambda ()
+			   (setq indent-tabs-mode t)
+			   (setq show-trailing-whitespace t)
+			   (c-set-style "linux-tabs-only")))
+#+END_SRC
+
+** Elisp
+Disable silly docstring warnings when editing elisp
+
+#+BEGIN_SRC emacs-lisp
+(with-eval-after-load 'flycheck
+  (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc))
+#+END_SRC
+
+** GO
+
+#+BEGIN_SRC emacs-lisp
+(use-package go-mode
+  :ensure t
+  :defer t
+  :mode "\\*.go\\'"
+  :init
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (add-hook 'go-mode-hook (lambda ()
+			      (set (make-local-variable 'company-backends) '(company-go))
+			      (company-mode))))
+
+(use-package company-go
+  :ensure t)
+#+END_SRC
+
+** HTML
+
+#+BEGIN_SRC emacs-lisp
+(use-package web-mode
+  :ensure t
+  :defer t
+  :mode ("\\.html\\'" "\\.jinja\\'")
+  :config (setq web-mode-markup-indent-offset 2
+		  web-mode-code-indent-offset 2))
+
+(use-package emmet-mode
+  :ensure t
+  :config (add-hook 'web-mode-hook 'emmet-mode))
 #+END_SRC
 
 ** Rust
@@ -621,8 +741,6 @@ window contains the buffer with the cursour in it."
 (setq user-mail-address "vieira.lobato@gmail.com"
 user-full-name "Ronaldo V. Lobato")
 
-(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
-
 (setq gnus-select-method '(nnnil))
 (setq gnus-secondary-select-methods
 '((nntp "news.gwene.org")
@@ -642,7 +760,7 @@ message-send-mail-function	'smtpmail-send-it)
 (setq fill-column 72)
 (turn-on-auto-fill))
 (add-hook 'message-mode-hook 'my-message-mode-setup)
-
+(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 (setq mail-user-agent 'message-user-agent)
 (setq compose-mail-user-agent-warnings nil)
 (setq message-mail-user-agent nil)    ; default is `gnus'
@@ -691,6 +809,7 @@ gnus-cache-directory "~/.gnus/cache")
 #+END_SRC
 
 
+* Org
 
 * Old
 
@@ -813,5 +932,3 @@ gnus-cache-directory "~/.gnus/cache")
 ;; Show images after evaluating code blocks.
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 #+END_SRC
-
-EOF
