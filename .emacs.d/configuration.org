@@ -23,8 +23,8 @@
 ;; Scheduled items marked as complete will not show up in your agenda view.
 (setq org-agenda-skip-scheduled-if-done t)
 (setq org-agenda-skip-deadline-if-done  t)
-
 (setq org-agenda-start-on-weekday nil)
+(global-set-key (kbd "C-c a") 'org-agenda)
 #+END_SRC
 
 *** Super-agenda
@@ -48,15 +48,17 @@
 #+END_SRC
 
 ** TO-DO
+*** Capture
 
 #+BEGIN_SRC emacs-lisp
 ;; Location of my todos/notes file
 (setq org-default-notes-file "~/gCloudDrive/notes/org/agenda.org")
 
 ;; “C-c c” to quickly capture a task/note
-(define-key global-map "\C-cc" #'my/org-capture) ;; See below.
+(global-set-key (kbd "C-c c") 'org-capture)
 #+END_SRC
 
+*** template
 *** TODO-s respect hierarchical structure
 
 #+BEGIN_SRC emacs-lisp
@@ -808,8 +810,74 @@ gnus-cache-directory "~/.gnus/cache")
 
 #+END_SRC
 
-
 * Org
+*** Obtain Org-mode along with the extras
+
+#+BEGIN_SRC emacs-lisp
+(use-package org
+  :ensure org-plus-contrib
+  :config (require 'ox-extra)
+	  (ox-extras-activate '(ignore-headlines)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+;; Fold all source blocks on startup.
+(setq org-hide-block-startup t)
+
+;; Lists may be labelled with letters.
+(setq org-list-allow-alphabetical t)
+
+;; Avoid accidentally editing folded regions, say by adding text after an Org “⋯”.
+(setq org-catch-invisible-edits 'show)
+
+;; Give quote and verse blocks a nice look.
+(setq org-fontify-quote-and-verse-blocks t)
+
+;; Pressing ENTER on a link should follow it.
+(setq org-return-follows-link t)
+#+END_SRC
+
+*** Some initial languages to support
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell      . t)
+     (python     . t)
+     (haskell    . t)
+     (ruby       . t)
+     (ocaml      . t)
+     (C          . t)  ;; Captial “C” gives access to C, C++, D
+     (dot        . t)
+     (latex      . t)
+     (org        . t)
+     (makefile   . t)))
+#+END_SRC
+
+*** Seamless navigation between source blocks
+
+#+BEGIN_SRC emacs-lisp
+(use-package org
+  :bind (:map org-mode-map
+	      ("s-p" . org-babel-previous-src-block)
+	      ("s-n" . org-babel-next-src-block)
+	      ("s-e" . org-edit-src-code)
+	 :map org-src-mode-map
+	      ("s-e" . org-edit-src-exit)))
+#+END_SRC
+
+*** Keep the current heading stuck at the top of the window.
+
+#+BEGIN_SRC emacs-lisp
+(use-package org-sticky-header
+ :hook (org-mode . org-sticky-header-mode)
+ :config
+ (setq-default
+  org-sticky-header-full-path 'full
+  ;; Child and parent headings are seperated by a /.
+  org-sticky-header-outline-path-separator " / "))
+#+END_SRC
+
 
 * Old
 
@@ -931,4 +999,5 @@ gnus-cache-directory "~/.gnus/cache")
 
 ;; Show images after evaluating code blocks.
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+
 #+END_SRC
