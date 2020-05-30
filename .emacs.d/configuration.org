@@ -58,7 +58,7 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 #+END_SRC
 
-*** template
+
 *** TODO-s respect hierarchical structure
 
 #+BEGIN_SRC emacs-lisp
@@ -83,7 +83,7 @@
 
 ** Confirm to kill
 
-#+BEGIN_SRC emacs-lisp
+##+BEGIN_SRC emacs-lisp
 (setq confirm-kill-emacs #'yes-or-no-p)
 #+END_SRC
 
@@ -583,7 +583,6 @@ window contains the buffer with the cursour in it."
 #+END_SRC
 
 * Programming languages
-
 ** Which function are we writing?
 ; In the modeline, show the name of the function we’re currently writing.
 
@@ -614,7 +613,7 @@ window contains the buffer with the cursour in it."
 
 ** C
 
-#+BEGIN_SRC emacs-lisp
+##+BEGIN_SRC emacs-lisp
 (defun c-lineup-arglist-tabs-only (ignored)
   "Line up argument lists by tabs, not spaces"
   (let* ((anchor (c-langelem-pos c-syntactic-element))
@@ -643,7 +642,7 @@ window contains the buffer with the cursour in it."
 ** Elisp
 Disable silly docstring warnings when editing elisp
 
-#+BEGIN_SRC emacs-lisp
+##+BEGIN_SRC emacs-lisp
 (with-eval-after-load 'flycheck
   (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc))
 #+END_SRC
@@ -813,14 +812,14 @@ gnus-cache-directory "~/.gnus/cache")
 * Org
 *** Obtain Org-mode along with the extras
 
-#+BEGIN_SRC emacs-lisp
+##+BEGIN_SRC emacs-lisp
 (use-package org
   :ensure org-plus-contrib
   :config (require 'ox-extra)
 	  (ox-extras-activate '(ignore-headlines)))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
+##+BEGIN_SRC emacs-lisp
 ;; Fold all source blocks on startup.
 (setq org-hide-block-startup t)
 
@@ -838,7 +837,8 @@ gnus-cache-directory "~/.gnus/cache")
 #+END_SRC
 
 *** Some initial languages to support
-#+BEGIN_SRC emacs-lisp
+
+##+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
@@ -856,7 +856,7 @@ gnus-cache-directory "~/.gnus/cache")
 
 *** Seamless navigation between source blocks
 
-#+BEGIN_SRC emacs-lisp
+##+BEGIN_SRC emacs-lisp
 (use-package org
   :bind (:map org-mode-map
 	      ("s-p" . org-babel-previous-src-block)
@@ -868,7 +868,7 @@ gnus-cache-directory "~/.gnus/cache")
 
 *** Keep the current heading stuck at the top of the window.
 
-#+BEGIN_SRC emacs-lisp
+##+BEGIN_SRC emacs-lisp
 (use-package org-sticky-header
  :hook (org-mode . org-sticky-header-mode)
  :config
@@ -877,7 +877,6 @@ gnus-cache-directory "~/.gnus/cache")
   ;; Child and parent headings are seperated by a /.
   org-sticky-header-outline-path-separator " / "))
 #+END_SRC
-
 
 * Old
 
