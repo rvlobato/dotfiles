@@ -14,7 +14,6 @@ base
 bash-completion
 bash-language-server
 biber
-bitwarden
 bleachbit
 cadabra2
 calibre-python3
@@ -88,7 +87,6 @@ openmp
 p3x-onenote
 pandoc-citeproc
 pandoc-crossref
-pcloud-drive
 pgplot
 pkgconf
 posix-c-development

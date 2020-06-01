@@ -58,7 +58,6 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 #+END_SRC
 
-
 *** TODO-s respect hierarchical structure
 
 #+BEGIN_SRC emacs-lisp
@@ -748,7 +747,9 @@ user-full-name "Ronaldo V. Lobato")
 (nnimap "gmail"
 (nnimap-address "imap.gmail.com")
 (nnimap-server-port "imaps")
-(nnimap-stream ssl))))
+(nnimap-stream ssl)
+(nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
+(nnmail-expiry-wait immediate))))
 
 (setq smtpmail-smtp-server "smtp.gmail.com"
 smtpmail-smtp-service 587
@@ -768,8 +769,7 @@ message-send-mail-function	'smtpmail-send-it)
 (setq mail-signature "Ronaldo V. Lobato\nrvlobato.com\n")
 (setq message-signature "Ronaldo V. Lobato\nrvlobato.com\n")
 (setq message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n")
-(setq message-citation-line-function
-'message-insert-formatted-citation-line)
+(setq message-citation-line-function 'message-insert-formatted-citation-line)
 (setq message-confirm-send nil)
 (setq message-kill-buffer-on-exit t)
 (setq message-wide-reply-confirm-recipients t)
@@ -781,7 +781,6 @@ message-send-mail-function	'smtpmail-send-it)
 (setq gnus-check-new-newsgroups 'ask-server)
 (setq gnus-read-active-file 'some)
 ;; dribble
-
 (setq gnus-use-dribble-file nil)
 (setq gnus-use-cache 'use-as-much-cache-as-possible)
 (setq gnus-asynchronous t)
