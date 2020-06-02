@@ -805,7 +805,7 @@ gnus-cache-directory "~/.gnus/cache")
 * Org
 *** Obtain Org-mode along with the extras
 
-##+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (use-package org
   :ensure org-plus-contrib
   :config (require 'ox-extra)
@@ -867,6 +867,7 @@ gnus-cache-directory "~/.gnus/cache")
 #+END_SRC
 
 * Old
+
 #+BEGIN_SRC emacs-lisp
 
 ; Python autocompletation
