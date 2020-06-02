@@ -66,6 +66,17 @@
 (setq org-enforce-todo-dependencies t)
 #+END_SRC
 
+*** Priority levels and their colours
+
+#+begin_src emacs-lisp
+(setq org-lowest-priority ?D) ;; Now org-speed-eky ‘,’ gives 4 options
+(setq org-priority-faces
+'((?A :foreground "red" :weight bold)
+  (?B . "orange")
+  (?C . "yellow")
+  (?D . "green")))
+#+end_src
+
 * Behaviour
 ** Auto-revert mode refresh
 
@@ -143,7 +154,6 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package expand-region
-  :ensure t
   :bind ("C-=" . er/expand-region))
 #+END_SRC
 
@@ -232,6 +242,7 @@
 #+END_SRC
 
 ** Rainbow-mode
+
 #+BEGIN_SRC emacs-lisp
 (use-package rainbow-mode)
 #+END_SRC
@@ -239,8 +250,8 @@
 ** Rainbow delimiters
 
 #+BEGIN_SRC emacs-lisp
-(use-package rainbow-delimiters)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(use-package rainbow-delimiters
+  :hook ((org-mode prog-mode text-mode) . rainbow-delimiters-mode))
 #+END_SRC
 
 ** Unique highlighting to identifiers
@@ -250,26 +261,6 @@
   :config (global-color-identifiers-mode))
 ;; Sometimes just invoke: M-x color-identifiers:refresh
 (run-with-idle-timer 5 t 'color-identifiers:refresh)
-#+END_SRC
-
-** Switching from 2 horizontal windows to 2 vertical
-
-#+BEGIN_SRC emacs-lisp
-(defun my/ensure-two-vertical-windows ()
-  "I used this method often when programming in Coq.
-
-When there are two vertical windows, this method ensures the left-most
-window contains the buffer with the cursour in it."
-  (interactive)
-  (let ((otherBuffer (buffer-name)))
-    (other-window 1)                ;; C-x 0
-    (delete-window)                 ;; C-x 0
-    (split-window-right)			;; C-x 3
-    (other-window 1)                ;; C-x 0
-    (switch-to-buffer otherBuffer)	;; C-x b RET
-    (other-window 1)))
-
-(global-set-key (kbd "C-|") 'my/ensure-two-vertical-windows)
 #+END_SRC
 
 ** Visual line mode
@@ -285,7 +276,6 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package magit
-  :ensure t
   :bind
   ("C-x g" . magit-status)
   ("C-c m" . magit-blame)
@@ -363,15 +353,15 @@ window contains the buffer with the cursour in it."
 
 #+BEGIN_SRC emacs-lisp
 (use-package company-quickhelp
-  :ensure t
-  :init (company-quickhelp-mode))
+  :config
+  (setq company-quickhelp-delay 0.1)
+  (company-quickhelp-mode))
 #+END_SRC
 
 ** Yasnippet
 
 #+BEGIN_SRC emacs-lisp
 (use-package yasnippet
-  :ensure t
   :init (yas-global-mode 1))
 #+END_SRC
 
@@ -395,6 +385,8 @@ window contains the buffer with the cursour in it."
 (use-package flyspell
   :hook ((prog-mode . flyspell-prog-mode)
 	 ((org-mode text-mode) . flyspell-mode)))
+(add-hook          'c-mode-hook 'flyspell-prog-mode)
+(add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
 #+END_SRC
 
 ** Set the default dictionary Ispell
@@ -411,6 +403,12 @@ window contains the buffer with the cursour in it."
   :config  (setq synosaurus-choose-method 'popup) ;; 'ido is default.
 	   (global-set-key (kbd "M-#") 'synosaurus-choose-and-replace))
 #+END_SRC
+
+** Wordnet as a dictionary via the wordnut
+#+begin_src emacs-lisp
+(use-package wordnut
+ :bind ("M-!" . wordnut-lookup-current-word))
+#+end_src
 
 ** Write-good
 
@@ -524,6 +522,14 @@ window contains the buffer with the cursour in it."
      (define-key company-active-map (kbd "C-:") 'helm-company)))
 #+END_SRC
 
+*** Helm-org
+
+#+begin_src emacs-lisp
+(use-package helm-org) ;; Helm for org headlines and keywords completion.
+(add-to-list 'helm-completing-read-handlers-alist
+	     '(org-set-tags-command . helm-org-completing-read-tags))
+#+end_src
+
 ** Ripgrep
 
 #+BEGIN_SRC emacs-lisp
@@ -574,6 +580,24 @@ window contains the buffer with the cursour in it."
 	 ("Code"   (extension "hs" "agda" "lagda"))
 	 ("Archives"(extension "zip" "rar" "gz" "bz2" "tar"))))))
 #+END_SRC
+
+** Having a workspace manager in Emacs
+
+#+begin_src emacs-lisp
+(use-package perspective
+  :defer t
+  :config ;; Activate it.
+	  (persp-mode)
+	  ;; In the modeline, tell me which workspace I'm in.
+	  (persp-turn-on-modestring))
+#+end_src
+
+** Hydra
+
+#+begin_src emacs-lisp
+(use-package hydra)
+(use-package pretty-hydra)
+#+end_src
 
 * Programming languages
 ** Which function are we writing?
@@ -633,18 +657,23 @@ window contains the buffer with the cursour in it."
 #+END_SRC
 
 ** Elisp
-Disable silly docstring warnings when editing elisp
+*** Disable silly docstring warnings when editing elisp
 
 #+BEGIN_SRC emacs-lisp
 (with-eval-after-load 'flycheck
-  (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc))
+(add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc))
 #+END_SRC
+
+*** Matching parens
+
+#+begin_src emacs-lisp
+(add-hook 'emacs-lisp-mode-hook #'check-parens)
+#+end_src
 
 ** GO
 
 #+BEGIN_SRC emacs-lisp
 (use-package go-mode
-  :ensure t
   :defer t
   :mode "\\*.go\\'"
   :init
@@ -654,22 +683,19 @@ Disable silly docstring warnings when editing elisp
 			      (set (make-local-variable 'company-backends) '(company-go))
 			      (company-mode))))
 
-(use-package company-go
-  :ensure t)
+(use-package company-go)
 #+END_SRC
 
 ** HTML
 
 #+BEGIN_SRC emacs-lisp
 (use-package web-mode
-  :ensure t
   :defer t
   :mode ("\\.html\\'" "\\.jinja\\'")
   :config (setq web-mode-markup-indent-offset 2
 		  web-mode-code-indent-offset 2))
 
 (use-package emmet-mode
-  :ensure t
   :config (add-hook 'web-mode-hook 'emmet-mode))
 #+END_SRC
 
@@ -690,9 +716,11 @@ Disable silly docstring warnings when editing elisp
 ** Eldoc
 
 #+BEGIN_SRC emacs-lisp
-(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-(add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
-(add-hook 'ielm-mode-hook 'eldoc-mode)
+(use-package eldoc
+  :hook (emacs-lisp-mode . turn-on-eldoc-mode)
+	(lisp-interaction-mode . turn-on-eldoc-mode)
+	(haskell-mode . turn-on-haskell-doc-mode)
+	(haskell-mode . turn-on-haskell-indent))
 #+END_SRC
 
 ** Adds spacing around operators
@@ -706,7 +734,6 @@ Disable silly docstring warnings when editing elisp
 
 #+BEGIN_SRC emacs-lisp
 (use-package flycheck
-:ensure t
 :init (global-flycheck-mode)
 :custom (flycheck-display-errors-delay .3))
 #+END_SRC
@@ -822,6 +849,12 @@ gnus-cache-directory "~/.gnus/cache")
 ;; Avoid accidentally editing folded regions, say by adding text after an Org “⋯”.
 (setq org-catch-invisible-edits 'show)
 
+;; I use indentation-sensitive programming languages.
+(setq org-src-preserve-indentation t)
+
+;; Tab should do indent in code blocks
+(setq org-src-tab-acts-natively t)
+
 ;; Give quote and verse blocks a nice look.
 (setq org-fontify-quote-and-verse-blocks t)
 
@@ -865,6 +898,13 @@ gnus-cache-directory "~/.gnus/cache")
 (use-package org-bullets
   :hook (org-mode . org-bullets-mode))
 #+END_SRC
+
+*** Org produced htmls are coloured
+
+#+begin_src emacs-lisp
+(use-package htmlize :defer t)
+#+end_src
+
 
 * Old
 

@@ -139,7 +139,6 @@ ufw
 unrar
 which
 wordnet-cli
-wordnet-tk
 wxmaxima
 yapf
 zotero
