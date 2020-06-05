@@ -807,11 +807,11 @@ message-send-mail-function	'smtpmail-send-it)
 (setq gnus-asynchronous t)
 (setq gnus-use-article-prefetch 15)
 
-(setq gnus-home-directory "~/.gnus"
-nnfolder-directory "~/.gnus/Mail/archive"
-message-directory "~/.gnus/Mail"
-nndraft-directory "~/.gnus/Drafts"
-gnus-cache-directory "~/.gnus/cache")
+(setq gnus-home-directory "~/pCloudDrive/gnus"
+nnfolder-directory "~/pCloudDrive/gnus/Mail/archive"
+message-directory "~/pCloudDrive/gnus/Mail"
+nndraft-directory "~/pCloudDrive/gnus/Drafts"
+gnus-cache-directory "~/pCloudDrive/gnus/cache")
 
 :bind ("C-c m" . gnus))
 
