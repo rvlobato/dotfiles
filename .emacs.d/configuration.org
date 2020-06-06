@@ -303,6 +303,7 @@
 #+END_SRC
 
 ** Word Completion
+
 *** Company
 
 #+BEGIN_SRC emacs-lisp
@@ -358,6 +359,33 @@
   (company-quickhelp-mode))
 #+END_SRC
 
+*** Company-web
+
+#+begin_src emacs-lisp
+(require 'company)                                   ; load company mode
+(require 'company-web-html)                          ; load company mode html backend
+#+end_src
+
+***  Company-math
+
+#+begin_src emacs-lisp
+;; global activation of the unicode symbol completion
+(add-to-list 'company-backends 'company-math-symbols-unicode)
+#+end_src
+
+*** Company-AUCTeX
+
+#+begin_src emacs-lisp
+(require 'company-auctex)
+(company-auctex-init)
+#+end_src
+
+*** Company-c-headers
+
+#+begin_src emacs-lisp
+(add-to-list 'company-backends 'company-c-headers)
+#+end_src
+
 ** Yasnippet
 
 #+BEGIN_SRC emacs-lisp
@@ -405,6 +433,7 @@
 #+END_SRC
 
 ** Wordnet as a dictionary via the wordnut
+
 #+begin_src emacs-lisp
 (use-package wordnut
  :bind ("M-!" . wordnut-lookup-current-word))
@@ -457,6 +486,49 @@
 (dired-async-mode 1)
 (async-bytecomp-package-mode 1)
 #+END_SRC
+
+** Dired
+
+#+BEGIN_SRC emacs-lisp
+(use-package dired-subtree
+  :bind (:map dired-mode-map
+	      ("i" . dired-subtree-toggle)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package dired-collapse
+  :hook (dired-mode . dired-collapse-mode))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package dired-filter
+  :hook (dired-mode . (lambda () (dired-filter-group-mode)
+				 (dired-filter-by-garbage)))
+  :custom
+    (dired-garbage-files-regexp
+      "\\(?:\\.\\(?:aux\\|bak\\|dvi\\|log\\|orig\\|rej\\|toc\\|out\\)\\)\\'")
+    (dired-filter-group-saved-groups
+      '(("default"
+	 ("Org"    (extension "org"))
+	 ("Executables" (exexutable))
+	 ("Directories" (directory))
+	 ("PDF"    (extension "pdf"))
+	 ("LaTeX"  (extension "tex" "bib"))
+	 ("Images" (extension "png"))
+	 ("Code"   (extension "hs" "agda" "lagda"))
+	 ("Archives"(extension "zip" "rar" "gz" "bz2" "tar"))))))
+#+END_SRC
+
+** Having a workspace manager in Emacs
+
+#+begin_src emacs-lisp
+(use-package perspective
+  :defer t
+  :config ;; Activate it.
+	  (persp-mode)
+	  ;; In the modeline, tell me which workspace I'm in.
+	  (persp-turn-on-modestring))
+#+end_src
 
 ** Helm
 *** General
@@ -530,15 +602,12 @@
 	     '(org-set-tags-command . helm-org-completing-read-tags))
 #+end_src
 
-** Ripgrep
+** Hydra
 
-#+BEGIN_SRC emacs-lisp
-(use-package rg
-  :config
-  (global-set-key (kbd "M-s g") 'rg)
-  (global-set-key (kbd "M-s d") 'rg-dwim))
-(use-package helm-rg)
-#+END_SRC
+#+begin_src emacs-lisp
+(use-package hydra)
+(use-package pretty-hydra)
+#+end_src
 
 ** Projectile
 
@@ -549,83 +618,22 @@
 (projectile-mode +1)
 #+END_SRC
 
-** Dired
+** Ripgrep
 
 #+BEGIN_SRC emacs-lisp
-(use-package dired-subtree
-  :bind (:map dired-mode-map
-	      ("i" . dired-subtree-toggle)))
+(use-package rg
+  :config
+  (global-set-key (kbd "M-s g") 'rg)
+  (global-set-key (kbd "M-s d") 'rg-dwim))
+(use-package helm-rg)
 #+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(use-package dired-collapse
-  :hook (dired-mode . dired-collapse-mode))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(use-package dired-filter
-  :hook (dired-mode . (lambda () (dired-filter-group-mode)
-				 (dired-filter-by-garbage)))
-  :custom
-    (dired-garbage-files-regexp
-      "\\(?:\\.\\(?:aux\\|bak\\|dvi\\|log\\|orig\\|rej\\|toc\\|out\\)\\)\\'")
-    (dired-filter-group-saved-groups
-      '(("default"
-	 ("Org"    (extension "org"))
-	 ("Executables" (exexutable))
-	 ("Directories" (directory))
-	 ("PDF"    (extension "pdf"))
-	 ("LaTeX"  (extension "tex" "bib"))
-	 ("Images" (extension "png"))
-	 ("Code"   (extension "hs" "agda" "lagda"))
-	 ("Archives"(extension "zip" "rar" "gz" "bz2" "tar"))))))
-#+END_SRC
-
-** Having a workspace manager in Emacs
-
-#+begin_src emacs-lisp
-(use-package perspective
-  :defer t
-  :config ;; Activate it.
-	  (persp-mode)
-	  ;; In the modeline, tell me which workspace I'm in.
-	  (persp-turn-on-modestring))
-#+end_src
-
-** Hydra
-
-#+begin_src emacs-lisp
-(use-package hydra)
-(use-package pretty-hydra)
-#+end_src
 
 * Programming languages
-** Which function are we writing?
-; In the modeline, show the name of the function we’re currently writing.
+** Adds spacing around operators
 
 #+BEGIN_SRC emacs-lisp
-(add-hook 'prog-mode-hook #'which-function-mode)
-(add-hook 'org-mode-hook  #'which-function-mode)
-#+END_SRC
-
-** lsp-mode
-
-#+BEGIN_SRC emacs-lisp
-(use-package lsp-mode)
-(require 'lsp-mode)
-(add-hook 'prog-mode-hook #'lsp)
-#+END_SRC
-
-** lsp-ui
-
-#+BEGIN_SRC emacs-lisp
-(use-package lsp-ui)
-#+END_SRC
-
-** lsp-ivy
-
-#+BEGIN_SRC emacs-lisp
-(use-package lsp-ivy)
+(use-package electric-operator
+:hook (c-mode . electric-operator-mode))
 #+END_SRC
 
 ** C
@@ -656,6 +664,33 @@
 			   (c-set-style "linux-tabs-only")))
 #+END_SRC
 
+** dap-mode
+
+#+BEGIN_SRC emacs-lisp
+(use-package dap-mode)
+(add-hook 'dap-stopped-hook
+	  (lambda (arg) (call-interactively #'dap-hydra)))
+#+END_SRC
+
+** Documentation pop-up on a completion
+
+#+BEGIN_SRC emacs-lisp
+(use-package company-quickhelp
+ :config
+   (setq company-quickhelp-delay 0.1)
+   (company-quickhelp-mode))
+#+END_SRC
+
+** Eldoc
+
+#+BEGIN_SRC emacs-lisp
+(use-package eldoc
+  :hook (emacs-lisp-mode . turn-on-eldoc-mode)
+	(lisp-interaction-mode . turn-on-eldoc-mode)
+	(haskell-mode . turn-on-haskell-doc-mode)
+	(haskell-mode . turn-on-haskell-indent))
+#+END_SRC
+
 ** Elisp
 *** Disable silly docstring warnings when editing elisp
 
@@ -669,6 +704,14 @@
 #+begin_src emacs-lisp
 (add-hook 'emacs-lisp-mode-hook #'check-parens)
 #+end_src
+
+** Flycheck
+
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+:init (global-flycheck-mode)
+:custom (flycheck-display-errors-delay .3))
+#+END_SRC
 
 ** GO
 
@@ -699,52 +742,62 @@
   :config (add-hook 'web-mode-hook 'emmet-mode))
 #+END_SRC
 
+** Julia
+
+*** Julia-mode
+
+#+begin_src emacs-lisp
+(require 'julia-mode)
+#+end_src
+
+** lsp-mode
+
+#+BEGIN_SRC emacs-lisp
+;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+(setq lsp-keymap-prefix "s-l")
+
+(use-package lsp-mode
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+	    (prog-mode . lsp)
+	    ;; if you want which-key integration
+	    (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+#+END_SRC
+
+** lsp-ui
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-ui)
+#+END_SRC
+
+** lsp-ivy
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-ivy)
+#+END_SRC
+
+** Python
+
+*** Elpy
+
+#+begin_src emacs-lisp
+(use-package elpy
+  :init
+  (elpy-enable))
+#+end_src
+
 ** Rust
 
 #+BEGIN_SRC emacs-lisp
 (use-package rustic)
 #+END_SRC
 
-** dap-mode
+** Which function are we writing?
+; In the modeline, show the name of the function we’re currently writing.
 
 #+BEGIN_SRC emacs-lisp
-(use-package dap-mode)
-(add-hook 'dap-stopped-hook
-	  (lambda (arg) (call-interactively #'dap-hydra)))
-#+END_SRC
-
-** Eldoc
-
-#+BEGIN_SRC emacs-lisp
-(use-package eldoc
-  :hook (emacs-lisp-mode . turn-on-eldoc-mode)
-	(lisp-interaction-mode . turn-on-eldoc-mode)
-	(haskell-mode . turn-on-haskell-doc-mode)
-	(haskell-mode . turn-on-haskell-indent))
-#+END_SRC
-
-** Adds spacing around operators
-
-#+BEGIN_SRC emacs-lisp
-(use-package electric-operator
-:hook (c-mode . electric-operator-mode))
-#+END_SRC
-
-** Flycheck
-
-#+BEGIN_SRC emacs-lisp
-(use-package flycheck
-:init (global-flycheck-mode)
-:custom (flycheck-display-errors-delay .3))
-#+END_SRC
-
-** Documentation pop-up on a completion
-
-#+BEGIN_SRC emacs-lisp
-(use-package company-quickhelp
- :config
-   (setq company-quickhelp-delay 0.1)
-   (company-quickhelp-mode))
+(add-hook 'prog-mode-hook #'which-function-mode)
+(add-hook 'org-mode-hook  #'which-function-mode)
 #+END_SRC
 
 * Security
@@ -910,62 +963,6 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 
 #+BEGIN_SRC emacs-lisp
 
-; Python autocompletation
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)                 ; optional
-
-; anaconda-mode
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-
-; company-anaconda
-(eval-after-load "company"
-'(add-to-list 'company-backends 'company-anaconda))
-
-; company-web
-(require 'company)                                   ; load company mode
-(require 'company-web-html)                          ; load company mode html backend
-
-; company-math
-;; global activation of the unicode symbol completion
-(add-to-list 'company-backends 'company-math-symbols-unicode)
-
-; company-auctex
-(require 'company-auctex)
-(company-auctex-init)
-
-; company-c-headers
-(add-to-list 'company-backends 'company-c-headers)
-
-; Julia
-(add-to-list 'load-path "path-to-julia-shell-mode")
-(require 'julia-shell)
-
-(add-to-list 'load-path "path-to-julia-mode")
-(require 'julia-mode)
-
-(defun customize-julia-mode ()
-  "Customize julia-mode."
-  (interactive)
-  ;; my customizations go here
-  )
-
-(add-hook 'julia-mode-hook 'customize-julia-mode)
-
-; c++
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-
-;; replace the `completion-at-point' and `complete-symbol' bindings in
-;; irony-mode's buffers by irony-mode's function
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;;ipython notebook
 (setq ein:use-auto-complete t)

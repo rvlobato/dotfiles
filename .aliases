@@ -19,7 +19,7 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
 ## pacman
-alias mirrorup='sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias mirrorup='sudo reflector --country "United States" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias pacup='sudo pacman -Syu'
 alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
@@ -44,7 +44,7 @@ alias gcm='git checkout master'
 alias gfu='git fetch upstream'
 alias grm='git rebase -i master '
 alias gm='git merge '
-  
+
 ## moving in dirs
 alias ..="cd .."
 alias ...="cd ../.."
@@ -55,15 +55,15 @@ alias ......="cd ../../../../.."
 #------------------------------
 # Functions
 #------------------------------
-  
+
 #pip user
 function pip() {
-          if [[ "$1" == "install" ]]; then
-              shift 1
-              command pip install --user "$@"
-          else
-              command pip "$@"
-          fi
+	  if [[ "$1" == "install" ]]; then
+	      shift 1
+	      command pip install --user "$@"
+	  else
+	      command pip "$@"
+	  fi
 }
 
 #mkdir cd
