@@ -48,6 +48,7 @@
 #+END_SRC
 
 ** TO-DO
+
 *** Capture
 
 #+BEGIN_SRC emacs-lisp
@@ -692,6 +693,7 @@
 #+END_SRC
 
 ** Elisp
+
 *** Disable silly docstring warnings when editing elisp
 
 #+BEGIN_SRC emacs-lisp
@@ -962,7 +964,6 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 * Old
 
 #+BEGIN_SRC emacs-lisp
-
 
 ;;ipython notebook
 (setq ein:use-auto-complete t)
