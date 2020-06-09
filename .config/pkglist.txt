@@ -116,7 +116,7 @@ rust
 sagemath-jupyter
 seahorse
 signal-desktop
-skypeforlinux-preview-bin
+skypeforlinux-stable-bin
 smplayer
 snes9x
 spotify
