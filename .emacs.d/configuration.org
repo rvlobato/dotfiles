@@ -367,7 +367,7 @@
 (require 'company-web-html)                          ; load company mode html backend
 #+end_src
 
-***  Company-math
+*** Company-math
 
 #+begin_src emacs-lisp
 ;; global activation of the unicode symbol completion
@@ -402,10 +402,15 @@
       "/usr/share/languagetool:/usr/share/java/languagetool/*")
 #+END_SRC
 
-** Automatically “fill” text while editing
+** Word Wrapping
 
 #+BEGIN_SRC emacs-lisp
+(dolist (hook '(text-mode-hook latex-mode-hook tex-mode-hook))
+  (add-hook hook (lambda () (set-fill-column 100))))
+(dolist (hook '(python-mode-hook prog-mode-hook list-mode-hook))
+  (add-hook hook (lambda () (set-fill-column 80))))
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 #+END_SRC
 
 ** Flyspell mode
