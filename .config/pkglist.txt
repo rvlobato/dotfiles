@@ -14,7 +14,6 @@ base
 bash-completion
 bash-language-server
 biber
-bitwarden
 bleachbit
 cadabra2
 calibre-python3
@@ -24,6 +23,7 @@ clamav
 conky
 cvs
 cython
+dnscrypt-proxy
 doxygen
 emacs
 eog
@@ -35,6 +35,7 @@ fd
 feedreader
 firefox
 flake8
+flatpak
 fortran-language-server
 fwupd
 fzf
@@ -48,6 +49,7 @@ gnome-contacts
 gnome-control-center
 gnome-photos
 gnome-power-manager
+gnome-software
 gnome-tweaks
 gnome-weather
 gnuplot
@@ -55,7 +57,6 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-iio-sensor-proxy
 inkscape
 insync
 intel-ucode
@@ -64,6 +65,7 @@ jre8-openjdk-headless
 julia
 jupyter-octave_kernel
 jupyterlab
+keybase-gui
 languagetool
 libreoffice-fresh
 libva-intel-driver
@@ -72,18 +74,13 @@ libvdpau-va-gl
 linux-firmware
 linux-lts
 linux-zen
-linux-zen-headers
 mathpix-snipping-tool
 mbedtls
 mullvad-vpn
 nautilus
 neofetch
-nodejs
 npm
 ntfs-3g
-nvidia-dkms
-nvidia-prime
-nvidia-settings
 octave
 openmp
 p3x-onenote
@@ -116,11 +113,8 @@ rust
 sagemath-jupyter
 seahorse
 signal-desktop
-skypeforlinux-stable-bin
 smplayer
 snes9x
-spotify
-steam
 sudo
 syncthing
 telegram-desktop
@@ -133,7 +127,6 @@ texlive-pstricks
 texlive-publishers
 tk
 tlp-rdw
-tootle
 transmission-gtk
 ufw
 unrar
