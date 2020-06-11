@@ -397,9 +397,13 @@
 ** Emacs-langtool
 
 #+BEGIN_SRC emacs-lisp
-(require 'langtool)
-(setq langtool-java-classpath
-      "/usr/share/languagetool:/usr/share/java/languagetool/*")
+(use-package langtool
+  :bind
+  ("C-c l" . langtool-check)
+  ("C-c d l" . langtool-check-done)
+  :custom
+  (langtool-java-classpath
+   "/usr/share/languagetool:/usr/share/java/languagetool/*"))
 #+END_SRC
 
 ** Word Wrapping
@@ -608,6 +612,12 @@
 	     '(org-set-tags-command . helm-org-completing-read-tags))
 #+end_src
 
+*** Helm-css
+
+#+begin_src emacs-lisp
+(require 'helm-css-scss)
+#+end_src
+
 ** Hydra
 
 #+begin_src emacs-lisp
@@ -618,10 +628,10 @@
 ** Projectile
 
 #+BEGIN_SRC emacs-lisp
-(require 'projectile)
+(use-package projectile)
+(projectile-mode +1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(projectile-mode +1)
 #+END_SRC
 
 ** Ripgrep
@@ -673,7 +683,6 @@
 ** dap-mode
 
 #+BEGIN_SRC emacs-lisp
-(use-package dap-mode)
 (add-hook 'dap-stopped-hook
 	  (lambda (arg) (call-interactively #'dap-hydra)))
 #+END_SRC
@@ -775,12 +784,6 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-ui)
-#+END_SRC
-
-** lsp-ivy
-
-#+BEGIN_SRC emacs-lisp
-(use-package lsp-ivy)
 #+END_SRC
 
 ** Python

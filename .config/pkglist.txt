@@ -129,8 +129,6 @@ texlive-bin
 texlive-core
 texlive-fontsextra
 texlive-latexextra
-texlive-pstricks
-texlive-publishers
 tk
 tlp-rdw
 tootle
