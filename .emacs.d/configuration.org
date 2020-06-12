@@ -186,6 +186,12 @@
   :hook (emacs-lisp-mode . highlight-defined-mode))
 #+END_SRC
 
+** Bookmarks
+
+#+begin_src emacs-lisp
+(setq bookmark-default-file "~/gCloudDrive/configs/emacs/bookmarks")
+#+end_src
+
 * Cosmetics
 ** Initial window size and position on screen
 
