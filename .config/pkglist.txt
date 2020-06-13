@@ -14,7 +14,6 @@ base
 bash-completion
 bash-language-server
 biber
-bitwarden
 bleachbit
 cadabra2
 calibre-python3
@@ -117,11 +116,8 @@ rust
 sagemath-jupyter
 seahorse
 signal-desktop
-skypeforlinux-stable-bin
 smplayer
 snes9x
-spotify
-steam
 sudo
 syncthing
 telegram-desktop
@@ -132,7 +128,6 @@ texlive-fontsextra
 texlive-latexextra
 tk
 tlp-rdw
-tootle
 transmission-gtk
 ufw
 unrar
