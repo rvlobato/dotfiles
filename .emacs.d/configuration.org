@@ -974,6 +974,14 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 (use-package htmlize :defer t)
 #+end_src
 
+* Social network
+
+** Twitter
+
+#+begin_src emacs-lisp
+(require 'twittering-mode)
+(setq twittering-use-master-password t)
+#+end_src
 
 * Old
 
