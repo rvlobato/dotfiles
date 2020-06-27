@@ -119,7 +119,6 @@ texlive-bibtexextra
 texlive-fontsextra
 texlive-latexextra
 texlive-science
-tk
 tlp-rdw
 transmission-gtk
 ufw
