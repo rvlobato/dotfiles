@@ -75,6 +75,7 @@ mathpix-snipping-tool
 mullvad-vpn
 nautilus
 neofetch
+nextcloud-client
 npm
 nvidia-dkms
 nvidia-prime
@@ -84,7 +85,6 @@ openmp
 p3x-onenote
 pandoc-citeproc
 pandoc-crossref
-pcloud-drive
 pgplot
 pkgconf
 posix-c-development
@@ -113,7 +113,6 @@ signal-desktop
 smplayer
 snes9x
 sudo
-syncthing
 telegram-desktop
 texlive-bibtexextra
 texlive-fontsextra
