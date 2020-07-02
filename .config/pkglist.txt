@@ -34,6 +34,7 @@ firefox
 flake8
 flatpak
 fortran-language-server
+fractal
 fwupd
 fzf
 gcc-fortran
@@ -105,7 +106,6 @@ python-rope
 python-statsmodels
 python-virtualenv
 reflector
-riot-desktop
 rust
 sagemath-jupyter
 seahorse
