@@ -19,14 +19,10 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;;; List of my packages:
-(setq package-selected-packages '(company-c-headers company-math dap-mode helm-sage jupyter lsp-julia lsp-ivy python-mode projectile ob-ipython ob-sagemath julia-shell function-args math-symbol-lists zotxt))
-
 ;;; Install my packages
-(dolist (package package-selected-packages)
-  (unless (package-installed-p 'use-package)
-    (package-install 'use-package))
-  (require 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(require 'use-package)
 (setq use-package-always-ensure t)
 
 ;;; Auto package update

@@ -374,8 +374,10 @@
 *** Company-math
 
 #+begin_src emacs-lisp
+(use-package company-math)
 ;; global activation of the unicode symbol completion
 (add-to-list 'company-backends 'company-math-symbols-unicode)
+(use-package math-symbol-lists)
 #+end_src
 
 *** Company-AUCTeX
@@ -389,6 +391,7 @@
 *** Company-c-headers
 
 #+begin_src emacs-lisp
+(use-package company-c-headers)
 (add-to-list 'company-backends 'company-c-headers)
 #+end_src
 
@@ -689,6 +692,7 @@
 ** dap-mode
 
 #+BEGIN_SRC emacs-lisp
+(use-package dap-mode)
 (add-hook 'dap-stopped-hook
 	  (lambda (arg) (call-interactively #'dap-hydra)))
 #+END_SRC
@@ -793,6 +797,18 @@
 (use-package lsp-ui)
 #+END_SRC
 
+** lsp-ivy
+
+#+begin_src emacs-lisp
+(use-package lsp-ivy)
+#+end_src
+
+** lsp-julia
+
+#+begin_src emacs-lisp
+(use-package lsp-julia)
+#+end_src
+
 ** Python
 
 *** Elpy
@@ -801,6 +817,20 @@
 (use-package elpy
   :init
   (elpy-enable))
+#+end_src
+
+*** python-mode
+
+#+begin_src emacs-lisp
+(use-package python-mode)
+#+end_src
+
+** Sage
+
+*** ob-sagemath
+
+#+begin_src emacs-lisp
+(use-package ob-sagemath)
 #+end_src
 
 ** Rust
@@ -816,6 +846,12 @@
 (add-hook 'prog-mode-hook #'which-function-mode)
 (add-hook 'org-mode-hook  #'which-function-mode)
 #+END_SRC
+
+** Jupyter
+
+#+begin_src emacs-lisp
+(use-package jupyter)
+#+end_src
 
 * Security
 
@@ -984,6 +1020,13 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 (setq twittering-use-master-password t)
 #+end_src
 
+* References
+** Zotero
+
+#+begin_src emacs-lisp
+(use-package zotxt)
+#+end_src
+
 * Old
 
 #+BEGIN_SRC emacs-lisp
@@ -993,13 +1036,6 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 ;; Or, to enable "superpack" (a little bit hacky improvements):
 ;; (setq ein:use-auto-complete-superpack t)
 (setq ein:use-smartrep t)
-
-(eval-after-load "sage-shell-mode"
-  '(sage-shell:define-keys sage-shell-mode-map
-     "C-c C-i"  'helm-sage-complete
-     "C-c C-h"  'helm-sage-describe-object-at-point
-     "M-r"      'helm-sage-command-history
-     "C-c o"    'helm-sage-output-history))
 
 (use-package sage-shell-mode)
 (require 'sage-shell-mode)
