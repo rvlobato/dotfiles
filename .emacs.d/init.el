@@ -20,7 +20,7 @@
   (package-refresh-contents))
 
 ;;; List of my packages:
-(setq package-selected-packages '(company-auctex company-c-headers company-math company-web dap-mode helm-css-scss helm-sage jupyter lsp-julia lsp-ivy python-mode projectile ob-ipython ob-sagemath sage-shell-mode julia-mode julia-shell function-args math-symbol-lists zotxt))
+(setq package-selected-packages '(company-c-headers company-math dap-mode helm-sage jupyter lsp-julia lsp-ivy python-mode projectile ob-ipython ob-sagemath julia-shell function-args math-symbol-lists zotxt))
 
 ;;; Install my packages
 (dolist (package package-selected-packages)

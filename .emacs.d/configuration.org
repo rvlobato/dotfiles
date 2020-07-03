@@ -198,9 +198,7 @@
 #+BEGIN_SRC emacs-lisp
 (setq initial-frame-alist
       '((width . 145)
-	(height . 45)
-	(top . 200)   ; position on the screen
-	(left . 350)))
+	(height . 45)))
 #+END_SRC
 
 ** Disable startup message
@@ -370,7 +368,7 @@
 
 #+begin_src emacs-lisp
 (require 'company)                                   ; load company mode
-(require 'company-web-html)                          ; load company mode html backend
+;(require 'company-web-html)                          ; load company mode html backend
 #+end_src
 
 *** Company-math
@@ -383,6 +381,7 @@
 *** Company-AUCTeX
 
 #+begin_src emacs-lisp
+(use-package company-auctex)
 (require 'company-auctex)
 (company-auctex-init)
 #+end_src
@@ -621,6 +620,7 @@
 *** Helm-css
 
 #+begin_src emacs-lisp
+(use-package helm-css-scss)
 (require 'helm-css-scss)
 #+end_src
 
@@ -769,6 +769,7 @@
 *** Julia-mode
 
 #+begin_src emacs-lisp
+(use-package julia-mode)
 (require 'julia-mode)
 #+end_src
 
@@ -979,7 +980,7 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 ** Twitter
 
 #+begin_src emacs-lisp
-(require 'twittering-mode)
+(use-package twittering-mode)
 (setq twittering-use-master-password t)
 #+end_src
 
@@ -993,9 +994,6 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 ;; (setq ein:use-auto-complete-superpack t)
 (setq ein:use-smartrep t)
 
-;;ob-ipython
-(require 'ob-ipython)
-
 (eval-after-load "sage-shell-mode"
   '(sage-shell:define-keys sage-shell-mode-map
      "C-c C-i"  'helm-sage-complete
@@ -1003,6 +1001,7 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
      "M-r"      'helm-sage-command-history
      "C-c o"    'helm-sage-output-history))
 
+(use-package sage-shell-mode)
 (require 'sage-shell-mode)
 
 ;; Run SageMath by M-x run-sage instead of M-x sage-shell:run-sage
