@@ -122,7 +122,6 @@ ufw
 which
 wordnet-cli
 wxmaxima
-xdg-user-dirs
 yapf
 zsh-autosuggestions
 zsh-completions
