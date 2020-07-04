@@ -21,7 +21,6 @@ ccls
 conky
 cvs
 cython
-dnscrypt-proxy
 doxygen
 emacs
 eog
@@ -35,6 +34,7 @@ firefox
 flake8
 flatpak
 fortran-language-server
+fractal
 fwupd
 fzf
 gcc-fortran
@@ -47,7 +47,6 @@ gnome-contacts
 gnome-control-center
 gnome-photos
 gnome-power-manager
-gnome-software
 gnome-tweaks
 gnome-weather
 gnuplot
@@ -55,15 +54,14 @@ gvfs-goa
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy
 inkscape
-insync
 intel-ucode
 jami-gnome
 jre8-openjdk-headless
 julia
 jupyter-octave_kernel
 jupyterlab
-keybase-gui
 languagetool
 libreoffice-fresh
 libva-intel-driver
@@ -73,9 +71,9 @@ linux-firmware
 linux-lts
 linux-zen
 mathpix-snipping-tool
+mullvad-vpn
 nautilus
 neofetch
-networkmanager-openvpn
 nextcloud-client
 npm
 octave
@@ -90,7 +88,6 @@ posix-software-development
 posix-user-portability
 pyls-mypy
 python-astropy
-python-astropy-helpers
 python-black
 python-mccabe
 python-pandas
@@ -104,10 +101,10 @@ python-rope
 python-statsmodels
 python-virtualenv
 reflector
-riot-desktop
 rust
 sagemath-jupyter
 seahorse
+signal-desktop
 smplayer
 snes9x
 sudo

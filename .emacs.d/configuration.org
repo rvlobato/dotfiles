@@ -277,6 +277,13 @@
 #+END_SRC
 
 * Git
+
+** auto-commit
+
+#+begin_src emacs-lisp
+(use-package git-auto-commit-mode)
+#+end_src
+
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
