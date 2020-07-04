@@ -70,12 +70,15 @@ libvdpau-va-gl
 linux-firmware
 linux-lts
 linux-zen
+linux-zen-headers
 mathpix-snipping-tool
-mullvad-vpn
 nautilus
 neofetch
+networkmanager-openvpn
 nextcloud-client
 npm
+nvidia-dkms
+nvidia-prime
 octave
 openmp
 p3x-onenote
