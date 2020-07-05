@@ -826,12 +826,6 @@
   (elpy-enable))
 #+end_src
 
-*** python-mode
-
-#+begin_src emacs-lisp
-(use-package python-mode)
-#+end_src
-
 ** Sage
 
 *** ob-sagemath
