@@ -16,7 +16,7 @@ bash-language-server
 biber
 bleachbit
 cadabra2
-calibre
+calibre-python3
 ccls
 conky
 cvs
