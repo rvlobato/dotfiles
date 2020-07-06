@@ -14,7 +14,6 @@ base
 bash-completion
 bash-language-server
 biber
-bleachbit
 cadabra2
 calibre-python3
 ccls
@@ -78,7 +77,7 @@ nextcloud-client
 npm
 nvidia-dkms
 nvidia-prime
-octave
+nvidia-settings
 openmp
 p3x-onenote
 pandoc-citeproc
