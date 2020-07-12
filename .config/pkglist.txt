@@ -79,7 +79,6 @@ nvidia-dkms
 nvidia-prime
 nvidia-settings
 openmp
-p3x-onenote
 pandoc-citeproc
 pandoc-crossref
 pgplot
