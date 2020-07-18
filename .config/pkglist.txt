@@ -55,6 +55,7 @@ gvfs-mtp
 iio-sensor-proxy
 inkscape
 intel-ucode
+jami-gnome
 julia
 jupyter-octave_kernel
 jupyterlab
