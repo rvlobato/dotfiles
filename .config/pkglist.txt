@@ -66,6 +66,7 @@ libvdpau-va-gl
 linux
 linux-clear
 linux-firmware
+mathpix-snipping-tool
 nautilus
 neofetch
 networkmanager-openvpn
