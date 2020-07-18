@@ -22,6 +22,7 @@ cpupower
 cvs
 cython
 doxygen
+element-desktop
 emacs
 eog
 epiphany
@@ -90,7 +91,6 @@ python-rope
 python-statsmodels
 python-virtualenv
 reflector
-riot-desktop
 sagemath-jupyter
 seahorse
 signal-desktop
@@ -109,6 +109,7 @@ wordnet-cli
 wxmaxima
 yapf
 yubioath-desktop
+zotero
 zsh-autosuggestions
 zsh-completions
 zsh-syntax-highlighting
