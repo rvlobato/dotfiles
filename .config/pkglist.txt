@@ -107,7 +107,7 @@ ufw
 wordnet-cli
 wxmaxima
 yapf
-yubioath-desktop
+yubikey-manager
 zotero
 zsh-autosuggestions
 zsh-completions
