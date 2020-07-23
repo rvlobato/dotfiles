@@ -1,4 +1,5 @@
 alacritty
+amd-ucode
 android-tools
 anki
 aspell-de
@@ -18,7 +19,6 @@ cadabra2
 calibre-python3
 ccls
 conky
-cpupower
 cvs
 cython
 doxygen
@@ -52,21 +52,18 @@ gnuplot
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-iio-sensor-proxy
 inkscape
-intel-ucode
 jami-gnome
 julia
 jupyter-octave_kernel
 jupyterlab
 languagetool
 libreoffice-fresh
-libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
-linux
-linux-clear
 linux-firmware
+linux-zen
+linux-zen-headers
 mathpix-snipping-tool
 nautilus
 neofetch
@@ -74,6 +71,8 @@ networkmanager-openvpn
 nextcloud-client
 npm
 ntfs-3g
+nvidia-dkms
+nvidia-settings
 openmp
 pandoc-citeproc
 pandoc-crossref
@@ -101,7 +100,6 @@ sudo
 telegram-desktop
 texlive-latexextra
 texlive-science
-thermald
 tlp-rdw
 transmission-gtk
 ufw
