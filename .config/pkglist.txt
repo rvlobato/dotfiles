@@ -71,7 +71,6 @@ mathpix-snipping-tool
 nautilus
 neofetch
 networkmanager-openvpn
-nextcloud-client
 npm
 ntfs-3g
 openmp
@@ -98,6 +97,7 @@ seahorse
 signal-desktop
 smplayer
 sudo
+syncthing
 telegram-desktop
 texlive-latexextra
 texlive-science
