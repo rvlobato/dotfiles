@@ -53,7 +53,7 @@
 
 #+BEGIN_SRC emacs-lisp
 ;; Location of my todos/notes file
-(setq org-default-notes-file "~/Nextcloud/org/agenda.org")
+(setq org-default-notes-file "~/Sync/org/agenda.org")
 
 ;; “C-c c” to quickly capture a task/note
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -189,17 +189,10 @@
 ** Bookmarks
 
 #+begin_src emacs-lisp
-(setq bookmark-default-file "~/Nextcloud/gdrive/configs/emacs/bookmarks")
+(setq bookmark-default-file "~/Sync/gdrive/configs/emacs/bookmarks")
 #+end_src
 
 * Cosmetics
-** Initial window size and position on screen
-
-#+BEGIN_SRC emacs-lisp
-(setq initial-frame-alist
-      '((width . 145)
-	(height . 45)))
-#+END_SRC
 
 ** Disable startup message
 
