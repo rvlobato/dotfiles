@@ -68,7 +68,6 @@ linux
 linux-clear
 linux-firmware
 mathpix-snipping-tool
-nautilus
 neofetch
 networkmanager-openvpn
 npm
@@ -84,6 +83,7 @@ posix-user-portability
 pyls-mypy
 python-astropy
 python-black
+python-nautilus
 python-pip
 python-pkgconfig
 python-pydocstyle
