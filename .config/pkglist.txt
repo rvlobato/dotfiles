@@ -40,14 +40,12 @@ gcc-fortran
 gdm
 gimp
 git
-gnome-clocks
 gnome-contacts
 gnome-control-center
 gnome-photos
 gnome-power-manager
 gnome-terminal
 gnome-tweaks
-gnome-weather
 gnuplot
 gvfs-google
 gvfs-gphoto2
