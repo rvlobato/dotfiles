@@ -40,9 +40,7 @@ gcc-fortran
 gdm
 gimp
 git
-gnome-contacts
 gnome-control-center
-gnome-photos
 gnome-power-manager
 gnome-terminal
 gnome-tweaks
@@ -106,6 +104,7 @@ transmission-gtk
 ufw
 wordnet-cli
 wxmaxima
+xournalpp
 yapf
 yubikey-manager
 zotero
