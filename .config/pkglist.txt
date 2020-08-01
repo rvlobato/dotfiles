@@ -102,7 +102,6 @@ thermald
 tlp-rdw
 transmission-gtk
 ufw
-vdpauinfo
 wordnet-cli
 wxmaxima
 yapf
