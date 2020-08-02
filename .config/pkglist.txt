@@ -16,7 +16,6 @@ biber
 cadabra2
 calibre-python3
 ccls
-cmake
 conky
 cpupower
 cvs
