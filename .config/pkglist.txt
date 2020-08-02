@@ -102,6 +102,7 @@ thermald
 tlp-rdw
 transmission-gtk
 ufw
+unrar
 wordnet-cli
 wxmaxima
 yapf
