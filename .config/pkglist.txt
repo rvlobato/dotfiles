@@ -1,4 +1,3 @@
-alacritty
 android-tools
 anki
 aspell-de
@@ -17,6 +16,7 @@ biber
 cadabra2
 calibre-python3
 ccls
+cmake
 conky
 cpupower
 cvs
@@ -30,7 +30,6 @@ evince
 evolution-bogofilter
 fakeroot
 fd
-feedreader
 firefox
 flake8
 flatpak
@@ -41,13 +40,10 @@ gcc-fortran
 gdm
 gimp
 git
-gnome-clocks
-gnome-contacts
 gnome-control-center
-gnome-photos
 gnome-power-manager
+gnome-terminal
 gnome-tweaks
-gnome-weather
 gnuplot
 gvfs-google
 gvfs-gphoto2
@@ -55,7 +51,7 @@ gvfs-mtp
 iio-sensor-proxy
 inkscape
 intel-ucode
-jami-gnome
+jami-gnome-git
 julia
 jupyter-octave_kernel
 jupyterlab
@@ -68,7 +64,6 @@ linux
 linux-clear
 linux-firmware
 mathpix-snipping-tool
-nautilus
 neofetch
 networkmanager-openvpn
 npm
@@ -76,6 +71,7 @@ ntfs-3g
 openmp
 pandoc-citeproc
 pandoc-crossref
+pcloud-drive
 pgplot
 pkgconf
 posix-c-development
@@ -84,6 +80,7 @@ posix-user-portability
 pyls-mypy
 python-astropy
 python-black
+python-nautilus
 python-pip
 python-pkgconfig
 python-pydocstyle
