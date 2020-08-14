@@ -34,7 +34,6 @@ firefox
 flake8
 flatpak
 fortran-language-server
-fractal
 fwupd
 fzf
 gcc-fortran
@@ -52,7 +51,6 @@ gvfs-mtp
 inkscape
 jami-gnome-git
 julia
-jupyter-octave_kernel
 jupyterlab
 languagetool
 libreoffice-fresh
@@ -70,6 +68,7 @@ npm
 ntfs-3g
 nvidia-dkms
 nvidia-settings
+octave
 openmp
 pandoc-citeproc
 pandoc-crossref
@@ -100,6 +99,7 @@ syncthing
 telegram-desktop
 texlive-latexextra
 texlive-science
+tk
 tlp-rdw
 transmission-gtk
 ufw
