@@ -22,10 +22,8 @@ conky
 cvs
 cython
 doxygen
-element-desktop
 emacs
 eog
-epiphany
 evince
 evolution-bogofilter
 fakeroot
@@ -34,6 +32,7 @@ firefox
 flake8
 flatpak
 fortran-language-server
+fractal
 fwupd
 fzf
 gcc-fortran
