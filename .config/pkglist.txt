@@ -61,6 +61,7 @@ libva-vdpau-driver
 libvdpau-va-gl
 linux
 linux-clear
+linux-clear-current
 linux-firmware
 mathpix-snipping-tool
 modprobed-db
