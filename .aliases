@@ -19,7 +19,7 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
 ## pacman
-alias mirrorup='sudo reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias mirrorup='sudo systemctl start reflector.service'
 alias pacup='sudo pacman -Syu'
 alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
