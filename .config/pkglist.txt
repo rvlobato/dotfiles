@@ -65,7 +65,6 @@ linux-zen-headers
 mathpix-snipping-tool
 neofetch
 networkmanager-openvpn
-nodejs-lts-dubnium
 npm
 ntfs-3g
 nvidia-dkms
