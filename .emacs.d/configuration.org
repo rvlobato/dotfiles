@@ -774,7 +774,6 @@
 
 #+begin_src emacs-lisp
 (use-package julia-mode)
-(require 'julia-mode)
 #+end_src
 
 ** lsp-mode
@@ -807,6 +806,7 @@
 
 #+begin_src emacs-lisp
 (use-package lsp-julia)
+(add-hook 'ess-julia-mode-hook #'lsp-mode)
 #+end_src
 
 ** Python
@@ -817,14 +817,6 @@
 (use-package elpy
   :init
   (elpy-enable))
-#+end_src
-
-** Sage
-
-*** ob-sagemath
-
-#+begin_src emacs-lisp
-(use-package ob-sagemath)
 #+end_src
 
 ** Rust
@@ -845,6 +837,33 @@
 
 #+begin_src emacs-lisp
 (use-package jupyter)
+#+end_src
+
+** Sage
+
+*** sage-shell-mode
+
+#+begin_src emacs-lisp
+(use-package sage-shell-mode)
+#+end_src
+
+#+begin_src emacs-lisp
+;; Run SageMath by M-x run-sage instead of M-x sage-shell:run-sage
+(sage-shell:define-alias)
+
+;; Turn on eldoc-mode in Sage terminal and in Sage source files
+(add-hook 'sage-shell-mode-hook #'eldoc-mode)
+(add-hook 'sage-shell:sage-mode-hook #'eldoc-mode)
+
+;; If you want to enable inline display of LaTeX outputs only,
+;; uncomment the following line.
+;; (setq sage-shell-view-default-commands 'output)
+
+;; If you want to enable inline display of plots only,
+;; uncomment the following line.
+;; (setq sage-shell-view-default-commands 'plot)
+
+(add-hook 'sage-shell-after-prompt-hook #'sage-shell-view-mode)
 #+end_src
 
 * Security
@@ -939,6 +958,8 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 	  (ox-extras-activate '(ignore-headlines)))
 #+END_SRC
 
+*** Congigs
+
 #+BEGIN_SRC emacs-lisp
 ;; Fold all source blocks on startup.
 (setq org-hide-block-startup t)
@@ -949,17 +970,29 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 ;; Avoid accidentally editing folded regions, say by adding text after an Org “⋯”.
 (setq org-catch-invisible-edits 'show)
 
-;; I use indentation-sensitive programming languages.
+;; I use indentation-sensitive programming languages
 (setq org-src-preserve-indentation t)
 
 ;; Tab should do indent in code blocks
 (setq org-src-tab-acts-natively t)
 
-;; Give quote and verse blocks a nice look.
+;; Give quote and verse blocks a nice look
 (setq org-fontify-quote-and-verse-blocks t)
 
 ;; Pressing ENTER on a link should follow it.
 (setq org-return-follows-link t)
+
+;; Do not confirm before evaluation
+(setq org-confirm-babel-evaluate nil)
+
+;; Do not evaluate code blocks when exporting
+(setq org-export-babel-evaluate nil)
+
+;; Show images when opening a file
+(setq org-startup-with-inline-images t)
+
+;; Show images after evaluating code blocks
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 #+END_SRC
 
 *** Some initial languages to support
@@ -969,6 +1002,7 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
    'org-babel-load-languages
    '((emacs-lisp . t)
      (shell      . t)
+     ;(sage       . t)
      (python     . t)
      (haskell    . t)
      (ruby       . t)
@@ -977,7 +1011,8 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
      (dot        . t)
      (latex      . t)
      (org        . t)
-     (makefile   . t)))
+     (makefile   . t)
+     (jupyter    . t)))
 #+END_SRC
 
 *** Keep the current heading stuck at the top of the window.
@@ -1021,59 +1056,4 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 (use-package zotxt)
 #+end_src
 
-* Old
-
-#+BEGIN_SRC emacs-lisp
-
-;;ipython notebook
-(setq ein:use-auto-complete t)
-;; Or, to enable "superpack" (a little bit hacky improvements):
-;; (setq ein:use-auto-complete-superpack t)
-(setq ein:use-smartrep t)
-
-(use-package sage-shell-mode)
-(require 'sage-shell-mode)
-
-;; Run SageMath by M-x run-sage instead of M-x sage-shell:run-sage
-(sage-shell:define-alias)
-
-;; Turn on eldoc-mode in Sage terminal and in Sage source files
-(add-hook 'sage-shell-mode-hook #'eldoc-mode)
-(add-hook 'sage-shell:sage-mode-hook #'eldoc-mode)
-
-;; If you have Sage 7.4 or later, uncomment the following line.
-(setq sage-shell:use-prompt-toolkit t)
-
-;;Inline display of LaTeX outputs and plots (a port of sage-view)
-;; If you want to enable inline display of LaTeX outputs only,
-;; uncomment the following line.
-(setq sage-shell-view-default-commands 'output)
-
-;; If you want to enable inline display of plots only,
-;; uncomment the following line.
-(setq sage-shell-view-default-commands 'plot)
-
-(add-hook 'sage-shell-after-prompt-hook #'sage-shell-view-mode)
-
-;;ob-sagemath
-;; Ob-sagemath supports only evaluating with a session.
-(setq org-babel-default-header-args:sage '((:session . t)
-					   (:results . "output")))
-
-;; C-c c for asynchronous evaluating (only for SageMath code blocks).
-(with-eval-after-load "org"
-  (define-key org-mode-map (kbd "C-c c") 'ob-sagemath-execute-async))
-
-;; Do not confirm before evaluation
-(setq org-confirm-babel-evaluate nil)
-
-;; Do not evaluate code blocks when exporting.
-(setq org-export-babel-evaluate nil)
-
-;; Show images when opening a file.
-(setq org-startup-with-inline-images t)
-
-;; Show images after evaluating code blocks.
-(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
-
-#+END_SRC
+# EOF
