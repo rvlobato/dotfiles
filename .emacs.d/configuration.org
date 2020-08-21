@@ -582,7 +582,7 @@
 				    helm-source-buffer-not-found))
 #+END_SRC
 
-*** Helm-lsp
+*** helm-lsp
 
 #+BEGIN_SRC emacs-lisp
 (use-package helm-lsp
@@ -590,7 +590,7 @@
   (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol))
 #+END_SRC
 
-*** Helm-swoop
+*** helm-swoop
 
 #+BEGIN_SRC emacs-lisp
 (use-package helm-swoop
@@ -602,7 +602,7 @@
 	  (helm-swoop-split-with-multiple-windows nil "Do not split window inside the current window."))
 #+END_SRC
 
-*** Helm-company
+*** helm-company
 
 #+BEGIN_SRC emacs-lisp
 (use-package helm-company)
@@ -612,7 +612,7 @@
      (define-key company-active-map (kbd "C-:") 'helm-company)))
 #+END_SRC
 
-*** Helm-org
+*** helm-org
 
 #+begin_src emacs-lisp
 (use-package helm-org) ;; Helm for org headlines and keywords completion.
@@ -620,11 +620,23 @@
 	     '(org-set-tags-command . helm-org-completing-read-tags))
 #+end_src
 
-*** Helm-css
+*** helm-css
 
 #+begin_src emacs-lisp
 (use-package helm-css-scss)
 (require 'helm-css-scss)
+#+end_src
+
+*** helm-sage
+
+#+begin_src emacs-lisp
+(use-package helm-sage)
+(eval-after-load "sage-shell-mode"
+  '(sage-shell:define-keys sage-shell-mode-map
+     "C-c C-i"  'helm-sage-complete
+     "C-c C-h"  'helm-sage-describe-object-at-point
+     "M-r"      'helm-sage-command-history
+     "C-c o"    'helm-sage-output-history))
 #+end_src
 
 ** Hydra
@@ -844,26 +856,28 @@
 *** sage-shell-mode
 
 #+begin_src emacs-lisp
-(use-package sage-shell-mode)
+(use-package sage-shell-mode
+  :init
+  (sage-shell:define-alias)
+  :config
+  (setq sage-shell:use-prompt-toolkit nil)
+  :hook
+  (sage-shell-mode-hook . eldoc-mode)
+  (sage-shell:sage-mode-hook . eldoc-mode)
+  (sage-shell-after-prompt-hook . sage-shell-view-mode)
+  )
 #+end_src
 
+*** ob-sagemath
+
 #+begin_src emacs-lisp
-;; Run SageMath by M-x run-sage instead of M-x sage-shell:run-sage
-(sage-shell:define-alias)
-
-;; Turn on eldoc-mode in Sage terminal and in Sage source files
-(add-hook 'sage-shell-mode-hook #'eldoc-mode)
-(add-hook 'sage-shell:sage-mode-hook #'eldoc-mode)
-
-;; If you want to enable inline display of LaTeX outputs only,
-;; uncomment the following line.
-;; (setq sage-shell-view-default-commands 'output)
-
-;; If you want to enable inline display of plots only,
-;; uncomment the following line.
-;; (setq sage-shell-view-default-commands 'plot)
-
-(add-hook 'sage-shell-after-prompt-hook #'sage-shell-view-mode)
+(use-package ob-sagemath
+  :config
+(setq org-babel-default-header-args:sage '((:session . t)
+					   (:results . "output")))
+(with-eval-after-load "org"
+  (define-key org-mode-map (kbd "C-c c") 'ob-sagemath-execute-async))
+)
 #+end_src
 
 * Security
@@ -1002,7 +1016,7 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
    'org-babel-load-languages
    '((emacs-lisp . t)
      (shell      . t)
-     ;(sage       . t)
+     ;(julia       . t)
      (python     . t)
      (haskell    . t)
      (ruby       . t)
