@@ -958,7 +958,7 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 	  (ox-extras-activate '(ignore-headlines)))
 #+END_SRC
 
-*** Congigs
+*** Configs
 
 #+BEGIN_SRC emacs-lisp
 ;; Fold all source blocks on startup.
