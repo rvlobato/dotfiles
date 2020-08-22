@@ -505,6 +505,12 @@
 (async-bytecomp-package-mode 1)
 #+END_SRC
 
+*** ob-async
+
+#+begin_src emacs-lisp
+(use-package ob-async)
+#+end_src
+
 ** Dired
 
 #+BEGIN_SRC emacs-lisp
@@ -969,10 +975,8 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 (use-package org
   :ensure org-plus-contrib
   :config (require 'ox-extra)
-	  (ox-extras-activate '(ignore-headlines))
-  :bind
-("C-c e" . org-edit-src-code)
-)
+  (ox-extras-activate '(ignore-headlines))
+  )
 #+END_SRC
 
 *** Configs
@@ -1017,9 +1021,9 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 #+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages
    'org-babel-load-languages
-   '((emacs-lisp . t)
+   '(
+     (emacs-lisp . t)
      (shell      . t)
-     ;(julia       . t)
      (python     . t)
      (haskell    . t)
      (ruby       . t)
@@ -1029,7 +1033,9 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
      (latex      . t)
      (org        . t)
      (makefile   . t)
-     (jupyter    . t)))
+     (jupyter    . t)
+     )
+   )
 #+END_SRC
 
 *** Keep the current heading stuck at the top of the window.
