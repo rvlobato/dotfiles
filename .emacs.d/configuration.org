@@ -969,7 +969,10 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 (use-package org
   :ensure org-plus-contrib
   :config (require 'ox-extra)
-	  (ox-extras-activate '(ignore-headlines)))
+	  (ox-extras-activate '(ignore-headlines))
+  :bind
+("C-c e" . org-edit-src-code)
+)
 #+END_SRC
 
 *** Configs
