@@ -44,7 +44,6 @@ gnome-power-manager
 gnome-terminal
 gnome-tweaks
 gnuplot
-gpmdp-git
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
