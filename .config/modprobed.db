@@ -17,6 +17,7 @@ btrfs
 btrtl
 btusb
 ccm
+cdc_ether
 cec
 cfg80211
 cmac
@@ -109,6 +110,7 @@ mc
 mei
 mei_hdcp
 mei_me
+mii
 mmc_core
 mousedev
 msr
@@ -132,6 +134,7 @@ nouveau
 pcspkr
 processor_thermal_device
 psmouse
+r8152
 raid6_pq
 rapl
 rc_core
@@ -157,6 +160,7 @@ snd_hwdep
 snd_intel_dspcfg
 snd_pcm
 snd_pcm_dmaengine
+snd_rawmidi
 snd_seq
 snd_seq_device
 snd_seq_dummy
@@ -168,6 +172,8 @@ snd_soc_skl
 snd_soc_sst_dsp
 snd_soc_sst_ipc
 snd_timer
+snd_usb_audio
+snd_usbmidi_lib
 soundcore
 sparse_keymap
 syscopyarea
@@ -179,7 +185,12 @@ tpm_tis
 tpm_tis_core
 ttm
 tun
+uas
+uhid
 uinput
+usb_storage
+usbhid
+usbnet
 uvcvideo
 vfat
 videobuf2_common
