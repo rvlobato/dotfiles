@@ -311,6 +311,8 @@
 
 *** Company
 
+**** configs
+
 #+BEGIN_SRC emacs-lisp
 (use-package company
   :config
@@ -355,7 +357,7 @@
 ;; It's so fast that we don't need a key-binding to start it!
 #+END_SRC
 
-*** Quick help
+**** company quickhelp
 
 #+BEGIN_SRC emacs-lisp
 (use-package company-quickhelp
@@ -364,14 +366,23 @@
   (company-quickhelp-mode))
 #+END_SRC
 
-*** Company-web
+**** company-suggest
+
+#+begin_src emacs-lisp
+(use-package company-suggest)
+(setq company-suggest-complete-sentence t)
+(add-to-list 'company-backends 'company-suggest-google)
+(add-to-list 'company-backends 'company-suggest-wiktionary)
+#+end_src
+
+**** Company-web
 
 #+begin_src emacs-lisp
 (require 'company)                                   ; load company mode
 ;(require 'company-web-html)                          ; load company mode html backend
 #+end_src
 
-*** Company-math
+**** Company-math
 
 #+begin_src emacs-lisp
 (use-package company-math)
@@ -380,7 +391,7 @@
 (use-package math-symbol-lists)
 #+end_src
 
-*** Company-AUCTeX
+**** Company-AUCTeX
 
 #+begin_src emacs-lisp
 (use-package company-auctex)
@@ -388,7 +399,7 @@
 (company-auctex-init)
 #+end_src
 
-*** Company-c-headers
+**** Company-c-headers
 
 #+begin_src emacs-lisp
 (use-package company-c-headers)
