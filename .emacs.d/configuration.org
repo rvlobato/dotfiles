@@ -377,9 +377,9 @@
 
 **** Company-web
 
-#+begin_src emacs-lisp
-(require 'company)                                   ; load company mode
-;(require 'company-web-html)                          ; load company mode html backend
+##+begin_src emacs-lisp
+(require 'company)
+(require 'company-web-html)                          ; load company mode html backend
 #+end_src
 
 **** Company-math

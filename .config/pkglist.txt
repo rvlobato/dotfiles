@@ -1,6 +1,5 @@
 amd-ucode
 android-tools
-anki
 aspell-de
 aspell-en
 aspell-es
@@ -42,6 +41,7 @@ gimp
 git
 gnome-control-center
 gnome-power-manager
+gnome-software
 gnome-terminal
 gnome-tweaks
 gnuplot
@@ -101,14 +101,12 @@ texlive-latexextra
 texlive-science
 tk
 tlp-rdw
-transmission-gtk
 ufw
 unrar
 wordnet-cli
 wxmaxima
 yapf
 yubikey-manager
-zotero
 zsh-autosuggestions
 zsh-completions
 zsh-syntax-highlighting
