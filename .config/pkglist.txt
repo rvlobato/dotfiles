@@ -47,7 +47,6 @@ gnuplot
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-insync
 intel-ucode
 jami-gnome-git
 julia
