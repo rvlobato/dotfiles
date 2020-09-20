@@ -687,20 +687,9 @@
 #+begin_src emacs-lisp
 (use-package lsp-latex)
 (require 'lsp-latex)
-;; "texlab" must be located at a directory contained in `exec-path'.
-;; If you want to put "texlab" somewhere else,
-;; you can specify the path to "texlab" as follows:
-;; (setq lsp-latex-texlab-executable "/path/to/texlab")
-
-(with-eval-after-load "LaTeX-mode"
+(with-eval-after-load "tex-mode"
  (add-hook 'tex-mode-hook 'lsp)
  (add-hook 'latex-mode-hook 'lsp))
-
-;; For YaTeX
-(with-eval-after-load "yatex"
- (add-hook 'yatex-mode-hook 'lsp))
-
-;; For bibtex
 (with-eval-after-load "bibtex"
  (add-hook 'bibtex-mode-hook 'lsp))
 #+end_src
@@ -838,6 +827,7 @@
     :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
 	    (prog-mode . lsp)
 	    (LaTeX-mode . lsp)
+	    (BibTeX-mode . lsp)
 	    ;; if you want which-key integration
 	    (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp)
