@@ -11,6 +11,7 @@ battery
 blake2b_generic
 bluetooth
 bnep
+bpfilter
 btbcm
 btintel
 btrfs
@@ -39,6 +40,7 @@ ecdh_generic
 ee1004
 evdev
 fat
+fb_ddc
 fb_sys_fops
 fuse
 ghash_clmulni_intel
@@ -47,6 +49,7 @@ hid
 hid_generic
 hid_multitouch
 hid_sensor_accel_3d
+hid_sensor_custom
 hid_sensor_gyro_3d
 hid_sensor_hub
 hid_sensor_iio_common
@@ -81,6 +84,7 @@ intel_lpss
 intel_lpss_pci
 intel_pch_thermal
 intel_pmc_bxt
+intel_pmc_core
 intel_powerclamp
 intel_rapl_common
 intel_rapl_msr
@@ -131,7 +135,10 @@ nf_reject_ipv6
 nls_cp437
 nls_iso8859_1
 nouveau
+nvidiafb
 pcspkr
+pinctrl_intel
+pinctrl_sunrisepoint
 processor_thermal_device
 psmouse
 r8152
@@ -179,6 +186,7 @@ sparse_keymap
 syscopyarea
 sysfillrect
 sysimgblt
+thermal
 tpm
 tpm_crb
 tpm_tis
@@ -193,12 +201,14 @@ usbhid
 usbnet
 uvcvideo
 vfat
+vgastate
 videobuf2_common
 videobuf2_memops
 videobuf2_v4l2
 videobuf2_vmalloc
 videodev
 virt_dma
+wacom
 wmi
 wmi_bmof
 x86_pkg_temp_thermal
