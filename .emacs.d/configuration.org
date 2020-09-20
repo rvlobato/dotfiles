@@ -682,18 +682,6 @@
 (use-package helm-rg)
 #+END_SRC
 
-** LaTeX
-
-#+begin_src emacs-lisp
-(use-package lsp-latex)
-(require 'lsp-latex)
-(with-eval-after-load "tex-mode"
- (add-hook 'tex-mode-hook 'lsp)
- (add-hook 'latex-mode-hook 'lsp))
-(with-eval-after-load "bibtex"
- (add-hook 'bibtex-mode-hook 'lsp))
-#+end_src
-
 * Programming languages
 ** Adds spacing around operators
 
@@ -827,7 +815,6 @@
     :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
 	    (prog-mode . lsp)
 	    (LaTeX-mode . lsp)
-	    (BibTeX-mode . lsp)
 	    ;; if you want which-key integration
 	    (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp)
