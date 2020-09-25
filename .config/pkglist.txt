@@ -106,6 +106,3 @@ wxmaxima
 yapf
 yubikey-manager
 zotero
-zsh-autosuggestions
-zsh-completions
-zsh-syntax-highlighting
