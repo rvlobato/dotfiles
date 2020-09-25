@@ -100,7 +100,6 @@ thermald
 tk
 tlp-rdw
 ufw
-unrar
 wordnet-cli
 wxmaxima
 yapf
