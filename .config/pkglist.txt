@@ -47,7 +47,7 @@ gvfs-gphoto2
 gvfs-mtp
 iio-sensor-proxy
 intel-ucode
-jami-gnome-git
+jami-gnome
 julia
 jupyterlab
 languagetool
