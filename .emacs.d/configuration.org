@@ -1036,9 +1036,6 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 #+END_SRC
 
-#+RESULTS:
-| org-display-inline-images |
-
 *** Some initial languages to support
 
 #+BEGIN_SRC emacs-lisp
@@ -1072,9 +1069,6 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
   ;; Child and parent headings are seperated by a /.
   org-sticky-header-outline-path-separator " / "))
 #+END_SRC
-
-#+RESULTS:
-| org-bullets-mode | org-sticky-header-mode | jupyter-org-interaction-mode | which-function-mode | #[0 \301\211\207 [imenu-create-index-function org-imenu-get-tree] 2] | writegood-mode | flyspell-mode | turn-on-auto-fill | rainbow-delimiters-mode | #[0 \300\301\302\303\304$\207 [add-hook change-major-mode-hook org-show-all append local] 5] | #[0 \300\301\302\303\304$\207 [add-hook change-major-mode-hook org-babel-show-result-all append local] 5] | org-babel-result-hide-spec | org-babel-hide-all-hashes | org-eldoc-load |
 
 *** Bullets
 
