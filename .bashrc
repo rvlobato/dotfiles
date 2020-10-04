@@ -29,11 +29,11 @@ for sh in /etc/bash/bashrc.d/* ; do
 done
 
 #------------------------------
-# Alias 
+# Alias
 [ -f $HOME/.aliases ] && source $HOME/.aliases
 
 # Dir colors
-eval $(dircolors -b $HOME/.dircolors)
+export LS_COLORS="$(vivid generate molokai)"
 
 #------------------------------
 # Functions

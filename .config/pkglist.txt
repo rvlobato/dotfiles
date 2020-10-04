@@ -101,6 +101,7 @@ texlive-science
 tk
 tlp-rdw
 ufw
+vivid
 wordnet-cli
 wxmaxima
 yapf
