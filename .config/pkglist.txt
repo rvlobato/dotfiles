@@ -64,7 +64,6 @@ mullvad-vpn
 nautilus
 neofetch
 npm
-ntfs-3g
 nvidia-dkms
 nvidia-settings
 octave
