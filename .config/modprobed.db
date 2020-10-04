@@ -132,6 +132,12 @@ nf_nat
 nf_nat_ftp
 nf_reject_ipv4
 nf_reject_ipv6
+nf_tables
+nft_chain_nat
+nft_ct
+nft_masq
+nft_reject
+nft_reject_inet
 nls_cp437
 nls_iso8859_1
 nouveau
