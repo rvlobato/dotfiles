@@ -1,3 +1,4 @@
+alacritty
 android-tools
 aspell-de
 aspell-en
