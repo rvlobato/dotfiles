@@ -46,7 +46,7 @@ gnuplot
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-insync
+insync-nautilus
 jami-gnome
 julia
 jupyterlab
@@ -61,7 +61,6 @@ linux-zen
 linux-zen-headers
 mathpix-snipping-tool
 mullvad-vpn
-nautilus
 neofetch
 npm
 nvidia-dkms
