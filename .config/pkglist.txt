@@ -18,7 +18,7 @@ cadabra2
 ccache
 ccls
 chromium
-conky
+conky-git
 cvs
 cython
 doxygen
@@ -36,7 +36,6 @@ fwupd
 fzf
 gcc-fortran
 gdm
-gimp
 git
 gnome-control-center
 gnome-power-manager
@@ -87,12 +86,12 @@ python-virtualenv
 reflector
 sagemath-jupyter
 seahorse
-signal-desktop
 smplayer
 sudo
 syncthing
-telegram-desktop
 texlab
+texlive-bibtexextra
+texlive-fontsextra
 texlive-latexextra
 texlive-publishers
 texlive-science
