@@ -18,7 +18,7 @@ cadabra2
 ccache
 ccls
 chromium
-conky-git
+conky
 cvs
 cython
 doxygen
