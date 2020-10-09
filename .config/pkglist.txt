@@ -50,7 +50,6 @@ jami-gnome
 julia
 jupyterlab
 languagetool
-libreoffice-fresh
 libva-vdpau-driver
 libvdpau-va-gl
 linux-amd
@@ -86,7 +85,6 @@ python-virtualenv
 reflector
 sagemath-jupyter
 seahorse
-smplayer
 sudo
 syncthing
 texlab
