@@ -371,7 +371,7 @@
 #+begin_src emacs-lisp
 (use-package company-suggest)
 (setq company-suggest-complete-sentence t)
-(add-to-list 'company-backends 'company-suggest-google)
+; (add-to-list 'company-backends 'company-suggest-google)
 (add-to-list 'company-backends 'company-suggest-wiktionary)
 #+end_src
 
@@ -1034,6 +1034,9 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 
 ;; Show images after evaluating code blocks
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+
+;; shift selection
+(setq org-support-shift-select t)
 #+END_SRC
 
 *** Some initial languages to support
@@ -1081,6 +1084,12 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 
 #+begin_src emacs-lisp
 (use-package htmlize :defer t)
+#+end_src
+
+*** ox-reveal
+
+#+begin_src emacs-lisp
+(use-package ox-reveal)
 #+end_src
 
 * Social network

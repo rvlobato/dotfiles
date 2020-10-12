@@ -1,3 +1,4 @@
 vscode-json-languageserver
 vscode-css-languageserver-bin
 vscode-html-languageserver-bin
+reveal.js
