@@ -26,7 +26,7 @@ evolution-bogofilter
 evolution-ews
 fakeroot
 fd
-firefox
+firefox-developer-edition
 flake8
 flatpak
 fortran-language-server
@@ -85,6 +85,7 @@ sagemath-jupyter
 seahorse
 sudo
 syncthing
+telegram-desktop
 texlab
 texlive-bibtexextra
 texlive-fontsextra
