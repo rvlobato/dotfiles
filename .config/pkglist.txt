@@ -30,7 +30,7 @@ evolution-bogofilter
 evolution-ews
 fakeroot
 fd
-firefox-developer-edition
+firefox
 flake8
 flatpak
 fortran-language-server
