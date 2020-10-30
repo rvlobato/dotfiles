@@ -57,7 +57,6 @@ linux-lts-headers
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
-maxima-jupyter-git
 mullvad-vpn
 nautilus
 neofetch
