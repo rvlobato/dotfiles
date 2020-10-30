@@ -99,7 +99,6 @@ ufw
 vivid
 wordnet-cli
 wxmaxima
-xdg-user-dirs
 xournalpp
 yapf
 yubikey-manager
