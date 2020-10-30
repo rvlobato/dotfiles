@@ -6,6 +6,6 @@ nbdime
 datapackage
 nbresuse
 einsteinpy
-jupytext
+lfortran
 gnuplot_kernel
 octave_kernel
