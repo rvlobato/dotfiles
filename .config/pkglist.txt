@@ -19,11 +19,9 @@ calibre
 ccache
 ccls
 chromium
-cmake
 conky-git
 cvs
 doxygen
-element-desktop
 emacs
 eog
 epiphany
