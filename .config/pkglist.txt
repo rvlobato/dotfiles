@@ -47,7 +47,6 @@ gnome-contacts
 gnome-control-center
 gnome-photos
 gnome-power-manager
-gnome-software
 gnome-todo
 gnome-tweaks
 gnome-weather
@@ -111,6 +110,7 @@ texlive-publishers
 texlive-science
 tk
 tlp-rdw
+transmission-gtk
 ufw
 vivid
 vlc
