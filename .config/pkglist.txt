@@ -23,6 +23,7 @@ chromium
 conky-git
 cvs
 doxygen
+element-desktop
 emacs
 eog
 epiphany
