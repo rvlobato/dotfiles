@@ -117,6 +117,7 @@ transmission-gtk
 ufw
 vivid
 wordnet-cli
+wordnet-tk
 wxmaxima
 xournalpp
 yapf
