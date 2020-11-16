@@ -371,7 +371,7 @@
 #+begin_src emacs-lisp
 (use-package company-suggest)
 (setq company-suggest-complete-sentence t)
-; (add-to-list 'company-backends 'company-suggest-google)
+(add-to-list 'company-backends 'company-suggest-google)
 (add-to-list 'company-backends 'company-suggest-wiktionary)
 #+end_src
 

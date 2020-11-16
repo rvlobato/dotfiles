@@ -20,6 +20,7 @@ ccache
 ccls
 chromium
 conky-git
+cuda
 cvs
 doxygen
 element-desktop
