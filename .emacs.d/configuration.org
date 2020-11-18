@@ -1041,8 +1041,9 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 ;; remove validate
 (setq org-html-validation-link nil)
 
+;; set my postamble
 (setq org-html-postamble
-      "Created on: %d by %a. This page was last modified on: %C")
+      "Created by %a on: %d. Last modified on: %C")
 #+END_SRC
 
 *** Some initial languages to support
