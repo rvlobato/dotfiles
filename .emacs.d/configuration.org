@@ -1043,7 +1043,7 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 
 ;; set my postamble
 (setq org-html-postamble
-      "Created by %a on: %d. Last modified on: %C")
+      "Created by: %a on %d. Last Updated: %C")
 #+END_SRC
 
 *** Some initial languages to support
