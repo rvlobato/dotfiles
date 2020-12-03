@@ -19,11 +19,10 @@ ccache
 ccls
 chromium
 cmake
-conky-git
+conky
 cuda
 cvs
 doxygen
-element-desktop
 emacs
 eog
 epiphany
