@@ -121,6 +121,7 @@ vlc
 wordnet-cli
 wordnet-tk
 wxmaxima
+xeus-cling
 xournalpp
 yapf
 yubikey-manager

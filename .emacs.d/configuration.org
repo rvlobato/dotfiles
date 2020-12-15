@@ -1099,6 +1099,17 @@ gnus-cache-directory "~/pCloudDrive/gnus/cache")
 (use-package ox-reveal)
 #+end_src
 
+*** org-latex-impatient
+
+#+begin_src emacs-lisp
+(use-package org-latex-impatient
+  :hook (org-mode . org-latex-impatient-mode)
+  :init
+  (setq org-latex-impatient-tex2svg-bin
+	;; location of tex2svg executable
+	"~/.local/bin/tex2svg"))
+#+end_src
+
 * Social network
 
 ** Twitter

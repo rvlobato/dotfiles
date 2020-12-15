@@ -1,4 +1,5 @@
 vscode-json-languageserver
 vscode-css-languageserver-bin
 vscode-html-languageserver-bin
-reveal.js
+mathjax-node-cli
+p3x-onenote
