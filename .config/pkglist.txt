@@ -105,7 +105,6 @@ seahorse
 signal-desktop
 sudo
 syncthing
-telegram-desktop
 texlab
 texlive-bibtexextra
 texlive-fontsextra
