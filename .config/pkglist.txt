@@ -73,8 +73,8 @@ linux-lts-headers
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
-mullvad-vpn
 neofetch
+networkmanager-openvpn
 npm
 nvidia-dkms
 nvidia-settings
