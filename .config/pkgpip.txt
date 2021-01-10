@@ -9,3 +9,4 @@ einsteinpy
 gnuplot_kernel
 octave_kernel
 findiff
+rise
