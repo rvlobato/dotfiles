@@ -1,5 +1,4 @@
 amd-ucode
-android-tools
 aspell-de
 aspell-en
 aspell-es
@@ -60,6 +59,7 @@ gvfs-gphoto2
 gvfs-mtp
 inkscape
 insync
+intel-ucode
 jami-gnome
 julia
 jupyter-nbextension-rise
