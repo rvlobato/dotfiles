@@ -57,6 +57,7 @@ go
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy
 inkscape
 insync
 intel-ucode
@@ -66,6 +67,7 @@ jupyter-nbextension-rise
 jupyterlab
 languagetool
 libreoffice-fresh
+libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
 linux-firmware
