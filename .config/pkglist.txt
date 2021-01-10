@@ -18,7 +18,6 @@ ccache
 ccls
 cmake
 conky
-cuda
 cvs
 doxygen
 emacs
@@ -59,10 +58,10 @@ gvfs-gphoto2
 gvfs-mtp
 iio-sensor-proxy
 inkscape
-insync
 intel-ucode
 jami-gnome
 julia
+jupyter-nbextension-rise
 jupyterlab
 languagetool
 libreoffice-fresh
@@ -71,15 +70,11 @@ libva-vdpau-driver
 libvdpau-va-gl
 linux-firmware
 linux-lts
-linux-lts-headers
 linux-zen
-linux-zen-headers
 mathpix-snipping-tool
 mullvad-vpn-beta
 neofetch
 npm
-nvidia-dkms
-nvidia-settings
 octave
 openmp
 pandoc-citeproc
