@@ -63,7 +63,6 @@ insync
 intel-ucode
 jami-gnome
 julia
-jupyter-nbextension-rise
 jupyterlab
 languagetool
 libreoffice-fresh
