@@ -75,8 +75,8 @@ linux-lts-headers
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
+mullvad-vpn-beta
 neofetch
-networkmanager-openvpn
 npm
 nvidia-dkms
 nvidia-settings
@@ -118,6 +118,7 @@ tlp-rdw
 ufw
 vivid
 vlc
+wireguard-tools
 wordnet-cli
 wordnet-tk
 wxmaxima
