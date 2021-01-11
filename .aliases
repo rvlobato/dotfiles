@@ -8,6 +8,10 @@ alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
 alias blueon='sudo modprobe btusb && sudo modprobe bluetooth && sudo systemctl start bluetooth'
 alias myip='curl ipinfo.io/ip'
 
+## Theme Adwaita
+alias day='gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita''
+alias night='gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark''
+
 ## colors
 alias ls="ls --color -F"
 alias ll="ls --color -lh"

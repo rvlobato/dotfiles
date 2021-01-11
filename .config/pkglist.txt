@@ -16,6 +16,7 @@ cadabra2
 calibre
 ccache
 ccls
+chrome-gnome-shell
 cmake
 conky
 cuda
@@ -43,13 +44,11 @@ gimp
 git
 gnome-calendar
 gnome-clocks
-gnome-contacts
 gnome-control-center
 gnome-photos
 gnome-power-manager
 gnome-software
 gnome-terminal
-gnome-todo
 gnome-tweaks
 gnome-weather
 gnuplot
