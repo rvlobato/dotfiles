@@ -16,7 +16,6 @@ cadabra2
 calibre
 ccache
 ccls
-chrome-gnome-shell
 cmake
 conky
 cuda
