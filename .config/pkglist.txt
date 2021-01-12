@@ -41,15 +41,11 @@ gcc-fortran
 gdm
 gimp
 git
-gnome-calendar
-gnome-clocks
 gnome-control-center
-gnome-photos
 gnome-power-manager
 gnome-software
 gnome-terminal
 gnome-tweaks
-gnome-weather
 gnuplot
 go
 gvfs-google
