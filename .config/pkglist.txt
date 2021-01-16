@@ -22,7 +22,6 @@ cuda
 cvs
 doxygen
 emacs
-eog
 epiphany
 evince
 evolution-bogofilter
