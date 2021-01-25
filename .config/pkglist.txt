@@ -58,7 +58,6 @@ jami-gnome
 julia
 jupyterlab
 languagetool
-libreoffice-fresh
 libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
