@@ -16,6 +16,7 @@ cadabra2
 calibre
 ccache
 ccls
+chromium
 cmake
 conky
 cuda
