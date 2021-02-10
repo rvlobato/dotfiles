@@ -43,7 +43,6 @@ gnome-control-center
 gnome-power-manager
 gnome-software
 gnome-terminal
-gnome-tweaks
 gnuplot
 go
 gvfs-google
