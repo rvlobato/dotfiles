@@ -23,7 +23,6 @@ cvs
 doxygen
 emacs
 epiphany
-evince
 evolution-bogofilter
 evolution-ews
 fakeroot
@@ -97,6 +96,7 @@ sagemath-jupyter
 seahorse
 signal-desktop
 sudo
+sushi
 syncthing
 texlab
 texlive-bibtexextra
