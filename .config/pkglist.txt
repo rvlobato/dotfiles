@@ -49,7 +49,6 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 iio-sensor-proxy
-inkscape
 insync
 intel-ucode
 jami-gnome
@@ -65,7 +64,6 @@ linux-lts-headers
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
-nautilus
 neofetch
 npm
 nvidia-dkms
@@ -93,6 +91,7 @@ reflector
 rust
 sagemath-jupyter
 seahorse
+seahorse-nautilus
 signal-desktop
 sudo
 sushi
