@@ -115,4 +115,3 @@ xeus-cling
 xournalpp
 yapf
 yubikey-manager
-zotero
