@@ -108,7 +108,6 @@ tk
 tlp-rdw
 ufw
 vivid
-vlc
 wireguard-tools
 wordnet-cli
 wordnet-tk
