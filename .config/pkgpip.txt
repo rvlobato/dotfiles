@@ -1,12 +1,12 @@
-jupyter-lsp
+jupyterlab-lsp
 jupyterlab-git
-jupyterlab_code_formatter
+jupyterlab-drawio
 jupytext
 nbdime
 datapackage
 nbresuse
-einsteinpy
 gnuplot_kernel
 octave_kernel
 findiff
 rise
+#einsteinpy

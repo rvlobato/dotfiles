@@ -1,5 +1,6 @@
 alacritty
 amd-ucode
+android-tools
 aspell-de
 aspell-en
 aspell-es
@@ -93,6 +94,7 @@ sagemath-jupyter
 seahorse
 seahorse-nautilus
 signal-desktop
+smplayer
 sudo
 sushi
 syncthing
