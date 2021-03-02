@@ -1,4 +1,3 @@
-jupyterlab-lsp
 jupyterlab-git
 jupyterlab-drawio
 jupytext
