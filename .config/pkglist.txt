@@ -94,7 +94,6 @@ rust
 sagemath-jupyter
 seahorse
 seahorse-nautilus
-signal-desktop
 smplayer
 sudo
 sushi
