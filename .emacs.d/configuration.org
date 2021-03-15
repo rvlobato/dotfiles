@@ -446,11 +446,22 @@
 (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
 #+END_SRC
 
-** Set the default dictionary Ispell
+** Guess-language
 
-#+BEGIN_SRC emacs-lisp
-(setq ispell-dictionary "english")
-#+END_SRC
+   #+begin_src emacs-lisp
+(use-package guess-language
+  :hook
+  (text-mode . guess-language-mode)
+  (TeX-mode . guess-language-mode)
+
+  :config
+  (setq guess-language-langcodes
+	'((en . ("en_US" "English"))
+	  (pt . ("pt_BR" "Portuguese")))
+	guess-language-languages '(en pt)
+	guess-language-min-paragraph-length 45)
+  )
+   #+end_src
 
 ** Synosaurus
 
