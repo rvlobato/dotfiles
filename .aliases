@@ -23,8 +23,7 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
 ## pacman
-alias mirrorup='sudo systemctl start reflector.service'
-alias pacup='sudo pacman -Syu'
+alias pacup='sudo systemctl start reflector.service && sudo pacman -Syu'
 alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
 alias pacsc='sudo pacman -Sc'

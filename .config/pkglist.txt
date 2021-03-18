@@ -62,7 +62,6 @@ libva-vdpau-driver
 libvdpau-va-gl
 linux-firmware
 linux-lts
-linux-lts-headers
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
