@@ -20,7 +20,6 @@ ccache
 ccls
 cmake
 conky
-cuda
 cvs
 doxygen
 emacs
