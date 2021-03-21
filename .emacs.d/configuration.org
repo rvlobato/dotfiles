@@ -440,21 +440,18 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package flyspell
-  :hook ((prog-mode . flyspell-prog-mode)
-	 ((org-mode text-mode) . flyspell-mode)))
-(add-hook          'c-mode-hook 'flyspell-prog-mode)
-(add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
+  :hook (
+	 ((org-mode text-mode web-mode fundamental-mode) . flyspell-mode)
+	 ((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode)
+	 )
+  )
 #+END_SRC
 
 ** Guess-language
 
    #+begin_src emacs-lisp
 (use-package guess-language
-  :hook
-  (text-mode . guess-language-mode)
-  (TeX-mode . guess-language-mode)
-  (web-mode . guess-language-mode)
-  (org-mode . guess-language-mode)
+  :hook ((text-mode TeX-mode) . guess-language-mode)
 
   :config
   (setq guess-language-langcodes
