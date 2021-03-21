@@ -453,6 +453,8 @@
   :hook
   (text-mode . guess-language-mode)
   (TeX-mode . guess-language-mode)
+  (web-mode . guess-language-mode)
+  (org-mode . guess-language-mode)
 
   :config
   (setq guess-language-langcodes

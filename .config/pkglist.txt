@@ -70,7 +70,6 @@ nvidia-dkms
 nvidia-settings
 octave
 openmp
-pandoc-citeproc
 pandoc-crossref
 pgplot
 pkgconf

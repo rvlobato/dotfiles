@@ -33,6 +33,7 @@ alias pacqt='sudo pacman -Rns $(pacman -Qttdq)'
 #aur
 alias aurup='aur sync -uS'
 alias aurs='aur search'
+alias aurr='repo-remove -s $HOME/Sync/pkgs/aur/aur.db.tar'
 
 #up: jupyter, npm and pip
 alias jupin='jupyter labextension install $(cat $HOME/.config/labext.txt)'
