@@ -78,7 +78,7 @@
   (?D . "green")))
 #+end_src
 
-* Behaviour
+* Behavior
 ** Auto-revert mode refresh
 
 #+BEGIN_SRC emacs-lisp
@@ -441,7 +441,7 @@
 #+BEGIN_SRC emacs-lisp
 (use-package flyspell
   :hook (
-	 ((org-mode text-mode web-mode fundamental-mode) . flyspell-mode)
+	 ((org-mode text-mode) . flyspell-mode)
 	 ((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode)
 	 )
   )
