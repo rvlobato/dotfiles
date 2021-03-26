@@ -42,7 +42,6 @@ gimp
 git
 gnome-control-center
 gnome-power-manager
-gnome-shell-extension-appindicator
 gnome-software
 gnuplot
 go
