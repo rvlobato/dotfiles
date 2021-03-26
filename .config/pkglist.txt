@@ -23,7 +23,6 @@ conky
 cvs
 doxygen
 emacs
-epiphany
 evolution-bogofilter
 evolution-ews
 fakeroot
