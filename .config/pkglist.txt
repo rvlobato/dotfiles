@@ -15,7 +15,6 @@ bash-completion
 bash-language-server
 biber
 cadabra2
-calibre
 ccache
 ccls
 cmake
@@ -37,7 +36,6 @@ fwupd
 fzf
 gcc-fortran
 gdm
-gimp
 git
 gnome-control-center
 gnome-power-manager
@@ -51,7 +49,7 @@ iio-sensor-proxy
 insync
 intel-ucode
 jami-gnome
-julia
+julia-bin
 jupyterlab
 languagetool
 libva-intel-driver
