@@ -49,7 +49,7 @@ iio-sensor-proxy
 insync
 intel-ucode
 jami-gnome
-julia-bin
+julia
 jupyterlab
 languagetool
 libva-intel-driver
