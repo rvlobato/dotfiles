@@ -32,7 +32,6 @@ firefox
 flake8
 flatpak
 fortran-language-server
-fractal
 fwupd
 fzf
 gcc-fortran
@@ -40,6 +39,7 @@ gdm
 git
 gnome-control-center
 gnome-power-manager
+gnome-shell-pomodoro
 gnome-software
 gnuplot
 go
