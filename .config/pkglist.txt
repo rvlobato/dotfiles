@@ -107,6 +107,5 @@ wireguard-tools
 wordnet-cli
 wordnet-tk
 wxmaxima
-xeus-cling
 yapf
 yubikey-manager
