@@ -47,7 +47,6 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 iio-sensor-proxy
-insync
 intel-ucode
 jami-gnome
 julia
@@ -59,17 +58,15 @@ libvdpau-va-gl
 linux-firmware
 linux-lts
 linux-zen
-linux-zen-headers
 mathpix-snipping-tool
 neofetch
 npm
-nvidia-dkms
-nvidia-settings
 octave
 openmp
 pandoc-crossref
 pgplot
 pkgconf
+popcorntime
 posix-c-development
 posix-software-development
 posix-user-portability
