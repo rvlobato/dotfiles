@@ -108,4 +108,5 @@ wordnet-cli
 wordnet-tk
 wxmaxima
 yapf
+youtube-dl
 yubikey-manager
