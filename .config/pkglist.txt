@@ -110,3 +110,4 @@ wxmaxima
 yapf
 youtube-dl
 yubikey-manager
+zotero
