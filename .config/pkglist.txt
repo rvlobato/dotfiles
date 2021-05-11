@@ -1,3 +1,4 @@
+alacritty
 amd-ucode
 android-tools
 aspell-de
@@ -40,7 +41,6 @@ gnome-control-center
 gnome-power-manager
 gnome-shell-pomodoro
 gnome-software
-gnome-terminal
 gnuplot
 go
 gvfs-google
@@ -76,7 +76,6 @@ posix-user-portability
 pyls-mypy
 python-astropy
 python-black
-python-nautilus
 python-pip
 python-pkgconfig
 python-pydocstyle
@@ -86,7 +85,7 @@ python-statsmodels
 python-virtualenv
 reflector
 rust
-sagemath-jupyter
+sagemath
 seahorse
 seahorse-nautilus
 smplayer
