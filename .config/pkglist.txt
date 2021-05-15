@@ -61,6 +61,7 @@ linux-lts
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
+mullvad-vpn
 neofetch
 npm
 nvidia-dkms
@@ -102,11 +103,9 @@ tk
 tlp-rdw
 ufw
 vivid
-wireguard-tools
 wordnet-cli
 wordnet-tk
 wxmaxima
 yapf
 youtube-dl
-yubikey-manager
 zotero
