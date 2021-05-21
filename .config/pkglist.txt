@@ -101,6 +101,7 @@ texlive-publishers
 texlive-science
 tk
 tlp-rdw
+tmux
 ufw
 vivid
 wordnet-cli
