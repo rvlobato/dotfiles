@@ -28,7 +28,7 @@ evolution-ews
 fakeroot
 fd
 file-roller
-firefox
+firefox-developer-edition
 flake8
 flatpak
 fortran-language-server
