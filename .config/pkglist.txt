@@ -24,7 +24,6 @@ doxygen
 emacs
 epiphany
 evolution-bogofilter
-evolution-ews
 fakeroot
 fd
 file-roller
@@ -60,7 +59,6 @@ linux-firmware
 linux-lts
 linux-zen
 linux-zen-headers
-mathpix-snipping-tool
 mullvad-vpn
 neofetch
 npm
