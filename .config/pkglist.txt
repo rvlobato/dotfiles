@@ -84,6 +84,7 @@ python-statsmodels
 python-tensorflow-opt-cuda
 python-virtualenv
 reflector
+rmlint
 rust
 sagemath
 seahorse
