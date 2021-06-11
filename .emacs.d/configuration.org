@@ -189,7 +189,7 @@
 ** Bookmarks
 
 #+begin_src emacs-lisp
-(setq bookmark-default-file "~/Sync/gdrive/configs/emacs/bookmarks")
+(setq bookmark-default-file "~/Sync/configs/emacs/bookmarks")
 #+end_src
 
 * Cosmetics

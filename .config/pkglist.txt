@@ -51,6 +51,7 @@ intel-ucode
 jami-gnome
 julia
 jupyterlab
+keybase-gui
 languagetool
 libva-intel-driver
 libva-vdpau-driver
@@ -104,6 +105,7 @@ tlp-rdw
 tmux
 ufw
 vivid
+wget
 wordnet-cli
 wordnet-tk
 wxmaxima
