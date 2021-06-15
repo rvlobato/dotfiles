@@ -36,6 +36,7 @@ fzf
 gcc-fortran
 gdm
 git
+git-lfs
 gnome-control-center
 gnome-power-manager
 gnome-shell-pomodoro
@@ -105,7 +106,6 @@ tlp-rdw
 tmux
 ufw
 vivid
-wget
 wordnet-cli
 wordnet-tk
 wxmaxima
