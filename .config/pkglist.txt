@@ -35,7 +35,6 @@ fwupd
 fzf
 gcc-fortran
 gdm
-git
 git-lfs
 gnome-control-center
 gnome-power-manager
