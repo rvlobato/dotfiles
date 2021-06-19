@@ -81,6 +81,8 @@ python-pkgconfig
 python-pydocstyle
 python-pylint
 python-rope
+python-scikit-learn
+python-seaborn
 python-statsmodels
 python-tensorflow-opt-cuda
 python-virtualenv
