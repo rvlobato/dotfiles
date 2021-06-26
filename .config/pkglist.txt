@@ -112,4 +112,5 @@ wordnet-tk
 wxmaxima
 yapf
 youtube-dl
+yubikey-manager-qt
 zotero
