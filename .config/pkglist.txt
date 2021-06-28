@@ -27,7 +27,7 @@ evolution-bogofilter
 fakeroot
 fd
 file-roller
-firefox-developer-edition
+firefox
 flake8
 flatpak
 fortran-language-server
