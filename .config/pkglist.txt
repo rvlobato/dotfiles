@@ -56,6 +56,8 @@ languagetool
 libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
+linux-amd-znver2
+linux-amd-znver2-headers
 linux-firmware
 linux-lts
 linux-zen
@@ -93,6 +95,7 @@ sagemath
 seahorse
 seahorse-nautilus
 smplayer
+sqlitebrowser
 sudo
 sushi
 syncthing
