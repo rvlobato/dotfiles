@@ -860,7 +860,9 @@
 ** lsp-julia
 
 #+begin_src emacs-lisp
-(use-package lsp-julia)
+(use-package lsp-julia
+  :config
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.6"))
 #+end_src
 
 ** Python
