@@ -839,6 +839,7 @@
     :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
 	    (prog-mode . lsp)
 	    (LaTeX-mode . lsp)
+	    (julia-mode . lsp)
 	    ;; if you want which-key integration
 	    (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp)
@@ -860,7 +861,6 @@
 
 #+begin_src emacs-lisp
 (use-package lsp-julia)
-(add-hook 'ess-julia-mode-hook #'lsp-mode)
 #+end_src
 
 ** Python

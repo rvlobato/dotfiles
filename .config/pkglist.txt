@@ -48,7 +48,6 @@ gvfs-mtp
 iio-sensor-proxy
 insync
 intel-ucode
-jami-gnome
 julia
 jupyterlab
 keybase-gui
