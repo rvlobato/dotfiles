@@ -46,7 +46,6 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 iio-sensor-proxy
-insync
 intel-ucode
 julia
 jupyterlab
