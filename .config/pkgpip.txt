@@ -1,6 +1,5 @@
-jupyterlab-git
+#jupyterlab-git
 jupyterlab-drawio
-jupytext
 nbdime
 datapackage
 nbresuse

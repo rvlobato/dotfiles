@@ -76,6 +76,7 @@ posix-user-portability
 pyls-mypy
 python-astropy
 python-black
+python-jupytext
 python-pip
 python-pkgconfig
 python-pydocstyle
