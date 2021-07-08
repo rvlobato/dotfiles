@@ -49,6 +49,7 @@ iio-sensor-proxy
 intel-ucode
 julia
 jupyterlab
+jupyterlab-extension-jupyterlab_git
 keybase-gui
 languagetool
 libva-intel-driver
