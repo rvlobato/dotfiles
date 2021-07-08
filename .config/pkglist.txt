@@ -38,6 +38,7 @@ gdm
 git-lfs
 gnome-control-center
 gnome-power-manager
+gnome-screenshot
 gnome-shell-pomodoro
 gnome-software
 gnuplot
