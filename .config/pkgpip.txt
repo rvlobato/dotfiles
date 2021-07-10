@@ -1,4 +1,5 @@
 jupyterlab-drawio
+jupyterlab-spellchecker
 nbdime
 datapackage
 nbresuse
