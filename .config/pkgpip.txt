@@ -1,5 +1,7 @@
 jupyterlab-drawio
 jupyterlab-spellchecker
+jupyterlab-topbar
+aquirdturtle_collapsible_headings
 nbdime
 datapackage
 nbresuse

@@ -50,7 +50,7 @@ gvfs-mtp
 iio-sensor-proxy
 insync
 intel-ucode
-julia
+julia-bin
 jupyterlab
 jupyterlab-extension-jupyterlab_git
 languagetool
