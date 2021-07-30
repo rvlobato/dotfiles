@@ -895,6 +895,13 @@
 (use-package jupyter)
 #+end_src
 
+** R
+
+#+begin_src emacs-lisp
+(use-package ess)
+#+end_src
+
+
 ** Sage
 
 *** sage-shell-mode
