@@ -17,3 +17,11 @@ local({
 
 ## Attach hidden environment
 attach(.env, warn.conflicts = FALSE)
+
+local({
+  n <- parallel::detectCores()                                # Detect number of CPU cores
+  options(Ncpus = n)                                          # Parallel package installation in install.packages()
+  options(mc.cores =  n)                                      # Parallel apply-type functions via 'parallel' package
+})
+
+options(digits = 15)                                          # Number of digits to print. Default is 7, max is 15
