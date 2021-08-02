@@ -456,8 +456,10 @@
   :config
   (setq guess-language-langcodes
 	'((en . ("en_US" "English"))
-	  (pt . ("pt_BR" "Portuguese")))
-	guess-language-languages '(en pt)
+	  (pt . ("pt_BR" "Portuguese"))
+	  (es . ("es" "Spanish"))
+	  )
+	guess-language-languages '(en pt es)
 	guess-language-min-paragraph-length 45)
   )
    #+end_src
