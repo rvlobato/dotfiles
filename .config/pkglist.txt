@@ -24,7 +24,6 @@ doxygen
 emacs
 epiphany
 evolution-bogofilter
-evolution-ews
 fakeroot
 fd
 file-roller
@@ -48,9 +47,8 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 iio-sensor-proxy
-insync
 intel-ucode
-julia-bin
+julia
 jupyterlab
 jupyterlab-extension-jupyterlab_git
 languagetool
@@ -60,12 +58,9 @@ libvdpau-va-gl
 linux-firmware
 linux-lts
 linux-zen
-linux-zen-headers
+mullvad-vpn
 neofetch
 npm
-nvidia-dkms
-nvidia-prime
-nvidia-settings
 octave
 openmp
 pandoc-crossref
@@ -89,6 +84,7 @@ python-statsmodels
 python-virtualenv
 reflector
 rmlint
+rstudio-desktop-bin
 rust
 sagemath
 seahorse
