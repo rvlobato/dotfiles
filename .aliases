@@ -48,6 +48,7 @@ alias pipup='pip list --user --outdated --format=freeze | grep -v '^\-e' | cut -
 
 ## git
 alias gc='git commit '
+alias gsta='git status'
 alias gam='git commit --amend '
 alias gcm='git checkout master'
 alias gfu='git fetch upstream'
