@@ -1,4 +1,4 @@
-import Pkg # import the package manager
+import Pkg
 Pkg.add("DifferentialEquations");
 Pkg.add("PyPlot");
 Pkg.add("DelimitedFiles");
