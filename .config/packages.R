@@ -1,6 +1,12 @@
 install.packages("languageserver")
 library("languageserver")
 
+install.packages("rmarkdown")
+library(rmarkdown)
+
+install.packages('tinytex')
+tinytex::install_tinytex()
+
 install.packages("proxy")
 library("proxy")
 
