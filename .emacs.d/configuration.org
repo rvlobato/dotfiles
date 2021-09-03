@@ -928,6 +928,13 @@
       (lambda () (setq perl-indent-level 4)))
 #+end_src
 
+#+begin_src emacs-lisp
+(use-package poly-R)
+
+(use-package poly-markdown)
+
+(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown-mode))
+#+end_src
 
 ** Sage
 
