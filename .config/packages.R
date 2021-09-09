@@ -147,3 +147,27 @@ library(ramify)
 
 install.packages("rpart")
 library(rpart)
+
+install.packages("factoextra")
+library(factoextra)
+
+install.packages("NbClust")
+library(NbClust)
+
+install.packages("fpc")
+library(fpc)
+
+install.packages("gridExtra")
+library(gridExtra)
+
+install.packages("dbscan")
+library(dbscan)
+
+install.packages("ppclust")
+library(ppclust)
+
+install.packages("fclust")
+library(fclust)
+
+install.packages("apcluster")
+library(apcluster)
