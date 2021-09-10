@@ -4,9 +4,6 @@ library("languageserver")
 install.packages("rmarkdown")
 library(rmarkdown)
 
-install.packages('tinytex')
-tinytex::install_tinytex()
-
 install.packages("arulesCBA")
 library(arulesCBA)
 
