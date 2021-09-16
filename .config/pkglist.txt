@@ -63,7 +63,6 @@ linux-firmware
 linux-lts
 linux-zen
 linux-zen-headers
-mullvad-vpn
 neofetch
 npm
 nvidia-dkms
