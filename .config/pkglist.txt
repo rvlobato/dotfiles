@@ -24,6 +24,7 @@ doxygen
 emacs
 epiphany
 evolution-bogofilter
+evolution-ews
 fakeroot
 fd
 file-roller
@@ -51,7 +52,6 @@ insync
 intel-ucode
 julia-bin
 jupyterlab
-jupyterlab-extension-jupyterlab_git
 keybase-gui
 languagetool
 libva-intel-driver

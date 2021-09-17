@@ -10,4 +10,5 @@ octave_kernel
 findiff
 rise
 plotly
+jupyterlab-git
 #einsteinpy
