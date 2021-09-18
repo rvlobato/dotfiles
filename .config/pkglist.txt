@@ -81,13 +81,14 @@ python-jupytext
 python-lsp-black
 python-lsp-mypy
 python-nltk
+python-openml
 python-pip
 python-pkgconfig
 python-pylint
 python-pyls-flake8
 python-pyls-isort
+python-pytorch-opt-cuda
 python-rope
-python-scikit-learn
 python-seaborn
 python-statsmodels
 python-tensorflow-opt-cuda
