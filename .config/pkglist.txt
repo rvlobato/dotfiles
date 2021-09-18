@@ -29,7 +29,6 @@ fakeroot
 fd
 file-roller
 firefox
-flake8
 flatpak
 fortran-language-server
 fwupd
@@ -75,14 +74,16 @@ pkgconf
 posix-c-development
 posix-software-development
 posix-user-portability
-pyls-mypy
+protonvpn
 python-astropy
-python-black
+python-flake8-docstrings
 python-jupytext
+python-lsp-black
+python-lsp-mypy
 python-pip
 python-pkgconfig
-python-pydocstyle
 python-pylint
+python-pyls-isort
 python-rope
 python-scikit-learn
 python-seaborn
