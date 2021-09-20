@@ -59,7 +59,6 @@ libvdpau-va-gl
 linux-amd-znver2
 linux-amd-znver2-headers
 linux-firmware
-linux-lts
 linux-zen
 linux-zen-headers
 neofetch
