@@ -518,6 +518,12 @@
    (global-set-key "\C-ct" 'google-translate-at-point))
 #+END_SRC
 
+** speed-type
+
+      #+begin_src emacs-lisp
+(use-package speed-type)
+      #+end_src
+
 * Frameworks & libraries
 ** Async
 
