@@ -372,7 +372,7 @@
 (use-package company-suggest)
 (setq company-suggest-complete-sentence t)
 (add-to-list 'company-backends 'company-suggest-google)
-;;(add-to-list 'company-backends 'company-suggest-wiktionary)
+(add-to-list 'company-backends 'company-suggest-wiktionary)
 #+end_src
 
 **** Company-web
@@ -461,7 +461,7 @@
 	  (es . ("es" "Spanish"))
 	  )
 	guess-language-languages '(en pt es)
-	guess-language-min-paragraph-length 45)
+	guess-language-min-paragraph-length 30)
   )
    #+end_src
 
