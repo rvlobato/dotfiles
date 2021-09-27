@@ -317,11 +317,11 @@
 (use-package company
   :config
   (global-company-mode 1)
-  (setq ;; Only 2 letters required for completion to activate.
-   company-minimum-prefix-length 2
+  (setq ;; Only 3 letters required for completion to activate.
+   company-minimum-prefix-length 3
    ;; Search other buffers for compleition candidates
-   company-dabbrev-other-buffers t
-   company-dabbrev-code-other-buffers t
+   ;; company-dabbrev-other-buffers t
+   ;; company-dabbrev-code-other-buffers t
    ;; Show candidates according to importance, then case, then in-buffer frequency
    company-transformers '(company-sort-by-backend-importance
 			  company-sort-prefer-same-case-prefix
@@ -338,7 +338,7 @@
    ;; Edge of the completion list cycles around.
    company-selection-wrap-around t
    ;; Do not downcase completions by default.
-   company-dabbrev-downcase nil
+   company-dabbrev-downcase 0 ; nil
    ;; Even if I write something with the ‘wrong’ case,
    ;; provide the ‘correct’ casing.
    company-dabbrev-ignore-case nil
@@ -362,8 +362,8 @@
 #+BEGIN_SRC emacs-lisp
 (use-package company-quickhelp
   :config
-  (setq company-quickhelp-delay 0.1)
-  (company-quickhelp-mode))
+  (setq company-quickhelp-delay 1))
+  (company-quickhelp-mode)
 #+END_SRC
 
 **** company-suggest
@@ -372,7 +372,7 @@
 (use-package company-suggest)
 (setq company-suggest-complete-sentence t)
 (add-to-list 'company-backends 'company-suggest-google)
-(add-to-list 'company-backends 'company-suggest-wiktionary)
+; (add-to-list 'company-backends 'company-suggest-wiktionary)
 #+end_src
 
 **** Company-web
@@ -461,7 +461,7 @@
 	  (es . ("es" "Spanish"))
 	  )
 	guess-language-languages '(en pt es)
-	guess-language-min-paragraph-length 30)
+	guess-language-min-paragraph-length 20)
   )
    #+end_src
 
