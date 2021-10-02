@@ -3,4 +3,3 @@ jupyterlab-system-monitor
 jupyterlab-topbar-text
 jupyterlab-theme-toggle
 nbdime-jupyterlab
-@krassowski/jupyterlab_go_to_definition
