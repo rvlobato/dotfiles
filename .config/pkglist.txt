@@ -47,11 +47,9 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 iio-sensor-proxy
-insync
 intel-ucode
 julia-bin
 jupyterlab
-keybase-gui
 languagetool
 libva-intel-driver
 libva-vdpau-driver
@@ -99,7 +97,6 @@ rust
 sagemath
 seahorse
 seahorse-nautilus
-signal-desktop
 smplayer
 sqlitebrowser
 sudo
