@@ -46,7 +46,6 @@ go
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-intel-ucode
 julia-bin
 jupyterlab
 languagetool
