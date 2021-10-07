@@ -22,7 +22,6 @@ conky
 cvs
 doxygen
 emacs
-epiphany
 evolution-bogofilter
 evolution-ews
 fakeroot
@@ -57,7 +56,6 @@ linux-amd-znver2-headers
 linux-firmware
 linux-zen
 linux-zen-headers
-mullvad-vpn
 neofetch
 npm
 nvidia-dkms
@@ -113,6 +111,7 @@ tlp-rdw
 tmux
 ufw
 vivid
+wireguard-tools
 wordnet-cli
 wordnet-tk
 wxmaxima
