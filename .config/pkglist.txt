@@ -48,7 +48,6 @@ gvfs-mtp
 julia-bin
 jupyterlab
 languagetool
-libva-intel-driver
 libva-vdpau-driver
 libvdpau-va-gl
 linux-amd-znver2
@@ -56,6 +55,7 @@ linux-amd-znver2-headers
 linux-firmware
 linux-zen
 linux-zen-headers
+mullvad-vpn
 neofetch
 npm
 nvidia-dkms
@@ -97,7 +97,6 @@ seahorse-nautilus
 smplayer
 sqlitebrowser
 sudo
-sushi
 syncthing
 texlab
 texlive-bibtexextra
@@ -118,4 +117,3 @@ wxmaxima
 yapf
 youtube-dl
 yubikey-manager-qt
-zotero
