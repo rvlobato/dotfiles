@@ -37,7 +37,7 @@ alias aurr='repo-remove -s $HOME/Sync/pkgs/aur/aur.db.tar'
 alias aurrebuild='aur sync -S --rebuild'
 
 #up: jupyter, npm, pip, R and Julia
-alias jupin='jupyter labextension install $(cat $HOME/.config/labext.txt)'
+alias jupin='jupyter labextension install $(cat $HOME/.config/pkgjup.txt)'
 alias jupup='jupyter labextension update --all'
 
 alias npmin='npm i -g $(cat $HOME/.config/pkgnpm.txt)'

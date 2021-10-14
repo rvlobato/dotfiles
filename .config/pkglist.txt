@@ -26,7 +26,7 @@ evolution-bogofilter
 evolution-ews
 fakeroot
 fd
-firefox
+file-roller
 flatpak
 fortran-language-server
 fwupd
@@ -109,7 +109,6 @@ tlp-rdw
 tmux
 ufw
 vivid
-wireguard-tools
 wordnet-cli
 wordnet-tk
 wxmaxima

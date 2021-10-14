@@ -6,7 +6,6 @@ gnuplot_kernel
 holoviews
 hvplot
 jupyterlab-drawio
-jupyterlab-git
 jupyterlab-topbar
 jupyterlab-spellchecker
 nbdime
