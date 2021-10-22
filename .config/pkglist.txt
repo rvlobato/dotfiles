@@ -91,9 +91,7 @@ rmlint
 rstudio-desktop-bin
 rust
 sagemath
-seahorse
 seahorse-nautilus
-smplayer
 sqlitebrowser
 sudo
 syncthing
