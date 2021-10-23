@@ -12,6 +12,9 @@ alias myip='curl ipinfo.io/ip'
 alias day='gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita''
 alias night='gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark''
 
+#emacs
+alias emacs='emacsclient -nw'
+
 ## colors
 alias ls="ls --color -F"
 alias ll="ls --color -lh"

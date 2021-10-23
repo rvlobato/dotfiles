@@ -8,6 +8,7 @@ hvplot
 jupyterlab-drawio
 jupyterlab-topbar
 jupyterlab-spellchecker
+mrjob
 nbdime
 nbresuse
 octave_kernel
