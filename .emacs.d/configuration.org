@@ -715,6 +715,16 @@
 (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t)
 #+end_src
 
+** PKGBUILD mode
+
+#+begin_src emacs-lisp
+(use-package pkgbuild-mode)
+
+(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
+(setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode))
+			      auto-mode-alist))
+#+end_src
+
 * Programming languages
 ** Adds spacing around operators
 
@@ -850,6 +860,7 @@
 	    (LaTeX-mode . lsp)
 	    (julia-mode . lsp)
 	    (ess-mode . lsp)
+	    (pkgbuild-mode . lsp nil)
 	    ;; if you want which-key integration
 	    (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp)
