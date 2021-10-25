@@ -54,12 +54,10 @@ linux-amd-znver2-headers
 linux-firmware
 linux-zen
 linux-zen-headers
-mullvad-vpn
 neofetch
 npm
 nvidia-dkms
 nvidia-settings
-octave
 pandoc-crossref
 pgplot
 pkgconf
@@ -75,7 +73,7 @@ python-lsp-black
 python-lsp-mypy
 python-nltk
 python-openml
-python-pip
+python-pipenv
 python-pkgconfig
 python-pylint
 python-pyls-flake8
@@ -85,7 +83,6 @@ python-rope
 python-seaborn
 python-statsmodels
 python-tensorflow-opt-cuda
-python-virtualenv
 reflector
 rmlint
 rstudio-desktop-bin
