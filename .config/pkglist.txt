@@ -58,6 +58,7 @@ neofetch
 npm
 nvidia-dkms
 nvidia-settings
+octave
 pandoc-crossref
 pgplot
 pkgconf
@@ -107,6 +108,7 @@ vivid
 wordnet-cli
 wordnet-tk
 wxmaxima
+xeus-cling
 yapf
 youtube-dl
 yubikey-manager-qt
