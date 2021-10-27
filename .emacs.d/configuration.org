@@ -860,7 +860,6 @@
 	    (LaTeX-mode . lsp)
 	    (julia-mode . lsp)
 	    (ess-mode . lsp)
-	    (pkgbuild-mode . lsp nil)
 	    ;; if you want which-key integration
 	    (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp)

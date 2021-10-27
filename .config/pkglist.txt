@@ -19,6 +19,7 @@ ccache
 ccls
 cmake
 conky
+cppzmq
 cvs
 doxygen
 emacs
@@ -54,6 +55,8 @@ linux-amd-znver2-headers
 linux-firmware
 linux-zen
 linux-zen-headers
+llvm11
+mullvad-vpn
 neofetch
 npm
 nvidia-dkms
@@ -110,5 +113,5 @@ wordnet-tk
 wxmaxima
 xeus-cling
 yapf
-youtube-dl
+yt-dlp
 yubikey-manager-qt
