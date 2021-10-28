@@ -1,6 +1,5 @@
 alacritty
 amd-ucode
-android-tools
 aspell-de
 aspell-en
 aspell-es
@@ -60,7 +59,6 @@ mullvad-vpn
 neofetch
 npm
 nvidia-dkms
-nvidia-settings
 octave
 pandoc-crossref
 pgplot
