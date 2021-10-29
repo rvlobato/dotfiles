@@ -17,7 +17,6 @@ cadabra2
 ccache
 ccls
 cmake
-conky
 cppzmq
 cvs
 doxygen
@@ -26,7 +25,6 @@ evolution-bogofilter
 evolution-ews
 fakeroot
 fd
-file-roller
 flatpak
 fortran-language-server
 fwupd
