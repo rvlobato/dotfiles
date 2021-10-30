@@ -13,6 +13,7 @@ base
 bash-completion
 bash-language-server
 biber
+btop
 cadabra2
 ccache
 ccls
@@ -37,6 +38,7 @@ gnome-power-manager
 gnome-screenshot
 gnome-shell-pomodoro
 gnome-software
+gnu-free-fonts
 gnuplot
 go
 gvfs-google
