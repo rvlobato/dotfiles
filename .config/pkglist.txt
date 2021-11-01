@@ -24,6 +24,7 @@ doxygen
 emacs
 evolution-bogofilter
 evolution-ews
+exercism
 fakeroot
 fd
 flatpak
