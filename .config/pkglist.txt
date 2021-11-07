@@ -67,7 +67,6 @@ pkgconf
 posix-c-development
 posix-software-development
 posix-user-portability
-protonvpn
 python-astropy
 python-bokeh
 python-flake8-docstrings
@@ -81,7 +80,7 @@ python-pkgconfig
 python-pylint
 python-pyls-flake8
 python-pyls-isort
-python-pytorch-opt-cuda
+python-pytorch-cuda
 python-rope
 python-seaborn
 python-statsmodels
