@@ -36,7 +36,6 @@ gdm
 git-lfs
 gnome-control-center
 gnome-power-manager
-gnome-screenshot
 gnome-shell-pomodoro
 gnome-software
 gnu-free-fonts
@@ -56,7 +55,6 @@ linux-firmware
 linux-zen
 linux-zen-headers
 llvm11
-mullvad-vpn
 neofetch
 npm
 nvidia-dkms
@@ -67,6 +65,7 @@ pkgconf
 posix-c-development
 posix-software-development
 posix-user-portability
+protonvpn
 python-astropy
 python-bokeh
 python-flake8-docstrings
@@ -113,3 +112,4 @@ xeus-cling
 yapf
 yt-dlp
 yubikey-manager-qt
+zotero
