@@ -86,7 +86,6 @@ python-statsmodels
 python-tensorflow-opt-cuda
 reflector
 rmlint
-rstudio-desktop-bin
 rust
 sagemath
 seahorse-nautilus
