@@ -6,6 +6,8 @@ gnuplot_kernel
 holoviews
 hvplot
 jupyterlab-drawio
+jupyterlab-git
+jupyterlab-lsp
 jupyterlab-topbar
 jupyterlab-spellchecker
 mrjob
@@ -13,5 +15,6 @@ nbdime
 nbresuse
 octave_kernel
 plotly
+pip-autoremove
 rise
 #einsteinpy
