@@ -1,5 +1,3 @@
-jupyterlab-topbar-extension
-jupyterlab-system-monitor
 jupyterlab-topbar-text
 jupyterlab-theme-toggle
 nbdime-jupyterlab

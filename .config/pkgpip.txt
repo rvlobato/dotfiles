@@ -4,15 +4,15 @@ findiff
 gnuplot_kernel
 holoviews
 hvplot
+jupyter-resource-usage
 jupyterlab-drawio
 jupyterlab-lsp
+jupyterlab-system-monitor
 jupyterlab-topbar
 jupyterlab-spellchecker
 mrjob
 nbdime
-nbresuse
 octave_kernel
 plotly
-pip-autoremove
 rise
 #einsteinpy
