@@ -20,6 +20,7 @@ ccls
 cmake
 cppzmq
 cvs
+cython
 doxygen
 emacs
 epiphany
@@ -56,6 +57,7 @@ linux-firmware
 linux-zen
 linux-zen-headers
 llvm11
+mullvad-vpn
 neofetch
 npm
 nvidia-dkms
@@ -66,7 +68,6 @@ pkgconf
 posix-c-development
 posix-software-development
 posix-user-portability
-protonvpn
 python-astropy
 python-bokeh
 python-flake8-docstrings
