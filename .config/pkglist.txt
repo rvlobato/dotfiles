@@ -28,6 +28,7 @@ evolution-ews
 exercism
 fakeroot
 fd
+file-roller
 flatpak
 fortran-language-server
 fwupd
@@ -58,6 +59,7 @@ linux-zen-headers
 llvm11
 mullvad-vpn
 neofetch
+noto-fonts-extra
 npm
 nvidia-dkms
 octave
@@ -94,6 +96,7 @@ seahorse-nautilus
 sqlitebrowser
 sudo
 syncthing
+tex-gyre-fonts
 texlab
 texlive-bibtexextra
 texlive-fontsextra
