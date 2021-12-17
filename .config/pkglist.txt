@@ -58,6 +58,8 @@ linux-clear-headers
 linux-firmware
 mullvad-vpn
 neofetch
+noto-fonts-cjk
+noto-fonts-emoji
 noto-fonts-extra
 npm
 nvidia-dkms
@@ -106,6 +108,7 @@ texlive-science
 tk
 tlp-rdw
 tmux
+ttf-croscore
 ufw
 vivid
 wordnet-cli
