@@ -1112,6 +1112,8 @@ gnus-cache-directory "~/Sync/gnus/cache")
 
 ;; Show images after evaluating code blocks
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+;; Size images
+(setq org-image-actual-width 500)
 
 ;; shift selection
 (setq org-support-shift-select t)
