@@ -23,6 +23,7 @@ cvs
 cython
 doxygen
 emacs
+epiphany
 evolution-bogofilter
 evolution-ews
 exercism
