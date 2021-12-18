@@ -59,8 +59,6 @@ linux-zen-headers
 llvm11
 mullvad-vpn
 neofetch
-noto-fonts-emoji
-noto-fonts-extra
 npm
 nvidia-dkms
 octave
