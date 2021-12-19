@@ -97,7 +97,6 @@ sqlitebrowser
 sudo
 syncthing
 system76-dkms
-system76-power
 texlab
 texlive-bibtexextra
 texlive-fontsextra
