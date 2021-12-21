@@ -13,6 +13,4 @@ jupyterlab-spellchecker
 mrjob
 nbdime
 octave_kernel
-plotly
 rise
-#einsteinpy
