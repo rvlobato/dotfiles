@@ -10,7 +10,6 @@
 
 ;; Internet repositories for new packages.
 (setq package-archives '(("org"       . "http://orgmode.org/elpa/")
-			 ("gnu"       . "http://elpa.gnu.org/packages/")
 			 ("melpa"     . "http://melpa.org/packages/")))
 
 ;; Activate all the packages (in particular autoloads)
