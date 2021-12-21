@@ -12,6 +12,7 @@
 (setq package-archives '(("melpa"     . "https://melpa.org/packages/")
 			 ("gnu" . "https://elpa.gnu.org/packages/")
 			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+			 ("org" . "http://orgmode.org/elpa/")
 			 ))
 
 ;; Activate all the packages (in particular autoloads)

@@ -806,9 +806,11 @@
 ** Flycheck
 
 #+BEGIN_SRC emacs-lisp
-(use-package flycheck
-:init (global-flycheck-mode)
-:custom (flycheck-display-errors-delay .3))
+  (use-package flycheck
+    :init (global-flycheck-mode)
+    :custom (flycheck-display-errors-delay .3))
+  ; (flycheck-add-mode 'proselint 'latex-mode)
+  ; (flycheck-add-next-checker 'lsp 'proselint)
 #+END_SRC
 
 ** GO
@@ -851,19 +853,23 @@
 ** lsp-mode
 
 #+BEGIN_SRC emacs-lisp
-;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-(setq lsp-keymap-prefix "s-l")
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "s-l")
 
-(use-package lsp-mode
+  (use-package lsp-mode
     :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-	    (prog-mode . lsp)
-	    (LaTeX-mode . lsp)
-	    (julia-mode . lsp)
-	    (ess-mode . lsp)
-	    ;; if you want which-key integration
-	    (lsp-mode . lsp-enable-which-key-integration))
+	   ((prog-mode latex-mode julia-mode org-mode ess-mode) . lsp)
+	   ;; if you want which-key integration
+	   (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp)
 #+END_SRC
+
+#+begin_src emacs-lisp
+  (use-package lsp-ltex
+  :hook ((latex-mode text-mode) . (lambda ()
+		       (require 'lsp-ltex)
+		       (lsp))))  ; or lsp-deferred
+#+end_src
 
 ** lsp-ui
 
@@ -882,7 +888,7 @@
 #+begin_src emacs-lisp
 (use-package lsp-julia
   :config
-  (setq lsp-julia-default-environment "~/.julia/environments/v1.6"))
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.7"))
 #+end_src
 
 ** Python

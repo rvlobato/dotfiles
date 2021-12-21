@@ -69,6 +69,7 @@ pkgconf
 posix-c-development
 posix-software-development
 posix-user-portability
+proselint
 python-bokeh
 python-einsteinpy
 python-flake8-docstrings
