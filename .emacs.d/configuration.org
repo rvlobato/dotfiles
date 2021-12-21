@@ -452,7 +452,7 @@
 
    #+begin_src emacs-lisp
 (use-package guess-language
-  :hook ((text-mode TeX-mode) . guess-language-mode)
+  :hook ((text-mode TeX-mode web-mode) . guess-language-mode)
 
   :config
   (setq guess-language-langcodes
