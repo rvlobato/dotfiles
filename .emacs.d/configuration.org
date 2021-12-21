@@ -137,10 +137,10 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(display-time-mode t) ;; Display of time
-(tool-bar-mode   -1)  ;; No large icons
-(scroll-bar-mode -1)  ;; No visual indicator
-(menu-bar-mode   -1)  ;; No menu bar
+  (display-time-mode t) ;; Display of time
+  (tool-bar-mode   -1)  ;; No large icons
+  (scroll-bar-mode -1)  ;; No visual indicator
+  (menu-bar-mode   -1)  ;; No menu bar
 #+END_SRC
 
 ** Moving text around
