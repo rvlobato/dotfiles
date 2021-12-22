@@ -806,14 +806,14 @@
 ** Flycheck
 
 #+BEGIN_SRC emacs-lisp
-      (use-package flycheck
-	:init (global-flycheck-mode)
-	:custom (flycheck-display-errors-delay .3))
-  ; evaluate diagnostics before "lsp is not a valid syntax check
-  (require 'lsp-diagnostics)
-  (lsp-diagnostics-flycheck-enable)
-  (flycheck-add-mode 'proselint 'latex-mode)
-  (flycheck-add-next-checker 'lsp 'proselint)
+(use-package flycheck
+  :init (global-flycheck-mode)
+  :custom (flycheck-display-errors-delay .3))
+					; evaluate diagnostics before "lsp is not a valid syntax check
+(require 'lsp-diagnostics)
+(lsp-diagnostics-flycheck-enable)
+(flycheck-add-mode 'proselint 'latex-mode)
+(flycheck-add-next-checker 'lsp 'proselint)
 #+END_SRC
 
 ** GO
@@ -861,7 +861,7 @@
 
   (use-package lsp-mode
     :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-	   ((prog-mode latex-mode julia-mode org-mode ess-mode) . lsp)
+	   ((prog-mode julia-mode org-mode ess-mode) . lsp)
 	   ;; if you want which-key integration
 	   (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp)
