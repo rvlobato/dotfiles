@@ -25,6 +25,10 @@
 (setq org-agenda-skip-deadline-if-done  t)
 (setq org-agenda-start-on-weekday nil)
 (global-set-key (kbd "C-c a") 'org-agenda)
+
+(setq calendar-location-name "Dallas, TX")
+(setq calendar-latitude 32.85)
+(setq calendar-longitude -96.85)
 #+END_SRC
 
 *** Super-agenda
@@ -213,7 +217,13 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package gruvbox-theme)
-(load-theme 'gruvbox-dark-hard t)
+
+(use-package theme-changer
+  :config
+  ;; setq the location here.
+  (change-theme 'gruvbox-dark-soft 'gruvbox-dark-hard))
+
+; (load-theme 'gruvbox-dark-hard t)
 (set-face-background 'mode-line "black")
 #+End_SRC
 
@@ -294,10 +304,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (setq user-full-name "Ronaldo V. Lobato"
-      user-mail-address "vieira.lobato@gmail.com"
-      calendar-latitude 33.2471
-      calendar-longitude 95.9000
-      calendar-location-name "Commerce, Texas")
+      user-mail-address "vieira.lobato@gmail.com")
 #+END_SRC
 
 * Spelling
