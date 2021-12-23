@@ -809,7 +809,7 @@
       (use-package flycheck
 	:init (global-flycheck-mode)
 	:custom (flycheck-display-errors-delay .3))
-  ; evaluate diagnostics before "lsp is not a valid syntax check
+					; evaluate diagnostics before "lsp is not a valid syntax check
   (require 'lsp-diagnostics)
   (lsp-diagnostics-flycheck-enable)
   (flycheck-add-mode 'proselint 'latex-mode)
