@@ -3,7 +3,7 @@
 #+EMAIL: vieira.lobato@gmail.com
 #+OPTIONS: toc:nil num:nil
 
-* Agenda & todo
+* Agenda & to-do
 ** Agenda
 
 #+BEGIN_SRC emacs-lisp
@@ -217,12 +217,11 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package gruvbox-theme)
-(set-face-background 'mode-line "black")
 
 (use-package theme-changer
   :config
-  ;; setq the location here.
-  (change-theme 'gruvbox-dark-soft 'gruvbox-dark-hard))
+  (change-theme 'gruvbox-dark-soft 'gruvbox-dark-hard)
+  (set-face-background 'mode-line "black"))
 #+End_SRC
 
 ** Flashing when something goes wrong
