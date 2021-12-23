@@ -12,6 +12,7 @@ Pkg.add("Distributions")
 Pkg.add("Flux")
 Pkg.add("Gadfly")
 Pkg.add("GLMakie") #High level plotting on the GPU.
+Pkg.add("IJulia")
 Pkg.add("Knet")
 Pkg.add("LanguageServer")
 Pkg.add("LaTeXStrings")
@@ -21,6 +22,7 @@ Pkg.add("NTFk") #Nonnegative Tensor Factorization using k-means clustering and p
 Pkg.add("NTNk") #Unsupervised Machine Learning: Nonnegative Tensor Networks + k-means clustering
 Pkg.add("ObjectDetector")
 Pkg.add("Plots")
+Pkg.add("Pluto")
 Pkg.add("PyCall")
 Pkg.add("PyPlot")
 Pkg.add("RCall")
