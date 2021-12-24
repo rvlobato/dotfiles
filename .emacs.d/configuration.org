@@ -220,6 +220,7 @@
 
 (use-package theme-changer
   :config
+
   (change-theme 'dichromacy 'gruvbox-dark-hard)
   ;(set-face-background 'mode-line "black")
   )
