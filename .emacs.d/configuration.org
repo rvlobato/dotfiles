@@ -141,7 +141,6 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-  (display-time-mode t) ;; Display of time
   (tool-bar-mode   -1)  ;; No large icons
   (scroll-bar-mode -1)  ;; No visual indicator
   (menu-bar-mode   -1)  ;; No menu bar
@@ -205,14 +204,6 @@
       initial-scratch-message nil)
 #+END_SRC
 
-** Mods in the modeline
-
-#+BEGIN_SRC emacs-lisp
-(use-package mood-line
-  :config
-  (mood-line-mode t))
-#+END_SRC
-
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
@@ -225,6 +216,14 @@
   ;(set-face-background 'mode-line "black")
   )
 #+End_SRC
+
+** Mods in the modeline
+
+#+BEGIN_SRC emacs-lisp
+(use-package mood-line
+  :config
+  (mood-line-mode t))
+#+END_SRC
 
 ** Flashing when something goes wrong
 
@@ -875,7 +874,7 @@
 
 #+begin_src emacs-lisp
   (use-package lsp-ltex
-  :hook ((latex-mode text-mode) . (lambda ()
+  :hook ((latex-mode text-mode org-mode) . (lambda ()
 		       (require 'lsp-ltex)
 		       (lsp))))  ; or lsp-deferred
 #+end_src
@@ -914,14 +913,6 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package rustic)
-#+END_SRC
-
-** Which function are we writing?
-; In the modeline, show the name of the function we’re currently writing.
-
-#+BEGIN_SRC emacs-lisp
-(add-hook 'prog-mode-hook #'which-function-mode)
-(add-hook 'org-mode-hook  #'which-function-mode)
 #+END_SRC
 
 ** Jupyter
