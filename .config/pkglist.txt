@@ -49,6 +49,7 @@ gvfs-mtp
 iio-sensor-proxy-git
 intel-media-driver
 intel-ucode
+jami-qt
 julia-bin
 jupyterlab
 languagetool
