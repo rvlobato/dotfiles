@@ -141,9 +141,10 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-  (tool-bar-mode   -1)  ;; No large icons
-  (scroll-bar-mode -1)  ;; No visual indicator
-  (menu-bar-mode   -1)  ;; No menu bar
+(display-time-mode t) ;; Display of time
+(tool-bar-mode   -1)  ;; No large icons
+(scroll-bar-mode -1)  ;; No visual indicator
+(menu-bar-mode   -1)  ;; No menu bar
 #+END_SRC
 
 ** Moving text around
@@ -1130,6 +1131,9 @@ gnus-cache-directory "~/Sync/gnus/cache")
 ;; set my postamble
 (setq org-html-postamble
       "Created by: %a on %d. Last Updated: %C")
+
+; In the modeline, show the name of the function we’re currently working
+(add-hook 'org-mode-hook 'which-function-mode)
 #+END_SRC
 
 *** Some initial languages to support
