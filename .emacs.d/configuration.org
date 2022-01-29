@@ -1,4 +1,4 @@
-#+TITLE: Emacs Configuration
+#+TITLE: Emacs Configuradona
 #+AUTHOR: Ronaldo V. Lobato
 #+EMAIL: vieira.lobato@gmail.com
 #+OPTIONS: toc:nil num:nil
