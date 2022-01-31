@@ -40,7 +40,6 @@ git-lfs
 gnome-control-center
 gnome-shell-pomodoro
 gnome-software
-gnome-themes-extra
 gnuplot
 go
 gvfs-google
@@ -70,7 +69,6 @@ posix-user-portability
 proselint
 python-bokeh
 python-einsteinpy
-python-flake8-docstrings
 python-jupytext
 python-lsp-black
 python-lsp-mypy
@@ -79,6 +77,7 @@ python-openml
 python-orange
 python-pipenv
 python-pkgconfig
+python-pydocstyle
 python-pylint
 python-pyls-flake8
 python-pyls-isort
