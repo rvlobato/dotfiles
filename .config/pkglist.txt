@@ -46,6 +46,7 @@ fractal
 fragments
 fwupd
 fzf
+gcc-fortran
 gdm
 geary
 geogebra
@@ -73,6 +74,7 @@ inkscape
 julia-bin
 jupyterlab
 languagetool
+lfortran
 libreoffice-fresh
 libva-vdpau-driver
 libvdpau-va-gl
