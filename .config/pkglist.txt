@@ -16,6 +16,7 @@ base
 bash-completion
 bash-language-server
 biber
+bitwarden
 btop
 cadabra2
 calibre
