@@ -75,6 +75,7 @@ inkscape
 jami-qt
 julia-bin
 jupyterlab
+keepassxc
 languagetool
 lfortran
 libreoffice-fresh
