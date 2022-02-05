@@ -88,6 +88,7 @@ linux-zen-headers
 mpv
 mullvad-vpn
 neofetch
+networkmanager
 npm
 nvidia-dkms
 obs-studio
@@ -100,6 +101,7 @@ pkgconf
 posix-c-development
 posix-software-development
 posix-user-portability
+power-profiles-daemon
 proselint
 python-bokeh
 python-einsteinpy
@@ -139,7 +141,6 @@ texlive-pictures
 texlive-publishers
 texlive-science
 tk
-tlp-rdw
 tmux
 ufw
 vivid
