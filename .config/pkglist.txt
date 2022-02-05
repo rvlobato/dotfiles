@@ -47,7 +47,6 @@ fractal
 fragments
 fwupd
 fzf
-gcc-fortran
 gdm
 geary
 geogebra
@@ -94,7 +93,9 @@ nvidia-dkms
 obs-studio
 octave
 pandoc-crossref
+pbzip2
 pgplot
+pigz
 pkgconf
 posix-c-development
 posix-software-development
