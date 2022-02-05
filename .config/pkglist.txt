@@ -30,6 +30,7 @@ cvs
 cython
 devhelp
 doxygen
+element-desktop
 emacs
 eog
 epiphany
@@ -71,6 +72,7 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 inkscape
+jami-qt
 julia-bin
 jupyterlab
 languagetool
