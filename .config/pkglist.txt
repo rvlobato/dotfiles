@@ -16,7 +16,6 @@ base
 bash-completion
 bash-language-server
 biber
-bitwarden
 btop
 cadabra2
 calibre
@@ -49,7 +48,6 @@ fwupd
 fzf
 gdm
 geary
-geogebra
 gimp
 git-lfs
 gitg
