@@ -69,7 +69,6 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 inkscape
-jami-qt
 julia-bin
 jupyterlab
 keepassxc
@@ -83,7 +82,6 @@ linux-amd-znver2-headers
 linux-firmware
 linux-zen
 linux-zen-headers
-mpv
 mullvad-vpn
 neofetch
 networkmanager
@@ -127,6 +125,7 @@ sagemath
 seahorse
 seahorse-nautilus
 signal-desktop
+smplayer
 sqlitebrowser
 sudo
 syncthing
