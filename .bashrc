@@ -15,8 +15,9 @@ shopt -s no_empty_cmd_completion
 HISTSIZE=5000000
 SAVEHIST=5000000
 
-##Disable duplicate command
+##Disable duplicate command, add new and read lines from history
 export HISTCONTROL=ignoredups:erasedups
+export PROMPT_COMMAND="history -a; history -n"
 
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
