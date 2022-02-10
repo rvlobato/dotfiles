@@ -46,6 +46,8 @@ fractal
 fragments
 fwupd
 fzf
+gcc-fortran
+gcc-go
 gdm
 geary
 gimp
@@ -65,7 +67,6 @@ gnome-themes-extra
 gnome-todo
 gnome-weather
 gnuplot
-go
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
