@@ -16,6 +16,7 @@ base
 bash-completion
 bash-language-server
 biber
+bitwarden
 btop
 cadabra2
 calibre
@@ -28,9 +29,11 @@ cmake
 cppzmq
 cvs
 cython
+deltachat-desktop
 devhelp
 doxygen
 emacs
+engauge
 eog
 epiphany
 evolution-bogofilter
@@ -50,9 +53,11 @@ gcc-fortran
 gcc-go
 gdm
 geary
+geogebra
 gimp
 git-lfs
 gitg
+gnome-builder
 gnome-calendar
 gnome-characters
 gnome-chess
@@ -72,6 +77,7 @@ gvfs-gphoto2
 gvfs-mtp
 inkscape
 julia-bin
+junction
 jupyterlab
 keepassxc
 languagetool
@@ -122,12 +128,13 @@ python-statsmodels
 python-tensorflow-opt-cuda
 reflector
 rmlint
-rust
+rustup
 sagemath
 seahorse
 seahorse-nautilus
 signal-desktop
 smplayer
+snes9x-gtk
 sqlitebrowser
 sudo
 syncthing
@@ -141,8 +148,10 @@ texlive-publishers
 texlive-science
 tk
 tmux
+tootle
 ufw
 vivid
+wike
 wordnet-cli
 wordnet-tk
 wxmaxima
