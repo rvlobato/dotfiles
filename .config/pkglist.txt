@@ -73,6 +73,7 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 inkscape
+jami-qt
 julia-bin
 junction
 jupyterlab
