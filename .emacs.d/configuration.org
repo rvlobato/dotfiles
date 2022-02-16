@@ -209,6 +209,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package gruvbox-theme)
+(use-package color-theme-sanityinc-tomorrow)
 
 (use-package theme-changer
   :config
