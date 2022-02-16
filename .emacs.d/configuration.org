@@ -1,4 +1,4 @@
-#+TITLE: Emacs Configuradona
+#+TITLE: Emacs Configurations
 #+AUTHOR: Ronaldo V. Lobato
 #+EMAIL: vieira.lobato@gmail.com
 #+OPTIONS: toc:nil num:nil
@@ -213,7 +213,7 @@
 (use-package theme-changer
   :config
 
-  (change-theme 'dichromacy 'gruvbox-dark-hard)
+  (change-theme 'sanityinc-tomorrow-day 'gruvbox-dark-hard)
   ;(set-face-background 'mode-line "black")
   )
 #+End_SRC

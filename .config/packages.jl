@@ -18,8 +18,8 @@ Pkg.add("LanguageServer")
 Pkg.add("LaTeXStrings")
 Pkg.add("ModelingToolkit")
 Pkg.add("NMFk") #Nonnegative Matrix Factorization + k-means clustering and physics constraints
-Pkg.add("NTFk") #Nonnegative Tensor Factorization using k-means clustering and physics constraints
-Pkg.add("NTNk") #Unsupervised Machine Learning: Nonnegative Tensor Networks + k-means clustering
+#Pkg.add("NTFk") #Nonnegative Tensor Factorization using k-means clustering and physics constraints
+#Pkg.add("NTNk") #Unsupervised Machine Learning: Nonnegative Tensor Networks + k-means clustering
 Pkg.add("ObjectDetector")
 Pkg.add("Plots")
 Pkg.add("Pluto")
@@ -28,7 +28,7 @@ Pkg.add("PyPlot")
 Pkg.add("RCall")
 Pkg.add("Symbolics")
 Pkg.add("TextAnalysis")
-Pkg.add("Turing")
+#Pkg.add("Turing")
 Pkg.add("VegaLite")
 Pkg.add("VegaDatasets")
 Pkg.add("XGBoost")
