@@ -16,7 +16,6 @@ base
 bash-completion
 bash-language-server
 biber
-bitwarden
 btop
 cadabra2
 calibre
@@ -29,10 +28,8 @@ cmake
 cppzmq
 cvs
 cython
-deltachat-desktop
 devhelp
 doxygen
-element-desktop
 emacs
 engauge
 eog
@@ -54,7 +51,6 @@ gcc-fortran
 gcc-go
 gdm
 geary
-geogebra
 gimp
 git-lfs
 gitg
