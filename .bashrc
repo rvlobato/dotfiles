@@ -20,7 +20,7 @@ export HISTCONTROL=ignoredups:erasedups
 export PROMPT_COMMAND="history -a; history -n"
 
 # When the shell exits, append to the history file instead of overwriting it
-shopt -s histappend
+# shopt -s histappend
 
 #autocd
 shopt -s autocd

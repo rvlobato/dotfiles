@@ -32,6 +32,7 @@ cython
 deltachat-desktop
 devhelp
 doxygen
+element-desktop
 emacs
 engauge
 eog
@@ -95,7 +96,6 @@ neofetch
 networkmanager
 npm
 nvidia-dkms
-obs-studio
 octave
 pandoc-crossref
 pbzip2
@@ -109,6 +109,7 @@ power-profiles-daemon
 proselint
 python-bokeh
 python-einsteinpy
+python-iminuit
 python-jupytext
 python-lsp-black
 python-lsp-mypy
