@@ -15,12 +15,14 @@ shopt -s no_empty_cmd_completion
 HISTSIZE=5000000
 SAVEHIST=5000000
 
-##Disable duplicate command, and read lines from history
-export HISTCONTROL=ignoredups:erasedups
-export PROMPT_COMMAND="history -n"
+# Disable duplicate command from history
+export HISTCONTROL=ignoreboth:erasedups
 
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
+
+# After each command, append to the history file and reread it
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 #autocd
 shopt -s autocd
