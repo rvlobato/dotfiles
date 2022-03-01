@@ -30,6 +30,7 @@ cvs
 cython
 devhelp
 doxygen
+element-desktop
 emacs
 engauge
 eog
