@@ -1,16 +1,10 @@
 datapackage
-datashader
 findiff
-gnuplot_kernel
 holoviews
 hvplot
 jupyter-resource-usage
 jupyterlab-drawio
-jupyterlab-lsp
 jupyterlab-system-monitor
 jupyterlab-topbar
 jupyterlab-spellchecker
 mrjob
-nbdime
-octave_kernel
-rise
