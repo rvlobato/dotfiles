@@ -110,6 +110,7 @@ proselint
 python-bokeh
 python-datashader
 python-einsteinpy
+python-hvplot
 python-iminuit
 python-jupytext
 python-lsp-black

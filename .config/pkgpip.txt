@@ -1,7 +1,5 @@
 datapackage
 findiff
-holoviews
-hvplot
 jupyter-resource-usage
 jupyterlab-drawio
 jupyterlab-system-monitor
