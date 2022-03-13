@@ -33,6 +33,7 @@ emacs
 engauge
 eog
 epiphany
+evince
 evolution-bogofilter
 evolution-ews
 exercism
@@ -154,7 +155,6 @@ tmux
 tootle
 ufw
 vivid
-wike
 wordnet-cli
 wordnet-tk
 wxmaxima
