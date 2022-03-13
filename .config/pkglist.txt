@@ -76,7 +76,6 @@ intel-media-driver
 intel-ucode
 jami-qt
 julia-bin
-junction
 jupyter-gnuplot_kernel
 jupyter-nbextension-rise
 jupyter-octave_kernel
@@ -152,7 +151,6 @@ texlive-publishers
 texlive-science
 tk
 tmux
-tootle
 ufw
 vivid
 wordnet-cli
