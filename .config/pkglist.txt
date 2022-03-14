@@ -134,6 +134,7 @@ rustup
 sagemath
 seahorse
 seahorse-nautilus
+shellcheck
 signal-desktop
 smplayer
 snes9x-gtk
