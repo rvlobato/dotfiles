@@ -2,7 +2,7 @@ plugins=(… zsh-completions)
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-_comp_options+=(globdots)	
+_comp_options+=(globdots)
 autoload -U colors && colors
 
 #Sources:
@@ -46,7 +46,7 @@ SAVEHIST=500000
 #-----------------------------
 # Dircolors
 #-----------------------------
-LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
+LS_COLORS="$(vivid generate molokai)"
 export LS_COLORS
 
 #------------------------------
@@ -63,8 +63,6 @@ setopt share_history
 
 # auto cd
 setopt autocd
-# Dir colors
-eval $(dircolors -b $HOME/.dircolors)
 
 hist_dedup() {
   sort ~/.histfile > ~/.histfile.old

@@ -19,7 +19,7 @@ SAVEHIST=5000000
 HISTCONTROL=ignoreboth:erasedups
 
 # remove commands from history
-HISTIGNORE='history:exit:rm*:cd*:ls'
+HISTIGNORE='history:exit:rm*:cd*:more*:ls'
 
 # After each command, append to the history file and reread it
 PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
@@ -33,10 +33,11 @@ done
 
 #------------------------------
 # Alias
-[ -f $HOME/.aliases ] && source $HOME/.aliases
+[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # Dir colors
-export LS_COLORS="$(vivid generate molokai)"
+LS_COLORS="$(vivid generate molokai)"
+export LS_COLORS
 
 #------------------------------
 # Functions

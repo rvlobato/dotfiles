@@ -162,3 +162,4 @@ yapf
 yt-dlp
 yubikey-manager-qt
 zotero
+zsh
