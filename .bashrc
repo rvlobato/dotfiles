@@ -51,7 +51,7 @@ source /usr/share/fzf/completion.bash 2>/dev/null
 export FZF_COMPLETION_TRIGGER='~~'
 
 # Options to fzf command
-export FZF_COMPLETION_OPTS='+c -x'
+export FZF_COMPLETION_OPTS='--border --info=inline'
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
