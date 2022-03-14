@@ -18,6 +18,8 @@ SAVEHIST=5000000
 # Disable duplicate command from history
 HISTCONTROL=ignoreboth:erasedups
 
+HISTIGNORE='history:exit'
+
 # After each command, append to the history file and reread it
 PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
