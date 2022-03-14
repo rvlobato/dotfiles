@@ -31,6 +31,8 @@
 (use-package auto-package-update
   :defer 10
   :config
+  ;; ask before automatic update
+  (setq auto-package-update-prompt-before-update t)
   ;; Delete residual old versions
   (setq auto-package-update-delete-old-versions t)
   ;; Do not bother me when updates have taken place.
