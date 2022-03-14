@@ -1,7 +1,6 @@
 alacritty
 alhp-keyring
 alhp-mirrorlist
-amd-ucode
 aspell-de
 aspell-en
 aspell-es
@@ -71,7 +70,10 @@ go
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy-git
 inkscape
+intel-media-driver
+intel-ucode
 jami-qt
 julia-bin
 jupyter-gnuplot_kernel
@@ -85,16 +87,16 @@ lfortran
 libreoffice-fresh
 libva-vdpau-driver
 libvdpau-va-gl
-linux-amd-znver2
-linux-amd-znver2-headers
+linux
+linux-clear
+linux-clear-headers
 linux-firmware
-linux-zen
-linux-zen-headers
 mullvad-vpn
 neofetch
 networkmanager
 npm
 nvidia-dkms
+nvidia-prime
 pandoc-crossref
 pbzip2
 pgplot
@@ -140,7 +142,6 @@ snes9x-gtk
 sqlitebrowser
 sudo
 syncthing
-system76-dkms
 texlab
 texlive-bibtexextra
 texlive-fontsextra
