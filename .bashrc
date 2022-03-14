@@ -18,6 +18,7 @@ SAVEHIST=5000000
 # Disable duplicate command from history
 HISTCONTROL=ignoreboth:erasedups
 
+# remove commands from history
 HISTIGNORE='history:exit'
 
 # After each command, append to the history file and reread it
