@@ -16,6 +16,7 @@ base
 bash-completion
 bash-language-server
 biber
+bitwarden
 btop
 cadabra2
 calibre
@@ -28,6 +29,7 @@ cmake
 cppzmq
 cvs
 cython
+deltachat-desktop
 devhelp
 doxygen
 emacs
@@ -74,6 +76,7 @@ gvfs-mtp
 inkscape
 jami-qt
 julia-bin
+junction
 jupyter-gnuplot_kernel
 jupyter-nbextension-rise
 jupyter-octave_kernel
@@ -93,6 +96,7 @@ linux-zen-headers
 mullvad-vpn
 neofetch
 networkmanager
+nheko
 npm
 nvidia-dkms
 pandoc-crossref
@@ -138,6 +142,7 @@ shellcheck
 signal-desktop
 smplayer
 snes9x-gtk
+spot-client
 sqlitebrowser
 sudo
 syncthing
@@ -151,8 +156,10 @@ texlive-publishers
 texlive-science
 tk
 tmux
+tootle
 ufw
 vivid
+wike
 wordnet-cli
 wordnet-tk
 wxmaxima
