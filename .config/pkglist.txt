@@ -16,7 +16,6 @@ base
 bash-completion
 bash-language-server
 biber
-bitwarden
 btop
 cadabra2
 calibre
@@ -29,7 +28,6 @@ cmake
 cppzmq
 cvs
 cython
-deltachat-desktop
 devhelp
 doxygen
 emacs
