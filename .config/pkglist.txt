@@ -96,7 +96,6 @@ linux-zen-headers
 mullvad-vpn
 neofetch
 networkmanager
-nheko
 npm
 nvidia-dkms
 pandoc-crossref
