@@ -18,7 +18,6 @@ bash-language-server
 biber
 btop
 cadabra2
-calibre
 cawbird
 ccache
 ccls
@@ -43,6 +42,7 @@ fd
 file-roller
 firefox-developer-edition
 flatpak
+foliate
 fortran-language-server
 fractal
 fragments
@@ -80,7 +80,6 @@ jupyter-nbextension-rise
 jupyter-octave_kernel
 jupyterlab
 jupyterlab-lsp
-keepassxc
 languagetool
 lfortran
 libreoffice-fresh
@@ -165,5 +164,3 @@ xournalpp
 yapf
 yt-dlp
 yubikey-manager-qt
-zotero
-zsh
