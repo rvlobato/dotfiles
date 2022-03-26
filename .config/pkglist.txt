@@ -42,7 +42,6 @@ fd
 file-roller
 firefox-developer-edition
 flatpak
-foliate
 fortran-language-server
 fractal
 fragments
@@ -56,7 +55,6 @@ git-lfs
 gitg
 gnome-calendar
 gnome-characters
-gnome-chess
 gnome-clocks
 gnome-contacts
 gnome-control-center
