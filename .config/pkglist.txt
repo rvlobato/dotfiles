@@ -67,7 +67,6 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 inkscape
-jami-qt
 julia-bin
 junction
 jupyter-gnuplot_kernel
@@ -158,4 +157,3 @@ xournalpp
 yapf
 yt-dlp
 yubikey-manager-qt
-zotero
