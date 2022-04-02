@@ -20,7 +20,6 @@ btop
 cadabra2
 ccache
 ccls
-cheese
 cmake
 cppzmq
 cvs
