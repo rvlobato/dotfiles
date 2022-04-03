@@ -24,7 +24,6 @@ cmake
 cppzmq
 cvs
 cython
-devhelp
 doxygen
 emacs
 engauge
@@ -58,8 +57,6 @@ gnome-control-center
 gnome-maps
 gnome-photos
 gnome-software
-gnome-themes-extra
-gnome-todo
 gnome-weather
 go
 gvfs-google

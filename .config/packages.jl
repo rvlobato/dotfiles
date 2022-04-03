@@ -16,8 +16,9 @@ Pkg.add("IJulia")
 Pkg.add("Knet")
 Pkg.add("LanguageServer")
 Pkg.add("LaTeXStrings")
+Pkg.add("LoopVectorization") #macro(s) for vectorizing loops
 Pkg.add("ModelingToolkit")
-Pkg.add("NMFk") #Nonnegative Matrix Factorization + k-means clustering and physics constraints
+#Pkg.add("NMFk") #Nonnegative Matrix Factorization + k-means clustering and physics constraints
 #Pkg.add("NTFk") #Nonnegative Tensor Factorization using k-means clustering and physics constraints
 #Pkg.add("NTNk") #Unsupervised Machine Learning: Nonnegative Tensor Networks + k-means clustering
 Pkg.add("ObjectDetector")
