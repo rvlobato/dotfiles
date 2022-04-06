@@ -57,6 +57,7 @@ gnome-control-center
 gnome-maps
 gnome-photos
 gnome-software
+gnome-themes-extra
 gnome-weather
 go
 gvfs-google
@@ -68,7 +69,7 @@ junction
 jupyter-gnuplot_kernel
 jupyter-nbextension-rise
 jupyter-octave_kernel
-jupyterlab
+jupyterlab-extension-jupyterlab_git
 jupyterlab-lsp
 languagetool
 lfortran
@@ -96,7 +97,6 @@ posix-software-development
 posix-user-portability
 power-profiles-daemon
 proselint
-python-bokeh
 python-datashader
 python-einsteinpy
 python-hvplot
@@ -104,7 +104,6 @@ python-iminuit
 python-jupytext
 python-lsp-black
 python-lsp-mypy
-python-nbdime
 python-nltk
 python-openml
 python-orange
