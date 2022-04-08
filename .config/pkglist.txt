@@ -11,7 +11,6 @@ aspell-pt
 aurutils
 autoconf
 automake
-baobab
 base
 bash-completion
 bash-language-server
@@ -29,7 +28,6 @@ emacs
 engauge
 eog
 epiphany
-evince
 evolution-bogofilter
 evolution-ews
 exercism
@@ -40,7 +38,6 @@ firefox-developer-edition
 flatpak
 fortran-language-server
 fractal
-fragments
 fwupd
 fzf
 gcc-fortran
@@ -73,7 +70,6 @@ jupyterlab-extension-jupyterlab_git
 jupyterlab-lsp
 languagetool
 lfortran
-libreoffice-fresh
 libva-vdpau-driver
 libvdpau-va-gl
 linux-amd-znver2
@@ -126,7 +122,6 @@ seahorse
 seahorse-nautilus
 shellcheck
 smplayer
-snes9x-gtk
 sqlitebrowser
 sudo
 syncthing
@@ -147,8 +142,6 @@ wike
 wordnet-cli
 wordnet-tk
 xeus-cling
-xournalpp
 yapf
 yt-dlp
 yubikey-manager-qt
-zotero-bin
