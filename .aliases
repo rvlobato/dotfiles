@@ -23,9 +23,10 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
 ## pacman
-alias pacup='sudo systemctl start reflector.service && sudo pacman -Syuw --noconfirm && sudo pacman -Sc'
+alias pacup='sudo systemctl start reflector.service && sudo pacman -Syuw --noconfirm'
 alias pacs='pacman -Ss'
 alias pacr='sudo pacman -Rnsc'
+alias pacsc='sudo pacman -Syuw --noconfirm && sudo pacman -Sc'
 alias pacqe='pacman -Qe'
 alias pacqt='sudo pacman -Rns $(pacman -Qttdq)'
 
