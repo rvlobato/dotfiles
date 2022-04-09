@@ -25,7 +25,6 @@ cvs
 cython
 doxygen
 emacs
-eog
 epiphany
 evolution-bogofilter
 evolution-ews
@@ -42,7 +41,6 @@ fzf
 gcc-fortran
 gdm
 geary
-gimp
 git-lfs
 gnome-calendar
 gnome-characters
@@ -55,7 +53,6 @@ go
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-inkscape
 julia-bin
 junction
 jupyter-gnuplot_kernel
@@ -113,7 +110,6 @@ reflector
 rmlint
 rustup
 sagemath
-seahorse
 seahorse-nautilus
 shellcheck
 smplayer
