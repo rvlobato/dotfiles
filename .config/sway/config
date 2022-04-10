@@ -83,14 +83,14 @@ exec swayidle -w \
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+Shift+f exec firefox
-    workspace 2 
-    exec jami
-    workspace 3 
+    workspace 3
     exec mullvad-vpn
     exec keybase-gui
+    workspace 2
+    exec jami
+    workspace 1
     exec insync start
     exec ~/Sync/pkgs/appimage/pcloud
-    workspace 1
 #
 # Moving around:
 #
