@@ -39,6 +39,10 @@ done
 LS_COLORS="$(vivid generate molokai)"
 export LS_COLORS
 
+# gpg-agent: Configure pinentry to use the correct TTY
+GPG_TTY=$(tty)
+export GPG_TTY
+
 #------------------------------
 # Functions
 #------------------------------
