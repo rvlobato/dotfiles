@@ -26,9 +26,9 @@
 (setq org-agenda-start-on-weekday nil)
 (global-set-key (kbd "C-c a") 'org-agenda)
 
-(setq calendar-location-name "Dallas, TX")
-(setq calendar-latitude 32.85)
-(setq calendar-longitude -96.85)
+(setq calendar-location-name "Bogota, CO")
+(setq calendar-latitude 4.624335)
+(setq calendar-longitude -74.063644)
 #+END_SRC
 
 *** Super-agenda
@@ -214,11 +214,9 @@
 
 (use-package theme-changer
   :config
-
-  (change-theme 'modus-operandi 'gruvbox-dark-hard)
+  (change-theme 'modus-operandi 'gruvbox-dark-medium)
   ;(change-theme 'stimmung-themes-light 'gruvbox-dark-hard)
-					;(set-face-background 'mode-line "black")
-  )
+					(set-face-background 'mode-line "dark"))
 #+End_SRC
 
 ** Mods in the modeline
