@@ -51,6 +51,7 @@ gnome-software
 gnome-themes-extra
 gnome-weather
 go
+gopls
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
@@ -67,6 +68,7 @@ libvdpau-va-gl
 linux-amd-znver2
 linux-amd-znver2-headers
 linux-firmware
+linux-lts
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
@@ -128,9 +130,13 @@ tk
 tmux
 ufw
 vivid
+vscode-css-languageserver
+vscode-html-languageserver
+vscode-json-languageserver
 wordnet-cli
 wordnet-tk
 xeus-cling
+yaml-language-server
 yapf
 yt-dlp
 yubikey-manager-qt
