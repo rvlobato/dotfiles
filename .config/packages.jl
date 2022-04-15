@@ -3,6 +3,7 @@ Pkg.add("AlphaZero") #Deepmind's AlphaZero algorithm
 Pkg.add("Arrow") #implementation of the apache arrow memory
 Pkg.add("Clustering") #Methods for data clustering and evaluation of clustering quality
 Pkg.add("CSV") #A fast, flexible delimited file reader/writer for Julia.
+Pkg.add("CUDA") # CUDA programming in Julia
 Pkg.add("DataFrames") #Tools for working with tabular data in Julia.
 Pkg.add("DelimitedFiles")
 Pkg.add("Dierckx")

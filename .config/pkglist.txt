@@ -115,6 +115,7 @@ sagemath
 seahorse-nautilus
 shellcheck
 smplayer
+solaar
 sqlitebrowser
 sudo
 syncthing
