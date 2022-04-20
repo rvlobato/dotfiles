@@ -55,6 +55,7 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 julia-bin
+junction
 jupyter-gnuplot_kernel
 jupyter-nbextension-rise
 jupyter-octave_kernel
