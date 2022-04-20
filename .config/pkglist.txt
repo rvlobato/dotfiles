@@ -73,6 +73,7 @@ linux-lts
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
+mpv
 mullvad-vpn
 neofetch
 networkmanager
@@ -116,7 +117,6 @@ rustup
 sagemath
 seahorse-nautilus
 shellcheck
-smplayer
 solaar
 sqlitebrowser
 sudo
