@@ -60,6 +60,7 @@ jupyter-nbextension-rise
 jupyter-octave_kernel
 jupyterlab-extension-jupyterlab_git
 jupyterlab-lsp
+jupyterlab_code_formatter
 languagetool
 lfortran
 libva-vdpau-driver
@@ -129,6 +130,8 @@ texlive-publishers
 texlive-science
 tk
 tmux
+tootle
+typescript-language-server
 ufw
 vivid
 vscode-css-languageserver
