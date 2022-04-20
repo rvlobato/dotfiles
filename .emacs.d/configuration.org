@@ -722,7 +722,7 @@
 (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t)
 #+end_src
 
-** PKGBUILD mode
+** PKGBUILD-mode
 
 #+begin_src emacs-lisp
 (use-package pkgbuild-mode)
@@ -730,6 +730,15 @@
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode))
 			      auto-mode-alist))
+#+end_src
+
+** Markdown-mode
+
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+(setq markdown-command "pandoc")
 #+end_src
 
 * Programming languages
