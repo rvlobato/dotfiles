@@ -20,11 +20,11 @@ cadabra2
 ccache
 ccls
 cmake
-cppzmq
 cvs
 cython
 doxygen
 emacs
+eolie
 epiphany
 evolution-bogofilter
 evolution-ews
@@ -35,7 +35,6 @@ file-roller
 firefox-developer-edition
 flatpak
 fortran-language-server
-fractal
 fwupd
 fzf
 gcc-fortran
@@ -55,7 +54,6 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 julia-bin
-junction
 jupyter-gnuplot_kernel
 jupyter-nbextension-rise
 jupyter-octave_kernel
