@@ -26,6 +26,7 @@ doxygen
 emacs
 eolie
 epiphany
+evince
 evolution-bogofilter
 evolution-ews
 exercism
@@ -140,3 +141,4 @@ yaml-language-server
 yapf
 yt-dlp
 yubikey-manager-qt
+zotero-bin
