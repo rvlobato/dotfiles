@@ -45,6 +45,7 @@ git-lfs
 gnome-calendar
 gnome-characters
 gnome-clocks
+gnome-console
 gnome-control-center
 gnome-software
 gnome-themes-extra
@@ -55,7 +56,6 @@ gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 julia-bin
-junction
 jupyter-gnuplot_kernel
 jupyter-nbextension-rise
 jupyter-octave_kernel
@@ -90,6 +90,7 @@ posix-software-development
 posix-user-portability
 power-profiles-daemon
 proselint
+protonvpn
 python-datashader
 python-einsteinpy
 python-hvplot
