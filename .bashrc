@@ -36,7 +36,7 @@ done
 [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # Dir colors
-LS_COLORS="$(vivid generate molokai)"
+LS_COLORS="$(vivid generate snazzy)"
 export LS_COLORS
 
 # gpg-agent: Configure pinentry to use the correct TTY
