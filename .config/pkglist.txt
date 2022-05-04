@@ -1,4 +1,5 @@
 alacritty
+alacritty-themes
 alhp-keyring
 alhp-mirrorlist
 amd-ucode
@@ -88,6 +89,8 @@ posix-c-development
 posix-software-development
 posix-user-portability
 power-profiles-daemon
+powerline
+powerline-fonts
 proselint
 protonvpn
 python-datashader

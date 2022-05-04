@@ -36,7 +36,7 @@ done
 [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # Dir colors
-LS_COLORS="$(vivid generate snazzy)"
+LS_COLORS="$(vivid generate solarized-dark)"
 export LS_COLORS
 
 # gpg-agent: Configure pinentry to use the correct TTY
@@ -46,6 +46,14 @@ export GPG_TTY
 #------------------------------
 # Functions
 #------------------------------
+
+#-------------
+#Powerline
+#powerline-daemon -q
+#POWERLIN1E_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#. /usr/share/powerline/bindings/bash/powerline.sh
+
 
 #----------------------------------------
 ##fzf

@@ -70,6 +70,11 @@ hist_dedup() {
 }
 
 #------------------------------
+# Powerline
+#powerline-daemon -q
+#. /usr/share/powerline/bindings/zsh/powerline.zsh
+
+#------------------------------
 # Prompt
 #------------------------------
 PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[red]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%1~%{$fg[blue]%}]%{$reset_color%}$%b "
