@@ -40,7 +40,6 @@ fwupd
 fzf
 gcc-fortran
 gdm
-geary
 git-lfs
 gnome-calendar
 gnome-characters
