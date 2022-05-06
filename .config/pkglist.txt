@@ -44,7 +44,6 @@ git-lfs
 gnome-calendar
 gnome-characters
 gnome-clocks
-gnome-console
 gnome-control-center
 gnome-software
 gnome-themes-extra
@@ -72,7 +71,6 @@ linux-lts
 linux-zen
 linux-zen-headers
 mathpix-snipping-tool
-mpv
 mullvad-vpn
 neofetch
 networkmanager
