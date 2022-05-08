@@ -42,7 +42,6 @@ gcc-fortran
 gdm
 git-lfs
 gnome-calendar
-gnome-characters
 gnome-clocks
 gnome-control-center
 gnome-software
@@ -70,6 +69,7 @@ linux-firmware
 linux-lts
 linux-zen
 linux-zen-headers
+ltex-ls-bin
 mathpix-snipping-tool
 mullvad-vpn
 neofetch
