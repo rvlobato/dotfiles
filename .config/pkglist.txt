@@ -41,12 +41,9 @@ fzf
 gcc-fortran
 gdm
 git-lfs
-gnome-calendar
-gnome-clocks
 gnome-control-center
 gnome-software
 gnome-themes-extra
-gnome-weather
 go
 gopls
 gvfs-google
