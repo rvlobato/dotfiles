@@ -1,5 +1,6 @@
 datapackage
 findiff
+handcalcs
 jupyter-resource-usage
 jupyterlab-drawio
 jupyterlab-system-monitor
