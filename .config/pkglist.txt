@@ -69,6 +69,7 @@ linux-zen
 linux-zen-headers
 ltex-ls-bin
 mathpix-snipping-tool
+mpv
 mullvad-vpn
 neofetch
 networkmanager
