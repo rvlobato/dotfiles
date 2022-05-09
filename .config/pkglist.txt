@@ -41,6 +41,7 @@ fzf
 gcc-fortran
 gdm
 git-lfs
+gnome-characters
 gnome-control-center
 gnome-software
 gnome-themes-extra
