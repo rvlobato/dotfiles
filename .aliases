@@ -9,10 +9,6 @@ alias blueon='sudo modprobe btusb && sudo modprobe bluetooth && sudo systemctl s
 alias myip='curl ipinfo.io/ip'
 alias hibernate='systemctl hibernate'
 
-## style terminal
-alias dark='alacritty-themes Gruvbox-Dark'
-alias light='alacritty-themes One-Light'
-
 #emacs
 alias emacs='emacsclient -nw'
 
