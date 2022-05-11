@@ -47,6 +47,8 @@ gnome-software
 gnome-themes-extra
 go
 gopls
+gst-plugin-pipewire
+gst-plugins-good
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
@@ -69,7 +71,6 @@ linux-zen
 linux-zen-headers
 ltex-ls-bin
 mathpix-snipping-tool
-mpv
 mullvad-vpn
 neofetch
 networkmanager
