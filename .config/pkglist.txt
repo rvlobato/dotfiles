@@ -42,6 +42,7 @@ gcc-fortran
 gdm
 git-lfs
 gnome-characters
+gnome-console
 gnome-control-center
 gnome-software
 gnome-themes-extra
