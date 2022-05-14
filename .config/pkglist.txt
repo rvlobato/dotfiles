@@ -70,10 +70,11 @@ linux-firmware
 linux-lts
 ltex-ls-bin
 mathpix-snipping-tool
+mullvad-vpn
 neofetch
 networkmanager
 npm
-nvidia-open-dkms
+nvidia-dkms
 nvtop
 pandoc-crossref
 pbzip2
