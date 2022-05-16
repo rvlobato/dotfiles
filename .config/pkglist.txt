@@ -74,7 +74,7 @@ mullvad-vpn
 neofetch
 networkmanager
 npm
-nvidia-open-dkms
+nvidia-dkms
 nvtop
 pandoc-crossref
 pbzip2
@@ -106,6 +106,8 @@ python-pytorch-cuda
 python-seaborn
 python-statsmodels
 python-tensorflow-opt-cuda
+qt5-wayland
+qt6-wayland
 reflector
 rmlint
 root-cuda
