@@ -130,7 +130,6 @@ texlive-publishers
 texlive-science
 tk
 tmux
-tootle
 typescript-language-server
 ufw
 vivid
