@@ -68,6 +68,7 @@ linux-amd-znver2
 linux-amd-znver2-headers
 linux-firmware
 linux-lts
+linux-lts-headers
 ltex-ls-bin
 mathpix-snipping-tool
 mullvad-vpn
