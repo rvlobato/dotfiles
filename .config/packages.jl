@@ -10,7 +10,7 @@ Pkg.add("Dierckx")
 Pkg.add("DifferentialEquations")
 Pkg.add("Distributed")
 Pkg.add("Distributions")
-Pkg.add("Flux")
+Pkg.add("Flux") # The Julia Machine Learning Library
 Pkg.add("Gadfly") # Gadfly is a plotting and data visualization system
 Pkg.add("GLMakie") # High level plotting on the GPU.
 Pkg.add("IJulia") # Julia kernel for Jypyter
