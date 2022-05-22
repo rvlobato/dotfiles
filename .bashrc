@@ -47,17 +47,6 @@ export GPG_TTY
 # Functions
 #------------------------------
 
-# bash toggle-theme
-toggle-theme() {
-    current_gtk_theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
-    if [ $current_gtk_theme == "'Adwaita-dark'" ];
-    then
-	alacritty-themes Gruvbox-Dark
-    else
-	alacritty-themes One-Light
-    fi
-}
-
 #-------------
 #Powerline
 #powerline-daemon -q
