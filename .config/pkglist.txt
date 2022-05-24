@@ -22,7 +22,6 @@ ccache
 ccls
 cmake
 cvs
-cython
 doxygen
 emacs
 eolie
@@ -74,7 +73,6 @@ mullvad-vpn
 neofetch
 networkmanager
 npm
-nvidia-dkms
 nvtop
 pandoc-crossref
 pbzip2
@@ -89,6 +87,7 @@ powerline
 powerline-fonts
 proselint
 protonvpn
+python-cuda
 python-datashader
 python-einsteinpy
 python-hvplot
