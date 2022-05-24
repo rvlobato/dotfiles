@@ -114,7 +114,6 @@ sagemath
 seahorse-nautilus
 shellcheck
 solaar
-sqlitebrowser
 sudo
 syncthing
 system76-dkms
