@@ -84,6 +84,7 @@ power-profiles-daemon
 powerline
 powerline-fonts
 proselint
+protonmail-bridge
 protonvpn
 python-cuda
 python-datashader
