@@ -43,7 +43,6 @@ git-lfs
 gnome-characters
 gnome-control-center
 gnome-software
-gnome-themes-extra
 go
 gopls
 gst-plugin-pipewire
