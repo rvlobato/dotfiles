@@ -55,6 +55,7 @@ jupyter-octave_kernel
 jupyterlab-extension-jupyterlab_git
 jupyterlab-lsp
 jupyterlab_code_formatter
+keno-git
 languagetool
 lfortran
 libva-vdpau-driver
@@ -81,7 +82,6 @@ power-profiles-daemon
 powerline
 powerline-fonts
 proselint
-protonmail-bridge
 protonvpn
 python-cuda
 python-datashader
@@ -101,8 +101,6 @@ python-pytorch-cuda
 python-seaborn
 python-statsmodels
 python-tensorflow-opt-cuda
-qt5-wayland
-qt6-wayland
 reflector
 rmlint
 root-cuda
