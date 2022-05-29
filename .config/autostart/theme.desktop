@@ -3,6 +3,6 @@ Type=Application
 Version=1.0
 Name=theme
 Comment=themestartup script
-Exec=~/.local/bin/theme
+Exec=/home/ronaldo/.local/bin/theme
 StartupNotify=false
 Terminal=false
