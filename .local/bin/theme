@@ -3,7 +3,7 @@
 dbus-monitor "interface='org.freedesktop.portal.Settings', member='SettingChanged'" |
     while read -r line; do
 	case "$line" in
-	    *"Adwaita-dark"*) alacritty-themes Gruvbox-Dark;;
-	    *"Adwaita"*) alacritty-themes One-Light;;
+	    *"prefer-dark"*) alacritty-themes Gruvbox-Dark;;
+	    *"default"*) alacritty-themes One-Light;;
 	esac;
     done
