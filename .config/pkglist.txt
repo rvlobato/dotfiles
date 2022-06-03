@@ -29,7 +29,6 @@ epiphany
 exercism
 fakeroot
 fd
-file-roller
 firefox-developer-edition
 flatpak
 fortran-language-server
@@ -38,6 +37,7 @@ fzf
 gcc-fortran
 gdm
 git-lfs
+gnome-backgrounds
 gnome-characters
 gnome-control-center
 gnome-software
