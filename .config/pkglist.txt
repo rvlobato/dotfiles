@@ -80,7 +80,6 @@ posix-software-development
 posix-user-portability
 power-profiles-daemon
 powerline
-powerline-fonts
 proselint
 protonvpn
 python-cuda
