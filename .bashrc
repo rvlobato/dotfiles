@@ -19,7 +19,7 @@ SAVEHIST=5000000
 HISTCONTROL=ignoreboth:erasedups
 
 # remove commands from history
-HISTIGNORE='history:exit:rm*:cd*:more*:ls'
+HISTIGNORE='history:hibernate:exit:rm*:cd*:more*:ls'
 
 # After each command, append to the history file and reread it
 PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
