@@ -26,7 +26,6 @@ cvs
 doxygen
 emacs
 eolie
-epiphany
 exercism
 fakeroot
 fd
