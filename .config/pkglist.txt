@@ -26,10 +26,10 @@ cvs
 doxygen
 emacs
 eolie
+epiphany
 exercism
 fakeroot
 fd
-firefox-developer-edition
 flatpak
 fortran-language-server
 fwupd
@@ -41,7 +41,6 @@ gnome-backgrounds
 gnome-characters
 gnome-control-center
 gnome-software
-gnome-themes-extra
 go
 gopls
 gst-plugin-pipewire
