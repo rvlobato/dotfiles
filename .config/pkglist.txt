@@ -27,8 +27,6 @@ doxygen
 emacs
 eolie
 epiphany
-evolution-bogofilter
-evolution-ews
 exercism
 fakeroot
 fd
