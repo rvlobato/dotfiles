@@ -38,9 +38,11 @@ gcc-fortran
 gdm
 git-lfs
 gnome-backgrounds
+gnome-calendar
 gnome-characters
 gnome-control-center
 gnome-software
+gnome-themes-extra
 go
 gopls
 gst-plugin-pipewire
@@ -48,6 +50,7 @@ gst-plugins-good
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+jre-openjdk
 julia-bin
 jupyter-gnuplot_kernel
 jupyter-nbextension-rise
@@ -66,6 +69,7 @@ linux-firmware
 linux-lts
 ltex-ls-bin
 mullvad-vpn
+nautilus
 neofetch
 networkmanager
 npm
@@ -105,7 +109,6 @@ rmlint
 root-cuda
 rustup
 sagemath
-seahorse-nautilus
 shellcheck
 solaar
 sudo

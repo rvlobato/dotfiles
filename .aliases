@@ -33,7 +33,7 @@ alias pacqt='sudo pacman -Rns $(pacman -Qttdq)'
 #aur
 alias aurup='aur sync -uS'
 alias aurs='aur search'
-alias aurr='repo-remove -s $HOME/Sync/pkgs/aur/aur.db.tar'
+alias aurr='repo-remove -s $HOME/Desktop/aur/aur.db.tar.gz'
 alias aurrebuild='aur sync -S --rebuild'
 alias aurrebuildall='aur sync -S --rebuildall'
 
