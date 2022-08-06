@@ -16,7 +16,7 @@ bash-completion
 bash-language-server
 biber
 btop
-cadabra2
+cadabra2-git
 ccache
 ccls
 cmake
@@ -113,10 +113,8 @@ system76-dkms
 texlab
 texlive-bibtexextra
 texlive-fontsextra
-texlive-latexextra
 texlive-pictures
 texlive-publishers
-texlive-science
 tk
 tmux
 typescript-language-server
