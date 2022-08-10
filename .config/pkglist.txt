@@ -35,7 +35,6 @@ gcc-fortran
 gdm
 git-lfs
 gnome-backgrounds
-gnome-calendar
 gnome-characters
 gnome-console
 gnome-control-center
@@ -64,7 +63,6 @@ linux-amd-znver2-headers
 linux-firmware
 linux-lts
 ltex-ls-bin
-mullvad-vpn
 nautilus
 neofetch
 networkmanager
