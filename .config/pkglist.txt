@@ -35,6 +35,7 @@ gcc-fortran
 gdm
 git-lfs
 gnome-backgrounds
+gnome-calendar
 gnome-characters
 gnome-console
 gnome-control-center
