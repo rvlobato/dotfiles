@@ -21,6 +21,7 @@ ccache
 ccls
 cmake
 cvs
+dnscrypt-proxy
 doxygen
 emacs
 epiphany
