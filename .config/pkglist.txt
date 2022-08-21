@@ -16,7 +16,7 @@ bash-completion
 bash-language-server
 biber
 btop
-cadabra2-git
+cadabra2
 ccache
 ccls
 cmake
@@ -36,9 +36,8 @@ gcc-fortran
 gdm
 git-lfs
 gnome-backgrounds
-gnome-calendar
 gnome-characters
-gnome-console
+gnome-console-git
 gnome-control-center
 gnome-software
 go
@@ -70,6 +69,7 @@ neofetch
 networkmanager
 npm
 nvtop
+pacman-contrib
 pandoc-crossref
 pbzip2
 pgplot
