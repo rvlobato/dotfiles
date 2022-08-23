@@ -30,6 +30,7 @@ fakeroot
 fd
 flatpak
 fortran-language-server
+fuse2
 fwupd
 fzf
 gcc-fortran
