@@ -210,7 +210,7 @@
 #+BEGIN_SRC emacs-lisp
 (use-package gruvbox-theme)
 					;(use-package color-theme-sanityinc-tomorrow)
-(use-package modus-themes)
+					;(use-package modus-themes)
 					;(use-package stimmung-themes)
 
 (use-package dbus)
@@ -221,7 +221,7 @@
       (progn (message "Switch to dark theme")
 	     (load-theme 'gruvbox-dark-medium t))
     (progn (message "Switch to light theme")
-	   (load-theme 'modus-operandi t))))
+	   (load-theme 'whiteboard t))))
 					;(load-theme 'sanityinc-tomorrow-day t))))
 
 (defun mf/color-scheme-changed (path var value)
@@ -1320,6 +1320,7 @@ gnus-cache-directory "~/Documents/gnus/cache")
      (R          . t)
      (perl       . t)
      (julia      . t)
+     (gnuplot    . t)
      )
    )
 #+END_SRC
