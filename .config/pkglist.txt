@@ -39,7 +39,7 @@ git-lfs
 gnome-backgrounds
 gnome-calendar
 gnome-characters
-gnome-console-git
+gnome-console
 gnome-control-center
 gnome-software
 go
