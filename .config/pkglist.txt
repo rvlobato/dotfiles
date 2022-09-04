@@ -45,7 +45,9 @@ gnome-software
 go
 gopls
 gst-plugin-pipewire
+gst-plugins-bad
 gst-plugins-good
+gstreamer-vaapi
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
