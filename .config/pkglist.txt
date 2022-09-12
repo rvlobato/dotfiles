@@ -21,6 +21,7 @@ ccache
 ccls
 cmake
 cvs
+devtools
 dnscrypt-proxy
 doxygen
 emacs
@@ -68,6 +69,7 @@ linux-amd-znver2-headers
 linux-firmware
 linux-lts
 ltex-ls-bin
+namcap
 nautilus
 neofetch
 networkmanager
@@ -100,7 +102,7 @@ python-pipenv
 python-pkgconfig
 python-pylint
 python-pyls-flake8
-python-pytorch-cuda
+python-pytorch-opt-cuda
 python-seaborn
 python-statsmodels
 python-tensorflow-opt-cuda
