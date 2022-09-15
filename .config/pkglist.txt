@@ -1,7 +1,6 @@
 aether-bin
 alhp-keyring
 alhp-mirrorlist
-amd-ucode
 aspell-de
 aspell-en
 aspell-es
@@ -52,6 +51,9 @@ gstreamer-vaapi
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy
+intel-media-driver
+intel-ucode
 jre-openjdk
 julia-bin
 jupyter-gnuplot_kernel
@@ -64,8 +66,8 @@ languagetool
 lfortran
 libva-vdpau-driver
 libvdpau-va-gl
-linux-amd-znver2
-linux-amd-znver2-headers
+linux-clear
+linux-clear-headers
 linux-firmware
 linux-lts
 ltex-ls-bin
@@ -74,6 +76,7 @@ nautilus
 neofetch
 networkmanager
 npm
+nvidia-prime
 nvtop
 pacman-contrib
 pandoc-crossref
@@ -115,7 +118,6 @@ shellcheck
 solaar
 sudo
 syncthing
-system76-dkms
 texlab
 texlive-bibtexextra
 texlive-fontsextra
