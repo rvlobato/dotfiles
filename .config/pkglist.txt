@@ -41,7 +41,6 @@ gnome-backgrounds
 gnome-calendar
 gnome-characters
 gnome-console
-gnome-control-center
 gnome-software
 go
 gopls
