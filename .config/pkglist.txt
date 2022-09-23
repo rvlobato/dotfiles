@@ -110,8 +110,10 @@ qgnomeplatform-qt6
 reflector
 rmlint
 root-cuda
+rust-analyzer
 rustup
 sagemath
+sccache
 shellcheck
 solaar
 sudo
