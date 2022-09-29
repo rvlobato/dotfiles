@@ -32,7 +32,7 @@
   :defer 10
   :config
   ;; The periodicity (in days)
-  (setq auto-package-update-interval 15)
+  (setq auto-package-update-interval 30)
   ;; ask before automatic update
   (setq auto-package-update-prompt-before-update t)
   ;; Delete residual old versions
