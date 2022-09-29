@@ -1,6 +1,4 @@
 aether-bin
-alhp-keyring
-alhp-mirrorlist
 amd-ucode
 aspell-de
 aspell-en
