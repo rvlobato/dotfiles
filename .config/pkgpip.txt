@@ -6,4 +6,5 @@ jupyterlab-drawio
 jupyterlab-system-monitor
 jupyterlab-topbar
 jupyterlab-spellchecker
+latexify-py
 mrjob
