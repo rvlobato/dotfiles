@@ -10,7 +10,7 @@ alias myip='curl ipinfo.io/ip'
 alias hibernate='systemctl hibernate'
 
 #emacs
-#alias emacs='emacsclient -nw'
+alias emacs='emacsclient -nw'
 
 ## colors
 alias ls="ls --color -F"
