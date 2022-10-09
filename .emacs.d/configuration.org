@@ -670,7 +670,7 @@
 (use-package helm-swoop
   :bind  (("C-s"     . 'helm-swoop)           ;; search current buffer
 	  ("C-M-s"   . 'helm-multi-swoop-all) ;; Search all buffer
-	  ;; Go back to last position where ‘helm-swoop’ was called
+	  ;; Go back to last position where 'helm-swoop' was called
 	  ("C-S-s" . 'helm-swoop-back-to-last-point))
   :custom (helm-swoop-speed-or-color nil "Give up colour for speed.")
 	  (helm-swoop-split-with-multiple-windows nil "Do not split window inside the current window."))
