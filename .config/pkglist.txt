@@ -135,5 +135,4 @@ wordnet-tk
 xeus-cling
 yaml-language-server
 yapf
-yt-dlp
 yubikey-manager-qt
