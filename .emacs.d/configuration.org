@@ -196,6 +196,14 @@
 (setq bookmark-default-file "~/Desktop/configs/emacs/bookmarks")
 #+end_src
 
+** Native Compilation
+
+##+begin_comment
+#+BEGIN_SRC emacs-lisp
+(setq native-comp-async-report-warnings-errors nil)
+#+END_SRC
+##+end_comment
+
 * Cosmetics
 
 ** Disable startup message
@@ -347,82 +355,17 @@
 **** configs
 
 #+BEGIN_SRC emacs-lisp
-(use-package company
-  :config
-  (global-company-mode 1)
-  (setq ;; Only 3 letters required for completion to activate.
-   company-minimum-prefix-length 3
-   ;; Search other buffers for compleition candidates
-   ;; company-dabbrev-other-buffers t
-   ;; company-dabbrev-code-other-buffers t
-   ;; Show candidates according to importance, then case, then in-buffer frequency
-   company-transformers '(company-sort-by-backend-importance
-			  company-sort-prefer-same-case-prefix
-			  company-sort-by-occurrence)
-   ;; Flushright any annotations for a compleition;
-   ;; e.g., the description of what a snippet template word expands into.
-   company-tooltip-align-annotations t
-   ;; Allow (lengthy) numbers to be eligible for completion.
-   company-complete-number t
-   ;; M-⟪num⟫ to select an option according to its number.
-   company-show-numbers t
-   ;; Show 10 items in a tooltip; scrollbar otherwise or C-s ^_^
-   company-tooltip-limit 10
-   ;; Edge of the completion list cycles around.
-   company-selection-wrap-around t
-   ;; Do not downcase completions by default.
-   company-dabbrev-downcase 0 ; nil
-   ;; Even if I write something with the ‘wrong’ case,
-   ;; provide the ‘correct’ casing.
-   company-dabbrev-ignore-case nil
-   ;; Immediately activate completion.
-   company-idle-delay 0)
-  ;; Use C-/ to manually start company mode at point. C-/ is used by undo-tree.
-  ;; Override all minor modes that use C-/; bind-key* is discussed below.
-  (bind-key* "C-/" #'company-manual-begin)
-  ;; Bindings when the company list is active.
-  :bind (:map company-active-map
-	      ("C-d" . company-show-doc-buffer) ;; In new temp buffer
-	      ("<tab>" . company-complete-selection)
-	      ;; Use C-n,p for navigation in addition to M-n,p
-	      ("C-n" . (lambda () (interactive) (company-complete-common-or-cycle 1)))
-	      ("C-p" . (lambda () (interactive) (company-complete-common-or-cycle -1)))))
-;; It's so fast that we don't need a key-binding to start it!
+(use-package company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-minimum-prefix-length 2
+      company-idle-delay 0
+      company-selection-wrap-around t)
 #+END_SRC
 
-**** company quickhelp
-
-#+BEGIN_SRC emacs-lisp
-(use-package company-quickhelp
-  :config
-  (setq company-quickhelp-delay 1))
-  (company-quickhelp-mode)
-#+END_SRC
-
-**** company-suggest
-
-##+begin_src emacs-lisp
-(use-package company-suggest)
-(setq company-suggest-complete-sentence t)
-(add-to-list 'company-backends 'company-suggest-google)
-(add-to-list 'company-backends 'company-suggest-wiktionary)
-#+end_src
-
-**** Company-web
-
+**** company-box
 #+begin_src emacs-lisp
-  (require 'company)
-  (use-package company-web)
-  (require 'company-web)                          ; load company mode html backend
-#+end_src
-
-**** Company-math
-
-#+begin_src emacs-lisp
-(use-package company-math)
-;; global activation of the unicode symbol completion
-(add-to-list 'company-backends 'company-math-symbols-unicode)
-(use-package math-symbol-lists)
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 #+end_src
 
 **** Company-AUCTeX
@@ -438,6 +381,52 @@
 #+begin_src emacs-lisp
 (use-package company-c-headers)
 (add-to-list 'company-backends 'company-c-headers)
+#+end_src
+
+**** Company-math
+
+#+begin_src emacs-lisp
+(use-package company-math)
+;; global activation of the unicode symbol completion
+(add-to-list 'company-backends 'company-math-symbols-unicode)
+(use-package math-symbol-lists)
+#+end_src
+
+**** company quickhelp
+
+#+BEGIN_SRC emacs-lisp
+(use-package company-quickhelp
+  :config
+  (setq company-quickhelp-delay 1))
+  (company-quickhelp-mode)
+#+END_SRC
+
+**** company-suggest
+
+##+begin_comment
+#+begin_src emacs-lisp
+(use-package company-suggest)
+(setq company-suggest-complete-sentence t)
+(add-to-list 'company-backends 'company-suggest-google)
+(add-to-list 'company-backends 'company-suggest-wiktionary)
+#+end_src
+##+end_comment
+
+**** Company-web
+
+#+begin_src emacs-lisp
+  (require 'company)
+  (use-package company-web)
+  (require 'company-web)                          ; load company mode html backend
+#+end_src
+
+**** company-wordfreq
+
+#+begin_src emacs-lisp
+(use-package company-wordfreq
+  :hook ((text-mode-hook latex-mode-hook) . (lambda ()
+			    (setq-local company-backends '(company-wordfreq))
+			    (setq-local company-transformers nil))))
 #+end_src
 
 ** Yasnippet
@@ -552,16 +541,15 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package google-translate
- :defer t
  :config
-   (global-set-key "\C-ct" 'google-translate-at-point))
+ (global-set-key "\C-ct" 'google-translate-at-point))
 #+END_SRC
 
 ** speed-type
 
-      #+begin_src emacs-lisp
+#+begin_src emacs-lisp
 (use-package speed-type)
-      #+end_src
+#+end_src
 
 * Frameworks & libraries
 ** Async
