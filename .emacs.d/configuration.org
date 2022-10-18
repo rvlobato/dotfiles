@@ -357,8 +357,9 @@
 #+BEGIN_SRC emacs-lisp
 (use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
-(setq company-minimum-prefix-length 2
-      company-idle-delay 0
+(setq company-idle-delay 0
+      company-show-numbers t
+      company-minimum-prefix-length 2
       company-selection-wrap-around t)
 #+END_SRC
 
@@ -401,16 +402,23 @@
   (company-quickhelp-mode)
 #+END_SRC
 
+**** company-tabnine
+
+#+begin_src emacs-lisp
+(use-package company-tabnine)
+(add-to-list 'company-backends #'company-tabnine)
+#+end_src
+
 **** company-suggest
 
-##+begin_comment
+#+begin_comment
 #+begin_src emacs-lisp
 (use-package company-suggest)
 (setq company-suggest-complete-sentence t)
 (add-to-list 'company-backends 'company-suggest-google)
 (add-to-list 'company-backends 'company-suggest-wiktionary)
 #+end_src
-##+end_comment
+#+end_comment
 
 **** Company-web
 
