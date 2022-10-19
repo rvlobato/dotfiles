@@ -22,7 +22,7 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs
+emacs-nativecomp
 epiphany
 exercism
 fakeroot
@@ -57,6 +57,7 @@ jupyter-octave_kernel
 jupyterlab-extension-jupyterlab_git
 jupyterlab-lsp
 jupyterlab_code_formatter
+keno-git
 languagetool
 lfortran
 libva-vdpau-driver
