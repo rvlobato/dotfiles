@@ -357,10 +357,11 @@
 #+BEGIN_SRC emacs-lisp
 (use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
-(setq company-idle-delay 0
-      company-show-numbers t
-      company-minimum-prefix-length 2
-      company-selection-wrap-around t)
+(setq company-idle-delay 0 ; immediate activation completion
+      company-show-numbers t ; show number and complet according it
+      company-dabbrev-downcase 0 ; do not downcase by default
+      company-minimum-prefix-length 3 ; 3 letters required for completion activate
+      company-selection-wrap-around t) ; completetion list cycle
 #+END_SRC
 
 **** company-box
