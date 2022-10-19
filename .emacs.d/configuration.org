@@ -217,6 +217,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package gruvbox-theme)
+(use-package modus-themes)
 
 (use-package dbus)
 (defun mf/set-theme-from-dbus-value (value)
@@ -224,9 +225,9 @@
   (message "value is %s" value)
   (if (equal value '1)
       (progn (message "Switch to dark theme")
-	     (load-theme 'gruvbox-dark-medium t))
+	     (load-theme 'modus-vivendi t))
     (progn (message "Switch to light theme")
-	   (load-theme 'dichromacy t))))
+	   (load-theme 'modus-operandi t))))
 
 (defun mf/color-scheme-changed (path var value)
   "DBus handler to detect when the color-scheme has changed."
