@@ -133,6 +133,7 @@ vscode-html-languageserver
 vscode-json-languageserver
 wordnet-cli
 wordnet-tk
+xdg-user-dirs-gtk
 xeus-cling
 yaml-language-server
 yapf
