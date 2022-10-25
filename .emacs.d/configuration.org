@@ -750,7 +750,7 @@
 #+BEGIN_SRC emacs-lisp
 (use-package projectile)
 (projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+;; Recommended keymap prefix on Windows/Linux
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 #+END_SRC
 
