@@ -216,42 +216,39 @@
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
-(use-package gruvbox-theme)
-(use-package modus-themes)
-
 (use-package dbus)
-(defun mf/set-theme-from-dbus-value (value)
-  "Set the appropiate theme according to the color-scheme setting value."
+(defun handler (value)
   (message "value is %s" value)
   (if (equal value '1)
       (progn (message "Switch to dark theme")
-	     (load-theme 'modus-vivendi t))
+	     (load-theme 'tango-dark t))
     (progn (message "Switch to light theme")
-	   (load-theme 'modus-operandi t))))
+	   (load-theme 'tsdh-light t))))
 
-(defun mf/color-scheme-changed (path var value)
-  "DBus handler to detect when the color-scheme has changed."
-  (when (and (string-equal path "org.freedesktop.appearance")
-	     (string-equal var "color-scheme"))
-    (mf/set-theme-from-dbus-value (car value))
+(defun signal-handler (namespace key value)
+  (if (and
+       (string-equal namespace "org.freedesktop.appearance")
+       (string-equal key "color-scheme"))
+      (handler (car value))
     ))
 
-;; Register for future changes
-(dbus-register-signal
- :session "org.freedesktop.portal.Desktop"
- "/org/freedesktop/portal/desktop" "org.freedesktop.portal.Settings"
- "SettingChanged"
- #'mf/color-scheme-changed)
-
-;; Request the current color-scheme
 (dbus-call-method-asynchronously
- :session "org.freedesktop.portal.Desktop"
- "/org/freedesktop/portal/desktop" "org.freedesktop.portal.Settings"
+ :session
+ "org.freedesktop.portal.Desktop"
+ "/org/freedesktop/portal/desktop"
+ "org.freedesktop.portal.Settings"
  "Read"
- (lambda (value) (mf/set-theme-from-dbus-value (caar value)))
+ #'handler
  "org.freedesktop.appearance"
- "color-scheme"
- )
+ "color-scheme")
+
+(dbus-register-signal
+ :session
+ "org.freedesktop.portal.Desktop"
+ "/org/freedesktop/portal/desktop"
+ "org.freedesktop.portal.Settings"
+ "SettingChanged"
+ #'signal-handler)
 #+End_SRC
 
 ** Mods in the modeline
