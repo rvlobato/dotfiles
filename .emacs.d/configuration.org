@@ -216,14 +216,12 @@
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
-(use-package color-theme-sanityinc-tomorrow)
-
 (use-package dbus)
 (defun handler (value)
   (message "value is %s" value)
   (if (equal value '1)
       (progn (message "Switch to dark theme")
-	     (load-theme 'sanityinc-tomorrow-eighties t))
+	     (load-theme 'wombat t))
     (progn (message "Switch to light theme")
 	   (load-theme 'dichromacy t))))
 
