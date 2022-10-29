@@ -225,7 +225,7 @@
       (progn (message "Switch to dark theme")
 	     (load-theme 'sanityinc-tomorrow-eighties t))
     (progn (message "Switch to light theme")
-	   (load-theme 'sanityinc-tomorrow-day t))))
+	   (load-theme 'dichromacy t))))
 
 (defun signal-handler (namespace key value)
   (if (and
