@@ -23,12 +23,12 @@ devtools
 dnscrypt-proxy
 doxygen
 emacs-nativecomp
-epiphany
+epiphany-git
 exercism
 fakeroot
 fd
 flatpak
-fortran-language-server
+fortls
 fuse2
 fwupd
 fzf
