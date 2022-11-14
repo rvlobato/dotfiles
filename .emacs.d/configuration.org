@@ -1036,6 +1036,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package rustic)
+(setq rustic-lsp-client 'eglot)
 #+END_SRC
 
 ** Jupyter
