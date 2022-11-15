@@ -913,14 +913,6 @@
 			   (c-set-style "linux-tabs-only")))
 #+END_SRC
 
-** dap-mode
-
-#+BEGIN_SRC emacs-lisp
-(use-package dap-mode)
-(add-hook 'dap-stopped-hook
-	  (lambda (arg) (call-interactively #'dap-hydra)))
-#+END_SRC
-
 ** Documentation pop-up on a completion
 
 #+BEGIN_SRC emacs-lisp
