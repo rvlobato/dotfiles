@@ -467,7 +467,7 @@
   (add-hook hook (lambda () (set-fill-column 100))))
 (add-hook 'pkgbuild-mode-hook 'turn-on-auto-fill)
 
-(dolist (hook '(python-mode-hook prog-mode-hook list-mode-hook))
+(dolist (hook '(python-mode-hook prog-mode-hook web-mode-hook list-mode-hook))
   (add-hook hook (lambda () (set-fill-column 72))))
 #+END_SRC
 
@@ -975,10 +975,25 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package web-mode
-  :defer t
-  :mode ("\\.html\\'" "\\.jinja\\'")
+  :mode ("\\.html?\\'"
+	 "\\.phtml\\'"
+	 "\\.tpl\\.php\\'"
+	 "\\.[agj]sp\\'"
+	 "\\.as[cp]x\\'"
+	 "\\.erb\\'"
+	 "\\.mustache\\'"
+	 "\\.djhtml\\'"
+	 )
   :config (setq web-mode-markup-indent-offset 2
-		  web-mode-code-indent-offset 2))
+		web-mode-css-indent-offset 2
+		web-mode-code-indent-offset 2
+		web-mode-enable-block-face t
+		web-mode-enable-css-colorization t
+		web-mode-enable-auto-pairing t
+		web-mode-enable-current-element-highlight t
+		web-mode-enable-css-colorization t
+		)
+  )
 
 (use-package emmet-mode
   :config (add-hook 'web-mode-hook 'emmet-mode))
@@ -996,17 +1011,20 @@
 
 #+begin_src emacs-lisp
 (use-package eglot)
+(add-hook 'prog-mode-hook 'eglot-ensure)
 #+end_src
 
 *** eglot-ltex
-#+begin_comment
+
 #+begin_src emacs-lisp
   (use-package eglot-ltex
   :hook ((text-mode latex-mode org-mode) . (lambda ()
 		       (require 'eglot-ltex)
-		       (call-interactively #'eglot))))
+		       (call-interactively #'eglot)))
+
+:init
+(setq eglot-languagetool-server-path "/usr/bin/ltex-ls"))
 #+end_src
-#+end_comment
 
 *** eglot-jl
 
