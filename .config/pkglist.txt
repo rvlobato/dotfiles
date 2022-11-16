@@ -71,12 +71,10 @@ nautilus
 neofetch
 networkmanager
 npm
-nvidia-dkms
 nvtop
 pacman-contrib
 pandoc-crossref
 pbzip2
-pgplot
 pigz
 pkgconf
 posix-c-development
