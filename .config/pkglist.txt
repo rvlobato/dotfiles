@@ -23,7 +23,7 @@ devtools
 dnscrypt-proxy
 doxygen
 emacs-nativecomp
-epiphany-git
+epiphany
 exercism
 fakeroot
 fd
@@ -71,6 +71,7 @@ nautilus
 neofetch
 networkmanager
 npm
+nvidia-dkms
 nvtop
 pacman-contrib
 pandoc-crossref
