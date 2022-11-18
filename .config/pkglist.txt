@@ -22,7 +22,7 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs-nativecomp
+emacs-pgtk-native-comp-git
 epiphany
 exercism
 fakeroot

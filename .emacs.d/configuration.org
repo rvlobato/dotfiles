@@ -1050,12 +1050,6 @@
 (setq rustic-lsp-client 'eglot)
 #+END_SRC
 
-** Jupyter
-
-#+begin_src emacs-lisp
-(use-package jupyter)
-#+end_src
-
 ** R
 
 #+begin_src emacs-lisp
@@ -1287,7 +1281,6 @@ gnus-cache-directory "~/Documents/gnus/cache")
      (latex      . t)
      (org        . t)
      (makefile   . t)
-     (jupyter    . t)
      (R          . t)
      (perl       . t)
      (julia      . t)
