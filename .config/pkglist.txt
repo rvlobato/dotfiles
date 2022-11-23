@@ -71,7 +71,6 @@ nautilus
 neofetch
 networkmanager
 npm
-nvidia-beta-dkms
 nvtop
 pacman-contrib
 pandoc-crossref
