@@ -1200,16 +1200,6 @@ gnus-cache-directory "~/Documents/gnus/cache")
 #+END_SRC
 
 * Org
-*** Obtain Org-mode along with the extras
-
-#+BEGIN_SRC emacs-lisp
-(use-package org
-  :ensure org-plus-contrib
-  :config (require 'ox-extra)
-  (ox-extras-activate '(ignore-headlines))
-  )
-#+END_SRC
-
 *** Configs
 
 #+BEGIN_SRC emacs-lisp
@@ -1266,7 +1256,7 @@ gnus-cache-directory "~/Documents/gnus/cache")
 
 *** Some initial languages to support
 
-#+BEGIN_SRC emacs-lisp
+#+BEG`IN_SRC emacs-lisp
 (org-babel-do-load-languages
    'org-babel-load-languages
    '(
@@ -1304,8 +1294,8 @@ gnus-cache-directory "~/Documents/gnus/cache")
 *** Bullets
 
 #+BEGIN_SRC emacs-lisp
-(use-package org-bullets
-  :hook (org-mode . org-bullets-mode))
+(use-package org-superstar
+  :hook (org-mode . (lambda () (org-superstar-mode 1))))
 #+END_SRC
 
 *** Org produced htmls are coloured
