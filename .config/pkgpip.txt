@@ -1,14 +1,11 @@
 datapackage
 findiff
 handcalcs
-jupyter-resource-usage
 jupyterlab-code-formatter
 jupyterlab-drawio
 jupyterlab-git
 jupyterlab-lsp
 jupyterlab-spellchecker
-jupyterlab-system-monitor
-jupyterlab-topbar
 jupytext
 latexify-py
 mrjob
