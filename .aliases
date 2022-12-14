@@ -35,16 +35,11 @@ alias aurrebuild='aur sync -S --rebuild'
 alias aurrebuildall='aur sync -S --rebuildall'
 
 #up: jupyter, npm, pip, R and Julia
-alias jupin='jupyter labextension install $(cat $HOME/.config/pkgjup.txt)'
 alias jupup='jupyter labextension update --all'
-
 alias npmin='npm i -g $(cat $HOME/.config/pkgnpm.txt)'
 alias npmup='npm update -g'
 alias npmshow='npm -g list --depth=0'
-
 alias pipin='pip install -r $HOME/.config/pkgpip.txt'
-alias pipup='pip list --user --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install --user -U'
-
 alias julin='julia $HOME/.config/packages.jl'
 
 ## git
