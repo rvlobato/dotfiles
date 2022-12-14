@@ -1256,7 +1256,7 @@ gnus-cache-directory "~/Documents/gnus/cache")
 
 *** Some initial languages to support
 
-#+BEG`IN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages
    'org-babel-load-languages
    '(
