@@ -1,3 +1,0 @@
-jupyterlab-topbar-text
-jupyterlab-theme-toggle
-nbdime-jupyterlab
