@@ -168,3 +168,6 @@ library(fclust)
 
 install.packages("apcluster")
 library(apcluster)
+
+install.packages("xgboost")
+library(xgboost)
