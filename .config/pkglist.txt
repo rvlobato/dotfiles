@@ -37,7 +37,6 @@ gdm
 git-lfs
 gnome-backgrounds
 gnome-calendar
-gnome-characters
 gnome-console
 gnome-software
 go
@@ -66,6 +65,7 @@ namcap
 nautilus
 neofetch
 networkmanager
+noto-fonts-emoji
 npm
 nvtop
 pacman-contrib
