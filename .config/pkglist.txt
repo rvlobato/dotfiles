@@ -80,10 +80,8 @@ power-profiles-daemon
 powerline
 proselint
 protonvpn
+python-astropy
 python-cuda
-python-datashader
-python-einsteinpy
-python-hvplot
 python-iminuit
 python-lsp-all
 python-nltk

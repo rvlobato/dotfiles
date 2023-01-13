@@ -1,6 +1,9 @@
 datapackage
+datashader
+einsteinpy
 findiff
 handcalcs
+hvplot
 jupyterlab-code-formatter
 jupyterlab-drawio
 jupyterlab-git
@@ -9,5 +12,6 @@ jupyterlab-spellchecker
 jupytext
 latexify-py
 mrjob
+plotly
 nbdime
 RISE
