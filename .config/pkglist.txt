@@ -24,6 +24,7 @@ dnscrypt-proxy
 doxygen
 emacs-nativecomp
 epiphany
+evolution-data-server
 exercism
 fakeroot
 fd
@@ -36,8 +37,8 @@ gcc-fortran
 gdm
 git-lfs
 gnome-backgrounds
-gnome-calendar
 gnome-console
+gnome-control-center
 gnome-software
 go
 gopls
