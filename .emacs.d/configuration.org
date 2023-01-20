@@ -1018,15 +1018,18 @@
 
 *** eglot-ltex
 
-# #+begin_src emacs-lisp
-#  (use-package eglot-ltex
-#  :hook ((text-mode latex-mode org-mode) . (lambda ()
-#		       (require 'eglot-ltex)
-#		       (call-interactively #'eglot)))
+ #+begin_comment
+#+begin_src emacs-lisp
+(use-package eglot-ltex
+:hook ((text-mode latex-mode org-mode) . (lambda ()
+					   (require 'eglot-ltex)
+					   (call-interactively #'eglot)))
 
-# :init
-# (setq eglot-languagetool-server-path "/usr/bin/ltex-ls"))
-# #+end_src
+:init
+(setq eglot-languagetool-server-path "/usr/bin/ltex-ls"))
+ #+end_src
+ #+end_comment
+
 
 *** eglot-jl
 
