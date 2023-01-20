@@ -68,7 +68,6 @@ neofetch
 networkmanager
 noto-fonts-emoji
 npm
-nvidia-dkms
 nvtop
 pacman-contrib
 pandoc-crossref
