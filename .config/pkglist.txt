@@ -68,6 +68,7 @@ neofetch
 networkmanager
 noto-fonts-emoji
 npm
+nvidia-dkms
 nvtop
 pacman-contrib
 pandoc-crossref
@@ -110,7 +111,6 @@ solaar
 sudo
 syncthing
 system76-dkms
-texlab
 texlive-bibtexextra
 texlive-fontsextra
 texlive-pictures
