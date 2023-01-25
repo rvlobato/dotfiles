@@ -129,3 +129,4 @@ xeus-cling
 yaml-language-server
 yapf
 yubikey-manager-qt
+zram-generator
