@@ -1,5 +1,4 @@
 aether-bin
-amd-ucode
 aspell-de
 aspell-en
 aspell-es
@@ -7,9 +6,8 @@ aspell-fr
 aspell-it
 aspell-pt
 aurutils
-autoconf
-automake
 base
+base-devel
 bash-completion
 bash-language-server
 biber
@@ -26,7 +24,6 @@ emacs-pgtk-native-comp-git
 epiphany
 evolution-data-server
 exercism
-fakeroot
 fd
 flatpak
 fortls
@@ -49,6 +46,9 @@ gstreamer-vaapi
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy
+intel-media-driver
+intel-ucode
 jre-openjdk
 julia-bin
 jupyter-gnuplot_kernel
@@ -57,8 +57,8 @@ languagetool
 lfortran
 libva-vdpau-driver
 libvdpau-va-gl
-linux-amd-znver2
-linux-amd-znver2-headers
+linux-clear
+linux-clear-headers
 linux-firmware
 linux-lts
 ltex-ls-bin
@@ -68,12 +68,12 @@ neofetch
 networkmanager
 noto-fonts-emoji
 npm
+nvidia-prime
 nvtop
 pacman-contrib
 pandoc-crossref
 pbzip2
 pigz
-pkgconf
 posix-c-development
 posix-software-development
 posix-user-portability
@@ -107,11 +107,10 @@ sagemath
 sccache
 shellcheck
 solaar
-sudo
 syncthing
-system76-dkms
 texlive-bibtexextra
 texlive-fontsextra
+texlive-humanities
 texlive-pictures
 texlive-publishers
 tk
@@ -122,6 +121,7 @@ vivid
 vscode-css-languageserver
 vscode-html-languageserver
 vscode-json-languageserver
+vulkan-intel
 wordnet-cli
 wordnet-tk
 xdg-user-dirs-gtk
