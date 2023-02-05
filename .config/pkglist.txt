@@ -1,4 +1,5 @@
 aether-bin
+amd-ucode
 aspell-de
 aspell-en
 aspell-es
@@ -46,9 +47,6 @@ gstreamer-vaapi
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-iio-sensor-proxy
-intel-media-driver
-intel-ucode
 jre-openjdk
 julia-bin
 jupyter-gnuplot_kernel
@@ -57,8 +55,8 @@ languagetool
 lfortran
 libva-vdpau-driver
 libvdpau-va-gl
-linux-clear
-linux-clear-headers
+linux-amd-znver2
+linux-amd-znver2-headers
 linux-firmware
 linux-lts
 ltex-ls-bin
@@ -68,7 +66,6 @@ neofetch
 networkmanager
 noto-fonts-emoji
 npm
-nvidia-prime
 nvtop
 pacman-contrib
 pandoc-crossref
@@ -108,6 +105,7 @@ sccache
 shellcheck
 solaar
 syncthing
+system76-dkms
 texlive-bibtexextra
 texlive-fontsextra
 texlive-humanities
@@ -121,7 +119,6 @@ vivid
 vscode-css-languageserver
 vscode-html-languageserver
 vscode-json-languageserver
-vulkan-intel
 wordnet-cli
 wordnet-tk
 xdg-user-dirs-gtk
