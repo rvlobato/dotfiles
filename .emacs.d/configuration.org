@@ -346,96 +346,6 @@
 (add-hook 'before-save-hook 'whitespace-cleanup)
 #+END_SRC
 
-** Word Completion
-
-*** Company
-
-**** configs
-
-#+BEGIN_SRC emacs-lisp
-(use-package company)
-(add-hook 'after-init-hook 'global-company-mode)
-(setq company-idle-delay 0 ; immediate activation completion
-      company-show-numbers t ; show number and complet according it
-      company-dabbrev-downcase 0 ; do not downcase by default
-      company-minimum-prefix-length 3 ; 3 letters required for completion activate
-      company-selection-wrap-around t) ; completetion list cycle
-#+END_SRC
-
-**** company-box
-#+begin_src emacs-lisp
-(use-package company-box
-  :hook (company-mode . company-box-mode))
-#+end_src
-
-**** Company-AUCTeX
-
-#+begin_src emacs-lisp
-(use-package company-auctex)
-(require 'company-auctex)
-(company-auctex-init)
-#+end_src
-
-**** Company-c-headers
-
-#+begin_src emacs-lisp
-(use-package company-c-headers)
-(add-to-list 'company-backends 'company-c-headers)
-#+end_src
-
-**** Company-math
-
-#+begin_src emacs-lisp
-(use-package company-math)
-;; global activation of the unicode symbol completion
-(add-to-list 'company-backends 'company-math-symbols-unicode)
-(use-package math-symbol-lists)
-#+end_src
-
-**** company quickhelp
-
-#+BEGIN_SRC emacs-lisp
-(use-package company-quickhelp
-  :config
-  (setq company-quickhelp-delay 1))
-  (company-quickhelp-mode)
-#+END_SRC
-
-**** company-tabnine
-
-#+begin_src emacs-lisp
-(use-package company-tabnine)
-(add-to-list 'company-backends #'company-tabnine)
-#+end_src
-
-**** company-suggest
-
-#+begin_comment
-#+begin_src emacs-lisp
-(use-package company-suggest)
-(setq company-suggest-complete-sentence t)
-(add-to-list 'company-backends 'company-suggest-google)
-(add-to-list 'company-backends 'company-suggest-wiktionary)
-#+end_src
-#+end_comment
-
-**** Company-web
-
-#+begin_src emacs-lisp
-  (require 'company)
-  (use-package company-web)
-  (require 'company-web)                          ; load company mode html backend
-#+end_src
-
-**** company-wordfreq
-
-#+begin_src emacs-lisp
-(use-package company-wordfreq
-  :hook ((text-mode-hook latex-mode-hook) . (lambda ()
-			    (setq-local company-backends '(company-wordfreq))
-			    (setq-local company-transformers nil))))
-#+end_src
-
 ** Yasnippet
 
 #+BEGIN_SRC emacs-lisp
@@ -469,17 +379,6 @@
 
 (dolist (hook '(python-mode-hook prog-mode-hook web-mode-hook list-mode-hook))
   (add-hook hook (lambda () (set-fill-column 72))))
-#+END_SRC
-
-** Flyspell mode
-
-#+BEGIN_SRC emacs-lisp
-(use-package flyspell
-  :hook (
-	 ((org-mode text-mode) . flyspell-mode)
-	 ((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode)
-	 )
-  )
 #+END_SRC
 
 ** Guess-language
@@ -567,6 +466,83 @@
 (dired-async-mode 1)
 (async-bytecomp-package-mode 1)
 #+END_SRC
+
+** Bufler
+
+#+begin_src emacs-lisp
+(use-package bufler)
+#+end_src
+
+** Company
+
+**** configs
+
+#+BEGIN_SRC emacs-lisp
+(use-package company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay 0 ; immediate activation completion
+      company-show-numbers t ; show number and complet according it
+      company-dabbrev-downcase 0 ; do not downcase by default
+      company-minimum-prefix-length 3 ; 3 letters required for completion activate
+      company-selection-wrap-around t) ; completetion list cycle
+#+END_SRC
+
+**** company-box
+
+#+begin_src emacs-lisp
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+#+end_src
+
+**** Company-c-headers
+
+#+begin_src emacs-lisp
+(use-package company-c-headers)
+(add-to-list 'company-backends 'company-c-headers)
+#+end_src
+
+**** Company-math
+
+#+begin_src emacs-lisp
+(use-package company-math)
+;; global activation of the unicode symbol completion
+(add-to-list 'company-backends 'company-math-symbols-unicode)
+(use-package math-symbol-lists)
+#+end_src
+
+**** company quickhelp
+
+#+BEGIN_SRC emacs-lisp
+(use-package company-quickhelp
+  :config
+  (setq company-quickhelp-delay 1))
+  (company-quickhelp-mode)
+#+END_SRC
+
+**** company-tabnine
+
+#+begin_src emacs-lisp
+(use-package company-tabnine)
+(add-to-list 'company-backends #'company-tabnine)
+#+end_src
+
+**** Company-web
+
+#+begin_src emacs-lisp
+  (require 'company)
+  (use-package company-web)
+  (require 'company-web)                          ; load company mode html backend
+#+end_src
+
+**** company-wordfreq
+
+#+begin_src emacs-lisp
+(use-package company-wordfreq
+  :hook ((text-mode-hook latex-mode-hook) . (lambda ()
+			    (setq-local company-backends '(company-wordfreq))
+			    (setq-local company-transformers nil))))
+#+end_src
+
 
 *** ob-async
 
@@ -752,12 +728,6 @@
   (global-set-key (kbd "M-s d") 'rg-dwim))
 (use-package helm-rg)
 #+END_SRC
-
-** Bufler
-
-#+begin_src emacs-lisp
-(use-package bufler)
-#+end_src
 
 ** treemacs
 
@@ -947,14 +917,6 @@
 (add-hook 'emacs-lisp-mode-hook #'check-parens)
 #+end_src
 
-** Flycheck
-
-#+BEGIN_SRC emacs-lisp
-(use-package flycheck
-  :init (global-flycheck-mode)
-  :custom (flycheck-display-errors-delay .3))
-#+END_SRC
-
 ** GO
 
 #+BEGIN_SRC emacs-lisp
@@ -1011,25 +973,26 @@
 ** eglot
 
 #+begin_src emacs-lisp
-(use-package eglot)
 (add-hook 'prog-mode-hook 'eglot-ensure)
-(add-hook 'TeX-mode-hook 'eglot-ensure)
+;(add-hook 'TeX-mode-hook 'eglot-ensure)
 #+end_src
 
-*** eglot-ltex
-
- #+begin_comment
 #+begin_src emacs-lisp
-(use-package eglot-ltex
-:hook ((text-mode latex-mode org-mode) . (lambda ()
-					   (require 'eglot-ltex)
-					   (call-interactively #'eglot)))
+(use-package flymake-languagetool
+  :ensure t
+  :hook ((text-mode       . flymake-languagetool-load)
+	 (latex-mode      . flymake-languagetool-load)
+	 (org-mode        . flymake-languagetool-load)
+	 (markdown-mode   . flymake-languagetool-load))
+  :init
+  ;; Remote server config with LanguageTool's free API
+  ;; (setq flymake-languagetool-url "https://api.languagetool.org")
+  ;; (setq flymake-languagetool-server-port nil)
+  ;; (setq flymake-languagetool-server-jar nil)
 
-:init
-(setq eglot-languagetool-server-path "/usr/bin/ltex-ls"))
- #+end_src
- #+end_comment
-
+  ;; Local server config
+  (setq flymake-languagetool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"))
+#+end_src
 
 *** eglot-jl
 
