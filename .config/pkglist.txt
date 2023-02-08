@@ -1,11 +1,5 @@
 aether-bin
 amd-ucode
-aspell-de
-aspell-en
-aspell-es
-aspell-fr
-aspell-it
-aspell-pt
 aurutils
 base
 base-devel
