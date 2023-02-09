@@ -17,7 +17,6 @@ dnscrypt-proxy
 doxygen
 emacs-pgtk-native-comp-git
 epiphany
-evolution-data-server
 exercism
 fd
 flatpak
@@ -29,6 +28,7 @@ gcc-fortran
 gdm
 git-lfs
 gnome-backgrounds
+gnome-calendar
 gnome-console
 gnome-control-center
 gnome-software
