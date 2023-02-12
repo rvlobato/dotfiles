@@ -15,7 +15,7 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs-pgtk-native-comp-git
+emacs29-git
 epiphany
 exercism
 fd
