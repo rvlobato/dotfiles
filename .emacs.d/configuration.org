@@ -381,23 +381,6 @@
   (add-hook hook (lambda () (set-fill-column 72))))
 #+END_SRC
 
-** Guess-language
-
-   #+begin_src emacs-lisp
-(use-package guess-language
-  :hook ((text-mode TeX-mode web-mode) . guess-language-mode)
-
-  :config
-  (setq guess-language-langcodes
-	'((en . ("en_US" "English"))
-	  (pt . ("pt_BR" "Portuguese"))
-	  (es . ("es" "Spanish"))
-	  )
-	guess-language-languages '(en pt es)
-	guess-language-min-paragraph-length 20)
-  )
-   #+end_src
-
 ** Synosaurus
 
 #+BEGIN_SRC emacs-lisp
