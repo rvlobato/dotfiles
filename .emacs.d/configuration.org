@@ -1005,6 +1005,15 @@
 
 ** Rust
 
+#+begin_src emacs-lisp
+(use-pacage rust-mode)
+
+(add-hook 'rust-mode-hook
+	  (lambda () (setq indent-tabs-mode nil)))
+
+(setq rust-format-on-save t)
+#+end_src
+
 #+BEGIN_SRC emacs-lisp
 (use-package rustic)
 (setq rustic-lsp-client 'eglot)

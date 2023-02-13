@@ -9,10 +9,12 @@
 (require 'package)
 
 ;; Internet repositories for new packages.
-(setq package-archives '(("melpa"     . "https://melpa.org/packages/")
+(setq package-archives '(
+			 ("melpa" . "https://melpa.org/packages/")
 			 ("gnu" . "https://elpa.gnu.org/packages/")
 			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-			 ))
+			 )
+      )
 
 ;; Activate all the packages (in particular autoloads)
 (package-initialize)
