@@ -15,10 +15,11 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs29-git
+emacs-nativecomp
 epiphany
 exercism
 fd
+fish
 flatpak
 fortls
 fuse2
@@ -57,7 +58,9 @@ namcap
 nautilus
 neofetch
 networkmanager
+noto-fonts-cjk
 noto-fonts-emoji
+noto-fonts-extra
 npm
 nvtop
 pacman-contrib
@@ -77,7 +80,6 @@ python-iminuit
 python-lsp-all
 python-nltk
 python-openml
-python-orange
 python-pipenv
 python-pkgconfig
 python-pylint

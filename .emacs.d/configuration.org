@@ -989,7 +989,7 @@
 ** Rust
 
 #+begin_src emacs-lisp
-(use-pacage rust-mode)
+(use-package rust-mode)
 
 (add-hook 'rust-mode-hook
 	  (lambda () (setq indent-tabs-mode nil)))
