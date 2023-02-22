@@ -82,14 +82,14 @@ exec swayidle -w \
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Shift+w exec epiphany
-    workspace 3
-    exec mullvad-vpn
-    workspace 2
-    exec jami
+    bindsym $mod+Shift+w exec flatpak run org.gnome.Epiphany
     workspace 1
-    exec insync start
-    exec ~/Desktop/appimage/pcloud
+    exec insync start &
+    exec ~/Desktop/appimage/pcloud &
+    exec gnome-software
+    workspace 2
+    exec ~/Desktop/appimage/keet &
+    exec flatpak run net.jami.Jami
 #
 # Moving around:
 #
