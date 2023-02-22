@@ -1069,6 +1069,12 @@
 )
 #+end_src
 
+** Vala
+
+#+begin_src emacs-lisp
+(use-package vala-mode)
+#+end_src
+
 * Security
 
 #+BEGIN_SRC emacs-lisp
