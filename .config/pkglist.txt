@@ -15,9 +15,10 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs-nativecomp
+emacs29-git
 epiphany
 exercism
+fcgu-mirrorlist
 fd
 fish
 flatpak
