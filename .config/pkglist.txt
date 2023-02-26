@@ -15,7 +15,7 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs29-git
+emacs-nativecomp
 epiphany
 exercism
 fcgu-mirrorlist
