@@ -440,6 +440,18 @@
 (use-package speed-type)
 #+end_src
 
+** lsp-ltex
+
+#+begin_src emacs-lisp
+(use-package lsp-ltex
+  :hook ((LaTeX-mode org-mode text-mode) . (lambda ()
+			(require 'lsp-ltex)
+			(lsp)))  ; or lsp-deferred)
+
+  :init
+  (setq lsp-ltex-version "15.2.0"))
+		       #+end_src
+
 * Frameworks & libraries
 ** Async
 
@@ -950,24 +962,7 @@
 
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'eglot-ensure)
-;(add-hook 'TeX-mode-hook 'eglot-ensure)
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package flymake-languagetool
-  :ensure t
-  :hook ((text-mode       . flymake-languagetool-load)
-	 (latex-mode      . flymake-languagetool-load)
-	 (org-mode        . flymake-languagetool-load)
-	 (markdown-mode   . flymake-languagetool-load))
-  :init
-  ;; Remote server config with LanguageTool's free API
-  ;; (setq flymake-languagetool-url "https://api.languagetool.org")
-  ;; (setq flymake-languagetool-server-port nil)
-  ;; (setq flymake-languagetool-server-jar nil)
-
-  ;; Local server config
-  (setq flymake-languagetool-server-jar "/usr/share/java/languagetool/languagetool-server.jar"))
+(add-hook 'TeX-mode-hook 'eglot-ensure)
 #+end_src
 
 *** eglot-jl
