@@ -1,4 +1,5 @@
 aether-bin
+alacritty
 amd-ucode
 aurutils
 base
@@ -17,6 +18,8 @@ dnscrypt-proxy
 doxygen
 emacs-nativecomp
 epiphany
+evolution-ews
+evolution-spamassassin
 exercism
 fcgu-mirrorlist
 fd
@@ -31,7 +34,6 @@ gcc-go
 gdm
 git-lfs
 gnome-backgrounds
-gnome-calendar
 gnome-console
 gnome-control-center
 gnome-software
@@ -64,7 +66,6 @@ noto-fonts-emoji
 noto-fonts-extra
 npm
 nvtop
-pacman-contrib
 pandoc-crossref
 pbzip2
 pigz
@@ -118,8 +119,8 @@ vscode-json-languageserver
 wordnet-cli
 wordnet-tk
 xdg-user-dirs-gtk
-xeus-cling
 yaml-language-server
 yapf
 yubikey-manager-qt
+zotero
 zram-generator
