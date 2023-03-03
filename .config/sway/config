@@ -85,10 +85,10 @@ exec swayidle -w \
     bindsym $mod+Shift+w exec flatpak run org.gnome.Epiphany
     workspace 1
     exec insync start &
-    exec ~/Desktop/appimage/pcloud &
+    exec ~/.appimage/pcloud &
     exec gnome-software
     workspace 2
-    exec ~/Desktop/appimage/keet &
+    exec ~/.appimage/keet &
     exec flatpak run net.jami.Jami
 #
 # Moving around:
