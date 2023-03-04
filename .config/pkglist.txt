@@ -1,6 +1,7 @@
 aether-bin
 alacritty
-amd-ucode
+alhp-keyring
+alhp-mirrorlist
 aurutils
 base
 base-devel
@@ -16,12 +17,11 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs-nativecomp
+emacs29-git
 epiphany
 evolution-ews
 evolution-spamassassin
 exercism
-fcgu-mirrorlist
 fd
 fish
 flatpak
@@ -45,6 +45,9 @@ gstreamer-vaapi
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iio-sensor-proxy
+intel-media-driver
+intel-ucode
 jre-openjdk
 julia-bin
 jupyter-gnuplot_kernel
@@ -53,8 +56,8 @@ languagetool
 lfortran
 libva-vdpau-driver
 libvdpau-va-gl
-linux-amd-znver2
-linux-amd-znver2-headers
+linux-clear
+linux-clear-headers
 linux-firmware
 linux-lts
 namcap
@@ -65,7 +68,9 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
+nvidia-prime
 nvtop
+pacman-contrib
 pandoc-crossref
 pbzip2
 pigz
@@ -102,7 +107,6 @@ sccache
 shellcheck
 solaar
 syncthing
-system76-dkms
 texlive-bibtexextra
 texlive-fontsextra
 texlive-humanities
@@ -116,9 +120,11 @@ vivid
 vscode-css-languageserver
 vscode-html-languageserver
 vscode-json-languageserver
+vulkan-intel
 wordnet-cli
 wordnet-tk
 xdg-user-dirs-gtk
+xeus-cling
 yaml-language-server
 yapf
 yubikey-manager-qt
