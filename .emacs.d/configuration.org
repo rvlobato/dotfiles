@@ -193,7 +193,7 @@
 ** Bookmarks
 
 #+begin_src emacs-lisp
-(setq bookmark-default-file "~/Desktop/configs/emacs/bookmarks")
+(setq bookmark-default-file "~/Templates/configs/emacs/bookmarks")
 #+end_src
 
 ** Native Compilation
