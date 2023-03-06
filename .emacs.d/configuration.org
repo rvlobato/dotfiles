@@ -472,6 +472,7 @@
 
 **** configs
 
+
 #+BEGIN_SRC emacs-lisp
 (use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -481,6 +482,13 @@
       company-minimum-prefix-length 3 ; 3 letters required for completion activate
       company-selection-wrap-around t) ; completetion list cycle
 #+END_SRC
+
+**** company-auctex
+
+#+begin_src emacs-lisp
+(use-package company-auctex)
+(company-auctex-init)
+#+end_src
 
 **** company-box
 
