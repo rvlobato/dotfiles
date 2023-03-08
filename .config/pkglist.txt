@@ -1,5 +1,6 @@
 aether-bin
-alacritty
+alacritty-git
+alacritty-themes
 amd-ucode
 aurutils
 base
@@ -16,10 +17,8 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs-nativecomp
+emacs29-git
 epiphany
-evolution-ews
-evolution-spamassassin
 exercism
 fd
 fish
@@ -33,6 +32,7 @@ gcc-go
 gdm
 git-lfs
 gnome-backgrounds
+gnome-calendar
 gnome-console
 gnome-control-center
 gnome-software
@@ -122,5 +122,4 @@ xdg-user-dirs-gtk
 yaml-language-server
 yapf
 yubikey-manager-qt
-zotero
 zram-generator
