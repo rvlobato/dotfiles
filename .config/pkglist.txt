@@ -19,6 +19,7 @@ dnscrypt-proxy
 doxygen
 emacs29-git
 epiphany
+evolution-data-server
 exercism
 fd
 fish
@@ -32,7 +33,6 @@ gcc-go
 gdm
 git-lfs
 gnome-backgrounds
-gnome-calendar
 gnome-console
 gnome-control-center
 gnome-software
