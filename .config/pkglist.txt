@@ -75,6 +75,7 @@ posix-user-portability
 power-profiles-daemon
 powerline
 proselint
+protonmail-bridge-bin
 protonvpn
 python-astropy
 python-cuda
