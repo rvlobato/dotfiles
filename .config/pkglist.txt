@@ -1,5 +1,5 @@
 aether-bin
-alacritty-git
+alacritty
 alacritty-themes
 amd-ucode
 aurutils
