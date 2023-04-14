@@ -17,7 +17,7 @@ cvs
 devtools
 dnscrypt-proxy
 doxygen
-emacs29-git
+emacs-nativecomp
 epiphany
 evolution-data-server
 exercism
