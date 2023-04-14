@@ -22,7 +22,6 @@ epiphany
 evolution-data-server
 exercism
 fd
-fish
 flatpak
 fortls
 fuse2
@@ -104,6 +103,7 @@ shellcheck
 solaar
 syncthing
 system76-dkms
+tcsh
 texlive-bibtexextra
 texlive-fontsextra
 texlive-humanities
