@@ -28,13 +28,13 @@ fuse2
 fwupd
 fzf
 gcc-fortran
-gcc-go
 gdm
 git-lfs
 gnome-backgrounds
 gnome-console
 gnome-control-center
 gnome-software
+go
 gopls
 gst-plugin-pipewire
 gst-plugins-bad
