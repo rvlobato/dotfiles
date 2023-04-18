@@ -22,6 +22,7 @@ epiphany
 evolution-data-server
 exercism
 fd
+fish
 flatpak
 fortls
 fuse2
@@ -55,7 +56,6 @@ linux-amd-znver2
 linux-amd-znver2-headers
 linux-firmware
 linux-lts
-ltex-ls-bin
 namcap
 nautilus
 neofetch
@@ -75,8 +75,7 @@ posix-user-portability
 power-profiles-daemon
 powerline
 proselint
-protonmail-bridge-bin
-protonvpn
+protonvpn-cli
 python-astropy
 python-cuda
 python-iminuit
