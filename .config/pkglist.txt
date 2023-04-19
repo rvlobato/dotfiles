@@ -75,7 +75,6 @@ posix-user-portability
 power-profiles-daemon
 powerline
 proselint
-protonvpn-cli
 python-astropy
 python-cuda
 python-iminuit
@@ -90,6 +89,7 @@ python-pytorch-opt-cuda
 python-seaborn
 python-statsmodels
 python-tensorflow-opt-cuda
+pyupgrade
 qgnomeplatform-qt5
 qgnomeplatform-qt6
 reflector
