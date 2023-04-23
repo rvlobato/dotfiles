@@ -90,7 +90,6 @@ python-pytorch-opt-cuda
 python-seaborn
 python-statsmodels
 python-tensorflow-opt-cuda
-pyupgrade
 qgnomeplatform-qt5
 qgnomeplatform-qt6
 reflector
