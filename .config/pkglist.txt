@@ -1,6 +1,4 @@
 aether-bin
-alacritty
-alacritty-themes
 amd-ucode
 aurutils
 base
