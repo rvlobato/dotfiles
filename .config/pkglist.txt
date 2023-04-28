@@ -20,6 +20,7 @@ epiphany
 evolution-data-server
 exercism
 fd
+firefox-developer-edition
 fish
 flatpak
 fortls
@@ -42,6 +43,7 @@ gstreamer-vaapi
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
+iotop
 jre-openjdk
 julia-bin
 jupyter-gnuplot_kernel
@@ -72,6 +74,7 @@ posix-software-development
 posix-user-portability
 power-profiles-daemon
 powerline
+profile-sync-daemon
 proselint
 protonvpn-cli
 python-astropy
