@@ -1,4 +1,5 @@
 aether-bin
+alacritty
 amd-ucode
 aurutils
 base
