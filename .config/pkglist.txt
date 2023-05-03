@@ -19,7 +19,6 @@ emacs29-git
 epiphany
 evolution-data-server
 exercism
-fcgu-mirrorlist
 fd
 firefox-developer-edition
 fish
