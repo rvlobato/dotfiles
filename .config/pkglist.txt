@@ -14,12 +14,12 @@ ccls
 cmake
 cvs
 devtools
-dnscrypt-proxy
 doxygen
 emacs29-git
 epiphany
 evolution-data-server
 exercism
+fcgu-mirrorlist
 fd
 firefox-developer-edition
 fish
@@ -77,6 +77,7 @@ power-profiles-daemon
 powerline
 profile-sync-daemon
 proselint
+protonmail-bridge-nogui
 protonvpn-cli
 python-astropy
 python-cuda
