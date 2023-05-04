@@ -17,7 +17,8 @@ devtools
 doxygen
 emacs29-git
 epiphany
-evolution-data-server
+evolution-bogofilter
+evolution-ews
 exercism
 fd
 firefox-developer-edition
