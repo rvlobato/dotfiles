@@ -43,6 +43,22 @@ export LS_COLORS
 # Functions
 #------------------------------
 
+#pip user
+function pip() {
+	  if [[ "$1" == "install" ]]; then
+	      shift 1
+	      command pip install --user "$@"
+	  else
+	      command pip "$@"
+	  fi
+}
+
+#mkdir cd
+mkcd ()
+{
+  mkdir -p -- "$1" && cd -P -- "$1"
+}
+
 #-------------
 #Powerline
 #powerline-daemon -q

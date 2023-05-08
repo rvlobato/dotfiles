@@ -34,7 +34,7 @@ git-lfs
 gnome-backgrounds
 gnome-console
 gnome-control-center
-gnome-software-packagekit-plugin
+gnome-software
 go
 gopls
 gst-plugin-pipewire
