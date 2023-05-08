@@ -33,6 +33,7 @@ done
 
 #------------------------------
 # Alias
+alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
 [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # Dir colors
