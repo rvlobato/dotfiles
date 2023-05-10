@@ -15,6 +15,7 @@ Pkg.add("Gadfly") # Gadfly is a plotting and data visualization system
 Pkg.add("GLMakie") # High level plotting on the GPU.
 Pkg.add("IJulia") # Julia kernel for Jypyter
 Pkg.add("Knet") # Koç University deep learning framework implemented in Julia
+Pkg.add("KernelAbstractions") # Heterogeneous programming in Julia
 Pkg.add("LanguageServer")
 Pkg.add("LaTeXStrings")
 Pkg.add("LoopVectorization") # macro(s) for vectorizing loops
@@ -33,4 +34,5 @@ Pkg.add("TextAnalysis")
 #Pkg.add("Turing")
 Pkg.add("VegaLite")
 Pkg.add("VegaDatasets")
+Pkg.add("WaterLily") # Fast and simple fluid simulator in Julia
 Pkg.add("XGBoost")
