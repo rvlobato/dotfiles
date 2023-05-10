@@ -2,6 +2,7 @@ datapackage
 datashader
 einsteinpy
 findiff
+gnuplot_kernel
 handcalcs
 hvplot
 jupyterlab-code-formatter
