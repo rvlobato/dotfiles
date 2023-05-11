@@ -15,6 +15,7 @@ latexify-py
 mrjob
 orange3
 plotly
+proselint
 pyupgrade
 PyQt6
 PyQt6
