@@ -1,6 +1,6 @@
 alacritty-git
 amd-ucode
-aurutils
+aurutils-git
 base
 base-devel
 bash-completion
@@ -14,7 +14,7 @@ cmake
 cvs
 devtools
 doxygen
-emacs-nativecomp
+emacs29-git
 epiphany
 evolution-bogofilter
 evolution-ews
