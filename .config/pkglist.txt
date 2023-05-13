@@ -1,4 +1,3 @@
-aether-bin
 alacritty-git
 amd-ucode
 aurutils
@@ -49,7 +48,6 @@ iotop
 jre-openjdk
 julia-bin
 languagetool
-lfortran
 libva-vdpau-driver
 libvdpau-va-gl
 linux-amd-znver2
