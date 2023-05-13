@@ -1,1 +1,2 @@
 mathjax-node-cli
+alacritty-themes
