@@ -64,6 +64,7 @@ noto-fonts-extra
 npm
 nvtop
 octave
+opencl-nvidia-beta
 pacman-contrib
 pandoc-crossref
 pbzip2
@@ -102,6 +103,7 @@ shellcheck
 solaar
 syncthing
 system76-dkms
+system76-driver
 tcsh
 texlive-bibtexextra
 texlive-fontsextra
