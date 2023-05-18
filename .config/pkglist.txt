@@ -1,4 +1,5 @@
 alacritty-git
+amd-ucode
 aurutils-git
 base
 base-devel
@@ -44,17 +45,14 @@ gstreamer-vaapi
 gvfs-google
 gvfs-gphoto2
 gvfs-mtp
-iio-sensor-proxy
-intel-media-driver
-intel-ucode
 iotop
 jre-openjdk
 julia-bin
 languagetool
 libva-vdpau-driver
 libvdpau-va-gl
-linux-clear
-linux-clear-headers
+linux-amd-znver2
+linux-amd-znver2-headers
 linux-firmware
 linux-lts
 namcap
@@ -65,7 +63,6 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
-nvidia-prime
 nvtop
 octave
 pacman-contrib
@@ -105,6 +102,8 @@ sccache
 shellcheck
 solaar
 syncthing
+system76-dkms
+system76-driver
 tcsh
 texlive-bibtexextra
 texlive-fontsextra
@@ -119,7 +118,6 @@ vivid
 vscode-css-languageserver
 vscode-html-languageserver
 vscode-json-languageserver
-vulkan-intel
 wordnet-cli
 wordnet-tk
 xdg-user-dirs-gtk
