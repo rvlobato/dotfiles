@@ -49,7 +49,7 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
