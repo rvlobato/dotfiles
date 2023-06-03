@@ -1,6 +1,6 @@
-alacritty-git
+alacritty
 amd-ucode
-aurutils-git
+aurutils
 base
 base-devel
 bash-completion
@@ -20,7 +20,6 @@ evolution-bogofilter
 evolution-ews
 exercism
 fd
-firefox-developer-edition
 fish
 flatpak
 fortls
