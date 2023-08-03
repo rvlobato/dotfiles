@@ -8,6 +8,7 @@ hvplot
 jupyterlab-code-formatter
 jupyterlab-drawio
 jupyterlab-git
+jupyter-ai
 jupyterlab-lsp
 jupyterlab-spellchecker
 jupytext
