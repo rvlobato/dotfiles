@@ -37,22 +37,15 @@ alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
 [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # Dir colors
-LS_COLORS="$(vivid generate solarized-dark)"
-export LS_COLORS
+# LS_COLORS="$(vivid generate solarized-dark)"
+# export LS_COLORS
+
+# PATH
+PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/python/bin
 
 #------------------------------
 # Functions
 #------------------------------
-
-#pip user
-function pip() {
-	  if [[ "$1" == "install" ]]; then
-	      shift 1
-	      command pip install --user "$@"
-	  else
-	      command pip "$@"
-	  fi
-}
 
 #mkdir cd
 mkcd ()
