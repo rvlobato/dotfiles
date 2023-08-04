@@ -440,17 +440,16 @@
 (use-package speed-type)
 #+end_src
 
-** lsp-ltex
+** eglot-ltex
 
 #+begin_src emacs-lisp
-(use-package lsp-ltex
-  :hook ((LaTeX-mode org-mode text-mode) . (lambda ()
-			(require 'lsp-ltex)
-			(lsp)))  ; or lsp-deferred)
-
+(use-package eglot-ltex
+  :hook ((org-mode text-mode latex-mode). (lambda ()
+		       (require 'eglot-ltex)
+		       (eglot-ensure)))
   :init
-  (setq lsp-ltex-version "15.2.0"))
-		       #+end_src
+  (setq eglot-languagetool-server-path "~/.emacs.d/ltex/ltex-ls-15.2.0"))
+#+end_src
 
 * Frameworks & libraries
 ** Async
@@ -600,24 +599,24 @@
 *** General
 
 #+BEGIN_SRC emacs-lisp
-(use-package helm
- :init (helm-mode t)
- :bind (("M-x"     . helm-M-x)
-	("C-x C-f" . helm-find-files)
-	("C-x b"   . helm-mini)     ;; See buffers & recent files; more useful.
-	("C-x r b" . helm-filtered-bookmarks)
-	("C-x C-r" . helm-recentf)  ;; Search for recently edited files
-	("C-c i"   . helm-imenu)
-	("C-h a"   . helm-apropos)
-	;; Look at what was cut recently & paste it in.
-	("M-y" . helm-show-kill-ring)
+  (use-package helm
+   :init (helm-mode t)
+   :bind (("M-x"     . helm-M-x)
+	  ("C-x C-f" . helm-find-files)
+	  ("C-x b"   . helm-mini)     ;; See buffers & recent files; more useful.
+	  ("C-x r b" . helm-filtered-bookmarks)
+	  ("C-x C-r" . helm-recentf)  ;; Search for recently edited files
+	  ("C-c i"   . helm-imenu)
+	  ("C-h a"   . helm-apropos)
+	  ;; Look at what was cut recently & paste it in.
+	  ("M-y" . helm-show-kill-ring)
 
-	:map helm-map
-	;; We can list ‘actions’ on the currently selected item by C-z.
-	("C-z" . helm-select-action)
-	;; Let's keep tab-completetion anyhow.
-	("TAB"   . helm-execute-persistent-action)
-	("<tab>" . helm-execute-persistent-action)))
+	  :map helm-map
+	  ;; We can list ‘actions’ on the currently selected item by C-z.
+	  ("C-z" . helm-select-action)
+	  ;; Let's keep tab-completetion anyhow.
+	  ("TAB"   . helm-execute-persistent-action)
+	  ("<tab>" . helm-execute-persistent-action)))
 #+END_SRC
 
 *** Current buffers, recent files, and bookmarks
@@ -725,11 +724,11 @@
 ** Ripgrep
 
 #+BEGIN_SRC emacs-lisp
-(use-package rg
-  :config
-  (global-set-key (kbd "M-s g") 'rg)
-  (global-set-key (kbd "M-s d") 'rg-dwim))
-(use-package helm-rg)
+  (use-package rg
+    :config
+    (global-set-key (kbd "M-s g") 'rg)
+    (global-set-key (kbd "M-s d") 'rg-dwim))
+   (use-package helm-rg)
 #+END_SRC
 
 ** treemacs
