@@ -444,9 +444,9 @@
 
 #+begin_src emacs-lisp
 (use-package eglot-ltex
-  :hook ((org-mode text-mode latex-mode). (lambda ()
-		       (require 'eglot-ltex)
-		       (eglot-ensure)))
+  :hook ((org-mode text-mode latex-mode) . (lambda ()
+					     (require 'eglot-ltex)
+					     (eglot-ensure)))
   :init
   (setq eglot-languagetool-server-path "~/.emacs.d/ltex/ltex-ls-15.2.0"))
 #+end_src
@@ -968,7 +968,6 @@
 
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'eglot-ensure)
-(add-hook 'TeX-mode-hook 'eglot-ensure)
 (add-to-list 'eglot-stay-out-of 'company)
 #+end_src
 
