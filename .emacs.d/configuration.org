@@ -1,6 +1,6 @@
 #+TITLE: Emacs Configurations
 #+AUTHOR: Ronaldo V. Lobato
-#+EMAIL: vieira.lobato@gmail.com
+#+EMAIL: contact@rvlobato.com
 #+OPTIONS: toc:nil num:nil
 
 * Agenda & to-do
@@ -470,7 +470,6 @@
 ** Company
 
 **** configs
-
 
 #+BEGIN_SRC emacs-lisp
 (use-package company)
@@ -970,6 +969,7 @@
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'eglot-ensure)
 (add-hook 'TeX-mode-hook 'eglot-ensure)
+(add-to-list 'eglot-stay-out-of 'company)
 #+end_src
 
 *** eglot-jl
