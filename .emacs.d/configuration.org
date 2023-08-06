@@ -474,11 +474,14 @@
 #+BEGIN_SRC emacs-lisp
 (use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
-(setq company-idle-delay 0 ; immediate activation completion
+(setq company-idle-delay 0 ; activation
       company-show-numbers t ; show number and complet according it
       company-dabbrev-downcase 0 ; do not downcase by default
       company-minimum-prefix-length 3 ; 3 letters required for completion activate
-      company-selection-wrap-around t) ; completetion list cycle
+      company-selection-wrap-around t ; completetion list cycle
+      company-tooltip-limit 20 ; bigger popup window
+      )
+
 #+END_SRC
 
 **** company-auctex
@@ -524,15 +527,16 @@
 
 #+begin_src emacs-lisp
 (use-package company-tabnine)
-(add-to-list 'company-backends #'company-tabnine)
+(add-to-list 'company-backends 'company-tabnine)
 #+end_src
 
 **** Company-web
 
 #+begin_src emacs-lisp
-  (require 'company)
-  (use-package company-web)
-  (require 'company-web)                          ; load company mode html backend
+(use-package company-web)
+(add-to-list 'company-backends 'company-web-html)
+(add-to-list 'company-backends 'company-web-jade)
+(add-to-list 'company-backends 'company-web-slim)
 #+end_src
 
 **** company-wordfreq
@@ -544,6 +548,19 @@
 			    (setq-local company-transformers nil))))
 #+end_src
 
+**** company-fuzzy
+
+#+begin_src emacs-lisp
+(use-package flx)
+(use-package company-fuzzy
+  :hook (company-mode . company-fuzzy-mode)
+  :init
+  (setq company-fuzzy-sorting-backend 'flx
+	company-fuzzy-prefix-on-top nil
+	company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
+
+(global-company-fuzzy-mode 1)
+#+end_src
 
 *** ob-async
 
@@ -969,6 +986,8 @@
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'eglot-ensure)
 (add-to-list 'eglot-stay-out-of 'company)
+(setq eldoc-idle-delay 0.75)
+(setq flymake-no-changes-timeout 0.715)
 #+end_src
 
 *** eglot-jl
