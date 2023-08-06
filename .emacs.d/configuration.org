@@ -444,7 +444,7 @@
 
 #+begin_src emacs-lisp
 (use-package eglot-ltex
-  :hook ((org-mode text-mode latex-mode) . (lambda ()
+  :hook ((org-mode text-mode latex-mode git-commit-mode) . (lambda ()
 					     (require 'eglot-ltex)
 					     (eglot-ensure)))
   :init
