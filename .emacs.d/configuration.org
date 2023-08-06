@@ -330,6 +330,8 @@
 				    'magit-insert-unpushed-to-upstream
 				    'magit-insert-unpushed-to-upstream-or-recent
 				    'replace))
+(require 'git-commit)
+(server-mode)
 #+END_SRC
 
 * Personal information
@@ -444,7 +446,7 @@
 
 #+begin_src emacs-lisp
 (use-package eglot-ltex
-  :hook ((org-mode text-mode latex-mode git-commit-mode) . (lambda ()
+  :hook ((org-mode text-mode latex-mode git-commit-major-mode) . (lambda ()
 					     (require 'eglot-ltex)
 					     (eglot-ensure)))
   :init
