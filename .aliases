@@ -41,7 +41,7 @@ alias npmin='npm i -g $(cat $HOME/.config/pkgnpm.txt)'
 alias npmup='npm update -g'
 alias npmshow='npm -g list --depth=0'
 alias pipin='pip install -r $HOME/.config/pkgpip.txt'
-alias julin='julia $HOME/.config/packages.jl'
+alias julin='julia -t auto $HOME/.config/packages.jl'
 
 ## git
 alias gc='git commit '
