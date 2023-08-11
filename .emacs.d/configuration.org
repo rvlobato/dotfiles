@@ -999,15 +999,6 @@
 #+end_src
 
 ** Python
-
-*** Elpy
-
-#+begin_src emacs-lisp
-(use-package elpy
-  :init
-  (elpy-enable))
-#+end_src
-
 ** Rust
 
 #+begin_src emacs-lisp
