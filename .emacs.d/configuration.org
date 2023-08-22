@@ -525,13 +525,6 @@
   (company-quickhelp-mode)
 #+END_SRC
 
-**** company-tabnine
-
-#+begin_src emacs-lisp
-(use-package company-tabnine)
-(add-to-list 'company-backends 'company-tabnine)
-#+end_src
-
 **** Company-web
 
 #+begin_src emacs-lisp
