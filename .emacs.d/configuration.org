@@ -363,8 +363,8 @@
   ("C-c l" . langtool-check)
   ("C-c d l" . langtool-check-done)
   :custom
-  (langtool-java-classpath
-   "/usr/share/languagetool:/usr/share/java/languagetool/*"))
+  (langtool-language-tool-jar
+   "~/.languagetool/languagetool-commandline.jar"))
 #+END_SRC
 
 ** Word Wrapping
@@ -1287,11 +1287,13 @@ gnus-cache-directory "~/Documents/gnus/cache")
 
 * Social network
 
-** Twitter
+** Mastodon
 
 #+begin_src emacs-lisp
-(use-package twittering-mode)
-(setq twittering-use-master-password t)
+(use-package mastodon)
+
+(setq mastodon-instance-url "https://mathstodon.xyz"
+	  mastodon-active-user "ronaldo")
 #+end_src
 
 * References
