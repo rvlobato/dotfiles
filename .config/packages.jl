@@ -1,6 +1,7 @@
 import Pkg
 Pkg.add("AlphaZero") # Deepmind's AlphaZero algorithm
 Pkg.add("Arrow") # implementation of the apache arrow memory
+Pkg.add("ArviZ") # Julia meta-package for exploratory analysis of Bayesian models
 Pkg.add("CSV") #A fast, flexible delimited file reader/writer for Julia.
 Pkg.add("CUDA") # CUDA programming in Julia
 Pkg.add("Clustering") # Methods for data clustering and evaluation of clustering quality
