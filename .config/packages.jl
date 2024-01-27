@@ -40,6 +40,7 @@ Pkg.add("PyPlot")
 Pkg.add("RCall")
 Pkg.add("StableRNGs") # A Julia RNG with stable streams
 Pkg.add("SciMLSensitivity") # A component of the DiffEq ecosystem for enabling sensitivity analysis for scientific machine learning (SciML). Optimize-then-discretize, discretize-then-optimize, adjoint methods, and more for ODEs, SDEs, DDEs, DAEs, etc.
+Pkg.add("StaticArrays") # Statically sized arrays for Julia
 Pkg.add("Symbolics")
 Pkg.add("Sundials")
 Pkg.add("TextAnalysis")
