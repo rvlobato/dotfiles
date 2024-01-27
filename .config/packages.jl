@@ -9,6 +9,7 @@ Pkg.add("Clustering") # Methods for data clustering and evaluation of clustering
 Pkg.add("DataFrames") # Tools for working with tabular data in Julia.
 Pkg.add("DelimitedFiles")
 Pkg.add("Dierckx")
+Pkg.add("DiffEqGPU") # Massively Data-Parallel GPU Solving of ODEs
 Pkg.add("DifferentialEquations")
 Pkg.add("Distributed")
 Pkg.add("Distributions")
