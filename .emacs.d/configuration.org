@@ -453,6 +453,15 @@
   (setq eglot-languagetool-server-path "~/.emacs.d/ltex/ltex-ls-15.2.0"))
 #+end_src
 
+** flymake-proselint
+
+#+begin_src emacs-lisp
+(use-package flymake-proselint
+  :hook ((org-mode text-mode latex-mode) . (lambda ()
+			    (flymake-mode)
+			    (flymake-proselint-setup))))
+#+end_src
+
 * Frameworks & libraries
 ** Async
 
