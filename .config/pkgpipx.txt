@@ -1,4 +1,3 @@
 jupytext
 mrjob
 orange-canvas
-proselint
