@@ -1,3 +1,0 @@
-jupytext
-mrjob
-orange-canvas
