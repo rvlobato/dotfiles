@@ -1,3 +1,4 @@
+astropy
 datapackage
 datashader
 dpcpp-cpp-rt
@@ -9,9 +10,9 @@ handcalcs
 hvplot
 jupyter-ai
 jupyterlab-code-formatter
-jupyterlab-drawio
+#jupyterlab-drawio
 jupyterlab-git
-jupyterlab-logout
+#jupyterlab-logout
 jupyter-resource-usage
 jupyterlab-spellchecker
 jupyterlab-theme-toggler
@@ -28,3 +29,4 @@ python-lsp-server[all]
 RISE
 scikit-learn-intelex
 tensorflow[and-cuda]
+tensorrt
