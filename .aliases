@@ -36,7 +36,7 @@ alias aurrebuild='aur sync -S --rebuild'
 alias aurrebuildall='aur sync -S --rebuildall'
 
 #up: jupyter, npm, pip, R and Julia
-alias apenv='source .local/python/bin/activate'
+alias pyenv='source .local/python/bin/activate'
 alias npmin='npm i -g $(cat $HOME/.config/pkgnpm.txt)'
 alias npmup='npm update -g'
 alias npmshow='npm -g list --depth=0'
