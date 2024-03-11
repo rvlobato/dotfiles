@@ -1,3 +1,5 @@
+install.packages("pacman")
+
 install.packages("languageserver")
 library("languageserver")
 
