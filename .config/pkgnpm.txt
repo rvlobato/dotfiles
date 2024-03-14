@@ -1,3 +1,4 @@
 bash-language-server
 mathjax-node-cli
 vscode-langservers-extracted
+typescript-language-server
