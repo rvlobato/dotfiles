@@ -8,6 +8,7 @@ gnuplot_kernel
 holoviews
 handcalcs
 hvplot
+ipyparallel
 jupyter-ai
 jupyterlab-code-formatter
 #jupyterlab-drawio
