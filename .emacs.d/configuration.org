@@ -461,7 +461,7 @@
 							     )
    )
 :init
-(setq eglot-ltex-server-path "~/.emacs.d/ltex/ltex-ls-15.2.0"
+(setq eglot-ltex-server-path "~/.emacs.d/ltex/ltex-ls-16.0.0"
       eglot-ltex-communication-channel 'tcp) ; 'stdio or 'tcp
 )
 #+end_src
