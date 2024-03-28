@@ -35,10 +35,11 @@ alias aurr='repo-remove -s $HOME/.AUR/pkgs/aur.db.tar.gz'
 alias aurrebuild='aur sync -S --rebuild'
 alias aurrebuildall='aur sync -S --rebuildall'
 
-#up: jupyter, npm, pip, R and Julia
+#up: jupyter, npm, pip, rust, R and Julia
 alias pyenv11='source .local/python11/bin/activate'
 alias pyenv12='source .local/python12/bin/activate'
 alias npmin='npm i -g $(cat $HOME/.config/pkgnpm.txt)'
+alias carin='cargo install $(cat $HOME/.config/pkgrust.txt)'
 alias npmup='npm update -g'
 alias npmshow='npm -g list --depth=0'
 alias pipin='pip install -r $HOME/.config/pkgpip.txt'
