@@ -1,9 +1,5 @@
-alacritty
-bat
 cargo-update
-eza
 fclones
 joshuto
-ripgrep
 watchexec-cli
 zoxide
