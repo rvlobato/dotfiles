@@ -78,3 +78,6 @@ hist_dedup() {
 # Prompt
 #------------------------------
 PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[red]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%1~%{$fg[blue]%}]%{$reset_color%}$%b "
+
+# Added by Pear Runtime, configures system with Pear CLI
+export PATH="/home/ronaldo/.config/pear/bin":$PATH
