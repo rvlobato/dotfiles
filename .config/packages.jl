@@ -1,6 +1,7 @@
 import Pkg
 #Pkg.add("AlphaZero") # Deepmind's AlphaZero algorithm
 #Pkg.add("CUDA") # CUDA programming in Julia
+#Pkg.add("Knet") # Koç University deep learning framework implemented in Julia
 #Pkg.add("NMFk") # Nonnegative Matrix Factorization + k-means clustering and physics constraints
 #Pkg.add("NTFk") # Nonnegative Tensor Factorization using k-means clustering and physics constraints
 #Pkg.add("NTNk") # Unsupervised Machine Learning: Nonnegative Tensor Networks + k-means clustering
@@ -24,9 +25,9 @@ Pkg.add("GLMakie") # High level plotting on the GPU.
 Pkg.add("Gadfly") # Gadfly is a plotting and data visualization system
 Pkg.add("IJulia") # Julia kernel for Jypyter
 Pkg.add("KernelAbstractions") # Heterogeneous programming in Julia
-Pkg.add("Knet") # Koç University deep learning framework implemented in Julia
 Pkg.add("LaTeXStrings")
 Pkg.add("LanguageServer")
+Pkg.add("Latexify") # supplies functions for producing LATEX formatted strings from Julia objects
 Pkg.add("LineSearches") # Line search methods for optimization and root-finding
 Pkg.add("LoopVectorization") # macro(s) for vectorizing loops
 Pkg.add("Lux") # Explicitly Parameterized Neural Networks in Julia
