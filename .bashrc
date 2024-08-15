@@ -1,9 +1,21 @@
-#Command not found
-#source /usr/share/doc/pkgfile/command-not-found.bash
+# /etc/skel/.bashrc
+#
+# This file is sourced by all *interactive* bash shells on startup,
+# including some apparently interactive shells such as scp and rcp
+# that can't tolerate any output.  So make sure this doesn't display
+# anything or bad things will happen !
 
-# If not running interactively, do not do anything
-[[ $- != *i* ]] && return
 
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
+
+
+# Put your fun stuff here.
 # Enable checkwinsize so that bash will check the terminal size when
 shopt -s checkwinsize
 
@@ -89,3 +101,6 @@ _fzf_compgen_dir() {
 # Prompt
 #------------------------------
 PS1='\[\e[0;34m\][\[\e[01;33m\]\u\[\e[0;31m\]@\[\e[01;33m\]\h\[\e[01;35m\] \W\[\e[0;36m\]]\[\e[m\]\$ '
+
+# Added by Pear Runtime, configures system with Pear CLI
+export PATH="/home/ronaldo/.config/pear/bin":$PATH
