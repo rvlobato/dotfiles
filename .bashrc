@@ -74,9 +74,8 @@ mkcd ()
 
 
 #----------------------------------------
-##fzf
-source /usr/share/fzf/key-bindings.bash 2>/dev/null
-source /usr/share/fzf/completion.bash 2>/dev/null
+## fzf
+eval "$(fzf --bash)"
 
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
