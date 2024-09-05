@@ -383,6 +383,30 @@
   (add-hook hook (lambda () (set-fill-column 72))))
 #+END_SRC
 
+#+begin_src emacs-lisp
+(use-package guess-language
+  :hook ((org-mode text-mode TeX-mode web-mode) . guess-language-mode)
+
+  :config
+  (setq guess-language-langcodes
+	'((en . ("en_US" "English"))
+	  (pt . ("pt_BR" "Portuguese"))
+	  (es . ("es" "Spanish"))
+	  )
+	guess-language-languages '(en pt es)
+	guess-language-min-paragraph-length 20)
+  )
+#+end_src
+
+#+BEGIN_SRC emacs-lisp
+(use-package flyspell
+  :hook (
+	((org-mode text-mode web-mode TeX-mode) . flyspell-mode)
+	((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode)
+	)
+  )
+#+END_SRC
+
 ** Synosaurus
 
 #+BEGIN_SRC emacs-lisp
