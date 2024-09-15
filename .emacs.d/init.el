@@ -12,6 +12,7 @@
 (setq package-archives '(
 			 ("gnu" . "https://elpa.gnu.org/packages/")
 			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+			 ("melpa stable" . "https://stable.melpa.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
 			 )
       )
@@ -21,6 +22,9 @@
 ;; Fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
+
+;; Pin third-party to MELPA Stable
+(setq use-package-always-pin "melpa stable")
 
 ;;; Install my packages
 (unless (package-installed-p 'use-package)
