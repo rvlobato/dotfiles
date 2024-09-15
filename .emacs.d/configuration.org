@@ -270,6 +270,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package dimmer
+:pin melpa
   :config (dimmer-mode))
 #+END_SRC
 
@@ -284,7 +285,8 @@
 ** Rainbow-mode
 
 #+BEGIN_SRC emacs-lisp
-(use-package rainbow-mode)
+(use-package rainbow-mode
+:pin gnu)
 #+END_SRC
 
 ** Rainbow delimiters
@@ -322,14 +324,8 @@
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
-(use-package magit
-  :bind
-  ("C-x g" . magit-status)
-  ("C-c m" . magit-blame)
-  :config (magit-add-section-hook 'magit-status-sections-hook
-				    'magit-insert-unpushed-to-upstream
-				    'magit-insert-unpushed-to-upstream-or-recent
-				    'replace))
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-c m") 'magit-blame)
 (require 'git-commit)
 (server-mode)
 #+END_SRC
@@ -395,7 +391,7 @@
 	  )
 	guess-language-languages '(en pt es)
 	guess-language-min-paragraph-length 20)
-  )
+  :pin melpa)
 #+end_src
 
 #+BEGIN_SRC emacs-lisp
@@ -420,7 +416,8 @@
 
 #+begin_src emacs-lisp
 (use-package wordnut
- :bind ("M-!" . wordnut-lookup-current-word))
+ :bind ("M-!" . wordnut-lookup-current-word)
+ :pin melpa)
 #+end_src
 
 ** Write-good
@@ -449,7 +446,9 @@
 ** Placeholder Text
 
 #+BEGIN_SRC emacs-lisp
-(use-package lorem-ipsum :defer t)
+(use-package lorem-ipsum
+:defer t
+:pin melpa)
 #+END_SRC
 
 ** Google translate
@@ -473,9 +472,8 @@
   :hook
   ((org-mode text-mode latex-mode) . (lambda ()
 					(flymake-proselint-setup)
-					)
-   )
-  )
+					))
+  :pin gnu)
 
 (use-package eglot-ltex
   :hook
@@ -526,7 +524,8 @@
 **** company-auctex
 
 #+begin_src emacs-lisp
-(use-package company-auctex)
+(use-package company-auctex
+:pin melpa)
 (company-auctex-init)
 #+end_src
 
@@ -534,13 +533,15 @@
 
 #+begin_src emacs-lisp
 (use-package company-box
-  :hook (company-mode . company-box-mode))
+  :hook (company-mode . company-box-mode)
+  :pin melpa)
 #+end_src
 
 **** Company-c-headers
 
 #+begin_src emacs-lisp
-(use-package company-c-headers)
+(use-package company-c-headers
+:pin melpa)
 (add-to-list 'company-backends 'company-c-headers)
 #+end_src
 
@@ -605,16 +606,19 @@
 #+BEGIN_SRC emacs-lisp
 (use-package dired-subtree
   :bind (:map dired-mode-map
-	      ("i" . dired-subtree-toggle)))
+	      ("i" . dired-subtree-toggle))
+	      :pin melpa)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 (use-package dired-collapse
-  :hook (dired-mode . dired-collapse-mode))
+  :hook (dired-mode . dired-collapse-mode)
+  :pin melpa)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 (use-package dired-filter
+:pin melpa
   :hook (dired-mode . (lambda () (dired-filter-group-mode)
 				 (dired-filter-by-garbage)))
   :custom
@@ -702,7 +706,8 @@
 *** helm-org
 
 #+begin_src emacs-lisp
-(use-package helm-org) ;; Helm for org headlines and keywords completion.
+(use-package helm-org ;; Helm for org headlines and keywords completion.
+:pin melpa)
 (add-to-list 'helm-completing-read-handlers-alist
 	     '(org-set-tags-command . helm-org-completing-read-tags))
 #+end_src
@@ -710,7 +715,8 @@
 *** helm-css
 
 #+begin_src emacs-lisp
-(use-package helm-css-scss)
+(use-package helm-css-scss
+:pin melpa)
 (require 'helm-css-scss)
 #+end_src
 
@@ -783,7 +789,6 @@
 
 #+begin_src emacs-lisp
 (use-package treemacs
-  :ensure t
   :defer t
   :init
   (with-eval-after-load 'winum
@@ -870,30 +875,23 @@
 	("C-x t C-t" . treemacs-find-file)
 	("C-x t M-t" . treemacs-find-tag)))
 
-(use-package treemacs-evil
-  :after (treemacs evil)
-  :ensure t)
-
 (use-package treemacs-projectile
   :after (treemacs projectile)
-  :ensure t)
+)
 
 (use-package treemacs-icons-dired
   :hook (dired-mode . treemacs-icons-dired-enable-once)
-  :ensure t)
+)
 
-(use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t)
+;; (use-package treemacs-magit
+;;   :after (treemacs magit))
 
 (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
   :after (treemacs persp-mode) ;;or perspective vs. persp-mode
-  :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
   :after (treemacs)
-  :ensure t
   :config (treemacs-set-scope-type 'Tabs))
 #+end_src
 
@@ -992,7 +990,8 @@
 			      (set (make-local-variable 'company-backends) '(company-go))
 			      (company-mode))))
 
-(use-package company-go)
+(use-package company-go
+:pin melpa)
 #+END_SRC
 
 ** HTML
@@ -1134,7 +1133,8 @@
 ** Vala
 
 #+begin_src emacs-lisp
-(use-package vala-mode)
+(use-package vala-mode
+:pin melpa)
 #+end_src
 
 * Security
@@ -1327,13 +1327,15 @@ gnus-cache-directory "~/Documents/gnus/cache")
 *** ox-reveal
 
 #+begin_src emacs-lisp
-(use-package ox-reveal)
+(use-package ox-reveal
+:pin melpa)
 #+end_src
 
 *** org-latex-impatient
 
 #+begin_src emacs-lisp
 (use-package org-latex-impatient
+:pin melpa
   :hook (org-mode . org-latex-impatient-mode)
   :init
   (setq org-latex-impatient-tex2svg-bin
