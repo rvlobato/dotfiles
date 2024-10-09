@@ -19,7 +19,7 @@ jupyterlab-spellchecker
 jupyterlab-theme-toggler
 jupyterlab-topbar-text
 jupytext
-latexify-py
+#latexify-py
 mrjob
 nbdime
 octave_kernel
