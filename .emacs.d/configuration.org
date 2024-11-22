@@ -324,11 +324,18 @@
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-c m") 'magit-blame)
-(require 'git-commit)
-(server-mode)
-#+END_SRC
+(use-package magit
+  :bind
+  ("C-x g" . magit-status)
+  ("C-c m" . magit-blame)
+  :config (magit-add-section-hook 'magit-status-sections-hook
+				    'magit-insert-unpushed-to-upstream
+				    'magit-insert-unpushed-to-upstream-or-recent
+				    'replace))
+;(require 'git-commit)
+;(server-mode)
+(load "~/.emacs.d/elpa/magit-4.1.2/magit-autoloads.el")
+  #+END_SRC
 
 * Personal information
 
@@ -583,17 +590,17 @@
 
 **** company-fuzzy
 
-#+begin_src emacs-lisp
-(use-package flx)
-(use-package company-fuzzy
-  :hook (company-mode . company-fuzzy-mode)
-  :init
-  (setq company-fuzzy-sorting-backend 'flx
-	company-fuzzy-prefix-on-top nil
-	company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
+# #+begin_src emacs-lisp
+# (use-package flx)
+# (use-package company-fuzzy
+#   :hook (company-mode . company-fuzzy-mode)
+#   :init
+#   (setq company-fuzzy-sorting-backend 'flx
+#	company-fuzzy-prefix-on-top nil
+#	company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
 
-(global-company-fuzzy-mode 1)
-#+end_src
+# (global-company-fuzzy-mode 1)
+# #+end_src
 
 *** ob-async
 
