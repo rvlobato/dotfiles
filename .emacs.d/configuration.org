@@ -469,19 +469,24 @@
 (use-package speed-type)
 #+end_src
 
-** eglot-ltex and proselint
+** proselint
 
 #+begin_src emacs-lisp
 (use-package flymake-proselint
+  :pin gnu
   :hook
   ((org-mode text-mode latex-mode) . (lambda ()
 					(flymake-proselint-setup)
 					))
-  :pin gnu)
+  )
+#+end_src
 
+** eglot-ltex
+
+#+begin_src emacs-lisp
 (use-package eglot-ltex
   :hook
-  ((org-mode text-mode latex-mode git-commit-major-mode) . (lambda ()
+  ((org-mode text-mode latex-mode) . (lambda ()
 							     (require 'eglot-ltex)
 							     (eglot-ensure)
 							     )
