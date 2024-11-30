@@ -332,10 +332,7 @@
 				    'magit-insert-unpushed-to-upstream
 				    'magit-insert-unpushed-to-upstream-or-recent
 				    'replace))
-;(require 'git-commit)
-;(server-mode)
-(load "~/.emacs.d/elpa/magit-4.1.2/magit-autoloads.el")
-  #+END_SRC
+#+END_SRC
 
 * Personal information
 
