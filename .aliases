@@ -36,7 +36,7 @@ alias aurrebuild='aur sync -S --rebuild'
 alias aurrebuildall='aur sync -S --rebuildall'
 
 #up: jupyter, npm, pip, rust, R and Julia
-alias pyenv11='source .local/python11/bin/activate'
+alias pyenv13='source .local/python13/bin/activate'
 alias pyenv12='source .local/python12/bin/activate'
 alias npmin='npm i -g $(cat $HOME/.config/pkgnpm.txt)'
 alias carin='cargo install $(cat $HOME/.config/pkgrust.txt)'
