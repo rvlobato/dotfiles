@@ -39,10 +39,6 @@ PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 #autocd
 shopt -s autocd
 
-for sh in /etc/bash/bashrc.d/* ; do
-	[[ -r ${sh} ]] && source "${sh}"
-done
-
 #------------------------------
 # Alias
 alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
@@ -99,7 +95,7 @@ _fzf_compgen_dir() {
 #------------------------------
 # Prompt
 #------------------------------
-PS1='\[\e[0;34m\][\[\e[01;33m\]\u\[\e[0;31m\]@\[\e[01;33m\]\h\[\e[01;35m\] \W\[\e[0;36m\]]\[\e[m\]\$ '
+PS1='\[\e[0;34m\][\[\e[01;33m\]\u\[\e[0;31m\]@\[\e[01;33m\]\h\[\e[01;35m\] \W\[\e[0;36m\]]\[\e[m\] \$ '
 
 # Added by Pear Runtime, configures system with Pear CLI
 export PATH="/home/ronaldo/.config/pear/bin":$PATH
