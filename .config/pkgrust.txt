@@ -1,5 +1,6 @@
 cargo-update
 fclones
 joshuto
+kmon
 watchexec-cli
 zoxide
