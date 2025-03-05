@@ -27,6 +27,7 @@ mrjob
 nbdime
 octave_kernel
 orange3
+pix2tex[gui]
 plotly
 python-lsp-server[all]
 scikit-learn-intelex
