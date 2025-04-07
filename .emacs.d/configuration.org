@@ -339,7 +339,7 @@
   ("C-c d l" . langtool-check-done)
   :custom
   (langtool-language-tool-jar
-   "~/.languagetool/languagetool-commandline.jar"))
+   "~/Public/projects/languagetool/languagetool-commandline.jar"))
 #+END_SRC
 
 ** Word Wrapping
