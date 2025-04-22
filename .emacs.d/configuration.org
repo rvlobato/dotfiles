@@ -911,6 +911,12 @@
 	(cadr latex-list) "%l"))
 #+end_src
 
+** Elpher
+
+#+begin_src emacs-lisp
+(use-package elpher)
+#+end_src
+
 * Programming languages
 ** Adds spacing around operators
 
