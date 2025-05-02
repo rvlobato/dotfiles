@@ -31,5 +31,6 @@ pix2tex[gui]
 plotly
 python-lsp-server[all]
 scikit-learn-intelex
+skorch
 tensorflow[and-cuda]
 tensorrt
