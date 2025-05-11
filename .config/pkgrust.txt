@@ -1,7 +1,9 @@
 alacritty
 cargo-update
+eza
 fclones
 joshuto
 kmon
 watchexec-cli
 zoxide
+bat
