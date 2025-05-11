@@ -19,7 +19,8 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run | xargs swaymsg exec --
+# set $menu bemenu-run | xargs swaymsg exec --
+set $menu wofi --show drun | xargs -r swaymsg exec --
 
 ### Output configuration
 #
@@ -83,12 +84,13 @@ exec swayidle -w \
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Shift+w exec epiphany
-    workspace 1
-    exec ~/.local/bin/pcloud
-    workspace 2
-    exec ~/.local/bin/keet &
-    exec flatpak run net.jami.Jami
+    bindsym $mod+Shift+w exec firefox
+
+#    workspace 1
+ #   exec ~/.local/bin/pcloud
+  #  workspace 2
+   # exec ~/.local/bin/keet &
+   # exec flatpak run net.jami.Jami
 #
 # Moving around:
 #
@@ -206,23 +208,18 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
- bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 # bar {
 #	status_command i3status
 #	position top
 #}
+
+bar {
+	# Execute Waybar; Waybar restarts when Sway reloads.
+	status_command waybar
+
+	# Hide Sway's builtin status bar.
+	mode invisible
+}
 
 include /etc/sway/config.d/*
