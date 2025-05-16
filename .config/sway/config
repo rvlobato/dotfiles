@@ -25,7 +25,8 @@ set $menu wofi --show drun | xargs -r swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
 #
 # Example configuration:
 #
@@ -37,10 +38,11 @@ set $menu wofi --show drun | xargs -r swaymsg exec --
 #
 # Example configuration:
 #
-exec swayidle -w \
-	  timeout 210 'swaylock -f -c 000000' \
-	  timeout 215 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+# exec swayidle -w \
+#	  timeout 210 'swaylock -f -c 000000' \
+#	  timeout 215 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 #
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -203,16 +205,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-
-# bar {
-#	status_command i3status
-#	position top
-#}
 
 bar {
 	# Execute Waybar; Waybar restarts when Sway reloads.
