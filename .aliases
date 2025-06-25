@@ -1,10 +1,11 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
 alias py='python'
+alias run0='run0 --background='
 
 alias pkglist-update='dotfiles pull gitlab master && pacman -Qqe > $HOME/.config/pkglist.txt && dotfiles commit -am "update" && dotfiles push gitlab master && dotfiles push github master'
 
-alias blueon='sudo modprobe btusb && sudo modprobe bluetooth && sudo systemctl start bluetooth'
+alias blueon='run0 modprobe btusb && run0 modprobe bluetooth && run0 systemctl start bluetooth'
 alias myip='curl ipinfo.io/ip'
 alias hibernate='systemctl hibernate'
 
@@ -21,12 +22,12 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
 ## pacman
-alias pacup='sudo systemctl start reflector.service && sudo pacman -Syuw --noconfirm'
+alias pacup='run0 systemctl start reflector.service && run0 pacman -Syuw --noconfirm'
 alias pacs='pacman -Ss'
-alias pacr='sudo pacman -Rnsc'
-alias pacsc='sudo pacman -Syuw --noconfirm && sudo pacman -Sc'
+alias pacr='run0 pacman -Rnsc'
+alias pacsc='run0 pacman -Syuw --noconfirm && run0 pacman -Sc'
 alias pacqe='pacman -Qe'
-alias pacqt='sudo pacman -Rns $(pacman -Qttdq)'
+alias pacqt='run0 pacman -Rns $(pacman -Qttdq)'
 
 #aur
 alias aurup='aur sync -uS'
