@@ -54,3 +54,4 @@ Pkg.add("VegaDatasets")
 Pkg.add("VegaLite")
 Pkg.add("WaterLily") # Fast and simple fluid simulator in Julia
 Pkg.add("XGBoost")
+Pkg.add("KrylovKit") # Krylov methods for linear problems, eigenvalues, singular values and matrix functions
