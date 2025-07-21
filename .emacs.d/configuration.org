@@ -638,6 +638,8 @@
   (use-package helm
    :init (helm-mode t)
    :bind (("M-x"     . helm-M-x)
+	  ("C-s"     . helm-occur)           ;; search current buffer
+	  ; ("C-M-s"   . helm-multi-occur)
 	  ("C-x C-f" . helm-find-files)
 	  ("C-x b"   . helm-mini)     ;; See buffers & recent files; more useful.
 	  ("C-x r b" . helm-filtered-bookmarks)
@@ -663,18 +665,6 @@
 				    helm-source-bookmarks
 				    helm-source-bookmark-set
 				    helm-source-buffer-not-found))
-#+END_SRC
-
-*** helm-swoop
-
-#+BEGIN_SRC emacs-lisp
-(use-package helm-swoop
-  :bind  (("C-s"     . 'helm-swoop)           ;; search current buffer
-	  ("C-M-s"   . 'helm-multi-swoop-all) ;; Search all buffer
-	  ;; Go back to last position where 'helm-swoop' was called
-	  ("C-S-s" . 'helm-swoop-back-to-last-point))
-  :custom (helm-swoop-speed-or-color nil "Give up colour for speed.")
-	  (helm-swoop-split-with-multiple-windows nil "Do not split window inside the current window."))
 #+END_SRC
 
 *** helm-company
