@@ -216,15 +216,47 @@
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
-(use-package gnome-dark-style
-  :pin gnu
-  :custom
-  (gnome-light-theme 'dichromacy)
-  (gnome-dark-theme 'wombat)
-  :config
-  ;; Set to nil to stop monitoring and disable sync
-  (setopt gnome-dark-style-sync t))
- #+End_SRC
+(defun handler (value)
+  (message "value is %s" value)
+  (if (equal value '1)
+      (progn (message "Switch to dark theme")
+	     (load-theme 'wombat t))
+    (progn (message "Switch to light theme")
+	   (load-theme 'dichromacy t))))
+
+(defun signal-handler (namespace key value)
+  (if (and
+       (string-equal namespace "org.freedesktop.appearance")
+       (string-equal key "color-scheme"))
+      (handler (car value))))
+
+(dbus-call-method-asynchronously
+ :session
+ "org.freedesktop.portal.Desktop"
+ "/org/freedesktop/portal/desktop"
+ "org.freedesktop.portal.Settings"
+ "Read"
+ #'handler
+ "org.freedesktop.appearance"
+ "color-scheme")
+
+(dbus-register-signal
+ :session
+ "org.freedesktop.portal.Desktop"
+ "/org/freedesktop/portal/desktop"
+ "org.freedesktop.portal.Settings"
+ "SettingChanged"
+#'signal-handler)
+
+;; (use-package gnome-dark-style
+;;   :pin gnu
+;;   :custom
+;;   (gnome-light-theme 'dichromacy)
+;;   (gnome-dark-theme 'wombat)
+;;   :config
+;;   ;; Set to nil to stop monitoring and disable sync
+;;   (setopt gnome-dark-style-sync t))
+#+End_SRC
 
 ** Mods in the modeline
 
