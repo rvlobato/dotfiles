@@ -220,16 +220,16 @@
   (defun handler (value)
     (message "value is %s" value)
     (if (equal value '1)
-        (progn (message "Switch to dark theme")
-  	     (load-theme 'wombat t))
+	(progn (message "Switch to dark theme")
+	     (load-theme 'wombat t))
       (progn (message "Switch to light theme")
-  	   (load-theme 'dichromacy t))))
+	   (load-theme 'dichromacy t))))
 
   (defun signal-handler (namespace key value)
     (if (and
-         (string-equal namespace "org.freedesktop.appearance")
-         (string-equal key "color-scheme"))
-        (handler (car value))))
+	 (string-equal namespace "org.freedesktop.appearance")
+	 (string-equal key "color-scheme"))
+	(handler (car value))))
 
   (dbus-call-method-asynchronously
    :session
@@ -492,17 +492,13 @@
 ** eglot-ltex
 
 #+begin_src emacs-lisp
-(use-package eglot-ltex
-  :hook
-  ((org-mode text-mode latex-mode) . (lambda ()
-							     (require 'eglot-ltex)
-							     (eglot-ensure)
-							     )
-   )
-:init
-(setq eglot-ltex-server-path "~/.emacs.d/ltex/ltex-ls-16.0.0"
-      eglot-ltex-communication-channel 'tcp) ; 'stdio or 'tcp
-)
+(use-package eglot-ltex-plus
+  :hook ((org-mode text-mode latex-mode) . (lambda ()
+		       (require 'eglot-ltex-plus)
+		       (eglot-ensure)))
+  :init
+  (setq eglot-ltex-plus-server-path "~/Public/projects/ltex-ls-plus"
+	eglot-ltex-plus-communication-channel 'stdio))         ; 'stdio or 'tcp
 #+end_src
 
 * Frameworks & libraries
@@ -1062,7 +1058,7 @@
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'eglot-ensure)
 (setq eglot-send-changes-idle-time 5)
-(add-to-list 'eglot-stay-out-of 'company)
+;(add-to-list 'eglot-stay-out-of 'company)
 ;(setq eldoc-idle-delay 0.75)
 ;(setq flymake-no-changes-timeout 0.715)
 #+end_src
