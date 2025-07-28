@@ -788,7 +788,7 @@
    (use-package helm-rg)
 #+END_SRC
 
-** treemacs
+** Treemacs
 
 #+begin_src emacs-lisp
 (use-package treemacs
@@ -899,6 +899,14 @@
 #+end_src
 
 ** Latex
+*** xenops
+
+#+begin_src emacs-lisp
+(use-package xenops
+  :hook ((LaTeX-mode-hook org-mode-hook) . xenops-mode)
+  )
+#+end_src
+
 ** Ellama
 
 #+begin_src emacs-lisp
@@ -1352,18 +1360,6 @@ gnus-cache-directory "~/Documents/gnus/cache")
 #+begin_src emacs-lisp
 (use-package ox-reveal
 :pin melpa)
-#+end_src
-
-*** org-latex-impatient
-
-#+begin_src emacs-lisp
-(use-package org-latex-impatient
-:pin melpa
-  :hook (org-mode . org-latex-impatient-mode)
-  :init
-  (setq org-latex-impatient-tex2svg-bin
-	;; location of tex2svg executable
-	"~/.local/bin/tex2svg"))
 #+end_src
 
 * Social network
