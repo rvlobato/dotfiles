@@ -912,6 +912,13 @@
 (use-package elpher)
 #+end_src
 
+** Latex
+
+#+begin_src emacs-lisp
+(use-package tex
+  :ensure auctex)
+#+end_src
+
 * Programming languages
 ** Adds spacing around operators
 
