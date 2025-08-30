@@ -1,7 +1,7 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
 alias py='python'
-alias run0='run0 --background='
+alias sudo='run0 --background='
 
 alias pkglist-update='dotfiles pull gitlab master && pacman -Qqe > $HOME/.config/pkglist.txt && dotfiles commit -am "update" && dotfiles push gitlab master && dotfiles push github master'
 
@@ -38,9 +38,9 @@ alias aurrebuildall='aur sync -S --rebuildall'
 
 #up: jupyter, npm, pip, rust, R and Julia
 alias venv13='python3.13 -m venv .local/python13'
-alias venvsage='python -m venv --system-site-packages .local/sage'
+alias venv='python -m venv --system-site-packages .local/python'
 alias pyenv13='source .local/python13/bin/activate'
-alias sageenv='source .local/sage/bin/activate'
+alias pyenv='source .local/python/bin/activate'
 alias npmin='npm i -g $(cat $HOME/.config/pkgnpm.txt)'
 alias carin='cargo install $(cat $HOME/.config/pkgrust.txt)'
 alias npmup='npm update -g'
