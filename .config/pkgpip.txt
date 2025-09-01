@@ -36,3 +36,5 @@ plotly
 python-lsp-server[all]
 scikit-learn-intelex
 tensorflow
+torch
+xgboost
