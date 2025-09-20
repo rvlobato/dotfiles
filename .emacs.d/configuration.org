@@ -917,7 +917,8 @@
 #+begin_src emacs-lisp
 (use-package tex
   :ensure auctex)
-#+end_src
+(setq latex-run-command "pdflatex")
+  #+end_src
 
 * Programming languages
 ** Adds spacing around operators
@@ -1335,6 +1336,12 @@ gnus-cache-directory "~/Documents/gnus/cache")
 #+begin_src emacs-lisp
 (use-package ox-reveal
 :pin melpa)
+#+end_src
+
+*** ox-beamer
+
+#+begin_src emacs-lisp
+(require 'ox-beamer)
 #+end_src
 
 * Social network
