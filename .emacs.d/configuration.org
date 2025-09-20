@@ -1344,6 +1344,12 @@ gnus-cache-directory "~/Documents/gnus/cache")
 (require 'ox-beamer)
 #+end_src
 
+*** ox-beamer-lecture
+
+#+begin_src emacs-lisp
+(use-package ox-beamer-lecture)
+#+end_src
+
 * Social network
 
 ** Mastodon
