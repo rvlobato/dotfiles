@@ -38,3 +38,4 @@ scikit-learn-intelex
 tensorflow
 torch
 xgboost
+transformers[torch]
