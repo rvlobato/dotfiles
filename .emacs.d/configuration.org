@@ -514,7 +514,6 @@
 **** configs
 
 #+BEGIN_SRC emacs-lisp
-(use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0 ; activation
       company-show-numbers t ; show number and complet according it
@@ -886,12 +885,6 @@
   (ellama-context-header-line-global-mode +1)
   ;; show ellama session id in header line in all buffers
   (ellama-session-header-line-global-mode +1))
-#+end_src
-
-** Elpher
-
-#+begin_src emacs-lisp
-(use-package elpher)
 #+end_src
 
 ** Latex
