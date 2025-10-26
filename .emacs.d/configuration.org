@@ -332,14 +332,8 @@
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
-(use-package magit
-  :bind
-  ("C-x g" . magit-status)
-  ("C-c m" . magit-blame)
-  :config (magit-add-section-hook 'magit-status-sections-hook
-				    'magit-insert-unpushed-to-upstream
-				    'magit-insert-unpushed-to-upstream-or-recent
-				    'replace))
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-c m") 'magit-blame)
 #+END_SRC
 
 * Personal information
@@ -731,7 +725,7 @@
 
 #+begin_src emacs-lisp
 (use-package hydra)
-(use-package pretty-hydra)
+;(use-package pretty-hydra)
 #+end_src
 
 ** Markdown-mode
@@ -741,16 +735,6 @@
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
 (setq markdown-command "pandoc")
-#+end_src
-
-** PKGBUILD-mode
-
-#+begin_src emacs-lisp
-(use-package pkgbuild-mode)
-
-(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
-(setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode))
-			      auto-mode-alist))
 #+end_src
 
 ** PO mode
@@ -1053,7 +1037,12 @@
 (use-package eglot-jl)
 #+end_src
 
-** Python
+** Jupyter
+
+#+begin_src emacs-lisp
+(use-package jupyter)
+#+end_src
+
 ** Rust
 
 #+begin_src emacs-lisp
@@ -1073,8 +1062,6 @@
 ** R
 
 #+begin_src emacs-lisp
-(use-package ess)
-
 ;; R-internals manual
 ;;; ESS
 (add-hook 'ess-mode-hook
@@ -1301,6 +1288,7 @@ gnus-cache-directory "~/Documents/gnus/cache")
      (R          . t)
      (perl       . t)
      (julia      . t)
+     (jupyter    . t)
      (gnuplot    . t)
      )
    )
@@ -1365,7 +1353,10 @@ gnus-cache-directory "~/Documents/gnus/cache")
 ** Zotero
 
 #+begin_src emacs-lisp
-(use-package zotxt)
+(use-package zotxt
+  :after org
+  :bind ("C-c z" . org-zotxt-insert-reference-link)
+  :hook (org-mode . org-zotxt-mode))
 #+end_src
 
 # EOF
