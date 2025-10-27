@@ -544,7 +544,6 @@
 **** Company-math
 
 #+begin_src emacs-lisp
-(use-package company-math)
 ;; global activation of the unicode symbol completion
 (add-to-list 'company-backends 'company-math-symbols-unicode)
 (use-package math-symbol-lists)
