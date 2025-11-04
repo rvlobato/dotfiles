@@ -121,11 +121,9 @@
 ** Make it easier to discover key shortcuts
 
 #+BEGIN_SRC emacs-lisp
-(use-package which-key
-  :config
-  (which-key-mode)
-  (which-key-setup-side-window-bottom)
-  (setq which-key-idle-delay 0.5))
+(which-key-mode)
+(which-key-setup-side-window-bottom)
+(setq which-key-idle-delay 0.5)
 #+END_SRC
 
 ** Desired colored output shell
@@ -216,47 +214,47 @@
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
-  (use-package dbus)
-  (defun handler (value)
-    (message "value is %s" value)
-    (if (equal value '1)
-	(progn (message "Switch to dark theme")
-	     (load-theme 'wombat t))
-      (progn (message "Switch to light theme")
-	   (load-theme 'dichromacy t))))
+  ;; (use-package dbus)
+  ;; (defun handler (value)
+  ;;   (message "value is %s" value)
+  ;;   (if (equal value '1)
+  ;;	(progn (message "Switch to dark theme")
+  ;;	     (load-theme 'wombat t))
+  ;;     (progn (message "Switch to light theme")
+  ;;	   (load-theme 'dichromacy t))))
 
-  (defun signal-handler (namespace key value)
-    (if (and
-	 (string-equal namespace "org.freedesktop.appearance")
-	 (string-equal key "color-scheme"))
-	(handler (car value))))
+  ;; (defun signal-handler (namespace key value)
+  ;;   (if (and
+  ;;	 (string-equal namespace "org.freedesktop.appearance")
+  ;;	 (string-equal key "color-scheme"))
+  ;;	(handler (car value))))
 
-  (dbus-call-method-asynchronously
-   :session
-   "org.freedesktop.portal.Desktop"
-   "/org/freedesktop/portal/desktop"
-   "org.freedesktop.portal.Settings"
-   "Read"
-   #'handler
-   "org.freedesktop.appearance"
-   "color-scheme")
+  ;; (dbus-call-method-asynchronously
+  ;;  :session
+  ;;  "org.freedesktop.portal.Desktop"
+  ;;  "/org/freedesktop/portal/desktop"
+  ;;  "org.freedesktop.portal.Settings"
+  ;;  "Read"
+  ;;  #'handler
+  ;;  "org.freedesktop.appearance"
+  ;;  "color-scheme")
 
-  (dbus-register-signal
-   :session
-   "org.freedesktop.portal.Desktop"
-   "/org/freedesktop/portal/desktop"
-   "org.freedesktop.portal.Settings"
-   "SettingChanged"
-  #'signal-handler)
+  ;; (dbus-register-signal
+  ;;  :session
+  ;;  "org.freedesktop.portal.Desktop"
+  ;;  "/org/freedesktop/portal/desktop"
+  ;;  "org.freedesktop.portal.Settings"
+  ;;  "SettingChanged"
+  ;; #'signal-handler)
 
-  ;; (use-package gnome-dark-style
-  ;;   :pin gnu
-  ;;   :custom
-  ;;   (gnome-light-theme 'dichromacy)
-  ;;   (gnome-dark-theme 'wombat)
-  ;;   :config
-  ;;   ;; Set to nil to stop monitoring and disable sync
-  ;;   (setopt gnome-dark-style-sync t))
+  (use-package gnome-dark-style
+    :pin gnu
+    :custom
+    (gnome-light-theme 'dichromacy)
+    (gnome-dark-theme 'wombat)
+    :config
+    ;; Set to nil to stop monitoring and disable sync
+    (setopt gnome-dark-style-sync t))
 #+End_SRC
 
 ** Mods in the modeline
@@ -332,14 +330,8 @@
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
-(use-package magit
-  :bind
-  ("C-x g" . magit-status)
-  ("C-c m" . magit-blame)
-  :config (magit-add-section-hook 'magit-status-sections-hook
-				    'magit-insert-unpushed-to-upstream
-				    'magit-insert-unpushed-to-upstream-or-recent
-				    'replace))
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-c m") 'magit-blame)
 #+END_SRC
 
 * Personal information
@@ -522,7 +514,6 @@
 **** configs
 
 #+BEGIN_SRC emacs-lisp
-(use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0 ; activation
       company-show-numbers t ; show number and complet according it
@@ -553,7 +544,6 @@
 **** Company-math
 
 #+begin_src emacs-lisp
-(use-package company-math)
 ;; global activation of the unicode symbol completion
 (add-to-list 'company-backends 'company-math-symbols-unicode)
 (use-package math-symbol-lists)
@@ -730,8 +720,8 @@
 ** Hydra
 
 #+begin_src emacs-lisp
-(use-package hydra)
-(use-package pretty-hydra)
+(require 'hydra)
+;(use-package pretty-hydra)
 #+end_src
 
 ** Markdown-mode
@@ -741,16 +731,6 @@
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
 (setq markdown-command "pandoc")
-#+end_src
-
-** PKGBUILD-mode
-
-#+begin_src emacs-lisp
-(use-package pkgbuild-mode)
-
-(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
-(setq auto-mode-alist (append '(("/PKGBUILD$" . pkgbuild-mode))
-			      auto-mode-alist))
 #+end_src
 
 ** PO mode
@@ -906,12 +886,6 @@
   (ellama-session-header-line-global-mode +1))
 #+end_src
 
-** Elpher
-
-#+begin_src emacs-lisp
-(use-package elpher)
-#+end_src
-
 ** Latex
 
 #+begin_src emacs-lisp
@@ -1053,7 +1027,12 @@
 (use-package eglot-jl)
 #+end_src
 
-** Python
+** Jupyter
+
+#+begin_src emacs-lisp
+(use-package jupyter)
+#+end_src
+
 ** Rust
 
 #+begin_src emacs-lisp
@@ -1073,8 +1052,6 @@
 ** R
 
 #+begin_src emacs-lisp
-(use-package ess)
-
 ;; R-internals manual
 ;;; ESS
 (add-hook 'ess-mode-hook
@@ -1301,6 +1278,7 @@ gnus-cache-directory "~/Documents/gnus/cache")
      (R          . t)
      (perl       . t)
      (julia      . t)
+     (jupyter    . t)
      (gnuplot    . t)
      )
    )
@@ -1365,7 +1343,10 @@ gnus-cache-directory "~/Documents/gnus/cache")
 ** Zotero
 
 #+begin_src emacs-lisp
-(use-package zotxt)
+(use-package zotxt
+  :after org
+  :bind ("C-c z" . org-zotxt-insert-reference-link)
+  :hook (org-mode . org-zotxt-mode))
 #+end_src
 
 # EOF
