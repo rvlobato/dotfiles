@@ -114,7 +114,7 @@
 ** Goes to the last place where it was when you previously visited the same file
 
 #+BEGIN_SRC emacs-lisp
-(setq-default save-place  t)
+(setq-default save-place t)
 (setq save-place-file "~/.emacs.d/etc/saveplace")
 #+END_SRC
 
@@ -291,15 +291,15 @@
 ** Rainbow-mode
 
 #+BEGIN_SRC emacs-lisp
-(use-package rainbow-mode
-:pin gnu)
+(require 'rainbow-mode)
 #+END_SRC
 
 ** Rainbow delimiters
 
 #+BEGIN_SRC emacs-lisp
-(use-package rainbow-delimiters
-  :hook ((org-mode prog-mode text-mode) . rainbow-delimiters-mode))
+(add-hook 'org-mode #'rainbow-delimiters-mode)
+(add-hook 'prog-mode #'rainbow-delimiters-mode)
+(add-hook 'text-mode #'rainbow-delimiters-mode)
 #+END_SRC
 
 ** Unique highlighting to identifiers
