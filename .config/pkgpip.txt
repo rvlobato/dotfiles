@@ -28,6 +28,7 @@ jupyterlab-lsp
 jupyterlab-spellchecker
 jupyterlab-theme-toggler
 jupyterlab-topbar-text
+jupyter-ai[all]
 jupytext
 latexify-py
 mrjob
@@ -37,5 +38,5 @@ python-lsp-server[all]
 scikit-learn-intelex
 tensorflow
 torch
-xgboost
 transformers[torch]
+xgboost
