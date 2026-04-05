@@ -481,17 +481,26 @@
   )
 #+end_src
 
-** eglot-ltex
+** Flymake-laguagetool
 
 #+begin_src emacs-lisp
-(use-package eglot-ltex-plus
-  :pin jcs-elpa
-  :hook ((org-mode text-mode) . (lambda ()
-		       (require 'eglot-ltex-plus)
-		       (eglot-ensure)))
+(use-package flymake-languagetool
+  :ensure t
+  :pin melpa
+  :hook ((find-file . flymake-languagetool-maybe-load)
+	 (text-mode       . flymake-languagetool-load)
+	 (latex-mode      . flymake-languagetool-load)
+	 (org-mode        . flymake-languagetool-load)
+	 (markdown-mode   . flymake-languagetool-load)
+	 (text-mode     . flymake-mode)
+	 (latex-mode    . flymake-mode)
+	 (org-mode      . flymake-mode)
+	 (markdown-mode . flymake-mode)
+	 )
   :init
-  (setq eglot-ltex-plus-server-path "~/Public/projects/ltex-ls-plus"
-	eglot-ltex-plus-communication-channel 'stdio))         ; 'stdio or 'tcp
+  (setq flymake-languagetool-server-jar nil
+	flymake-languagetool-url "http://localhost:8081")
+    )
 #+end_src
 
 * Frameworks & libraries
@@ -894,6 +903,11 @@
   #+end_src
 
 * Programming languages
+
+#+begin_src emacs-lisp
+(add-hook 'prog-mode-hook #'flymake-mode)
+#+end_src
+
 ** Adds spacing around operators
 
 #+BEGIN_SRC emacs-lisp
@@ -1015,7 +1029,6 @@
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'eglot-ensure)
 (setq eglot-send-changes-idle-time 5)
-(add-to-list 'eglot-stay-out-of 'company)
 ;(setq eldoc-idle-delay 0.75)
 ;(setq flymake-no-changes-timeout 0.715)
 #+end_src
@@ -1042,11 +1055,6 @@
 
 (setq rust-format-on-save t)
 #+end_src
-
-#+BEGIN_SRC emacs-lisp
-(use-package rustic)
-(setq rustic-lsp-client 'eglot)
-#+END_SRC
 
 ** R
 
