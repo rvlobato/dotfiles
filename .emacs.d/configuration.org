@@ -413,23 +413,6 @@
  :pin melpa)
 #+end_src
 
-** Write-good
-
-#+BEGIN_SRC emacs-lisp
-(use-package writegood-mode
-  ;; Load this whenver I'm composing prose.
-  :hook (text-mode org-mode)
-  ;; Some additional weasel words.
-  :config
-  (--map (push it writegood-weasel-words)
-	 '("some" "simple" "simply" "easy" "often" "easily" "probably"
-	   "clearly"               ;; Is the premise undeniably true?
-	   "experience shows"      ;; Whose? What kind? How does it do so?
-	   "may have"              ;; It may also have not!
-	   "it turns out that")))  ;; How does it turn out so?
-	   ;; ↯ What is the evidence of highighted phrase? ↯
-#+END_SRC
-
 ** Define word
 
 #+BEGIN_SRC emacs-lisp
