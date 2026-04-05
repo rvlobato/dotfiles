@@ -513,14 +513,12 @@
 
 #+BEGIN_SRC emacs-lisp
 (add-hook 'after-init-hook 'global-company-mode)
-(setq company-idle-delay 0 ; activation
+(setq company-idle-delay 0.2 ; activation
       company-show-numbers t ; show number and complet according it
       company-dabbrev-downcase 0 ; do not downcase by default
       company-minimum-prefix-length 1 ; letters required for completion activate
       company-selection-wrap-around t ; completetion list cycle
-      company-tooltip-limit 20 ; bigger popup window
       )
-
 #+END_SRC
 
 **** company-box
