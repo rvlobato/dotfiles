@@ -14,7 +14,6 @@
 			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")
 			 ("melpa stable" . "https://stable.melpa.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
-			 ("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/")
 			 )
       )
 
