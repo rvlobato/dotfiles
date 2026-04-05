@@ -441,18 +441,6 @@
 (use-package speed-type)
 #+end_src
 
-** proselint
-
-#+begin_src emacs-lisp
-(use-package flymake-proselint
-  :pin gnu
-  :hook
-  ((org-mode text-mode latex-mode) . (lambda ()
-					(flymake-proselint-setup)
-					))
-  )
-#+end_src
-
 ** Flymake-laguagetool
 
 #+begin_src emacs-lisp
