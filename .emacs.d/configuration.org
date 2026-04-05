@@ -729,8 +729,8 @@
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
-(setq markdown-command "pandoc")
+  :custom
+  (markdown-command "pandoc"))
 #+end_src
 
 ** PO mode
