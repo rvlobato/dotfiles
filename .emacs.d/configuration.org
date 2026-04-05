@@ -203,7 +203,6 @@
 ##+end_comment
 
 * Cosmetics
-
 ** Disable startup message
 
 #+BEGIN_SRC emacs-lisp
@@ -320,7 +319,6 @@
 #+END_SRC
 
 * Git
-
 ** auto-commit
 
 #+begin_src emacs-lisp
@@ -370,15 +368,6 @@
 ** Word Wrapping
 
 #+BEGIN_SRC emacs-lisp
-(dolist (hook '(text-mode-hook latex-mode-hook tex-mode-hook))
-  (add-hook hook (lambda () (set-fill-column 72))))
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'org-mode-hook 'turn-on-auto-fill)
-
-(dolist (hook '(pkgbuild-mode-hook))
-  (add-hook hook (lambda () (set-fill-column 100))))
-(add-hook 'pkgbuild-mode-hook 'turn-on-auto-fill)
-
 (dolist (hook '(python-mode-hook prog-mode-hook web-mode-hook list-mode-hook))
   (add-hook hook (lambda () (set-fill-column 72))))
 #+END_SRC
