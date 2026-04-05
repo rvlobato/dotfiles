@@ -520,7 +520,6 @@
 #+end_src
 
 ** Company
-
 **** configs
 
 #+BEGIN_SRC emacs-lisp
@@ -558,15 +557,6 @@
 (add-to-list 'company-backends 'company-math-symbols-unicode)
 (use-package math-symbol-lists)
 #+end_src
-
-**** company quickhelp
-
-#+BEGIN_SRC emacs-lisp
-(use-package company-quickhelp
-  :config
-  (setq company-quickhelp-delay 1))
-  (company-quickhelp-mode)
-#+END_SRC
 
 **** Company-web
 
@@ -943,15 +933,6 @@
 			   (c-set-style "linux-tabs-only")))
 #+END_SRC
 
-** Documentation pop-up on a completion
-
-#+BEGIN_SRC emacs-lisp
-(use-package company-quickhelp
- :config
-   (setq company-quickhelp-delay 0.1)
-   (company-quickhelp-mode))
-#+END_SRC
-
 ** Eldoc
 
 #+BEGIN_SRC emacs-lisp
@@ -1028,9 +1009,16 @@
 
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'eglot-ensure)
-(setq eglot-send-changes-idle-time 5)
-;(setq eldoc-idle-delay 0.75)
-;(setq flymake-no-changes-timeout 0.715)
+(add-hook 'LaTeX-mode-hook 'eglot-ensure)
+(setq eglot-send-changes-idle-time 0.5)
+(setq eldoc-idle-delay 0.75)
+(setq flymake-no-changes-timeout 0.75)
+(add-hook 'eglot-managed-mode-hook
+	  (lambda ()
+	    ;; Check if we are in a text/TeX related mode where LanguageTool makes sense
+	    (when (derived-mode-p 'tex-mode 'latex-mode 'text-mode 'org-mode 'markdown-mode)
+	      ;; Add LanguageTool back to the Flymake backends for this specific buffer
+	      (add-hook 'flymake-diagnostic-functions #'flymake-languagetool--checker nil t))))
 #+end_src
 
 *** eglot-jl
