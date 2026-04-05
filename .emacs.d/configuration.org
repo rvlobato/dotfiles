@@ -39,16 +39,14 @@
   :bind (:map org-super-agenda-header-map ("<tab>" . origami-toggle-node))
   :config
   (org-super-agenda-mode)
-  (setq org-super-agenda-groups
-	'((:name "Important" :priority "A")
-	  (:name "Personal" :habit t)
-	  ;; For everything else, nicely display their heading hierarchy list.
-	  (:auto-map (lambda (e) (org-format-outline-path (org-get-outline-path)))))))
-
-;; MA: No noticable effect when using org-super-agenda :/
-;;
-;; Leave new line at the end of an entry.
-;; (setq org-blank-before-new-entry '((heading . t) (plain-list-item . t)))
+  (setq org-agenda-custom-commands
+	'(("z" "My Super Agenda"
+	   ((agenda "" ((org-agenda-span 'day)))
+	    (alltodo "" ((org-agenda-overriding-header "")
+			 (org-super-agenda-groups
+			  '((:name "Important" :priority "A")
+			    (:name "Personal" :habit t)
+			    (:auto-map (lambda (e) (org-format-outline-path (org-get-outline-path))))))))))))
 #+END_SRC
 
 ** TO-DO
