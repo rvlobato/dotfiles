@@ -482,13 +482,14 @@
 **** configs
 
 #+BEGIN_SRC emacs-lisp
-(add-hook 'after-init-hook 'global-company-mode)
-(setq company-idle-delay 0.2 ; activation
-      company-show-numbers t ; show number and complet according it
-      company-dabbrev-downcase 0 ; do not downcase by default
-      company-minimum-prefix-length 1 ; letters required for completion activate
-      company-selection-wrap-around t ; completetion list cycle
-      )
+  (use-package company
+  :hook (after-init . global-company-mode)
+  :custom
+  (company-idle-delay 0.2)
+  (company-show-numbers t)
+  (company-dabbrev-downcase 0)
+  (company-minimum-prefix-length 1)
+  (company-selection-wrap-around t))
 #+END_SRC
 
 **** company-box
@@ -502,18 +503,20 @@
 **** Company-math
 
 #+begin_src emacs-lisp
-;; global activation of the unicode symbol completion
-(add-to-list 'company-backends 'company-math-symbols-unicode)
 (use-package math-symbol-lists)
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-math-symbols-unicode))
 #+end_src
 
 **** Company-web
 
 #+begin_src emacs-lisp
-(use-package company-web)
-(add-to-list 'company-backends 'company-web-html)
-(add-to-list 'company-backends 'company-web-jade)
-(add-to-list 'company-backends 'company-web-slim)
+(use-package company-web
+  :after company
+  :config
+  (add-to-list 'company-backends 'company-web-html)
+  (add-to-list 'company-backends 'company-web-jade)
+  (add-to-list 'company-backends 'company-web-slim))
 #+end_src
 
 **** company-wordfreq
