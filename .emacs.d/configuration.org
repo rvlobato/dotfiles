@@ -47,6 +47,7 @@
 			  '((:name "Important" :priority "A")
 			    (:name "Personal" :habit t)
 			    (:auto-map (lambda (e) (org-format-outline-path (org-get-outline-path))))))))))))
+  )
 #+END_SRC
 
 ** TO-DO
@@ -498,14 +499,6 @@
   :pin melpa)
 #+end_src
 
-**** Company-c-headers
-
-#+begin_src emacs-lisp
-(use-package company-c-headers
-:pin melpa)
-(add-to-list 'company-backends 'company-c-headers)
-#+end_src
-
 **** Company-math
 
 #+begin_src emacs-lisp
@@ -632,16 +625,6 @@
 				    helm-source-bookmarks
 				    helm-source-bookmark-set
 				    helm-source-buffer-not-found))
-#+END_SRC
-
-*** helm-company
-
-#+BEGIN_SRC emacs-lisp
-(use-package helm-company)
-(eval-after-load 'company
-  '(progn
-     (define-key company-mode-map (kbd "C-:") 'helm-company)
-     (define-key company-active-map (kbd "C-:") 'helm-company)))
 #+END_SRC
 
 *** helm-org
