@@ -80,3 +80,4 @@ PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[red]%}@%{$fg[yellow]%}%M %{$fg[magen
 
 # Added by Pear Runtime, configures system with Pear CLI
 export PATH="/home/ronaldo/.config/pear/bin":$PATH
+export PATH="$HOME/.local/bin:$PATH"
