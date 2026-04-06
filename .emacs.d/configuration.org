@@ -446,15 +446,10 @@
 (use-package flymake-languagetool
   :ensure t
   :pin melpa
-  :hook ((find-file . flymake-languagetool-maybe-load)
-	 (text-mode       . flymake-languagetool-load)
+  :hook ((text-mode       . flymake-languagetool-load)
 	 (latex-mode      . flymake-languagetool-load)
 	 (org-mode        . flymake-languagetool-load)
 	 (markdown-mode   . flymake-languagetool-load)
-	 (text-mode     . flymake-mode)
-	 (latex-mode    . flymake-mode)
-	 (org-mode      . flymake-mode)
-	 (markdown-mode . flymake-mode)
 	 )
   :init
   (setq flymake-languagetool-server-jar nil
