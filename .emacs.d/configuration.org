@@ -1105,75 +1105,78 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package gnus
-:config
-(setq user-mail-address "vieira.lobato@gmail.com"
-user-full-name "Ronaldo V. Lobato")
+  :defer t
+  :bind ("C-c m" . gnus)
+  :config
+  (setq user-mail-address "vieira.lobato@gmail.com"
+	user-full-name "Ronaldo V. Lobato")
 
-(setq gnus-select-method '(nnnil))
-(setq gnus-secondary-select-methods
-'((nntp "news.gwene.org")
-(nnimap "gmail"
-(nnimap-address "imap.gmail.com")
-(nnimap-server-port "imaps")
-(nnimap-stream ssl)
-(nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
-(nnmail-expiry-wait immediate))))
+  (setq gnus-select-method '(nnnil))
+  (setq gnus-secondary-select-methods
+	'((nntp "news.gwene.org")
+	  (nnimap "gmail"
+		  (nnimap-address "imap.gmail.com")
+		  (nnimap-server-port "imaps")
+		  (nnimap-stream ssl)
+		  (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
+		  (nnmail-expiry-wait immediate))))
 
-(setq smtpmail-smtp-server "smtp.gmail.com"
-smtpmail-smtp-service 587
-gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+  (setq smtpmail-smtp-server "smtp.gmail.com"
+	smtpmail-smtp-service 587
+	gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 
-(setq send-mail-function		'smtpmail-send-it
-message-send-mail-function	'smtpmail-send-it)
+  (setq send-mail-function        'smtpmail-send-it
+	message-send-mail-function 'smtpmail-send-it)
 
-(defun my-message-mode-setup ()
-(setq fill-column 72)
-(turn-on-auto-fill))
-(add-hook 'message-mode-hook 'my-message-mode-setup)
-(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
-(setq mail-user-agent 'message-user-agent)
-(setq compose-mail-user-agent-warnings nil)
-(setq message-mail-user-agent nil)    ; default is `gnus'
-(setq mail-signature "Ronaldo V. Lobato\nrvlobato.com\n")
-(setq message-signature "Ronaldo V. Lobato\nrvlobato.com\n")
-(setq message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n")
-(setq message-citation-line-function 'message-insert-formatted-citation-line)
-(setq message-confirm-send nil)
-(setq message-kill-buffer-on-exit t)
-(setq message-wide-reply-confirm-recipients t)
-(setq message-default-charset 'utf-8)
-(setq gnus-gcc-mark-as-read t)
-(setq gnus-agent t)
-(setq gnus-novice-user nil)
-;; checking sources
-(setq gnus-check-new-newsgroups 'ask-server)
-(setq gnus-read-active-file 'some)
-;; dribble
-(setq gnus-use-dribble-file nil)
-(setq gnus-use-cache 'use-as-much-cache-as-possible)
-(setq gnus-asynchronous t)
-(setq gnus-use-article-prefetch 15)
+  (defun my-message-mode-setup ()
+    (setq fill-column 72)
+    (turn-on-auto-fill))
+  (add-hook 'message-mode-hook 'my-message-mode-setup)
+  (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
-(setq gnus-home-directory "~/Documents/gnus"
-nnfolder-directory "~/Documents/gnus/Mail/archive"
-message-directory "~/Documents/gnus/Mail"
-nndraft-directory "~/Documents/gnus/Drafts"
-gnus-cache-directory "~/Documents/gnus/cache")
+  (setq mail-user-agent 'message-user-agent
+	compose-mail-user-agent-warnings nil
+	message-mail-user-agent nil    ; default is `gnus'
+	mail-signature "Ronaldo V. Lobato\nrvlobato.com\n"
+	message-signature "Ronaldo V. Lobato\nrvlobato.com\n"
+	message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n"
+	message-citation-line-function 'message-insert-formatted-citation-line
+	message-confirm-send nil
+	message-kill-buffer-on-exit t
+	message-wide-reply-confirm-recipients t
+	message-default-charset 'utf-8
+	gnus-gcc-mark-as-read t
+	gnus-agent t
+	gnus-novice-user nil)
 
-:bind ("C-c m" . gnus))
+  ;; checking sources
+  (setq gnus-check-new-newsgroups 'ask-server
+	gnus-read-active-file 'some)
 
-;mm-encode
-(setq mm-encrypt-option 'guided)
+  ;; dribble
+  (setq gnus-use-dribble-file nil
+	gnus-use-cache 'use-as-much-cache-as-possible
+	gnus-asynchronous t
+	gnus-use-article-prefetch 15)
 
-;mml-sec
-(setq mml-secure-openpgp-encrypt-to-self t)
-(setq mml-secure-openpgp-sign-with-sender t)
-(setq mml-secure-smime-encrypt-to-self t)
-(setq mml-secure-smime-sign-with-sender t)
+  (setq gnus-home-directory "~/Documents/gnus"
+	nnfolder-directory "~/Documents/gnus/Mail/archive"
+	message-directory "~/Documents/gnus/Mail"
+	nndraft-directory "~/Documents/gnus/Drafts"
+	gnus-cache-directory "~/Documents/gnus/cache")
 
-(setq send-mail-function 'async-smtpmail-send-it)
-(setq message-send-mail-function 'async-smtpmail-send-it)
+  ;; mm-encode
+  (setq mm-encrypt-option 'guided)
 
+  ;; mml-sec
+  (setq mml-secure-openpgp-encrypt-to-self t
+	mml-secure-openpgp-sign-with-sender t
+	mml-secure-smime-encrypt-to-self t
+	mml-secure-smime-sign-with-sender t)
+
+  ;; async smtp
+  (setq send-mail-function 'async-smtpmail-send-it
+	message-send-mail-function 'async-smtpmail-send-it))
 #+END_SRC
 
 * Org
