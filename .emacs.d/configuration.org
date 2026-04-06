@@ -1083,7 +1083,7 @@
 (setq org-babel-default-header-args:sage '((:session . t)
 					   (:results . "output")))
 (with-eval-after-load "org"
-  (define-key org-mode-map (kbd "C-c c") 'ob-sagemath-execute-async))
+  (define-key org-mode-map (kbd "C-c C-x s") 'ob-sagemath-execute-async))
 )
 #+end_src
 
