@@ -1276,13 +1276,25 @@ gnus-cache-directory "~/Documents/gnus/cache")
 
 * References
 ** Zotero
+*** Citar
 
 #+begin_src emacs-lisp
-(use-package zotxt
-  :after org
-  :bind ("C-c z" . org-zotxt-insert-reference-link)
-  :hook (org-mode . org-zotxt-mode))
-#+end_src
+(use-package citar
+  :custom
+  (org-cite-global-bibliography '("~/Tools/zotero/library.bib"))
+  (citar-bibliography org-cite-global-bibliography)
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+
+  :bind
+  (("C-c b" . citar-insert-citation))
+
+  :config
+  ;; Force Helm to ignore Citar so the menus actually work
+  (add-to-list 'helm-completing-read-handlers-alist '(citar-insert-citation . nil))
+  (add-to-list 'helm-completing-read-handlers-alist '(org-cite-insert . nil)))
+  #+end_src
 
 # EOF
 -
