@@ -326,8 +326,9 @@
 ** Magit
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-c m") 'magit-blame)
+(use-package magit
+  :bind (("C-x g"   . magit-status)
+	 ("C-c g b" . magit-blame)))
 #+END_SRC
 
 * Personal information
