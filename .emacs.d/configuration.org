@@ -989,17 +989,19 @@
 ** eglot
 
 #+begin_src emacs-lisp
-(add-hook 'prog-mode-hook 'eglot-ensure)
-(add-hook 'LaTeX-mode-hook 'eglot-ensure)
-(setq eglot-send-changes-idle-time 0.5)
-(setq eldoc-idle-delay 0.75)
-(setq flymake-no-changes-timeout 0.75)
-(add-hook 'eglot-managed-mode-hook
-	  (lambda ()
-	    ;; Check if we are in a text/TeX related mode where LanguageTool makes sense
-	    (when (derived-mode-p 'tex-mode 'latex-mode 'text-mode 'org-mode 'markdown-mode)
-	      ;; Add LanguageTool back to the Flymake backends for this specific buffer
-	      (add-hook 'flymake-diagnostic-functions #'flymake-languagetool--checker nil t))))
+(use-package eglot
+  :hook ((prog-mode . eglot-ensure)
+	 (LaTeX-mode . eglot-ensure))
+  :custom
+  (eglot-send-changes-idle-time 0.5)
+  (eldoc-idle-delay 0.75)
+  (flymake-no-changes-timeout 0.75)
+  :config
+  (add-hook 'eglot-managed-mode-hook
+	    (lambda ()
+	      ;; Check if we are in a text/TeX related mode where LanguageTool makes sense
+	      (when (derived-mode-p 'tex-mode 'latex-mode 'text-mode 'org-mode 'markdown-mode)
+		(add-hook 'flymake-diagnostic-functions #'flymake-languagetool--checker nil t)))))
 #+end_src
 
 *** eglot-jl
