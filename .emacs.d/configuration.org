@@ -102,10 +102,9 @@
 (window-numbering-mode 1)
 #+END_SRC
 
-** Change buffer names for files with the same name. Note that ‘uniquify’ is builtin.
+** Change buffer names for files with the same name.
 
 #+BEGIN_SRC emacs-lisp
-(require 'uniquify)
 (setq uniquify-separator "/"               ;; The separator in buffer names.
       uniquify-buffer-name-style 'forward) ;; names/in/this/style
 #+END_SRC
