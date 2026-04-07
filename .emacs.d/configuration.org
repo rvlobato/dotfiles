@@ -447,7 +447,7 @@
   :ensure t
   :pin melpa
   :hook ((text-mode       . flymake-languagetool-load)
-	 (latex-mode      . flymake-languagetool-load)
+	 (LaTeX-mode      . flymake-languagetool-load)
 	 (org-mode        . flymake-languagetool-load)
 	 (markdown-mode   . flymake-languagetool-load)
 	 )
