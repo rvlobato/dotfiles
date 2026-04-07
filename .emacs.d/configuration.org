@@ -288,7 +288,8 @@
 ** Rainbow-mode
 
 #+BEGIN_SRC emacs-lisp
-(require 'rainbow-mode)
+(use-package rainbow-mode
+  :hook ((org-mode text-mode prog-mode) . rainbow-mode))
 #+END_SRC
 
 ** Rainbow delimiters
@@ -304,8 +305,6 @@
 #+BEGIN_SRC emacs-lisp
 (use-package color-identifiers-mode
   :config (global-color-identifiers-mode))
-;; Sometimes just invoke: M-x color-identifiers:refresh
-(run-with-idle-timer 5 t 'color-identifiers:refresh)
 #+END_SRC
 
 ** Visual line mode
@@ -373,7 +372,7 @@
 
 #+begin_src emacs-lisp
 (use-package guess-language
-  :hook ((org-mode text-mode TeX-mode web-mode) . guess-language-mode)
+  :hook ((org-mode text-mode TeX-mode LaTeX-mode web-mode) . guess-language-mode)
 
   :config
   (setq guess-language-langcodes
@@ -388,11 +387,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package flyspell
-  :hook (
-	((org-mode text-mode web-mode TeX-mode) . flyspell-mode)
-	((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode)
-	)
-  )
+  :hook ((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode))
 #+END_SRC
 
 ** Synosaurus
@@ -450,14 +445,17 @@
 	 (LaTeX-mode      . flymake-languagetool-load)
 	 (org-mode        . flymake-languagetool-load)
 	 (markdown-mode   . flymake-languagetool-load)
-	 )
+	 ;; Explicitly force the Flymake UI engine on
+	 (text-mode       . flymake-mode)
+	 (LaTeX-mode      . flymake-mode)
+	 (org-mode        . flymake-mode)
+	 (markdown-mode   . flymake-mode))
   :init
   (setq flymake-languagetool-server-jar nil
-	flymake-languagetool-url "http://localhost:8081")
-    )
+	flymake-languagetool-url "http://localhost:8081"))
 #+end_src
 
-* Frameworks & libraries
+* Frame works & libraries
 ** Async
 
 #+BEGIN_SRC emacs-lisp
@@ -495,70 +493,36 @@
   :pin melpa)
 #+end_src
 
-**** Company-math
-
-#+begin_src emacs-lisp
-(use-package math-symbol-lists)
-(with-eval-after-load 'company
-  (add-to-list 'company-backends 'company-math-symbols-unicode))
-#+end_src
-
-**** Company-web
-
-#+begin_src emacs-lisp
-(use-package company-web
-  :after company
-  :config
-  (add-to-list 'company-backends 'company-web-html)
-  (add-to-list 'company-backends 'company-web-jade)
-  (add-to-list 'company-backends 'company-web-slim))
-#+end_src
-
 **** company-wordfreq
 
 #+begin_src emacs-lisp
 (use-package company-wordfreq
   :config
-  ;; 1. The Eglot Gatekeeper
+  ;; The Eglot Gatekeeper
   (defun my-eglot-latex-gate (orig-fn &rest args)
-    "Prevent Eglot from hijacking normal text in LaTeX."
     (if (and (derived-mode-p 'latex-mode 'TeX-mode 'LaTeX-mode)
-	     ;; Look at the start of the current word
 	     (let ((start-pos (save-excursion (skip-syntax-backward "w_") (point))))
-	       ;; If the character right before the word is NOT \, {, or [
 	       (not (memq (char-before start-pos) '(?\\ ?{ ?[)))))
-	;; Then return nil (force Eglot to step aside for English text)
 	nil
-      ;; Otherwise, run Eglot normally for LaTeX code
       (apply orig-fn args)))
 
-  ;; Attach the gatekeeper directly to Eglot
   (advice-add 'eglot-completion-at-point :around #'my-eglot-latex-gate)
 
-  ;; 2. The Cleaned Up Backend List
   (defun my-apply-writing-backends ()
     (setq-local company-backends
-		'(
-		  ;; Layer 1: Eglot (Safely controlled by the gatekeeper above)
-		  company-capf
-
-		  ;; Layer 2: Text Dictionaries
-		  ;; Grouped together so dabbrev, wordfreq, and ispell merge into one list
+		'(company-capf
 		  (company-dabbrev :with company-wordfreq company-ispell)
-
-		  ;; Layer 3: Math and Files
 		  company-math-symbols-latex
-		  company-files
-		  ))
+		  company-math-symbols-unicode ;; Added from dead code
+		  company-web-html             ;; Added from dead code
+		  company-files))
     (setq-local company-transformers nil))
 
-  ;; 3. Apply to LaTeX modes AFTER Eglot finishes loading
   (add-hook 'eglot-managed-mode-hook
 	    (lambda ()
 	      (when (derived-mode-p 'latex-mode 'TeX-mode 'LaTeX-mode)
 		(my-apply-writing-backends))))
 
-  ;; 4. Apply to standard text modes
   (add-hook 'text-mode-hook #'my-apply-writing-backends))
 #+end_src
 
@@ -678,7 +642,6 @@
 #+begin_src emacs-lisp
 (use-package helm-css-scss
 :pin melpa)
-(require 'helm-css-scss)
 #+end_src
 
 *** helm-sage
@@ -696,8 +659,7 @@
 ** Hydra
 
 #+begin_src emacs-lisp
-(require 'hydra)
-;(use-package pretty-hydra)
+
 #+end_src
 
 ** Markdown-mode
@@ -865,14 +827,10 @@
 #+begin_src emacs-lisp
 (use-package tex
   :ensure auctex)
-(setq latex-run-command "pdflatex")
+(setq-default TeX-engine 'default)
   #+end_src
 
 * Programming languages
-
-#+begin_src emacs-lisp
-(add-hook 'prog-mode-hook #'flymake-mode)
-#+end_src
 
 ** Adds spacing around operators
 
@@ -990,13 +948,7 @@
   :custom
   (eglot-send-changes-idle-time 0.5)
   (eldoc-idle-delay 0.75)
-  (flymake-no-changes-timeout 0.75)
-  :config
-  (add-hook 'eglot-managed-mode-hook
-	    (lambda ()
-	      ;; Check if we are in a text/TeX related mode where LanguageTool makes sense
-	      (when (derived-mode-p 'tex-mode 'latex-mode 'text-mode 'org-mode 'markdown-mode)
-		(add-hook 'flymake-diagnostic-functions #'flymake-languagetool--checker nil t)))))
+  (flymake-no-changes-timeout 0.75))
 #+end_src
 
 *** eglot-jl
@@ -1097,7 +1049,6 @@
 * Security
 
 #+BEGIN_SRC emacs-lisp
-(require 'epa-file)
 (epa-file-enable)
 #+END_SRC
 
@@ -1295,13 +1246,11 @@
 *** ox-beamer
 
 #+begin_src emacs-lisp
-(require 'ox-beamer)
-#+end_src
+(use-package ox-beamer
+  :after org)
 
-*** ox-beamer-lecture
-
-#+begin_src emacs-lisp
-(use-package ox-beamer-lecture)
+(use-package ox-beamer-lecture
+  :after ox-beamer)
 #+end_src
 
 * Social network
