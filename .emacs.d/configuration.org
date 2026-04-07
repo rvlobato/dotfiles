@@ -112,7 +112,7 @@
 ** Goes to the last place where it was when you previously visited the same file
 
 #+BEGIN_SRC emacs-lisp
-(setq-default save-place t)
+(save-place-mode 1)
 (setq save-place-file "~/.emacs.d/etc/saveplace")
 #+END_SRC
 
@@ -548,7 +548,7 @@
 *** ob-async
 
 #+begin_src emacs-lisp
-(use-package ob-async)
+(use-package ob-async :ensure t)
 #+end_src
 
 ** Dired
@@ -638,6 +638,7 @@
 
 #+begin_src emacs-lisp
 (use-package helm-org ;; Helm for org headlines and keywords completion.
+  :ensure t
 :pin melpa)
 (add-to-list 'helm-completing-read-handlers-alist
 	     '(org-set-tags-command . helm-org-completing-read-tags))
@@ -647,13 +648,15 @@
 
 #+begin_src emacs-lisp
 (use-package helm-css-scss
+  :ensure t
 :pin melpa)
 #+end_src
 
 *** helm-sage
 
 #+begin_src emacs-lisp
-(use-package helm-sage)
+(use-package helm-sage
+  :ensure t)
 (eval-after-load "sage-shell-mode"
   '(sage-shell:define-keys sage-shell-mode-map
      "C-c C-i"  'helm-sage-complete
@@ -737,7 +740,7 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
   :ensure nil
   :bind (("M-s g" . rg)
 	 ("M-s d" . rg-dwim)))
-(use-package helm-rg)
+(use-package helm-rg :ensure t)
 #+END_SRC
 
 ** Projectile
@@ -1015,7 +1018,7 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
 ** Jupyter
 
 #+begin_src emacs-lisp
-(use-package jupyter)
+(use-package jupyter :ensure t)
 #+end_src
 
 ** Rust
@@ -1119,9 +1122,6 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
   (setq smtpmail-smtp-server "smtp.gmail.com"
 	smtpmail-smtp-service 587
 	gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
-
-  (setq send-mail-function        'smtpmail-send-it
-	message-send-mail-function 'smtpmail-send-it)
 
   (defun my-message-mode-setup ()
     (setq fill-column 72)
@@ -1232,27 +1232,16 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
 *** Some initial languages to support
 
 #+BEGIN_SRC emacs-lisp
-(org-babel-do-load-languages
-   'org-babel-load-languages
-   '(
-     (emacs-lisp . t)
-     (shell      . t)
-     (python     . t)
-     (haskell    . t)
-     (ruby       . t)
-     (ocaml      . t)
-     (C          . t)  ;; Captial “C” gives access to C, C++, D
-     (dot        . t)
-     (latex      . t)
-     (org        . t)
-     (makefile   . t)
-     (R          . t)
-     (perl       . t)
-     (julia      . t)
-     (jupyter    . t)
-     (gnuplot    . t)
-     )
-   )
+(with-eval-after-load 'org
+  (defun my-safe-babel-load (lang)
+    "Only load a babel language if its library exists on disk."
+    (if (locate-library (concat "ob-" (symbol-name lang)))
+	(org-babel-do-load-languages 'org-babel-load-languages (list (cons lang t)))
+      (message "Warning: ob-%s not found, skipping." lang)))
+
+  (dolist (lang '(C dot emacs-lisp gnuplot haskell julia jupyter latex
+		  makefile ocaml org perl python ruby shell R))
+    (my-safe-babel-load lang)))
 #+END_SRC
 
 *** Keep the current heading stuck at the top of the window.
