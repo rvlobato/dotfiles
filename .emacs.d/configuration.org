@@ -289,15 +289,16 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package rainbow-mode
+  :ensure nil
   :hook ((org-mode text-mode prog-mode) . rainbow-mode))
 #+END_SRC
 
 ** Rainbow delimiters
 
 #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode #'rainbow-delimiters-mode)
-(add-hook 'prog-mode #'rainbow-delimiters-mode)
-(add-hook 'text-mode #'rainbow-delimiters-mode)
+(use-package rainbow-delimiters
+  :ensure nil
+  :hook ((org-mode prog-mode text-mode) . rainbow-delimiters-mode))
 #+END_SRC
 
 ** Unique highlighting to identifiers
@@ -326,6 +327,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package magit
+  :ensure nil
   :bind (("C-x g"   . magit-status)
 	 ("C-c g b" . magit-blame)))
 #+END_SRC
@@ -387,6 +389,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package flyspell
+  :ensure nil
   :hook ((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode))
 #+END_SRC
 
@@ -455,14 +458,15 @@
 	flymake-languagetool-url "http://localhost:8081"))
 #+end_src
 
-* Frame works & libraries
+* Frameworks & libraries
 ** Async
 
 #+BEGIN_SRC emacs-lisp
-(use-package async)
-(autoload 'dired-async-mode "dired-async.el" nil t)
-(dired-async-mode 1)
-(async-bytecomp-package-mode 1)
+(use-package async
+  :ensure nil
+  :config
+  (dired-async-mode 1)
+  (async-bytecomp-package-mode 1))
 #+END_SRC
 
 ** Bufler
@@ -476,6 +480,7 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package company
+    :ensure nil
   :hook (after-init . global-company-mode)
   :custom
   (company-idle-delay 0.2)
@@ -597,6 +602,7 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package helm
+    :ensure nil
    :init (helm-mode t)
    :bind (("M-x"     . helm-M-x)
 	  ("C-s"     . helm-occur)           ;; search current buffer
@@ -659,7 +665,54 @@
 ** Hydra
 
 #+begin_src emacs-lisp
+(use-package hydra
+  :ensure nil
+  :bind ("C-c w" . hydra-window/body)
+  :config
+  (defhydra hydra-window (:color red :hint nil)
+    "
+^Navigation^        ^Split/Delete^      ^Workspaces (Persp)^    ^Sizing^
+^^^^^^^^--------------------------------------------------------------------------
+_h_/_j_/_k_/_l_: move  _v_: vertical split  _s_: switch persp       _+_: taller
+_w_: other window   _x_: horiz split     _n_: next persp         _-_: shorter
+_0_-_9_: select #   _d_: delete window   _p_: prev persp         _>_: wider
+_t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
+"
+    ;; Navigation
+    ("h" windmove-left)
+    ("j" windmove-down)
+    ("k" windmove-up)
+    ("l" windmove-right)
+    ("w" other-window)
 
+    ;; Numerical selection (Now matching the docstring _0_-_9_)
+    ("1" select-window-1)
+    ("2" select-window-2)
+    ("3" select-window-3)
+    ("4" select-window-4)
+    ("5" select-window-5)
+    ("6" select-window-6)
+    ("7" select-window-7)
+    ("8" select-window-8)
+    ("9" select-window-9)
+    ("0" treemacs-select-window)
+
+    ("t" treemacs)
+    ("v" (lambda () (interactive) (split-window-right) (other-window 1)))
+    ("x" (lambda () (interactive) (split-window-below) (other-window 1)))
+    ("d" delete-window)
+    ("o" delete-other-windows)
+    ("s" persp-switch)
+    ("n" persp-next)
+    ("p" persp-prev)
+    ("c" persp-create)
+    ("+" enlarge-window)
+    ("-" shrink-window)
+    (">" enlarge-window-horizontal)
+    ("<" shrink-window-horizontal)
+    ("q" nil "exit" :color blue)
+    ("C-g" nil "exit" :color blue))
+)
 #+end_src
 
 ** Markdown-mode
@@ -674,32 +727,34 @@
 ** PO mode
 
    #+begin_src emacs-lisp
-(setq auto-mode-alist
-      (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))
-(autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t)
+(use-package po-mode :ensure nil)
 #+end_src
 
 ** Ripgrep
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "M-s g") 'rg)
-(global-set-key (kbd "M-s d") 'rg-dwim)
+(use-package rg
+  :ensure nil
+  :bind (("M-s g" . rg)
+	 ("M-s d" . rg-dwim)))
 (use-package helm-rg)
 #+END_SRC
 
 ** Projectile
 
 #+BEGIN_SRC emacs-lisp
-(use-package projectile)
-(projectile-mode +1)
-;; Recommended keymap prefix on Windows/Linux
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(use-package projectile
+  :ensure nil
+  :config
+  (projectile-mode +1)
+  :bind-keymap ("C-c p" . projectile-command-map))
 #+END_SRC
 
 ** Treemacs
 
 #+begin_src emacs-lisp
 (use-package treemacs
+  :ensure nil
   :defer t
   :init
   (with-eval-after-load 'winum
@@ -826,7 +881,7 @@
 
 #+begin_src emacs-lisp
 (use-package tex
-  :ensure auctex)
+  :ensure nil)
 (setq-default TeX-engine 'default)
   #+end_src
 
@@ -977,23 +1032,12 @@
 ** R
 
 #+begin_src emacs-lisp
-;; R-internals manual
-;;; ESS
-(add-hook 'ess-mode-hook
-      (lambda ()
-	(ess-set-style 'C++ 'quiet)
-	;; Because
-	;;                                 DEF GNU BSD K&R C++
-	;; ess-indent-level                  2   2   8   5   4
-	;; ess-continued-statement-offset    2   2   8   5   4
-	;; ess-brace-offset                  0   0  -8  -5  -4
-	;; ess-arg-function-offset           2   4   0   0   0
-	;; ess-expression-offset             4   2   8   5   4
-	;; ess-else-offset                   0   0   0   0   0
-	;; ess-close-brace-offset            0   0   0   0   0
-	(add-hook 'local-write-file-hooks
-	      (lambda ()
-	    (ess-nuke-trailing-whitespace)))))
+(use-package ess
+  :ensure nil
+  :hook (ess-mode . (lambda ()
+		      (ess-set-style 'C++ 'quiet)
+		      (add-hook 'local-write-file-hooks
+				(lambda () (ess-nuke-trailing-whitespace))))))
 ;;(setq ess-nuke-trailing-whitespace-p 'ask)
 ;; or even
 (setq ess-nuke-trailing-whitespace-p t)
@@ -1247,6 +1291,7 @@
 
 #+begin_src emacs-lisp
 (use-package ox-beamer
+  :ensure nil
   :after org)
 
 (use-package ox-beamer-lecture
@@ -1258,6 +1303,8 @@
 ** Mastodon
 
 #+begin_src emacs-lisp
+(use-package mastodon
+  :ensure nil)
 (setq mastodon-instance-url "https://mathstodon.xyz"
 	  mastodon-active-user "ronaldo")
 #+end_src
