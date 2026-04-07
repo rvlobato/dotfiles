@@ -5,6 +5,10 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (ignore-errors (load custom-file))
 
+(let ((default-directory "/usr/share/emacs/site-lisp/"))
+  (when (file-exists-p default-directory)
+    (normal-top-level-add-subdirs-to-load-path)))
+
 ;; Make all commands of the package module present.
 (require 'package)
 
