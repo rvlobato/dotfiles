@@ -507,7 +507,7 @@
   (defun my-eglot-latex-gate (orig-fn &rest args)
     (if (and (derived-mode-p 'latex-mode 'TeX-mode 'LaTeX-mode)
 	     (let ((start-pos (save-excursion (skip-syntax-backward "w_") (point))))
-	       (not (memq (char-before start-pos) '(?\\ ?{ ?[)))))
+	       (not (memq (char-before start-pos) '(?\\ ?\{ ?\[)))))
 	nil
       (apply orig-fn args)))
 
@@ -518,8 +518,8 @@
 		'(company-capf
 		  (company-dabbrev :with company-wordfreq company-ispell)
 		  company-math-symbols-latex
-		  company-math-symbols-unicode ;; Added from dead code
-		  company-web-html             ;; Added from dead code
+		  company-math-symbols-unicode
+		  company-web-html
 		  company-files))
     (setq-local company-transformers nil))
 
