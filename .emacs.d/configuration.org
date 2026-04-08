@@ -1093,12 +1093,6 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
 :pin melpa)
 #+end_src
 
-* Security
-
-#+BEGIN_SRC emacs-lisp
-(epa-file-enable)
-#+END_SRC
-
 * Email
 
 #+BEGIN_SRC emacs-lisp
