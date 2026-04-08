@@ -3,13 +3,21 @@
 #+EMAIL: contact@rvlobato.com
 #+OPTIONS: toc:nil num:nil
 
+* Performance Tuning
+#+BEGIN_SRC emacs-lisp
+;; Increase memory threshold for garbage collection (100MB)
+;; This prevents Emacs from "freezing" during heavy computation
+(setq gc-cons-threshold 100000000)
+
+;; Also increase the amount of data Emacs reads from processes (LSP/Jupyter)
+(setq read-process-output-max (* 1024 1024)) ;; 1MB
+#+END_SRC
+
 * Agenda & to-do
+
 ** Agenda
 
 #+BEGIN_SRC emacs-lisp
-;; List of all the files & directories where todo items can be found. Only one
-;; for now: My default notes file.
-(setq org-agenda-files (list org-default-notes-file))
 ;; Display tags really close to their tasks.
 (setq org-agenda-tags-column -10)
 ;; How many days ahead the default agenda view should look
@@ -29,38 +37,133 @@
 (setq calendar-location-name "Bogota, CO")
 (setq calendar-latitude 4.624335)
 (setq calendar-longitude -74.063644)
+
+;; Tell Org Agenda exactly where your files live
+(setq org-agenda-files '("~/Documents/proton/org/agenda.org"
+			 "~/Documents/proton/org/notes.org"))
 #+END_SRC
+
+*** Custom Views
+
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-custom-commands
+      '(("d" "Deep Work (Physics & Code Only)"
+	 ((tags-todo "code|pipeline|ml|astrophysics|manuscript|bnn"
+		     ((org-agenda-overriding-header "🔬 Focused Research Tasks")
+		      ;; Bypass super-agenda grouping for a clean, minimalist list
+		      (org-super-agenda-groups nil)))))))
+#+END_SRC
+
+#+RESULTS:
+| d | Deep Work (Physics & Code Only) | ((tags-todo code | pipeline | ml | astrophysics | manuscript | bnn ((org-agenda-overriding-header 🔬 Focused Research Tasks) (org-super-agenda-groups nil)))) |
 
 *** Super-agenda
 
 #+BEGIN_SRC emacs-lisp
-(use-package org-super-agenda
-  :hook (org-agenda-mode . origami-mode) ;; Easily fold groups via TAB.
-  :bind (:map org-super-agenda-header-map ("<tab>" . origami-toggle-node))
-  :config
-  (org-super-agenda-mode)
-  (setq org-agenda-custom-commands
-	'(("z" "My Super Agenda"
-	   ((agenda "" ((org-agenda-span 'day)))
-	    (alltodo "" ((org-agenda-overriding-header "")
-			 (org-super-agenda-groups
-			  '((:name "Important" :priority "A")
-			    (:name "Personal" :habit t)
-			    (:auto-map (lambda (e) (org-format-outline-path (org-get-outline-path))))))))))))
-  )
+(setq org-super-agenda-groups
+      '(;; 1. The Daily Essentials
+	(:name "📅 Today's Schedule & Deadlines"
+	       :time-grid t
+	       :deadline today
+	       :scheduled today
+	       :order 1)
+
+	(:name "🚨 Critical (Deadlines/Revisions)"
+	       :priority "A"
+	       :order 2)
+
+	(:name "🏛️ CBPF & Institutional Admin"
+	       :tag ("cbpf" "admin" "grant" "review")
+	       :order 3)
+
+	;; 2. Core Scientific Work: Grouped together via :order-multi
+	(:order-multi (4
+		       (:name "💻 Computations & Code"
+			      ;; Your heavy lifting: Python, Julia, and simulations
+			      :tag ("python" "julia" "code" "hpc" "sim"))
+
+		       (:name "🌌 Physics & Analysis"
+			      ;; Domain-specific deep work and data crunching
+			      :tag ("astrophysics" "nuclearphysics" "analysis" "data"))
+
+		       (:name "✍️ Manuscripts & Literature"
+			      ;; Writing papers and reading the arXiv daily drop
+			      :tag ("manuscript" "paper" "arxiv")
+			      :todo ("TO-READ" "READING" "DRAFTING"))
+
+		       (:name "🧠 ML & Bayesian Inference"
+			      ;; For your BNN and equation of state work
+			      :tag ("bnn" "eos" "ml" "training"))
+
+		       (:name "💥 Transients & FRBs"
+			      ;; For gamma-ray and fast radio burst pipelines
+			      :tag ("frb" "gamma" "transient" "kilonova"))
+
+		       (:name "📓 Jupyter & Computational Pipelines"
+			      ;; Isolate active code wrangling from theoretical physics
+			      :tag ("jupyter" "pipeline" "debug" "slurm"))))
+
+	;; 3. Async Science & Collaboration
+	(:name "⏳ Waiting On (Cluster/Reviewers/Co-authors)"
+	       ;; CRITICAL FOR YOU: Waiting on a 72-hour SLURM job to finish,
+	       ;; waiting for peer review 2, or waiting for a co-author's edits.
+	       :todo "WAITING"
+	       :tag ("cluster" "slurm" "review")
+	       :order 5)
+
+	(:name "👥 Meetings & Seminars"
+	       :tag ("meeting" "seminar" "collab")
+	       :order 6)
+
+	(:name "🔄 Daily Habits & Lit Review"
+	       :habit t
+	       :order 7)
+
+	(:name "📂 Active Projects"
+	       :auto-category t
+	       :order 8)
+
+	;; 4. The Backlog
+	(:name "💡 Ideas & Someday"
+	       :todo ("SOMEDAY" "IDEA")
+	       :order 9)
+
+	(:name "Routine Admin"
+	       :priority<= "C"
+	       :tag "admin"
+	       :order 10)))
+
+;; Ensure the mode is actually enabled
+(org-super-agenda-mode 1)
 #+END_SRC
 
 ** TO-DO
-
 *** Capture
 
 #+BEGIN_SRC emacs-lisp
-;; Location of my todos/notes file
-(setq org-default-notes-file "~/Documents/org/agenda.org")
+;; Location of my default notes file
+(setq org-default-notes-file "~/Documents/proton/org/agenda.org")
 
 ;; “C-c c” to quickly capture a task/note
 (global-set-key (kbd "C-c c") 'org-capture)
+
+;; Your custom scientific capture templates
+(setq org-capture-templates
+      '(("t" "Todo [General]" entry (file org-default-notes-file)
+	 "* TODO %?\n  %i\n  %a")
+
+	("p" "Physics / ML Pipeline Task" entry (file org-default-notes-file)
+	 "* TODO %? :pipeline:ml:\n  %i\n  %a")
+
+	("a" "CBPF Admin/Grant Task" entry (file org-default-notes-file)
+	 "* TODO %? :cbpf:admin:\n  SCHEDULED: %^t\n  %i\n  %a")
+
+	("l" "Literature to Read" entry (file "~/Documents/proton/org/notes.org")
+	 "* TO-READ %? :arxiv:paper:\n  %i\n  %a")))
 #+END_SRC
+
+#+RESULTS:
+| t | Todo [General] | entry | (file org-default-notes-file) | * TODO %? |
 
 *** TODO-s respect hierarchical structure
 
@@ -93,6 +196,17 @@
 #+BEGIN_SRC emacs-lisp
 (setq auto-save-visited-file-name t)
 (setq auto-save-visited-interval 300)
+#+END_SRC
+
+** Environment Management (direnv)
+
+#+BEGIN_SRC emacs-lisp
+;; Automatically load environment variables (venv, conda, Project.toml)
+;; when switching project buffers. This is essential for Jupyter/LSP.
+(use-package envrc
+  :ensure t
+  :config
+  (envrc-global-mode))
 #+END_SRC
 
 ** Window-numbering
@@ -1224,6 +1338,38 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
 (add-hook 'org-mode-hook 'which-function-mode)
 #+END_SRC
 
+*** Math & LaTeX Previews
+
+#+BEGIN_SRC emacs-lisp
+;; Increase the scale of rendered LaTeX math fragments
+;; 1.5 is usually the "sweet spot" for modern monitors
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
+;; Seamlessly toggle hidden markers (like /italics/ or [[links]])
+;; and LaTeX fragments when the cursor is on them.
+(use-package org-appear
+  :ensure t
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-auto-emphasis t
+	org-appear-autolinks t
+	;; Highly useful for physics: shows H_2 only when you are editing it
+	org-appear-autosubmarkers t))
+#+END_SRC
+
+*** Habit Tracking
+
+#+BEGIN_SRC emacs-lisp
+(with-eval-after-load 'org
+  ;; Add habit to the list of loaded Org modules
+  (add-to-list 'org-modules 'org-habit t)
+  ;; Require the package so it activates
+  (require 'org-habit))
+#+END_SRC
+
+#+RESULTS:
+: org-habit
+
 *** Some initial languages to support
 
 #+BEGIN_SRC emacs-lisp
@@ -1243,12 +1389,14 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
 
 #+BEGIN_SRC emacs-lisp
 (use-package org-sticky-header
- :hook (org-mode . org-sticky-header-mode)
- :config
- (setq-default
-  org-sticky-header-full-path 'full
-  ;; Child and parent headings are seperated by a /.
-  org-sticky-header-outline-path-separator " / "))
+  :ensure t
+  :hook (org-mode . org-sticky-header-mode)
+  :config
+  (setq-default
+   ;; Shows the full path (Parent ➤ Child ➤ Sub-child)
+   org-sticky-header-full-path 'full
+   ;; Uses a clear arrow separator for better readability
+   org-sticky-header-outline-path-separator " ➤ "))
 #+END_SRC
 
 *** Bullets
@@ -1300,7 +1448,7 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
 #+begin_src emacs-lisp
 (use-package citar
   :custom
-  (org-cite-global-bibliography '("~/Tools/zotero/library.bib"))
+  (org-cite-global-bibliography '("~/Desktop/resrch/zotero/library.bib"))
   (citar-bibliography org-cite-global-bibliography)
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
