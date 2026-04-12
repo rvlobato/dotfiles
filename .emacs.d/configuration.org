@@ -325,47 +325,57 @@
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package dbus)
-  ;; (defun handler (value)
-  ;;   (message "value is %s" value)
-  ;;   (if (equal value '1)
-  ;;	(progn (message "Switch to dark theme")
-  ;;	     (load-theme 'wombat t))
-  ;;     (progn (message "Switch to light theme")
-  ;;	   (load-theme 'dichromacy t))))
+ (use-package dbus
+  :ensure nil
+  :config
+  (defun my-apply-system-theme (value)
+    "Apply Emacs theme based on the freedesktop color-scheme value.
+     1 = dark preference, 0 or 2 = light/no preference."
+    ;; DBus can pass the value raw or wrapped in a list. This safely extracts it.
+    (let ((theme-val (if (listp value) (car value) value)))
+      (if (equal theme-val 1)
+	  (progn
+	    ;; Always disable the old theme before loading the new one
+	    (disable-theme 'dichromacy)
+	    (load-theme 'wombat t)
+	    (message "System theme applied: Dark (wombat)"))
+	(progn
+	  (disable-theme 'wombat)
+	  (load-theme 'dichromacy t)
+	  (message "System theme applied: Light (dichromacy)")))))
 
-  ;; (defun signal-handler (namespace key value)
-  ;;   (if (and
-  ;;	 (string-equal namespace "org.freedesktop.appearance")
-  ;;	 (string-equal key "color-scheme"))
-  ;;	(handler (car value))))
+  (defun my-dbus-theme-signal-handler (namespace key value)
+    "Triggered when GNOME/Freedesktop changes the theme."
+    (when (and (string-equal namespace "org.freedesktop.appearance")
+	       (string-equal key "color-scheme"))
+      (my-apply-system-theme (car value))))
 
-  ;; (dbus-call-method-asynchronously
-  ;;  :session
-  ;;  "org.freedesktop.portal.Desktop"
-  ;;  "/org/freedesktop/portal/desktop"
-  ;;  "org.freedesktop.portal.Settings"
-  ;;  "Read"
-  ;;  #'handler
-  ;;  "org.freedesktop.appearance"
-  ;;  "color-scheme")
+  ;; 1. CHECK ON STARTUP
+  ;; We use a synchronous call here so Emacs knows the theme immediately
+  ;; before rendering the UI. Wrapped in condition-case so Emacs won't crash
+  ;; if DBus isn't running.
+  (condition-case nil
+      (let ((current-theme (dbus-call-method
+			    :session
+			    "org.freedesktop.portal.Desktop"
+			    "/org/freedesktop/portal/desktop"
+			    "org.freedesktop.portal.Settings"
+			    "Read"
+			    "org.freedesktop.appearance"
+			    "color-scheme")))
+	;; `Read` returns a variant inside a list, so we pass the `car`
+	(my-apply-system-theme (car current-theme)))
+    (error (message "Warning: Could not read DBus theme at startup.")))
 
-  ;; (dbus-register-signal
-  ;;  :session
-  ;;  "org.freedesktop.portal.Desktop"
-  ;;  "/org/freedesktop/portal/desktop"
-  ;;  "org.freedesktop.portal.Settings"
-  ;;  "SettingChanged"
-  ;; #'signal-handler)
-
-  (use-package gnome-dark-style
-    :pin gnu
-    :custom
-    (gnome-light-theme 'dichromacy)
-    (gnome-dark-theme 'wombat)
-    :config
-    ;; Set to nil to stop monitoring and disable sync
-    (setopt gnome-dark-style-sync t))
+  ;; 2. LISTEN FOR CHANGES
+  ;; Registers the background listener for when you toggle the system theme
+  (dbus-register-signal
+   :session
+   "org.freedesktop.portal.Desktop"
+   "/org/freedesktop/portal/desktop"
+   "org.freedesktop.portal.Settings"
+   "SettingChanged"
+   #'my-dbus-theme-signal-handler))
 #+End_SRC
 
 ** Mods in the modeline
