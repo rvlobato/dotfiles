@@ -499,7 +499,7 @@
 
 #+begin_src emacs-lisp
 (use-package guess-language
-  :hook ((org-mode text-mode TeX-mode LaTeX-mode web-mode) . guess-language-mode)
+  :hook ((org-mode text-mode LaTeX-mode LaTeX-mode web-mode) . guess-language-mode)
 
   :config
   (setq guess-language-langcodes
@@ -515,7 +515,9 @@
 #+BEGIN_SRC emacs-lisp
 (use-package flyspell
   :ensure nil
-  :hook ((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode))
+  :hook (
+	 (org-mode text-mode web-mode LaTeX-mode) . flyspell-mode)
+	 (prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode))
 #+END_SRC
 
 ** Synosaurus
