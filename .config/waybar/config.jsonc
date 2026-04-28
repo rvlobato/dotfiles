@@ -4,7 +4,7 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 20, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 3, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
 	"niri/workspaces",
@@ -13,7 +13,6 @@
 	"niri/window"
     ],
     "modules-right": [
-	"mpd",
 	"idle_inhibitor",
 	"pulseaudio",
 	"network",
@@ -21,11 +20,9 @@
 	"memory",
 	"custom/gpu",
 	"temperature",
-	"backlight",
 	"keyboard-state",
 	"niri/language",
 	"battery",
-	"battery#bat2",
 	"clock",
 	"tray",
 	"custom/power"
@@ -55,32 +52,6 @@
 	    "locked": "",
 	    "unlocked": ""
 	}
-    },
-    "mpd": {
-	"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-	"format-disconnected": "Disconnected ",
-	"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-	"unknown-tag": "N/A",
-	"interval": 5,
-	"consume-icons": {
-	    "on": " "
-	},
-	"random-icons": {
-	    "off": "<span color=\"#f53c3c\"></span> ",
-	    "on": " "
-	},
-	"repeat-icons": {
-	    "on": " "
-	},
-	"single-icons": {
-	    "on": "1 "
-	},
-	"state-icons": {
-	    "paused": "",
-	    "playing": ""
-	},
-	"tooltip-format": "MPD (connected)",
-	"tooltip-format-disconnected": "MPD (disconnected)"
     },
     "idle_inhibitor": {
 	"format": "{icon}",
