@@ -516,8 +516,8 @@
 (use-package flyspell
   :ensure nil
   :hook (
-	 (org-mode text-mode web-mode LaTeX-mode) . flyspell-mode)
-	 (prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode))
+	 ((org-mode text-mode web-mode LaTeX-mode) . flyspell-mode)
+	 ((prog-mode c-mode-hook emacs-lisp-mode-hook) . flyspell-prog-mode)))
 #+END_SRC
 
 ** Synosaurus
