@@ -60,3 +60,18 @@ window#waybar {
 #tray {
     padding: 0 10px;
 }
+
+#keyboard-state {
+    background-color: transparent;
+    padding: 0 5px;
+    min-width: 60px; /* Gives the whole module enough room */
+}
+
+#keyboard-state label {
+    padding: 0 8px; /* This creates the space between the two icons/text */
+}
+
+#keyboard-state label.locked {
+    color: #ffffff;
+    font-weight: bold;
+}
