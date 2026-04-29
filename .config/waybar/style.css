@@ -75,3 +75,38 @@ window#waybar {
     color: #ffffff;
     font-weight: bold;
 }
+
+/* Styling for the power button */
+#custom-power {
+    color: #ff5555; /* A standard red color */
+    padding: 0 10px;
+    font-size: 16px; /* Making it slightly larger so it's easier to click */
+}
+
+/* Change color when you hover over it */
+#custom-power:hover {
+    background-color: #ff5555;
+    color: #000000;
+    border-radius: 4px;
+}
+
+/* The container of the menu */
+menu {
+    background-color: #000000; /* Match your bar's black background */
+    border: 1px solid #444444; /* Add a subtle border to see the menu edge */
+    border-radius: 8px;
+    padding: 5px;
+}
+
+/* Individual items (Shutdown, Reboot, etc.) */
+menuitem {
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* Hover state for the items in the menu */
+menuitem:hover {
+    background-color: #444444;
+    color: #ffffff;
+}
