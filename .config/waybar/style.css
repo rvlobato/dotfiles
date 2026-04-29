@@ -55,7 +55,7 @@ window#waybar {
     min-width: 60px;
 }
 #network {
-    min-width: 360px;
+    min-width: 350px;
 }
 #tray {
     padding: 0 10px;
