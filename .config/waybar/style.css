@@ -2,7 +2,7 @@
     /* Sets all text to white and removes borders */
     border: none;
     border-radius: 0;
-    font-family: monospace; /* Change to your preferred font */
+    font-family: "JetBrains Mono", "Symbols Nerd Font", "Font Awesome 6 Free", sans-serif;
     font-size: 13px;
     color: #ffffff;
 }
