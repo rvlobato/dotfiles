@@ -72,7 +72,7 @@ input {
 output "eDP-1" {
 	// Using the preferred 144Hz mode
 	mode "1920x1080@143.998"
-	scale 1.0
+	scale 1.8
 	position x=0 y=0
 	variable-refresh-rate // on-demand=true
     }
@@ -346,6 +346,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: ghossty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+a hotkey-overlay-title="Run: Firefox" { spawn "firefox"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
