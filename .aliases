@@ -3,6 +3,9 @@ alias gf='gfortran'
 alias py='python'
 alias sudo='run0 --background='
 
+alias noton="makoctl mode -r do-not-disturb"
+alias notoff="makoctl mode -a do-not-disturb"
+
 alias dark="gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 alias light="gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'"
 
