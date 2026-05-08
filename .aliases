@@ -1,7 +1,7 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gf='gfortran'
 alias py='python'
-alias sudo='run0 --background='
+alias sudo='run0 --background= '
 
 alias noton="makoctl mode -r do-not-disturb"
 alias notoff="makoctl mode -a do-not-disturb"
@@ -15,6 +15,7 @@ alias blueon='run0 modprobe btusb && run0 modprobe bluetooth && run0 systemctl s
 alias myip='curl ipinfo.io/ip'
 alias hibernate='systemctl hibernate'
 
+alias ex="emacs -Q -nw"
 alias emacsclient='emacsclient -nw'
 
 ## colors
