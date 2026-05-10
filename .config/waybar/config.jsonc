@@ -8,7 +8,8 @@
     // Choose the order of the modules
     "modules-left": [
 	"niri/workspaces",
-	"niri/window"
+	"niri/window",
+	"mpris"
     ],
     "modules-right": [
 	"cpu",
@@ -151,6 +152,19 @@
 	    "reboot": "reboot",
 	    "suspend": "systemctl suspend",
 	    "hibernate": "systemctl hibernate"
-	}
-    }
+	},
+    },
+"mpris": {
+    "format": "{player_icon} {artist} - {title}",
+    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+    "player-icons": {
+	"default": "<span></span>",
+	"spotify": "<span></span>",
+	"vlc": "<span>󰕼</span>"
+    },
+    "status-icons": {
+	"paused": "<span></span>"
+    },
+    "max-length": 40
+}
 }
