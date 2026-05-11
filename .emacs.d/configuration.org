@@ -497,6 +497,17 @@
   (add-hook hook (lambda () (set-fill-column 72))))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(add-hook 'find-file-hook
+	  (lambda ()
+	    (when (and (buffer-file-name)
+		       (string-match-p "/tmp/evo" (buffer-file-name)))
+	      (setq fill-column 72)
+	      (turn-on-auto-fill)
+	      (flymake-mode 1)
+	      (flymake-languagetool-load))))
+#+END_SRC
+
 #+begin_src emacs-lisp
 (use-package guess-language
   :hook ((org-mode text-mode LaTeX-mode LaTeX-mode web-mode) . guess-language-mode)
