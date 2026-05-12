@@ -1188,11 +1188,12 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
 #+end_src
 
 #+begin_src emacs-lisp
-(use-package poly-R)
+(use-package polymode
+  :ensure t)
 
-(use-package poly-markdown)
-
-(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown-mode))
+(use-package poly-markdown
+  :ensure t
+  :mode ("\\.Rmd\\'" . poly-markdown+r-mode))
 #+end_src
 
 ** Sage
