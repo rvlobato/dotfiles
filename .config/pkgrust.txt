@@ -8,3 +8,5 @@ joshuto
 juliaup
 kmon
 watchexec-cli
+sunsetr
+tectonic
