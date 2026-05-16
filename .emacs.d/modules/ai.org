@@ -1,0 +1,8 @@
+#+TITLE: AI
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* AI tools
+
+#+begin_src emacs-lisp
+(my/use-package ellama)
+#+end_src

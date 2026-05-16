@@ -1,0 +1,52 @@
+#+TITLE: Completion
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* Minibuffer and completion
+
+#+begin_src emacs-lisp
+(my/use-package vertico
+  :init
+  (vertico-mode 1))
+
+(my/use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides
+   '((file (styles partial-completion)))))
+
+(my/use-package marginalia
+  :init
+  (marginalia-mode 1))
+
+(my/use-package consult
+  :bind (("C-s"     . consult-line)
+         ("C-c h"   . consult-history)
+         ("C-x b"   . consult-buffer)
+         ("C-c k"   . consult-kmacro)
+         ("M-y"     . consult-yank-pop)
+         ("C-c m"   . consult-mode-command)
+         ("C-c g"   . consult-grep)
+         ("C-c r"   . consult-ripgrep)))
+
+(my/use-package embark
+  :bind (("C-." . embark-act)
+         ("C-;" . embark-dwim)))
+
+(my/use-package embark-consult
+  :after (embark consult))
+
+(my/use-package corfu
+  :init
+  (global-corfu-mode 1)
+  :custom
+  (corfu-auto t)
+  (corfu-auto-delay 0.2)
+  (corfu-auto-prefix 2)
+  (corfu-preview-current nil))
+
+(my/use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+#+end_src

@@ -1,0 +1,88 @@
+#+TITLE: UI
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* Theme and appearance
+
+#+begin_src emacs-lisp
+(my/use-package dbus
+  :ensure nil
+  :config
+  (defun my-apply-system-theme (value)
+    "Apply Emacs theme based on the freedesktop color-scheme VALUE.
+1 means dark preference, 0 or 2 means light/no preference."
+    (let ((theme-val (if (listp value) (car value) value)))
+      (cond
+       ((equal theme-val 1)
+        (mapc #'disable-theme custom-enabled-themes)
+        (load-theme 'wombat t)
+        (message "System theme applied: Dark (wombat)"))
+       (t
+        (mapc #'disable-theme custom-enabled-themes)
+        (load-theme 'dichromacy t)
+        (message "System theme applied: Light (dichromacy)")))))
+
+  (defun my-dbus-theme-signal-handler (namespace key value)
+    "Triggered when the system theme changes."
+    (when (and (string-equal namespace "org.freedesktop.appearance")
+               (string-equal key "color-scheme"))
+      (my-apply-system-theme value)))
+
+  (condition-case nil
+      (let ((current-theme
+             (dbus-call-method
+              :session
+              "org.freedesktop.portal.Desktop"
+              "/org/freedesktop/portal/desktop"
+              "org.freedesktop.portal.Settings"
+              "Read"
+              "org.freedesktop.appearance"
+              "color-scheme")))
+        (my-apply-system-theme (car current-theme)))
+    (error
+     (load-theme 'wombat t)
+     (message "Warning: Could not read DBus theme at startup. Falling back to wombat.")))
+
+  (ignore-errors
+    (dbus-register-signal
+     :session
+     "org.freedesktop.portal.Desktop"
+     "/org/freedesktop/portal/desktop"
+     "org.freedesktop.portal.Settings"
+     "SettingChanged"
+     #'my-dbus-theme-signal-handler)))
+
+(column-number-mode 1)
+(size-indication-mode 1)
+(display-time-mode 1)
+(show-paren-mode 1)
+(setq show-paren-delay 0
+      show-paren-style 'mixed
+      visible-bell 1
+      blink-cursor-mode nil
+      ring-bell-function 'ignore)
+#+end_src
+
+* Modeline and highlighting
+
+#+begin_src emacs-lisp
+(my/use-package mood-line
+  :config
+  (mood-line-mode 1))
+
+(my/use-package dimmer
+  :config
+  (dimmer-mode 1))
+
+(my/use-package rainbow-mode
+  :hook ((org-mode text-mode prog-mode) . rainbow-mode))
+
+(my/use-package rainbow-delimiters
+  :hook ((org-mode prog-mode text-mode) . rainbow-delimiters-mode))
+
+(my/use-package color-identifiers-mode
+  :config
+  (global-color-identifiers-mode 1))
+
+(global-visual-line-mode 1)
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+#+end_src

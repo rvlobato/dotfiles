@@ -1,0 +1,10 @@
+#+TITLE: Social
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* Social and mail
+
+#+begin_src emacs-lisp
+(my/use-package gnus)
+
+(my/use-package mastodon)
+#+end_src

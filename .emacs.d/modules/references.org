@@ -1,0 +1,14 @@
+#+TITLE: References
+#+PROPERTY: header-args:emacs-lisp :tangle yes :results silent
+
+* Citar
+#+begin_src emacs-lisp
+(my/use-package citar
+  :custom
+  (org-cite-global-bibliography '("~/Desktop/resrch/zotero/library.bib"))
+  (citar-bibliography org-cite-global-bibliography)
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  :bind (("C-c b" . citar-insert-citation)))
+#+end_src

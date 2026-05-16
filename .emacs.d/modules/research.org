@@ -1,0 +1,21 @@
+#+TITLE: Research
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* Research workflow
+
+#+begin_src emacs-lisp
+(use-package gnuplot
+  :if (locate-library "gnuplot"))
+(my/use-package ellama)
+
+  ;; Babel languages for scientific work.
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)
+     (shell . t)
+     (R . t)
+     (julia . t)
+     (gnuplot . t)
+     (C . t)))
+#+end_src

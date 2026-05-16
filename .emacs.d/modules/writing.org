@@ -1,0 +1,34 @@
+#+TITLE: Writing
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* Writing helpers
+
+#+begin_src emacs-lisp
+(my/use-package flyspell
+  :hook ((text-mode org-mode) . flyspell-mode))
+
+(my/use-package langtool)
+(my/use-package guess-language
+  :hook (text-mode . guess-language-mode))
+
+(my/use-package synosaurus
+  :bind (("C-c s" . synosaurus-choose-and-replace)))
+
+(my/use-package wordnut
+  :bind (("C-c w" . wordnut-search)))
+
+(my/use-package define-word
+  :bind (("C-c d" . define-word-at-point)))
+
+(my/use-package lorem-ipsum)
+
+(my/use-package google-translate)
+
+(my/use-package speed-type
+  :commands speed-type-text)
+
+(my/use-package flymake-languagetool)
+
+(my/use-package markdown-mode)
+(my/use-package po-mode)
+#+end_src

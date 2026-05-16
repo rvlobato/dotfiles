@@ -1,0 +1,22 @@
+#+TITLE: LaTeX
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* LaTeX and references
+
+#+begin_src emacs-lisp
+(my/use-package tex
+  :custom
+  (TeX-auto-save t)
+  (TeX-parse-self t)
+  (TeX-save-query nil)
+  (TeX-electric-sub-and-superscript t)
+  :config
+  (setq TeX-PDF-mode t)
+  (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
+  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex))
+
+(my/use-package cdlatex
+  :hook (LaTeX-mode . cdlatex-mode))
+
+(my/use-package citar)
+#+end_src

@@ -1,0 +1,42 @@
+#+TITLE: Project and files
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* Projects
+
+#+begin_src emacs-lisp
+  (my/use-package project
+    :bind (("C-c p f" . project-find-file)
+           ("C-c p b" . project-switch-to-buffer)
+           ("C-c p p" . project-switch-project)))
+
+  (my/use-package treemacs
+    :bind (("C-c t" . treemacs)))
+
+  (my/use-package treemacs-icons-dired
+    :hook (dired-mode . treemacs-icons-dired-mode))
+
+  (my/use-package treemacs-persp
+    :after (treemacs perspective))
+
+  (my/use-package treemacs-tab-bar
+    :after treemacs)
+
+  (my/use-package dired-subtree
+    :bind (:map dired-mode-map
+                ("i" . dired-subtree-insert)
+                (";" . dired-subtree-remove)))
+
+  (my/use-package dired-collapse
+    :hook (dired-mode . dired-collapse-mode))
+
+  (my/use-package dired-filter
+    :hook (dired-mode . dired-filter-mode))
+
+  (my/use-package envrc
+    :hook (after-init . envrc-global-mode))
+
+  (my/use-package perspective
+    :init
+    (setq persp-mode-prefix-key (kbd "C-c M-p"))
+    (persp-mode 1))
+#+end_src

@@ -1,0 +1,99 @@
+#+TITLE: Org
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* Basic Org settings
+
+#+begin_src emacs-lisp
+(my/use-package org
+  :custom
+  (org-directory "~/Documents/proton/org/")
+  (org-agenda-files '("~/Documents/proton/org/agenda.org"
+                      "~/Documents/proton/org/notes.org"))
+  (org-agenda-tags-column -10)
+  (org-agenda-span 'day)
+  (org-deadline-warning-days 14)
+  (org-agenda-show-all-dates t)
+  (org-agenda-skip-scheduled-if-done t)
+  (org-agenda-skip-deadline-if-done t)
+  (org-agenda-start-on-weekday nil)
+  :config
+  (global-set-key (kbd "C-c a") #'org-agenda)
+  (setq org-catch-invisible-edits 'smart
+        org-hide-leading-stars t
+        org-startup-indented t
+        org-src-fontify-natively t
+        org-confirm-babel-evaluate nil))
+#+end_src
+
+* Agenda views
+
+#+begin_src emacs-lisp
+(setq org-agenda-custom-commands
+      '(("d" "Deep Work (Physics & Code Only)"
+         ((tags-todo "code|pipeline|ml|astrophysics|manuscript|bnn"
+                     ((org-agenda-overriding-header "Focused Research Tasks")
+                      (org-super-agenda-groups nil)))))))
+#+end_src
+
+* Super agenda
+
+#+begin_src emacs-lisp
+(my/use-package org-super-agenda
+  :after org
+  :config
+  (setq org-super-agenda-groups
+        '((:name "Today's Schedule & Deadlines"
+           :time-grid t
+           :deadline today
+           :scheduled today
+           :order 1)
+          (:name "Critical"
+           :priority "A"
+           :order 2)
+          (:name "Admin"
+           :tag ("cbpf" "admin" "grant" "review")
+           :order 3)
+          (:order-multi (4
+                         (:name "Computations & Code"
+                          :tag ("python" "julia" "code" "hpc" "sim"))
+                         (:name "Physics & Analysis"
+                          :tag ("astrophysics" "nuclearphysics" "analysis" "data"))
+                         (:name "Manuscripts & Literature"
+                          :tag ("manuscript" "paper" "arxiv")
+                          :todo ("TO-READ" "READING" "DRAFTING"))
+                         (:name "ML & Bayesian Inference"
+                          :tag ("bnn" "eos" "ml" "training"))
+                         (:name "Transients & FRBs"
+                          :tag ("frb" "gamma" "transient" "kilonova"))
+                         (:name "Jupyter & Pipelines"
+                          :tag ("jupyter" "pipeline" "debug" "slurm"))))
+          (:name "Waiting On"
+           :todo "WAITING"
+           :tag ("cluster" "slurm" "review")
+           :order 5)
+          (:name "Meetings & Seminars"
+           :tag ("meeting" "seminar" "talk")
+           :order 6))))
+#+end_src
+
+* Org visual helpers
+
+#+begin_src emacs-lisp
+(my/use-package org-appear
+  :hook (org-mode . org-appear-mode))
+
+(my/use-package org-sticky-header
+  :hook (org-mode . org-sticky-header-mode))
+
+(my/use-package org-superstar
+  :hook (org-mode . org-superstar-mode))
+#+end_src
+
+* Export tools
+
+#+begin_src emacs-lisp
+(my/use-package htmlize)
+(my/use-package ox-reveal)
+(my/use-package ox-beamer)
+(my/use-package ox-beamer-lecture)
+#+end_src
