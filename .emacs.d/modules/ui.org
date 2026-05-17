@@ -6,6 +6,7 @@
 #+begin_src emacs-lisp
 (my/use-package dbus
   :ensure nil
+  :demand t
   :config
   (defun my-apply-system-theme (value)
     "Apply Emacs theme based on the freedesktop color-scheme VALUE.
@@ -58,17 +59,19 @@
 (setq show-paren-delay 0
       show-paren-style 'mixed
       visible-bell 1
-      blink-cursor-mode nil)
+      blink-cursor-mode 0)
 #+end_src
 
 * Modeline and highlighting
 
 #+begin_src emacs-lisp
 (my/use-package mood-line
+  :demand t
   :config
   (mood-line-mode 1))
 
 (my/use-package dimmer
+  :demand t
   :config
   (dimmer-mode 1))
 
@@ -81,17 +84,15 @@
 (my/use-package color-identifiers-mode
   :config
   (global-color-identifiers-mode 1))
-
-(global-visual-line-mode 1)
-(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 #+end_src
 
 * Window numbering
 
 #+begin_src emacs-lisp
-    (my/use-package winum
-    :config
-    (winum-mode))
+(my/use-package winum
+  :demand t
+  :config
+  (winum-mode))
 
   (global-set-key (kbd "M-1") #'winum-select-window-1)
   (global-set-key (kbd "M-2") #'winum-select-window-2)
