@@ -4,17 +4,13 @@
 * Research workflow
 
 #+begin_src emacs-lisp
-(use-package gnuplot
-  :if (locate-library "gnuplot"))
+(my/use-package gnuplot)
 
-  ;; Babel languages for scientific work.
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (python . t)
-     (shell . t)
-     (R . t)
-     (julia . t)
-     (gnuplot . t)
-     (C . t)))
+(with-eval-after-load 'org
+  (let ((available-langs '()))
+    (dolist (lang '(C emacs-lisp gnuplot julia latex org python shell R))
+      (if (locate-library (concat "ob-" (symbol-name lang)))
+          (push (cons lang t) available-langs)
+        (message "Warning: ob-%s not found, skipping optimization." lang)))
+       (org-babel-do-load-languages 'org-babel-load-languages available-langs)))
 #+end_src
