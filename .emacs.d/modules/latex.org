@@ -12,7 +12,8 @@
   (TeX-electric-sub-and-superscript t)
   :config
   (setq TeX-PDF-mode t)
-  (add-hook 'LaTeX-mode-hook #'turn-on-reftex))
+  (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
+  (add-hook 'LaTeX-mode-hook #'eglot-ensure))
 
 (my/use-package cdlatex
   :hook (LaTeX-mode . cdlatex-mode))
