@@ -4,31 +4,92 @@
 * Writing helpers
 
 #+begin_src emacs-lisp
-(my/use-package flyspell
-  :hook ((text-mode org-mode) . flyspell-mode))
+  (my/use-package jinx
+    :hook ((org-mode text-mode web-mode LaTeX-mode prog-mode) . jinx-mode)
+    :bind (("M-$" . jinx-correct)
+           ("C-M-$" . jinx-languages))
+    :config
+    (setq jinx-languages "en pt es"))
 
-(my/use-package langtool)
-(my/use-package guess-language
-  :hook (text-mode . guess-language-mode))
+  (my/use-package langtool
+  :bind
+  ("C-c l" . langtool-check)
+  ("C-c d l" . langtool-check-done)
+  :custom
+  (langtool-language-tool-jar
+   "~/Public/projects/languagetool/languagetool-commandline.jar"))
 
-(my/use-package synosaurus
-  :bind (("C-c s" . synosaurus-choose-and-replace)))
+  (my/use-package guess-language
+    :hook ((org-mode text-mode LaTeX-mode web-mode) . guess-language-mode)
+    :config
+    (setq guess-language-langcodes
+          '((en . ("en_US" "English"))
+            (pt . ("pt_BR" "Portuguese"))
+            (es . ("es" "Spanish")))
+          guess-language-languages '(en pt es)
+          guess-language-min-paragraph-length 20))
 
-(my/use-package wordnut
-  :bind (("C-c w" . wordnut-search)))
+  (my/use-package synosaurus
+    :bind (("C-c s" . synosaurus-choose-and-replace))
+    :config
+    (setq synosaurus-choose-method 'popup)
+    (setq synosaurus-backend 'synosaurus-backend-wordnet))
 
-(my/use-package define-word
-  :bind (("C-c d" . define-word-at-point)))
+  (my/use-package wordnut
+    :bind (("M-!" . wordnut-search)))
 
-(my/use-package lorem-ipsum)
+  (my/use-package define-word
+    :bind (("C-c D" . define-word-at-point)))
 
-(my/use-package google-translate)
+  (my/use-package lorem-ipsum)
 
-(my/use-package speed-type
-  :commands speed-type-text)
+  (my/use-package speed-type
+    :commands speed-type-text)
 
-(my/use-package flymake-languagetool)
+  (my/use-package flymake-languagetool
+  :hook (((text-mode LaTeX-mode org-mode markdown-mode) . flymake-languagetool-load)
+         ((text-mode LaTeX-mode org-mode markdown-mode) . flymake-mode))
+         :init
+  (setq flymake-languagetool-server-jar nil
+        flymake-languagetool-url "http://localhost:8081"))
 
-(my/use-package markdown-mode)
-(my/use-package po-mode)
+  (my/use-package markdown-mode
+    :mode ("README\\.md\\'" . gfm-mode)
+    :custom
+    (markdown-command "pandoc"))
+  (my/use-package po-mode)
+#+end_src
+
+
+* Wrapping words and spell check
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'find-file-hook
+            (lambda ()
+              (when (and (buffer-file-name)
+                         (string-match-p "/tmp/evo\\|COMMIT_EDITMSG" (buffer-file-name)))
+                (setq-local fill-column 72)
+                (turn-on-auto-fill)
+                (flymake-mode 1)
+                (flymake-languagetool-load)
+                (jinx-mode 1))))
+#+END_SRC
+
+* Prose Ergonomics (Olivetti Dynamic Padding & Alignment)
+
+#+begin_src emacs-lisp
+  (my/use-package adaptive-wrap
+    :hook ((org-mode markdown-mode LaTeX-mode) . adaptive-wrap-prefix-mode))
+
+  (my/use-package olivetti
+    :hook ((org-mode markdown-mode LaTeX-mode) . olivetti-mode)
+    :custom
+    (olivetti-body-width 85)
+    (olivetti-recall-visual-line-mode-entry-state t))
+
+  (my/use-package mixed-pitch
+  :hook ((org-mode markdown-mode LaTeX-mode) . mixed-pitch-mode))
+
+  (dolist (hook '(text-mode-hook org-mode-hook markdown-mode-hook LaTeX-mode-hook))
+    (add-hook hook #'visual-line-mode))
 #+end_src
