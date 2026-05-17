@@ -9,7 +9,7 @@
     :bind (("M-$" . jinx-correct)
            ("C-M-$" . jinx-languages))
     :config
-    (setq jinx-languages "en pt es"))
+    (setq jinx-languages "en_US pt_BR es fr_FR de_DE it_IT"))
 
   (my/use-package langtool
   :bind
@@ -19,17 +19,7 @@
   (langtool-language-tool-jar
    "~/Public/projects/languagetool/languagetool-commandline.jar"))
 
-  (my/use-package guess-language
-    :hook ((org-mode text-mode LaTeX-mode web-mode) . guess-language-mode)
-    :config
-    (setq guess-language-langcodes
-          '((en . ("en_US" "English"))
-            (pt . ("pt_BR" "Portuguese"))
-            (es . ("es" "Spanish")))
-          guess-language-languages '(en pt es)
-          guess-language-min-paragraph-length 20))
-
-  (my/use-package synosaurus
+   (my/use-package synosaurus
     :bind (("C-c s" . synosaurus-choose-and-replace))
     :config
     (setq synosaurus-choose-method 'popup)
