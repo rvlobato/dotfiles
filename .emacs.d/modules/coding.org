@@ -15,7 +15,7 @@
   :hook (emacs-lisp-mode . highlight-defined-mode))
 
 (my/use-package electric-operator
-  :hook ((python-mode julia-mode rust-mode go-mode) . electric-operator-mode))
+  :hook ((python-mode julia-mode rust-mode go-mode c-mode) . electric-operator-mode))
 
 (my/use-package yasnippet
   :config
@@ -25,38 +25,116 @@
 * Languages and tooling
 
 #+begin_src emacs-lisp
-(my/use-package web-mode)
-(my/use-package emmet-mode
-  :hook (web-mode . emmet-mode))
-(my/use-package go-mode)
-(my/use-package julia-mode)
-(my/use-package rust-mode)
-(my/use-package vala-mode)
-(my/use-package ess)
-(my/use-package eglot)
-(my/use-package eglot-jl)
-(my/use-package jupyter)
-(my/use-package polymode)
-(my/use-package poly-markdown)
-(my/use-package sage-shell-mode)
-(my/use-package ob-sagemath)
-(my/use-package async)
-(my/use-package ob-async)
-(my/use-package envrc)
-(my/use-package rg)
-#+end_src
+    (my/use-package web-mode
+      :config 
+      (setq web-mode-markup-indent-offset 2
+            web-mode-css-indent-offset 2
+            web-mode-attr-indent-offset 2
+            web-mode-code-indent-offset 2
+            web-mode-enable-block-face t
+            web-mode-enable-css-colorization t
+            web-mode-enable-auto-pairing t
+            web-mode-enable-current-element-highlight t))
+    (my/use-package emmet-mode
+      :hook (web-mode . emmet-mode))
+    (my/use-package go-mode
+      :init
+      (add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook
+                      #'gofmt-before-save
+                      nil t))))
+    (my/use-package julia-mode)
+    (my/use-package rust-mode
+      :config
+      (setq rust-format-on-save t)
+      (add-hook 'rust-mode-hook (lambda () (setq-local indent-tabs-mode nil))))
+    (my/use-package vala-mode)
+    (my/use-package ess
+      :config
+    (setq ess-nuke-trailing-whitespace-p t)
+    (add-hook 'ess-mode-hook (lambda () (ess-set-style 'C++ 'quiet)))
+    (add-hook 'perl-mode-hook (lambda () (setq perl-indent-level 4))))
+    (my/use-package eglot
+      :custom
+            (eglot-send-changes-idle-time 0.5)
+            (eldoc-idle-delay 0.75)
+            (flymake-no-changes-timeout 0.75))
+        (my/use-package eglot-jl)
+          (my/use-package jupyter)
+          (my/use-package polymode)
+          (my/use-package poly-markdown)
+  (my/use-package sage-shell-mode
+    :init
+    (sage-shell:define-alias)
+    :config
+    (setq sage-shell:use-prompt-toolkit nil)
+    :hook
+    ((sage-shell-mode sage-shell:sage-mode) . eldoc-mode)
+    (sage-shell-after-prompt-hook . sage-shell-view-mode))
+  (my/use-package ob-sagemath
+    :config
+    (setq org-babel-default-header-args:sage '((:session . t)
+                                               (:results . "output")))
+    (with-eval-after-load "org"
+      (define-key org-mode-map (kbd "C-c C-x s") 'ob-sagemath-execute-async)))
+  (my/use-package async
+    :config
+    (dired-async-mode 1)
+    (async-bytecomp-package-mode 1))
+  (my/use-package ob-async)
+          (my/use-package envrc
+            :config
+            (envrc-global-mode 1))
+        (my/use-package dumb-jump
+          :bind (("M-g q" . dumb-jump-quick-look)
+                 ("M-g ." . dumb-jump-go-other-window)
+                 ("M-g b" . dumb-jump-back)
+                 ("M-g p" . dumb-jump-go-prompt)
+                 ("M-g a" . xref-find-apropos))
+          :config
+          (setq dumb-jump-use-visible-window t))
+
+        (my/use-package rg
+          :bind (("M-s g" . rg)
+                 ("M-s d" . rg-dwim)))
+    #+end_src
 
 * Language-specific configuration
 
 #+begin_src emacs-lisp
-(add-hook 'go-mode-hook #'eglot-ensure)
-(add-hook 'julia-mode-hook #'eglot-ensure)
-(add-hook 'rust-mode-hook #'eglot-ensure)
-(add-hook 'python-mode-hook #'eglot-ensure)
-(add-hook 'vala-mode-hook #'eglot-ensure)
+  (add-hook 'emacs-lisp-mode-hook #'turn-on-eldoc-mode)
+  (add-hook 'emacs-lisp-mode-hook #'check-parens)
+  (add-hook 'go-mode-hook #'eglot-ensure)
+  (add-hook 'julia-mode-hook #'eglot-ensure)
+  (add-hook 'rust-mode-hook #'eglot-ensure)
+  (add-hook 'python-mode-hook #'eglot-ensure)
+  (add-hook 'vala-mode-hook #'eglot-ensure)
 
-(with-eval-after-load 'poly-markdown
-  (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode)))
+  (defun c-lineup-arglist-tabs-only (ignored)
+    "Line up argument lists by tabs, not spaces"
+    (let* ((anchor (c-langelem-pos c-syntactic-element))
+           (column (c-langelem-2nd-pos c-syntactic-element))
+           (offset (- (1+ column) anchor))
+           (steps (floor offset c-basic-offset)))
+      (* (max steps 1) c-basic-offset)))
+
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (c-add-style
+               "linux-tabs-only"
+               '("linux" (c-offsets-alist
+                          (arglist-cont-nonempty
+                           c-lineup-gcc-asm-reg
+                           c-lineup-arglist-tabs-only))))))
+
+  (add-hook 'c-mode-hook (lambda ()
+                           (setq indent-tabs-mode t)
+                           (setq show-trailing-whitespace t)
+                           (c-set-style "linux-tabs-only")))
+
+  (with-eval-after-load 'poly-markdown
+    (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode)))
 #+end_src
 
 * Code Word Wrapping
