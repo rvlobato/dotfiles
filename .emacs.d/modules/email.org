@@ -5,7 +5,7 @@
 #+begin_src emacs-lisp
 (my/use-package gnus
   :defer t
-  :bind (("C-c m" . gnus))
+  :bind (("C-c M" . gnus)) ; Shifted to uppercase M to resolve the Consult collision
   :config
   (setq gnus-select-method '(nnnil)
         gnus-secondary-select-methods
@@ -54,6 +54,11 @@
         mml-secure-openpgp-sign-with-sender t
         mml-secure-smime-encrypt-to-self t
         mml-secure-smime-sign-with-sender t)
+  
+  ;; Secure the background execution engine dependencies safely
+  (with-eval-after-load 'smtpmail
+    (require 'smtpmail-async))
+    
   (setq send-mail-function 'async-smtpmail-send-it
         message-send-mail-function 'async-smtpmail-send-it))
 #+end_src
