@@ -60,7 +60,6 @@
   (my/use-package po-mode)
 #+end_src
 
-
 * Wrapping words and spell check
 
 #+BEGIN_SRC emacs-lisp
@@ -75,7 +74,7 @@
                 (jinx-mode 1))))
 #+END_SRC
 
-* Prose Ergonomics (Olivetti Dynamic Padding & Alignment)
+* Prose Ergonomics
 
 #+begin_src emacs-lisp
   (my/use-package adaptive-wrap
@@ -84,7 +83,7 @@
   (my/use-package olivetti
     :hook ((org-mode markdown-mode LaTeX-mode) . olivetti-mode)
     :custom
-    (olivetti-body-width 85)
+    (olivetti-body-width 100)
     (olivetti-recall-visual-line-mode-entry-state t))
 
   (my/use-package mixed-pitch
