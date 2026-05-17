@@ -3,10 +3,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
 
-(let ((default-directory "/usr/share/emacs/site-lisp/"))
-  (when (file-exists-p default-directory)
-    (normal-top-level-add-subdirs-to-load-path)))
-
 (require 'package)
 
 (setq package-archives
