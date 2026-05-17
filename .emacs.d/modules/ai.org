@@ -4,5 +4,7 @@
 * AI tools
 
 #+begin_src emacs-lisp
-(my/use-package ellama)
+(my/use-package ellama
+  :bind (:map global-map
+              ("C-c e" . ellama-command-map)))
 #+end_src
