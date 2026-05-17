@@ -16,14 +16,55 @@
     (org-agenda-skip-scheduled-if-done t)
     (org-agenda-skip-deadline-if-done t)
     (org-agenda-start-on-weekday nil)
+    (org-startup-folded t)
+    (org-hide-block-startup t)
+    (org-list-allow-alphabetical t)
+    (org-src-preserve-indentation t)
+    (org-src-tab-acts-natively t)
+    (org-fontify-quote-and-verse-blocks t)
+    (org-return-follows-link t)
+    (org-startup-with-inline-images t)
+    (org-image-actual-width 500)
+    (org-html-validation-link nil)
+    (org-enforce-todo-dependencies t)
+    (org-lowest-priority ?D)
     :config
     (global-set-key (kbd "C-c a") #'org-agenda)
+    (global-set-key (kbd "C-c c") #'org-capture)
+    
     (setq org-catch-invisible-edits 'smart
           org-hide-leading-stars t
           org-startup-indented t
           org-support-shift-select t
           org-src-fontify-natively t
-          org-confirm-babel-evaluate nil))
+          org-confirm-babel-evaluate nil
+          org-export-babel-evaluate nil)
+
+    (setq org-priority-faces
+          '((?A :foreground "red" :weight bold)
+            (?B . "orange")
+            (?C . "yellow")
+            (?D . "green")))
+
+    (setq org-html-postamble "Created by: %a on %d. Last Updated: %C")
+    (add-hook 'org-mode-hook 'which-function-mode)
+    (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+
+    ;; Scientific Capture Templates
+    (setq org-capture-templates
+          '(("t" "Todo [General]" entry (file+headline "~/Documents/cloud/org/agenda.org" "Inbox")
+             "* TODO %?\n  %i\n  %a")
+            ("p" "Physics / ML Pipeline Task" entry (file+headline "~/Documents/cloud/org/agenda.org" "Research")
+             "* TODO %? :pipeline:ml:\n  %i\n  %a")
+            ("a" "CBPF Admin/Grant Task" entry (file+headline "~/Documents/cloud/org/agenda.org" "Admin")
+             "* TODO %? :cbpf:admin:\n  SCHEDULED: %^t\n  %i\n  %a")
+            ("l" "Literature to Read" entry (file+headline "~/Documents/cloud/org/notes.org" "Literature")
+             "* TO-READ %? :arxiv:paper:\n  %i\n  %a"))))
+
+  ;; Habit Module Activation
+  (with-eval-after-load 'org
+    (add-to-list 'org-modules 'org-habit t)
+    (require 'org-habit))
 #+end_src
 
 * Agenda views
@@ -74,17 +115,38 @@
            :order 5)
           (:name "Meetings & Seminars"
            :tag ("meeting" "seminar" "talk")
-           :order 6))))
+           :order 6)
+          (:name "Daily Habits & Lit Review"
+           :habit t
+           :order 7)
+          (:name "Active Projects"
+           :auto-category t
+           :order 8)
+          (:name "Ideas & Backlog"
+           :todo ("SOMEDAY" "IDEA")
+           :order 9)
+          (:name "Routine Admin"
+           :priority<= "C"
+           :tag "admin"
+           :order 10)))
+  (org-super-agenda-mode 1))
 #+end_src
 
 * Org visual helpers
 
 #+begin_src emacs-lisp
 (my/use-package org-appear
-  :hook (org-mode . org-appear-mode))
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-auto-emphasis t
+        org-appear-autolinks t
+        org-appear-autosubmarkers t))
 
 (my/use-package org-sticky-header
-  :hook (org-mode . org-sticky-header-mode))
+  :hook (org-mode . org-sticky-header-mode)
+  :config
+  (setq-default org-sticky-header-full-path 'full
+                org-sticky-header-outline-path-separator " ➤ "))
 
 (my/use-package org-superstar
   :hook (org-mode . org-superstar-mode))
