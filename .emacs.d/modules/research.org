@@ -6,7 +6,6 @@
 #+begin_src emacs-lisp
 (use-package gnuplot
   :if (locate-library "gnuplot"))
-(my/use-package ellama)
 
   ;; Babel languages for scientific work.
   (org-babel-do-load-languages
