@@ -64,11 +64,12 @@
 * Built-in defaults
 
 #+begin_src emacs-lisp
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq-default fill-column 80)
-(setq use-short-answers t)
-(global-auto-revert-mode 1)
-(save-place-mode 1)
-(add-hook 'before-save-hook 'whitespace-cleanup)
+  (setq mouse-drag-copy-region t)
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (setq-default fill-column 80)
+  (setq use-short-answers t)
+  (global-auto-revert-mode 1)
+  (save-place-mode 1)
+  (add-hook 'before-save-hook 'whitespace-cleanup)
 #+end_src
