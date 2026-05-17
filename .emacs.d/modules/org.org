@@ -4,25 +4,26 @@
 * Basic Org settings
 
 #+begin_src emacs-lisp
-(my/use-package org
-  :custom
-  (org-directory "~/Documents/cloud/org/")
-  (org-agenda-files '("~/Documents/cloud/org/agenda.org"
-                      "~/Documents/cloud/org/notes.org"))
-  (org-agenda-tags-column -10)
-  (org-agenda-span 'day)
-  (org-deadline-warning-days 14)
-  (org-agenda-show-all-dates t)
-  (org-agenda-skip-scheduled-if-done t)
-  (org-agenda-skip-deadline-if-done t)
-  (org-agenda-start-on-weekday nil)
-  :config
-  (global-set-key (kbd "C-c a") #'org-agenda)
-  (setq org-catch-invisible-edits 'smart
-        org-hide-leading-stars t
-        org-startup-indented t
-        org-src-fontify-natively t
-        org-confirm-babel-evaluate nil))
+  (my/use-package org
+    :custom
+    (org-directory "~/Documents/cloud/org/")
+    (org-agenda-files '("~/Documents/cloud/org/agenda.org"
+                        "~/Documents/cloud/org/notes.org"))
+    (org-agenda-tags-column -10)
+    (org-agenda-span 'day)
+    (org-deadline-warning-days 14)
+    (org-agenda-show-all-dates t)
+    (org-agenda-skip-scheduled-if-done t)
+    (org-agenda-skip-deadline-if-done t)
+    (org-agenda-start-on-weekday nil)
+    :config
+    (global-set-key (kbd "C-c a") #'org-agenda)
+    (setq org-catch-invisible-edits 'smart
+          org-hide-leading-stars t
+          org-startup-indented t
+          org-support-shift-select t
+          org-src-fontify-natively t
+          org-confirm-babel-evaluate nil))
 #+end_src
 
 * Agenda views
