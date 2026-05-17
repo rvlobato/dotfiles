@@ -5,12 +5,15 @@
 
 #+begin_src emacs-lisp
   (my/use-package git-auto-commit-mode)
+  
+  (my/use-package magit)
+
   (defvar my/git-map (make-sparse-keymap)
-  "Git keymap.")
+    "Git keymap.")
 
-(global-set-key (kbd "C-c g") my/git-map)
+  (global-set-key (kbd "C-c g") my/git-map)
 
-(define-key my/git-map (kbd "s") #'magit-status)
-(define-key my/git-map (kbd "b") #'magit-blame)
-(define-key my/git-map (kbd "l") #'magit-log)
+  (define-key my/git-map (kbd "s") #'magit-status)
+  (define-key my/git-map (kbd "b") #'magit-blame)
+  (define-key my/git-map (kbd "l") #'magit-log)
 #+end_src
