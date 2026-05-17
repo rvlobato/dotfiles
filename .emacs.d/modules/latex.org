@@ -4,7 +4,7 @@
 * LaTeX and references
 
 #+begin_src emacs-lisp
-(my/use-package tex
+(my/use-package auctex
   :custom
   (TeX-auto-save t)
   (TeX-parse-self t)
@@ -12,11 +12,8 @@
   (TeX-electric-sub-and-superscript t)
   :config
   (setq TeX-PDF-mode t)
-  (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
-  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex))
+  (add-hook 'LaTeX-mode-hook #'turn-on-reftex))
 
 (my/use-package cdlatex
   :hook (LaTeX-mode . cdlatex-mode))
-
-(my/use-package citar)
 #+end_src
