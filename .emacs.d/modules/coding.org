@@ -58,3 +58,10 @@
 (with-eval-after-load 'poly-markdown
   (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode)))
 #+end_src
+
+* Code Word Wrapping
+
+#+begin_src emacs-lisp
+(dolist (hook '(python-mode-hook prog-mode-hook web-mode-hook list-mode-hook))
+  (add-hook hook (lambda () (setq-local fill-column 72))))
+#+end_src
