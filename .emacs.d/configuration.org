@@ -28,6 +28,9 @@
  (expand-file-name "modules/coding.org" user-emacs-directory))
 
 (org-babel-load-file
+ (expand-file-name "modules/references.org" user-emacs-directory))
+
+(org-babel-load-file
  (expand-file-name "modules/latex.org" user-emacs-directory))
 
 (org-babel-load-file
@@ -38,6 +41,9 @@
 
 (org-babel-load-file
  (expand-file-name "modules/ai.org" user-emacs-directory))
+
+(org-babel-load-file
+ (expand-file-name "modules/email.org" user-emacs-directory))
 
 (org-babel-load-file
  (expand-file-name "modules/social.org" user-emacs-directory))
