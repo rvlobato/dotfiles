@@ -26,8 +26,8 @@
          ("C-c k"   . consult-kmacro)
          ("M-y"     . consult-yank-pop)
          ("C-c m"   . consult-mode-command)
-         ("C-c g"   . consult-grep)
-         ("C-c r"   . consult-ripgrep)))
+         ("M-s G"   . consult-grep)
+         ("M-s R"   . consult-ripgrep)))
 
 (my/use-package embark
   :bind (("C-." . embark-act)
