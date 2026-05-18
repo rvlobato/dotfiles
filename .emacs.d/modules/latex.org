@@ -5,6 +5,7 @@
 
 #+begin_src emacs-lisp
 (my/use-package auctex
+  :demand t
   :custom
   (TeX-auto-save t)
   (TeX-parse-self t)
@@ -12,6 +13,31 @@
   (TeX-electric-sub-and-superscript t)
   :config
   (setq TeX-PDF-mode t)
+
+  (setq TeX-view-program-selection '((output-pdf "Evince")))
+
+  (with-eval-after-load 'tex
+    (add-to-list 'TeX-command-list
+                 '("PdfLaTeX" "%`pdflatex --synctex=1%(mode)%' %t" TeX-run-TeX nil
+                   (latex-mode doctex-mode) :help "Run PdfLaTeX"))
+
+    (add-to-list 'TeX-command-list
+                 '("Tectonic" "tectonic --synctex --keep-logs %t" TeX-run-TeX nil
+                   (latex-mode doctex-mode) :help "Run Tectonic")))
+
+
+  (defun my/tex-run-tectonic ()
+    "Always compile with Tectonic instantly, ignoring AUCTeX's state machine."
+    (interactive)
+    (TeX-save-document (TeX-master-file))
+    (TeX-command "Tectonic" 'TeX-master-file -1))
+
+  (add-hook 'LaTeX-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c C-c") #'my/tex-run-tectonic)
+              (local-set-key (kbd "C-c C-v") #'TeX-view)
+              (local-set-key (kbd "C-c C-m") #'TeX-command-master)))
+
   (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
   (add-hook 'LaTeX-mode-hook #'eglot-ensure))
 
