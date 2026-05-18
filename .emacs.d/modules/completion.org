@@ -49,4 +49,10 @@
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+
+(my/use-package bookmark
+  :ensure nil
+  :custom
+(setq bookmark-default-file "~/Templates/configs/emacs/bookmarks")
+(bookmark-save-flag 1))
 #+end_src
