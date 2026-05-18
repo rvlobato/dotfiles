@@ -90,7 +90,6 @@
 
 #+begin_src emacs-lisp
 (my/use-package winum
-  :demand t
   :config
   (winum-mode))
 
@@ -105,6 +104,7 @@
 
 #+begin_src emacs-lisp
   (my/use-package which-key
+    :demand t
   :config
   (which-key-mode 1)
   (which-key-setup-side-window-bottom)
