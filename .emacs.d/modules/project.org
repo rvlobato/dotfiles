@@ -44,10 +44,9 @@
     :hook (dired-mode . dired-collapse-mode))
 
 (my/use-package dired-filter
-    :commands (dired-filter-group-mode dired-filter-group-local-set dired-filter-by-garbage)
+    :commands (dired-filter-group-mode dired-filter-by-garbage)
     :hook (dired-mode . (lambda ()
                           (dired-filter-group-mode 1)
-                          (dired-filter-group-local-set "default")
                           (dired-filter-by-garbage)))
     :custom
     (dired-garbage-files-regexp "\\(?:\\.\\(?:aux\\|bak\\|dvi\\|log\\|orig\\|rej\\|toc\\|out\\)\\)\\'")
