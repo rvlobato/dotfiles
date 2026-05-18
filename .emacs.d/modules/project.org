@@ -43,8 +43,9 @@
   (my/use-package dired-collapse
     :hook (dired-mode . dired-collapse-mode))
 
-  (my/use-package dired-filter
-    :hook (dired-mode . (lambda () 
+(my/use-package dired-filter
+    :commands (dired-filter-group-mode dired-filter-group-local-set dired-filter-by-garbage)
+    :hook (dired-mode . (lambda ()
                           (dired-filter-group-mode 1)
                           (dired-filter-group-local-set "default")
                           (dired-filter-by-garbage)))
@@ -52,14 +53,14 @@
     (dired-garbage-files-regexp "\\(?:\\.\\(?:aux\\|bak\\|dvi\\|log\\|orig\\|rej\\|toc\\|out\\)\\)\\'")
     (dired-filter-group-saved-groups
       '(("default"
-	 ("Org"          (extension "org"))
-	 ("Executables"  (executable))
-	 ("Directories"  (directory))
-	 ("PDF"          (extension "pdf"))
-	 ("LaTeX"        (extension "tex" "bib"))
-	 ("Images"       (extension "png" "jpg" "jpeg"))
-	 ("Code"         (extension "py" "jl" "rs" "go" "c"))
-	 ("Archives"     (extension "zip" "rar" "gz" "bz2" "tar"))))))
+         ("Org"          (extension "org"))
+         ("Executables"  (executable))
+         ("Directories"  (directory))
+         ("PDF"          (extension "pdf"))
+         ("LaTeX"        (extension "tex" "bib"))
+         ("Images"       (extension "png" "jpg" "jpeg"))
+         ("Code"         (extension "py" "jl" "rs" "go" "c"))
+         ("Archives"     (extension "zip" "rar" "gz" "bz2" "tar"))))))
 
   (my/use-package perspective
     :init
