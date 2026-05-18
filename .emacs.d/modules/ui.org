@@ -66,12 +66,10 @@
 
 #+begin_src emacs-lisp
 (my/use-package mood-line
-  :demand t
   :config
   (mood-line-mode 1))
 
 (my/use-package dimmer
-  :demand t
   :config
   (dimmer-mode 1))
 
