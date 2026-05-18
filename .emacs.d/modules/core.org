@@ -48,6 +48,8 @@
 (savehist-mode 1)
 
 (setq history-length 250)
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin"))
+(setenv "PATH" (concat (expand-file-name "~/.cargo/bin") ":" (getenv "PATH")))
 #+end_src
 
 * Performance
