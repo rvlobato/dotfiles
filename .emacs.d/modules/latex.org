@@ -1,7 +1,7 @@
 #+TITLE: LaTeX
 #+PROPERTY: header-args:emacs-lisp :tangle yes
 
-* LaTeX and references
+* LaTeX
 
 #+begin_src emacs-lisp
 (my/use-package auctex
@@ -25,7 +25,6 @@
                  '("Tectonic" "tectonic --synctex --keep-logs %t" TeX-run-TeX nil
                    (latex-mode doctex-mode) :help "Run Tectonic")))
 
-
   (defun my/tex-run-tectonic ()
     "Always compile with Tectonic instantly, ignoring AUCTeX's state machine."
     (interactive)
@@ -40,6 +39,30 @@
 
   (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
   (add-hook 'LaTeX-mode-hook #'eglot-ensure))
+
+(my/use-package eglot
+  :ensure nil
+  :config
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '((tex-mode context-mode texinfo-mode bibtex-mode LaTeX-mode plain-tex-mode) . ("digestif")))
+
+    (add-to-list 'completion-category-overrides '(eglot (styles orderless basic))))
+
+  (add-hook 'eglot-managed-mode-hook
+            (lambda ()
+              (when (derived-mode-p 'LaTeX-mode)
+                (flymake-languagetool-load)
+
+                (setq-local completion-category-defaults nil)
+
+                (when (fboundp 'cape-capf-super)
+                  (setq-local completion-at-point-functions
+                              (list (cape-capf-super
+                                     #'eglot-completion-at-point
+                                     #'cape-dabbrev
+                                     #'cape-dict
+                                     #'cape-file))))))))
 
 (my/use-package cdlatex
   :hook (LaTeX-mode . cdlatex-mode))
