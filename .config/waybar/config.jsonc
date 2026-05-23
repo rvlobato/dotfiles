@@ -1,12 +1,12 @@
 {
     "layer": "top",
     "position": "top",
-    "margin-top": 6,
-    "margin-left": 10,
-    "margin-right": 10,
-    "modules-left": ["niri/workspaces"],
+    "margin-top": 5,
+    "margin-left": 5,
+    "margin-right": 5,
+    "modules-left": ["niri/workspaces", "niri/window",],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery", "tray"],
+    "modules-right": ["cpu", "temperature", "memory", "custom/gpu", "pulseaudio", "network", "battery", "tray"],
 
     "niri/workspaces": {
         "format": "{icon}",
@@ -14,16 +14,40 @@
             "active": "",
             "default": ""
         },
-        "persistent-workspaces": {
-            "*": 4
-        }
     },
 
     "clock": {
         "format": "{:%a %d %b %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
-
+    "temperature": {
+    "critical-threshold": 80,
+    "format": "{icon}",
+    "format-icons": [" ", " ", " "]
+    },
+    "cpu": {
+    "interval": 2,
+    "format": "{usage:>3}%  ", // Added :>3 to pad the number with spaces
+    "states": {
+        "warning": 70,
+        "critical": 90
+    },
+    "tooltip": false
+    },
+    "custom/gpu": {
+    "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+    "format": "{}% 󰢮",
+    "interval": 2,
+    "tooltip": false
+    },
+     "memory": {
+    "interval": 2,
+    "format": "{percentage:>3}% ", // Changed {} to {percentage:>3}
+    "states": {
+        "warning": 70,
+        "critical": 90
+    }
+    },
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": " 0%",
