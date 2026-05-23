@@ -1,112 +1,22 @@
 * {
-    /* Sets all text to white and removes borders */
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
     border: none;
     border-radius: 0;
-    font-family: "JetBrains Mono", "Symbols Nerd Font", "Font Awesome 6 Free", sans-serif;
-    font-size: 13px;
-    color: #ffffff;
 }
 
 window#waybar {
-    /* Sets the whole bar to a solid black background */
-    background-color: #000000;
-}
-
-/* Add a little padding so text isn't touching the edges */
-/* Styling for all inactive workspaces */
-#workspaces button {
-    padding: 0 8px;
-    background-color: transparent;
+    /* Use transparent background so Niri can blur what's behind it */
+    background: rgba(25, 25, 25, 0.6);
     color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
 }
 
-/* Force the text inside inactive workspaces to be white */
-#workspaces button label {
-    color: #ffffff;
-}
-
-/* Styling for the currently active/focused workspace */
-#workspaces button.active,
-#workspaces button.focused {
-    background-color: #ffffff; /* White background */
-    color: #000000; /* Black text */
-    font-weight: bold;
-    border-radius: 4px;
-}
-
-/* Force the text inside the active/focused workspace to be black */
-#workspaces button.active label,
-#workspaces button.focused label {
-    color: #000000;
-}
-
-/* What it looks like when you hover over a workspace with your mouse */
-#workspaces button:hover {
-    background-color: #444444;
-}
-
-#clock,
-#battery,
-#pulseaudio,
-#cpu,
-#memory,
-#custom-gpu,
-#temperature {
-    min-width: 60px;
-}
-#network {
-    min-width: 350px;
-}
-#tray {
+#workspaces, #clock, #pulseaudio, #network, #battery, #tray {
     padding: 0 10px;
 }
 
-#keyboard-state {
-    background-color: transparent;
-    padding: 0 5px;
-    min-width: 60px; /* Gives the whole module enough room */
-}
-
-#keyboard-state label {
-    padding: 0 8px; /* This creates the space between the two icons/text */
-}
-
-#keyboard-state label.locked {
-    color: #ffffff;
-    font-weight: bold;
-}
-
-/* Styling for the power button */
-#custom-power {
-    color: #ff5555; /* A standard red color */
-    padding: 0 10px;
-    font-size: 16px; /* Making it slightly larger so it's easier to click */
-}
-
-/* Change color when you hover over it */
-#custom-power:hover {
-    background-color: #ff5555;
-    color: #000000;
-    border-radius: 4px;
-}
-
-/* The container of the menu */
-menu {
-    background-color: #000000; /* Match your bar's black background */
-    border: 1px solid #444444; /* Add a subtle border to see the menu edge */
-    border-radius: 8px;
-    padding: 5px;
-}
-
-/* Individual items (Shutdown, Reboot, etc.) */
-menuitem {
-    color: #ffffff;
-    padding: 4px 10px;
-    border-radius: 4px;
-}
-
-/* Hover state for the items in the menu */
-menuitem:hover {
-    background-color: #444444;
-    color: #ffffff;
+#workspaces button.active {
+    color: #3b82f6;
 }
