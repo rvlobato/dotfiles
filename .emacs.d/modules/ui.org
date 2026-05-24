@@ -15,12 +15,12 @@
       (cond
        ((equal theme-val 1)
         (mapc #'disable-theme custom-enabled-themes)
-        (load-theme 'wombat t)
-        (message "System theme applied: Dark (wombat)"))
+        (load-theme 'modus-vivendi t)
+        (message "System theme applied: Dark"))
        (t
         (mapc #'disable-theme custom-enabled-themes)
-        (load-theme 'dichromacy t)
-        (message "System theme applied: Light (dichromacy)")))))
+        (load-theme 'modus-operandi t)
+        (message "System theme applied: Light")))))
 
   (defun my-dbus-theme-signal-handler (namespace key value)
     "Triggered when the system theme changes."
@@ -40,7 +40,7 @@
               "color-scheme")))
         (my-apply-system-theme (car current-theme)))
     (error
-     (load-theme 'wombat t)
+     (load-theme 'modus-vivendi t)
      (message "Warning: Could not read DBus theme at startup. Falling back to wombat.")))
 
   (ignore-errors
