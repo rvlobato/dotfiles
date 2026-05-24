@@ -9,7 +9,7 @@
     :bind (("M-$" . jinx-correct)
            ("C-M-$" . jinx-languages))
     :config
-    (setq jinx-languages "en_US pt_BR es fr_FR de_DE it_IT"))
+    (setq jinx-languages "en_US"))
 
   (my/use-package langtool
   :bind
