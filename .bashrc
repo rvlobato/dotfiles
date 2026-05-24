@@ -10,8 +10,8 @@
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
-	return
+    # Shell is non-interactive.  Be done now!
+    return
 fi
 
 
@@ -99,3 +99,22 @@ PS1='\[\e[0;34m\][\[\e[01;33m\]\u\[\e[0;31m\]@\[\e[01;33m\]\h\[\e[01;35m\] \W\[\
 
 # Added by Pear Runtime, configures system with Pear CLI
 export PATH="/home/ronaldo/.config/pear/bin":$PATH
+
+toggle-theme() {
+    local pointer="$HOME/.config/alacritty/active_theme.toml"
+    local theme_dir="$HOME/.config/alacritty/themes/themes"
+
+    local light="$theme_dir/modus_operandi.toml"
+    local dark="$theme_dir/wombat.toml"
+
+    # Get the current target of the symlink
+    local current=$(readlink "$pointer")
+
+    if [[ "$current" == "$dark" ]]; then
+        ln -sf "$light" "$pointer"
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    else
+        ln -sf "$dark" "$pointer"
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    fi
+}
