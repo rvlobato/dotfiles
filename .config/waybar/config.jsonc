@@ -1,6 +1,7 @@
 {
     "layer": "top",
     "position": "top",
+    "height": 35,
     "margin-top": 5,
     "margin-left": 5,
     "margin-right": 5,
@@ -50,9 +51,14 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " 0%",
         "format-icons": {
-            "default": ["", "", ""]
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "default": ["", "", ""]
         },
         "on-click": "pwvucontrol"
     },
@@ -66,10 +72,13 @@
 
     "battery": {
         "states": {
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}",
+        "format-discharging": "{icon} {capacity}%",
+        "format-charging": "{capacity}% ",
         "format-icons": ["", "", "", "", ""]
     },
 
