@@ -6,9 +6,6 @@ alias sudo='run0 --background= '
 alias noton="makoctl mode -r do-not-disturb"
 alias notoff="makoctl mode -a do-not-disturb"
 
-alias dark="gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
-alias light="gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'"
-
 alias pkglist-update='dotfiles pull gitlab master && pacman -Qqe > $HOME/.config/pkglist.txt && dotfiles commit -am "update" && dotfiles push gitlab master && dotfiles push github master'
 
 alias blueon='run0 modprobe btusb && run0 modprobe bluetooth && run0 systemctl start bluetooth'
