@@ -22,9 +22,10 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "temperature": {
-    "critical-threshold": 80,
+    "critical-threshold": 90,
+    "format-critical": "🔥",
     "format": "{icon}",
-    "format-icons": [" ", " ", " "]
+    "format-icons": ["", "", "", "", ""]
     },
     "cpu": {
     "interval": 2,
