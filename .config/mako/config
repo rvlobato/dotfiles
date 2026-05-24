@@ -1,3 +1,9 @@
 output=DP-
+
+border-radius=12
+border-size=2
+padding=12
+margin=10
+
 [mode=do-not-disturb]
 invisible=1
