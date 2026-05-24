@@ -2,3 +2,6 @@
 import = [
     "~/.config/alacritty/active_theme.toml"
 ]
+
+[window]
+decorations = "None"
