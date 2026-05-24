@@ -139,9 +139,19 @@ _t_: treemacs       _o_: delete others   _c_: create persp       _<_: narrower
     ("q" nil "exit" :color blue) ("C-g" nil "exit" :color blue)))
 #+end_src
 
-* Titlebar and Shell Colors
+* Shell Colors
 
 #+BEGIN_SRC emacs-lisp
-(setq frame-title-format `(,(user-login-name) "@" ,(system-name) "    %f"))
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 #+END_SRC
+
+* Diminish
+
+#+begin_src emacs-lisp
+(use-package diminish
+  :config
+  (diminish 'rainbow-delimiters-mode)
+  (diminish 'which-key-mode)
+  (diminish 'eldoc-mode)
+  (diminish 'visual-line-mode))
+#+end_src
