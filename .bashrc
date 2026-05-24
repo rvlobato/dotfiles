@@ -14,7 +14,6 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
-
 # Put your fun stuff here.
 # Enable checkwinsize so that bash will check the terminal size when
 shopt -s checkwinsize
@@ -41,7 +40,6 @@ shopt -s autocd
 
 #------------------------------
 # Alias
-alias pkglist-dif='sdiff -s <(pacman -Qqe) $HOME/.config/pkglist.txt'
 [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # Dir colors
@@ -60,14 +58,6 @@ mkcd ()
 {
   mkdir -p -- "$1" && cd -P -- "$1"
 }
-
-#-------------
-#Powerline
-#powerline-daemon -q
-#POWERLIN1E_BASH_CONTINUATION=1
-#POWERLINE_BASH_SELECT=1
-#. /usr/share/powerline/bindings/bash/powerline.sh
-
 
 #----------------------------------------
 ## fzf
@@ -97,15 +87,12 @@ _fzf_compgen_dir() {
 #------------------------------
 PS1='\[\e[0;34m\][\[\e[01;33m\]\u\[\e[0;31m\]@\[\e[01;33m\]\h\[\e[01;35m\] \W\[\e[0;36m\]]\[\e[m\] \$ '
 
-# Added by Pear Runtime, configures system with Pear CLI
-export PATH="/home/ronaldo/.config/pear/bin":$PATH
-
 toggle-theme() {
     local pointer="$HOME/.config/alacritty/active_theme.toml"
     local theme_dir="$HOME/.config/alacritty/themes/themes"
 
     local light="$theme_dir/modus_operandi.toml"
-    local dark="$theme_dir/wombat.toml"
+    local dark="$theme_dir/modus_vivendi.toml"
 
     # Get the current target of the symlink
     local current=$(readlink "$pointer")
