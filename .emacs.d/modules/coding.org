@@ -26,7 +26,7 @@
 
 #+begin_src emacs-lisp
     (my/use-package web-mode
-      :config 
+      :config
       (setq web-mode-markup-indent-offset 2
             web-mode-css-indent-offset 2
             web-mode-attr-indent-offset 2
@@ -37,7 +37,12 @@
             web-mode-enable-current-element-highlight t))
     (my/use-package emmet-mode
       :hook (web-mode . emmet-mode))
-    (my/use-package go-mode
+
+(use-package kdl-mode
+  :ensure t
+  :mode "\\.kdl\\'")
+
+(my/use-package go-mode
       :init
       (add-hook 'go-mode-hook
           (lambda ()
