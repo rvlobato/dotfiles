@@ -67,6 +67,7 @@
     "network": {
         "format-wifi": "",
         "format-ethernet": "󰈀",
+        "interface": "wlan0",
         "tooltip-format": "{essid} ({signalStrength}%)",
         "format-disconnected": "󰖪"
     },
