@@ -2,7 +2,6 @@
     font-family: "JetBrains Mono", "Symbols Nerd Font", "Font Awesome 6 Free", sans-serif;
     font-size: 13px;
     border: none;
-    border-radius: 0;
 }
 
 #workspaces button {
@@ -13,7 +12,6 @@ window#waybar {
     background: rgba(20, 20, 20, 0.35);
     color: #ffffff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
 }
 
 #workspaces, #clock, #pulseaudio, #network, #battery, #tray {
