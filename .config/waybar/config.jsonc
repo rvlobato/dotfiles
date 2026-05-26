@@ -6,11 +6,12 @@
     "modules-center": ["clock"],
     "modules-right": ["cpu", "temperature", "memory", "custom/gpu", "pulseaudio", "network", "battery", "tray"],
 
+
     "niri/workspaces": {
         "format": "{icon}",
         "format-icons": {
             "active": "",
-            "default": ""
+            "default": "○"
         },
     },
 
