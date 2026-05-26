@@ -10,8 +10,7 @@
 }
 
 window#waybar {
-    /* Use transparent background so Niri can blur what's behind it */
-    background: rgba(25, 25, 25, 0.6);
+    background: rgba(20, 20, 20, 0.35);
     color: #ffffff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
