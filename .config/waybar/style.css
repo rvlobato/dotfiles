@@ -22,3 +22,8 @@ window#waybar {
 #workspaces button.active {
     color: #3b82f6;
 }
+
+#temperature {
+    padding-left: 8px;
+    padding-right: 2px;
+}
