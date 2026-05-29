@@ -3,8 +3,7 @@
     "position": "top",
     "height": 35,
     "modules-left": ["niri/workspaces", "niri/window",],
-    "modules-right": ["cpu", "temperature", "memory", "custom/gpu", "tray", "pulseaudio", "battery", "network", "clock"],
-
+    "modules-right": ["cpu", "temperature", "custom/gpu", "memory", "tray", "pulseaudio", "battery", "network", "clock"],
 
     "niri/workspaces": {
         "format": "{icon}",
