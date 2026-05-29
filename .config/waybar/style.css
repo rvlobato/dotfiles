@@ -27,3 +27,8 @@ window#waybar {
     padding-left: 8px;
     padding-right: 2px;
 }
+
+#custom-gpu {
+    padding-left: 8px;
+    padding-right: 2px;
+}
