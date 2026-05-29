@@ -75,7 +75,7 @@ input {
 
 output "eDP-1" {
     // Using the preferred 144Hz mode
-    mode "1920x1080@143.998"
+    // mode "1920x1080@143.998"
     scale 1.75
     position x=0 y=0
     variable-refresh-rate // on-demand=true
@@ -90,6 +90,12 @@ output "eDP-1" {
 
     // Rotates the output 180 degrees
     transform "180"
+}
+
+ output "DP-2" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    variable-refresh-rate
  }
 
 // Settings that influence how windows are positioned and sized.
@@ -145,7 +151,7 @@ layout {
     // off
 
     // How many logical pixels the ring extends out from the windows.
-    width 1
+    width 1.5
 
     // Colors can be set in a variety of ways:
     // - CSS named colors: "red"
@@ -271,7 +277,7 @@ hotkey-overlay {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
- prefer-no-csd
+// prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -331,8 +337,8 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-/-    geometry-corner-radius 15
-/-    clip-to-geometry true
+    geometry-corner-radius 15
+    clip-to-geometry true
 }
 
 binds {
