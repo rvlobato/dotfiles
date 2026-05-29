@@ -6,11 +6,9 @@ alias sudo='run0 --background= '
 alias noton="makoctl mode -r do-not-disturb"
 alias notoff="makoctl mode -a do-not-disturb"
 
-alias pkglist-update='dotfiles pull gitlab master && pacman -Qqe > $HOME/.config/pkglist.txt && dotfiles commit -am "update" && dotfiles push gitlab master && dotfiles push github master'
-
-alias blueon='run0 modprobe btusb && run0 modprobe bluetooth && run0 systemctl start bluetooth'
 alias myip='curl ipinfo.io/ip'
 alias hibernate='systemctl hibernate'
+alias suspend='systemctl suspend'
 
 alias ex="emacs -Q -nw"
 alias emacsclient='emacsclient -nw'
@@ -25,32 +23,12 @@ alias fgrep='fgrep --colour=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
-## pacman
-alias pacup='run0 systemctl start reflector.service && run0 pacman -Syuw --noconfirm'
-alias pacs='pacman -Ss'
-alias pacr='run0 pacman -Rnsc'
-alias pacsc='run0 pacman -Syuw --noconfirm && run0 pacman -Sc'
-alias pacqe='pacman -Qe'
-alias pacqt='run0 pacman -Rns $(pacman -Qttdq)'
-
-#aur
-alias aurup='aur sync -uS'
-alias aurs='aur search'
-alias aurr='repo-remove -s $HOME/.AUR/pkgs/aur.db.tar.gz'
-alias aurrebuild='aur sync -S --rebuild'
-alias aurrebuildall='aur sync -S --rebuildall'
-
 #up: jupyter, npm, pip, rust, R and Julia
-alias venv13='python3.13 -m venv $HOME/.local/python13'
-alias venv='python -m venv --system-site-packages $HOME/.local/python'
-alias pyenv13='source $HOME/.local/python13/bin/activate'
-alias pyenv='source $HOME/.local/python/bin/activate'
 alias npmin='npm i -g $(cat $HOME/.config/pkgnpm.txt)'
 alias npmup='npm update -g'
 alias npmshow='npm -g list --depth=0'
 alias carin='cargo install $(cat $HOME/.config/pkgrust.txt)'
 alias carup='cargo install-update -a'
-alias pipin='pip install -r $HOME/.config/pkgpip.txt'
 alias julin='julia -t auto $HOME/.config/packages.jl'
 
 ## git
