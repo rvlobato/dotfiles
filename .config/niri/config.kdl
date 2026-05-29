@@ -76,7 +76,7 @@ input {
 output "eDP-1" {
     // Using the preferred 144Hz mode
     // mode "1920x1080@143.998"
-    scale 1.75
+    scale 1.0
     position x=0 y=0
     variable-refresh-rate // on-demand=true
     }
@@ -262,7 +262,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
 
-spawn-at-startup "sunsetr"
+// spawn-at-startup "sunsetr"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
