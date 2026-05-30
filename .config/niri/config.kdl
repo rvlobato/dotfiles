@@ -76,27 +76,21 @@ input {
 output "eDP-1" {
     // Using the preferred 144Hz mode
     // mode "1920x1080@143.998"
-    scale 1.0
+    scale 1.75
     position x=0 y=0
     variable-refresh-rate // on-demand=true
     }
 
     // Secondary/External Display
  output "DP-1" {
-    mode "1920x1080@60.000"
+    // mode "5120x1440@60.000"
     scale 1.0
     // Positioning this immediately to the right of eDP-1
     position x=1920 y=0
 
     // Rotates the output 180 degrees
-    transform "180"
+    // transform "180"
 }
-
- output "DP-2" {
-    mode "1920x1080@60.000"
-    scale 1.0
-    variable-refresh-rate
- }
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -262,7 +256,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
 
-// spawn-at-startup "sunsetr"
+spawn-at-startup "kanshi"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
