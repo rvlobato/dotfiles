@@ -12,3 +12,4 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(set-face-attribute 'default nil :font "Adwaita Sans" :height 120)
