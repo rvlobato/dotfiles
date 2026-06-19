@@ -76,7 +76,7 @@ input {
 output "eDP-1" {
     // Using the preferred 144Hz mode
     // mode "1920x1080@143.998"
-    scale 1.75
+    scale 1.0
     position x=0 y=0
     variable-refresh-rate // on-demand=true
     }
@@ -86,7 +86,7 @@ output "eDP-1" {
     // mode "5120x1440@60.000"
     scale 1.0
     // Positioning this immediately to the right of eDP-1
-    position x=1920 y=0
+    position x=-1920 y=0
 
     // Rotates the output 180 degrees
     // transform "180"
@@ -145,7 +145,7 @@ layout {
     // off
 
     // How many logical pixels the ring extends out from the windows.
-    width 1.5
+    width 2.0
 
     // Colors can be set in a variety of ways:
     // - CSS named colors: "red"
@@ -153,7 +153,7 @@ layout {
     // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
     // Color of the ring on the active monitor.
-    active-color "#ff6666"
+    active-color "red"
 
     // Color of the ring on inactive monitors.
     //
