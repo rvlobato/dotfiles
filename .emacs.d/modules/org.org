@@ -31,7 +31,7 @@
     :config
     (global-set-key (kbd "C-c a") #'org-agenda)
     (global-set-key (kbd "C-c c") #'org-capture)
-    
+
     (setq org-catch-invisible-edits 'smart
           org-hide-leading-stars t
           org-startup-indented t
@@ -157,6 +157,20 @@
 #+begin_src emacs-lisp
 (my/use-package htmlize)
 (my/use-package ox-reveal)
-(my/use-package ox-beamer)
-(my/use-package ox-beamer-lecture)
+
+(my/use-package ox-beamer
+  :ensure nil
+  :after org
+  :init
+  ;; Force immediate registration into the Org export dispatcher matrix
+  (with-eval-after-load 'org
+    (require 'ox-beamer))
+  )
+(my/use-package ox-beamer-lecture
+  :after ox-beamer
+  :init
+  ;; Ensure core Beamer symbols are present before loading lecture features
+  (with-eval-after-load 'ox-beamer
+    (require 'ox-beamer-lecture))
+  )
 #+end_src
