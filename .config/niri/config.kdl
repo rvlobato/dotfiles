@@ -77,24 +77,24 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-output "eDP-1" {
+ //output "eDP-1" {
     // Using the preferred 144Hz mode
     // mode "1920x1080@143.998"
-    scale 1.0
-    position x=0 y=0
-    variable-refresh-rate // on-demand=true
-    }
+  // scale 1.8
+   // position x=0 y=0
+   // variable-refresh-rate // on-demand=true
+  // }
 
     // Secondary/External Display
- output "DP-1" {
+ //output "DP-1" {
     // mode "5120x1440@60.000"
-    scale 1.0
+   // scale 1.0
     // Positioning this immediately to the right of eDP-1
-    position x=-1920 y=0
+   // position x=-1920 y=0
 
     // Rotates the output 180 degrees
     // transform "180"
-}
+// }
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
