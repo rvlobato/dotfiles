@@ -100,8 +100,10 @@ toggle-theme() {
     if [[ "$current" == "$dark" ]]; then
         ln -sf "$light" "$pointer"
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+	gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
     else
         ln -sf "$dark" "$pointer"
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	gsettings set org.gnome-desktop.interface gtk-theme 'Adwaita-dark'
     fi
 }
