@@ -100,13 +100,12 @@ toggle-theme() {
     if [[ "$current" == "$dark" ]]; then
         ln -sf "$light" "$pointer"
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
-	gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-	ln -sf ~/.config/fuzzel/themes/light.ini ~/.config/fuzzel/fuzzel.ini
+        gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+        ln -sf ~/.config/fuzzel/themes/light.ini ~/.config/fuzzel/fuzzel.ini
     else
         ln -sf "$dark" "$pointer"
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-	gsettings set org.gnome-desktop.interface gtk-theme 'Adwaita-dark'
-	ln -sf ~/.config/fuzzel/themes/dark.ini ~/.config/fuzzel/fuzzel.ini
-
+        gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+        ln -sf ~/.config/fuzzel/themes/dark.ini ~/.config/fuzzel/fuzzel.ini
     fi
 }
