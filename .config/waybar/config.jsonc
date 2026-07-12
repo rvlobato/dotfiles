@@ -20,12 +20,12 @@
     "temperature": {
     "critical-threshold": 90,
     "format-critical": "🔥",
-    "format": "{icon}",
+    "format": "{temperatureC:>2}°C {icon}",
     "format-icons": ["", "", "", "", ""]
     },
     "cpu": {
     "interval": 2,
-    "format": "{usage:>3}% ", // Added :>3 to pad the number with spaces
+    "format": "{usage:>3}%  {load:>4} ⚙", // Added :>3 to pad the number with spaces
     "states": {
         "warning": 70,
         "critical": 90
