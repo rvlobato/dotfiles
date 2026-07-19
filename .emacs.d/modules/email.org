@@ -1,64 +1,139 @@
 #+TITLE: Email
 #+PROPERTY: header-args:emacs-lisp :tangle yes :results silent
 
-* Gnus
+* Message Mode
+
 #+begin_src emacs-lisp
-(my/use-package gnus
+(my/use-package message
+  :ensure nil
   :defer t
-  :bind (("C-c M" . gnus)) ; Shifted to uppercase M to resolve the Consult collision
   :config
-  (setq gnus-select-method '(nnnil)
-        gnus-secondary-select-methods
-        '((nntp "news.gwene.org")
-          (nnimap "gmail"
-                  (nnimap-address "imap.gmail.com")
-                  (nnimap-server-port "imaps")
-                  (nnimap-stream ssl)
-                  (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
-                  (nnmail-expiry-wait immediate))))
-  (setq smtpmail-smtp-server "smtp.gmail.com"
-        smtpmail-smtp-service 587
-        gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)")
+
+  ;; ------------------------------------------------------------
+  ;; Composition
+  ;; ------------------------------------------------------------
+
   (defun my-message-mode-setup ()
+    "Personal defaults for composing mail."
     (setq fill-column 72)
     (turn-on-auto-fill))
+
   (add-hook 'message-mode-hook #'my-message-mode-setup)
-  (add-hook 'gnus-group-mode-hook #'gnus-topic-mode)
+
+  ;; ------------------------------------------------------------
+  ;; General
+  ;; ------------------------------------------------------------
+
   (setq mail-user-agent 'message-user-agent
         compose-mail-user-agent-warnings nil
         message-mail-user-agent nil
-        mail-signature "Ronaldo V. Lobato\nrvlobato.com\n"
-        message-signature "Ronaldo V. Lobato\nrvlobato.com\n"
-        message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n"
-        message-citation-line-function 'message-insert-formatted-citation-line
+
         message-confirm-send nil
         message-kill-buffer-on-exit t
         message-wide-reply-confirm-recipients t
-        message-default-charset 'utf-8
-        gnus-gcc-mark-as-read t
-        gnus-agent t
-        gnus-novice-user nil)
-  (setq gnus-check-new-newsgroups 'ask-server
-        gnus-read-active-file 'some)
-  (setq gnus-use-dribble-file nil
-        gnus-use-cache 'use-as-much-cache-as-possible
-        gnus-asynchronous t
-        gnus-use-article-prefetch 15)
-  (setq gnus-home-directory "~/Documents/gnus"
-        nnfolder-directory "~/Documents/gnus/Mail/archive"
-        message-directory "~/Documents/gnus/Mail"
-        nndraft-directory "~/Documents/gnus/Drafts"
-        gnus-cache-directory "~/Documents/gnus/cache")
-  (setq mm-encrypt-option 'guided)
-  (setq mml-secure-openpgp-encrypt-to-self t
-        mml-secure-openpgp-sign-with-sender t
-        mml-secure-smime-encrypt-to-self t
-        mml-secure-smime-sign-with-sender t)
-  
-  ;; Secure the background execution engine dependencies safely
-  (with-eval-after-load 'smtpmail
-    (require 'smtpmail-async))
-    
-  (setq send-mail-function 'async-smtpmail-send-it
-        message-send-mail-function 'async-smtpmail-send-it))
+        message-default-charset 'utf-8)
+
+  ;; ------------------------------------------------------------
+  ;; Signatures
+  ;; ------------------------------------------------------------
+
+  (setq mail-signature
+        "Ronaldo V. Lobato\nrvlobato.com\n"
+
+        message-signature
+        "Ronaldo V. Lobato\nrvlobato.com\n")
+
+  ;; ------------------------------------------------------------
+  ;; Reply formatting
+  ;; ------------------------------------------------------------
+
+  (setq message-citation-line-format
+        "%f [%Y-%m-%d, %R %z]:\n"
+
+        message-citation-line-function
+        #'message-insert-formatted-citation-line)
+
+  ;; ------------------------------------------------------------
+  ;; msmtp
+  ;; ------------------------------------------------------------
+
+  (setq send-mail-function #'sendmail-send-it
+        message-send-mail-function #'sendmail-send-it
+
+        sendmail-program
+        (or (executable-find "msmtp")
+            "/usr/bin/msmtp")
+
+        message-sendmail-envelope-from 'header
+        mail-specify-envelope-from t
+        mail-envelope-from 'header))
+#+end_src
+
+
+* Notmuch
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "<f6>") #'my/notmuch-sync)
+
+(setq notmuch-show-logo nil
+      notmuch-fcc-dirs nil
+      notmuch-show-relative-dates t
+      notmuch-search-oldest-first nil
+      notmuch-hello-auto-refresh t
+      notmuch-mua-compose-in 'current-window)
+
+(setq notmuch-search-result-format
+      '(("date" . "%12s ")
+        ("count" . "%-7s ")
+        ("authors" . "%-25s ")
+        ("subject" . "%s")))
+
+(setq message-alternative-emails
+      "vieira\\.lobato@gmail\\.com\\|lobato@cbpf\\.br\\|rvlobato@pm\\.me")
+
+(setq notmuch-saved-searches
+      '((:name "Inbox"
+               :query "tag:inbox and not tag:deleted")
+        (:name "Unread"
+               :query "tag:unread")
+        (:name "────────────────"
+               :query "tag:separator")
+        (:name "CBPF"
+               :query "tag:cbpf")
+        (:name "Proton"
+               :query "tag:proton")
+        (:name "Gmail"
+               :query "tag:gmail")
+        (:name "─────────────────"
+               :query "tag:separator")
+        (:name "Recent"
+               :query "date:7d..")
+        (:name "Flagged"
+               :query "tag:flagged")
+        (:name "Sent"
+               :query "tag:sent")
+        (:name "Drafts"
+               :query "tag:draft")
+        (:name "Attachments"
+               :query "tag:attachment")))
+
+(my/use-package notmuch
+  :commands (notmuch notmuch-search)
+  :bind (("C-c m" . notmuch)))
+
+(with-eval-after-load 'notmuch
+  (define-key notmuch-search-mode-map (kbd "g") #'my/notmuch-sync)
+  (define-key notmuch-show-mode-map (kbd "g") #'my/notmuch-sync)
+  (define-key notmuch-tree-mode-map (kbd "g") #'my/notmuch-sync)
+  (with-eval-after-load 'org
+    (require 'ol-notmuch nil t)))
+#+end_src
+
+
+* Org Integration
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'notmuch
+  (with-eval-after-load 'org
+    (require 'ol-notmuch nil t)))
 #+end_src
