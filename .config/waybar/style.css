@@ -15,20 +15,21 @@ window#waybar {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#workspaces, #clock, #pulseaudio, #network, #battery, #tray {
-    padding: 0 10px;
-}
-
 #workspaces button.active {
     color: #3b82f6;
 }
 
-#temperature {
+#temperature, #custom-gpu {
     padding-left: 8px;
     padding-right: 2px;
 }
 
-#custom-gpu {
-    padding-left: 8px;
-    padding-right: 2px;
+#workspaces, #clock, #pulseaudio, #network, #battery, #tray {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+#idle_inhibitor {
+    margin-left: 5px;
+    margin-right: 10px;
 }
