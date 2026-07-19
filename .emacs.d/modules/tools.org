@@ -1,0 +1,31 @@
+#+TITLE: Tools Configuration
+#+PROPERTY: header-args:emacs-lisp :tangle yes :results silent
+
+* Mail Synchronization
+
+#+begin_src emacs-lisp
+(defun my/notmuch-sync ()
+  "Synchronize all mail accounts and refresh Notmuch buffers."
+  (interactive)
+
+  (unless (get-process "mail-sync")
+    (let ((buf (get-buffer-create "*mail-sync*")))
+      (make-process
+       :name "mail-sync"
+       :buffer buf
+       :command '("sh" "-c" "mbsync -a && notmuch new")
+       :sentinel
+       (lambda (_proc event)
+         (when (string-match-p "finished" event)
+           (message "Mail synchronized.")
+
+           (dolist (buffer (buffer-list))
+             (when (buffer-live-p buffer)
+               (with-current-buffer buffer
+                 (when (derived-mode-p
+                        'notmuch-search-mode
+                        'notmuch-show-mode
+                        'notmuch-tree-mode
+                        'notmuch-hello-mode)
+                   (revert-buffer t t)))))))))))
+#+end_src
