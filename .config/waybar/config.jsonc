@@ -3,7 +3,7 @@
     "position": "top",
     "height": 35,
     "modules-left": ["niri/workspaces", "niri/window",],
-    "modules-right": ["cpu", "temperature", "custom/gpu", "memory", "tray", "pulseaudio", "battery", "network", "clock"],
+    "modules-right": ["cpu", "temperature", "custom/gpu", "memory", "tray", "pulseaudio", "battery", "network", "clock", "idle_inhibitor"],
 
     "niri/workspaces": {
         "format": "{icon}",
@@ -12,7 +12,13 @@
             "default": "○"
         },
     },
-
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",   // Icon when sleep is BLOCKED (e.g., open eye)
+            "deactivated": "" // Icon when normal sleep is ALLOWED (e.g., slashed eye)
+        }
+    },
     "clock": {
         "format": "{:%a %d %b %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
