@@ -9,6 +9,7 @@ export EDITOR=emacs
 export VISUAL=emacs
 export QT_QPA_PLATFORM=wayland
 export ANKI_WAYLAND=1
+export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
 export PATH="${PATH}:$HOME/.local/bin:$HOME/.cargo/bin:/snap/bin"
 
