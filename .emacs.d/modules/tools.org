@@ -13,7 +13,8 @@
       (make-process
        :name "mail-sync"
        :buffer buf
-       :command '("sh" "-c" "mbsync -a && notmuch new")
+       :command '("sh" "-c"
+           "mbsync -a && notmuch new && ~/.local/bin/notmuch-move-spam && mbsync -a")
        :sentinel
        (lambda (_proc event)
          (when (string-match-p "finished" event)
