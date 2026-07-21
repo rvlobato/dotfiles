@@ -23,3 +23,4 @@
 
 (org-babel-load-file
  (expand-file-name "configuration.org" user-emacs-directory))
+(put 'dired-find-alternate-file 'disabled nil)

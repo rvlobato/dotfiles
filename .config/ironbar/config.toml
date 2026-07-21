@@ -1,0 +1,47 @@
+position = "top"
+height = 24
+layer = "top"
+
+autohide = 7000
+start_hidden = false
+
+# --- Left Modules ---
+[[start]]
+type = "workspaces"
+icon_size = 16
+
+[[start]]
+type = "focused"
+icon_size = 16
+
+[[end]]
+type = "sys_info"
+format = [
+    "{cpu_percent}% ",
+    "{memory_percent}% ",
+    "{temp_c}°C   ",
+]
+
+[end.interval]
+cpu = 1
+
+[[end]]
+type = "script"
+mode = "poll"
+interval = 2000
+show_if = "command -v nvidia-smi"
+cmd = "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{print $1\"% 󰢮\"}'"
+
+[[end]]
+type = "tray"
+
+[[end]]
+type = "volume"
+
+[[end]]
+type = "network_manager"
+icon_size = 16
+types_blacklist = ["loopback"]
+
+[[end]]
+type = "clock"
