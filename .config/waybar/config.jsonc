@@ -1,6 +1,7 @@
 {
     "layer": "top",
     "position": "top",
+    "output": "eDP-1",
     "height": 35,
     "modules-left": ["niri/workspaces", "niri/window",],
     "modules-right": ["cpu", "temperature", "custom/gpu", "memory", "tray", "pulseaudio", "battery", "network", "clock", "idle_inhibitor"],
