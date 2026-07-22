@@ -69,14 +69,16 @@
         mail-envelope-from 'header))
 #+end_src
 
-
 * Notmuch
 
 #+begin_src emacs-lisp
 (global-set-key (kbd "<f6>") #'my/notmuch-sync)
 
 (setq notmuch-show-logo nil
-      notmuch-fcc-dirs nil
+      notmuch-fcc-dirs
+      '(("lobato@cbpf.br" . "cbpf/Sent +sent -unread -inbox")
+        ("rvlobato@pm.me" . "proton/Sent +sent -unread -inbox")
+        ("vieira.lobato@gmail.com" . "gmail/[Gmail]/Sent Mail +sent -unread -inbox"))
       notmuch-show-relative-dates t
       notmuch-search-oldest-first nil
       notmuch-hello-auto-refresh t
@@ -128,7 +130,6 @@
   (with-eval-after-load 'org
     (require 'ol-notmuch nil t)))
 #+end_src
-
 
 * Org Integration
 
