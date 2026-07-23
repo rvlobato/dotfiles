@@ -2,8 +2,8 @@ position = "top"
 height = 24
 layer = "top"
 
-autohide = 7000
-start_hidden = false
+#autohide = 7000
+#start_hidden = false
 
 # --- Left Modules ---
 [[start]]
@@ -39,9 +39,15 @@ type = "tray"
 type = "volume"
 
 [[end]]
+type = "battery"
+show_if = "ls /sys/class/power_supply/ | grep --quiet '^BAT'"
+icon_size = 14
+
+[[end]]
 type = "network_manager"
 icon_size = 16
 types_blacklist = ["loopback"]
 
 [[end]]
 type = "clock"
+format = "%A, %d %B, %H:%M"
