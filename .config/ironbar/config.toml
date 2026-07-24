@@ -1,11 +1,10 @@
 position = "top"
-height = 24
+height = 22
 layer = "top"
 
 #autohide = 7000
 #start_hidden = false
 
-# --- Left Modules ---
 [[start]]
 type = "workspaces"
 icon_size = 16
@@ -34,6 +33,7 @@ cmd = "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | aw
 
 [[end]]
 type = "tray"
+icon_size = 15
 
 [[end]]
 type = "volume"
