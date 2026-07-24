@@ -1,11 +1,18 @@
 * {
-    font-family: "JetBrains Mono", "Symbols Nerd Font", "Font Awesome 6 Free", sans-serif;
-    font-size: 13px;
+    font-family: "JetBrains Mono", "Symbols Nerd Font";
+    font-size: 12px;
     border: none;
 }
 
+button {
+    background: transparent;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
 .workspaces .item {
-    padding: 1px 4px;
+    padding: 2px 3px;
     color: #9ca3af;
     font-weight: bold;
 }
