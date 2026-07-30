@@ -12,6 +12,7 @@ icon_size = 16
 [[start]]
 type = "focused"
 icon_size = 16
+truncate = "end"
 
 [[end]]
 type = "sys_info"
