@@ -88,22 +88,13 @@ _fzf_compgen_dir() {
 PS1='\[\e[0;34m\][\[\e[01;33m\]\u\[\e[0;31m\]@\[\e[01;33m\]\h\[\e[01;35m\] \W\[\e[0;36m\]]\[\e[m\] \$ '
 
 toggle-theme() {
-    local pointer="$HOME/.config/alacritty/active_theme.toml"
-    local theme_dir="$HOME/.config/alacritty/themes/themes"
+    local current=$(gsettings get org.gnome.desktop.interface color-scheme)
 
-    local light="$theme_dir/modus_operandi.toml"
-    local dark="$theme_dir/modus_vivendi.toml"
-
-    # Get the current target of the symlink
-    local current=$(readlink "$pointer")
-
-    if [[ "$current" == "$dark" ]]; then
-        ln -sf "$light" "$pointer"
+    if [[ "$current" == *'prefer-dark'* ]]; then
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
         gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
         ln -sf ~/.config/fuzzel/themes/light.ini ~/.config/fuzzel/fuzzel.ini
     else
-        ln -sf "$dark" "$pointer"
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
         gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
         ln -sf ~/.config/fuzzel/themes/dark.ini ~/.config/fuzzel/fuzzel.ini
