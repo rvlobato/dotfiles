@@ -14,6 +14,16 @@ type = "focused"
 icon_size = 16
 truncate = "end"
 
+[[center]]
+type = "music"
+player_type = "mpris"
+format = "{title} - {artist}"
+icon_size = 16
+
+[center.truncate]
+mode = "end"
+max_length = 40
+
 [[end]]
 type = "sys_info"
 format = [
