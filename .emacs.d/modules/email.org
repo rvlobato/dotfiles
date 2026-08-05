@@ -124,11 +124,13 @@
   :bind (("C-c m" . notmuch)))
 
 (with-eval-after-load 'notmuch
+  (define-key notmuch-search-mode-map (kbd "d")
+  (lambda () (interactive)
+    (notmuch-search-tag '("+spam" "-inbox" "-unread"))
+    (notmuch-search-next-thread)))
   (define-key notmuch-search-mode-map (kbd "g") #'my/notmuch-sync)
   (define-key notmuch-show-mode-map (kbd "g") #'my/notmuch-sync)
-  (define-key notmuch-tree-mode-map (kbd "g") #'my/notmuch-sync)
-  (with-eval-after-load 'org
-    (require 'ol-notmuch nil t)))
+  (define-key notmuch-tree-mode-map (kbd "g") #'my/notmuch-sync))
 #+end_src
 
 * Org Integration
