@@ -4,29 +4,66 @@
 * Mail Synchronization
 
 #+begin_src emacs-lisp
-(defun my/notmuch-sync ()
-  "Synchronize all mail accounts and refresh Notmuch buffers."
-  (interactive)
+(defvar my/notmuch-spam-folders
+  '(("cbpf/INBOX"   . "~/.mail/cbpf/Junk")
+    ("gmail/INBOX"  . "~/.mail/gmail/[Gmail]/Spam")
+    ("proton/INBOX" . "~/.mail/proton/Spam"))
+  "Alist of (SOURCE-QUERY . DEST-MAILDIR) for spam relocation.")
 
+(defun my/notmuch--spam-target (file maildir)
+  "Destination path under MAILDIR/cur for FILE, forcing the seen flag."
+  (let* ((base (file-name-nondirectory file))
+         (name (if (string-match ":2,.*\\'" base)
+                   (concat (substring base 0 (match-beginning 0)) ":2,S")
+                 (concat base ":2,S"))))
+    (expand-file-name (concat "cur/" name) maildir)))
+
+(defun my/notmuch-move-spam ()
+  "Move messages tagged spam out of each INBOX into the account Spam folder."
+  (interactive)
+  (dolist (pair my/notmuch-spam-folders)
+    (let ((dest (expand-file-name (cdr pair)))
+          (files (process-lines "notmuch" "search" "--output=files"
+                                 (concat "tag:spam and folder:" (car pair)))))
+      (dolist (f files)
+        (when (file-exists-p f)
+          (let ((target (my/notmuch--spam-target f dest)))
+            (make-directory (file-name-directory target) t)
+            (rename-file f target t)))))))
+
+(defun my/notmuch--refresh-buffers ()
+  "Revert all live Notmuch buffers."
+  (dolist (buffer (buffer-list))
+    (when (buffer-live-p buffer)
+      (with-current-buffer buffer
+        (when (derived-mode-p 'notmuch-search-mode
+                              'notmuch-show-mode
+                              'notmuch-tree-mode
+                              'notmuch-hello-mode)
+          (revert-buffer t t))))))
+
+(defun my/notmuch-sync ()
+  "Pull mail, push spam moves to the server, and refresh Notmuch buffers."
+  (interactive)
   (unless (get-process "mail-sync")
     (let ((buf (get-buffer-create "*mail-sync*")))
       (make-process
        :name "mail-sync"
        :buffer buf
-       :command '("sh" "-c"
-           "mbsync -a && notmuch new && ~/.local/bin/notmuch-move-spam && mbsync -a")
+       :command '("sh" "-c" "mbsync -a && notmuch new")
        :sentinel
        (lambda (_proc event)
          (when (string-match-p "finished" event)
-           (message "Mail synchronized.")
-
-           (dolist (buffer (buffer-list))
-             (when (buffer-live-p buffer)
-               (with-current-buffer buffer
-                 (when (derived-mode-p
-                        'notmuch-search-mode
-                        'notmuch-show-mode
-                        'notmuch-tree-mode
-                        'notmuch-hello-mode)
-                   (revert-buffer t t)))))))))))
+           (my/notmuch-move-spam)
+           (make-process
+            :name "mail-sync"
+            :buffer buf
+            :command '("sh" "-c" "mbsync -a && notmuch new")
+            :sentinel
+            (lambda (_proc event)
+              (when (string-match-p "finished" event)
+                (my/notmuch--refresh-buffers)
+                (message "Mail synchronized."))))))))))
 #+end_src
+
+*
