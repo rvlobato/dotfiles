@@ -33,6 +33,10 @@
         message-wide-reply-confirm-recipients t
         message-default-charset 'utf-8)
 
+  (setq mail-host-address "rvlobato.com"
+      user-full-name "Ronaldo V. Lobato"
+      user-mail-address "lobato@cbpf.br")
+
   ;; ------------------------------------------------------------
   ;; Signatures
   ;; ------------------------------------------------------------
