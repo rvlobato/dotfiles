@@ -66,4 +66,14 @@
                 (message "Mail synchronized."))))))))))
 #+end_src
 
-*
+* Tags
+
+#+begin_src sh :tangle ~/.mail/.notmuch/hooks/post-new :shebang "#!/bin/sh" :tangle-mode (identity #o755)
+notmuch tag +cbpf   -- tag:new and path:/cbpf\/.*/
+notmuch tag +gmail  -- tag:new and path:/gmail\/.*/
+notmuch tag +proton -- tag:new and path:/proton\/.*/
+notmuch tag +inbox -- tag:new and path:/.*\/INBOX/
+notmuch tag +sent -inbox -unread -- tag:new and path:/.*Sent.*/
+notmuch tag +draft -- tag:new and path:/.*Drafts.*/
+notmuch tag -new -- tag:new
+#+end_src
