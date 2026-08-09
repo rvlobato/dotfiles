@@ -27,6 +27,7 @@ Pkg.add("IJulia") # Julia kernel for Jypyter
 Pkg.add("KernelAbstractions") # Heterogeneous programming in Julia
 Pkg.add("LaTeXStrings")
 Pkg.add("LanguageServer")
+Pkg.add("SymbolServe")
 Pkg.add("Latexify") # supplies functions for producing LATEX formatted strings from Julia objects
 Pkg.add("LineSearches") # Line search methods for optimization and root-finding
 Pkg.add("LoopVectorization") # macro(s) for vectorizing loops
