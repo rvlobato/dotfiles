@@ -41,11 +41,10 @@
   ;; Signatures
   ;; ------------------------------------------------------------
 
-  (setq mail-signature
-        "Ronaldo V. Lobato\nrvlobato.com\n"
-
-        message-signature
-        "Ronaldo V. Lobato\nrvlobato.com\n")
+(setq message-signature
+        (lambda ()
+          (unless (message-fetch-field "In-Reply-To")
+            "Ronaldo V. Lobato\nrvlobato.com")))
 
   ;; ------------------------------------------------------------
   ;; Reply formatting
