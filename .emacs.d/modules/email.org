@@ -46,23 +46,15 @@
           (unless (message-fetch-field "In-Reply-To")
             "Ronaldo V. Lobato\nrvlobato.com")))
 
-;; ------------------------------------------------------------
+  ;; ------------------------------------------------------------
   ;; Reply formatting
   ;; ------------------------------------------------------------
 
-  (setq message-citation-line-format "%f [%Y-%m-%d, %R %z]:\n"
-        message-citation-line-function #'message-insert-formatted-citation-line)
+  (setq message-citation-line-format
+        "%f [%Y-%m-%d, %R %z]:\n"
 
-  (defun my/message-citation-utc (orig &rest args)
-    "Render the citation line's timestamp in UTC."
-    (cl-letf* ((real (symbol-function 'format-time-string))
-               ((symbol-function 'format-time-string)
-                (lambda (fmt &optional time _zone)
-                  (funcall real fmt time t))))
-      (apply orig args)))
-
-  (advice-add 'message-insert-formatted-citation-line
-              :around #'my/message-citation-utc)
+        message-citation-line-function
+        #'message-insert-formatted-citation-line)
 
   ;; ------------------------------------------------------------
   ;; msmtp
