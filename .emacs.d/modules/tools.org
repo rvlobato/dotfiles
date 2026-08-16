@@ -77,3 +77,12 @@ notmuch tag +sent -inbox -unread -- tag:new and path:/.*Sent.*/
 notmuch tag +draft -- tag:new and path:/.*Drafts.*/
 notmuch tag -new -- tag:new
 #+end_src
+
+* Open PDF
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'mailcap
+  (add-to-list 'mailcap-user-mime-data
+               '((viewer . "papers %s")
+                 (type . "application/pdf"))))
+#+end_src
