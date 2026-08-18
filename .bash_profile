@@ -17,6 +17,9 @@ export HOME_LORENE="$HOME/Desktop/resrch/codes/numerical_relativity/Lorene"
 export PLUTO_DIR="$HOME/Desktop/resrch/codes/numerical_relativity/pluto/pluto-4.3/PLUTO"
 export MESA_DIR="$HOME/Desktop/resrch/codes/mesa/mesa"
 
+export MESON_BUILDDIR="$HOME/.local"
+export AERIE_INSTALLATION_DIR="$HOME/Projects/SWGO/aerie"
+
 export JULIA_NUM_THREADS=$(lscpu -b -p=Core,Socket | grep -v '^#' | sort -u | wc -l)
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
