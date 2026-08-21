@@ -18,31 +18,27 @@ button {
     color: #3b82f6;
 }
 
-popover scale trough {
+.popup-volume scale trough,
+.popup-music scale trough {
     background-color: #9ca3af;
     min-height: 4px;
     border-radius: 4px;
 }
 
-popover scale highlight {
+.popup-volume scale highlight,
+.popup-music scale highlight {
     background-color: #3b82f6;
     border-radius: 4px;
 }
 
-popover scale slider {
+.popup-volume scale slider,
+.popup-music scale slider {
     background-color: #3b82f6;
-    min-width: 12px;
-    min-height: 12px;
+    min-width: 14px;
+    min-height: 14px;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    margin: 0;
     border-radius: 50%;
-    border: none;
-    box-shadow: none;
-}
-
-popover {
-    min-width: 250px;
-    padding: 10px;
-}
-
-popover scale {
-    min-width: 220px;
 }
