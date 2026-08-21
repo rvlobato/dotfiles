@@ -19,6 +19,7 @@ export MESA_DIR="$HOME/Desktop/resrch/codes/mesa/mesa"
 
 export MESON_BUILDDIR="$HOME/.local"
 export AERIE_INSTALLATION_DIR="$HOME/Projects/SWGO/aerie"
+export SPACK_PYTHON=/usr/bin/python3.12
 
 export JULIA_NUM_THREADS=$(lscpu -b -p=Core,Socket | grep -v '^#' | sort -u | wc -l)
 

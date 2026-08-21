@@ -46,3 +46,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+
+# SWGO / AERIE Environment
+alias aerie='source /home/ronaldo/Projects/SWGO/aerie/initialize_swgo_aerie.sh'
