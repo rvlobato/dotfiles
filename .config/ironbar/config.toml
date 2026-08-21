@@ -48,6 +48,10 @@ icon_size = 15
 [[end]]
 type = "volume"
 
+[end.truncate_popup]
+mode = "end"
+max_length = 35
+
 [[end]]
 type = "battery"
 show_if = "ls /sys/class/power_supply/ | grep --quiet '^BAT'"
