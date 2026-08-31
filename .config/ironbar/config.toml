@@ -11,7 +11,10 @@ icon_size = 16
 [[start]]
 type = "focused"
 icon_size = 16
-truncate = "end"
+
+[start.truncate]
+mode = "end"
+max_length = 120
 
 [[center]]
 type = "music"
@@ -21,7 +24,7 @@ icon_size = 16
 
 [center.truncate]
 mode = "end"
-max_length = 40
+max_length = 60
 
 [[end]]
 type = "sys_info"
@@ -44,6 +47,18 @@ cmd = "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | aw
 [[end]]
 type = "tray"
 icon_size = 15
+
+[[end]]
+type = "notifications"
+show_count = true
+
+[end.icons]
+closed_none = "󰍥"
+closed_some = "󱥂"
+closed_dnd = "󱅯"
+open_none = "󰍡"
+open_some = "󱥁"
+open_dnd = "󱅮"
 
 [[end]]
 type = "volume"
