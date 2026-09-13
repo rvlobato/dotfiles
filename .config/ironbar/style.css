@@ -9,7 +9,7 @@ button {
 }
 
 .workspaces .item {
-    padding: 2px 3px;
+    padding: 0.1em 0.3em;
     color: #9ca3af;
     font-weight: bold;
 }
@@ -18,26 +18,49 @@ button {
     color: #3b82f6;
 }
 
+.popup-music {
+    min-width: 35em;
+    max-width: 35em;
+    min-height: 12em;
+    max-height: 12em;
+    padding: 1em;
+}
+
+.popup-music box,
+.popup-music grid {
+    min-width: 0;
+    max-width: 28em;
+    overflow: hidden;
+}
+
+.popup-music label {
+    min-width: 0;
+    max-width: 26em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .popup-volume scale trough,
 .popup-music scale trough {
     background-color: #9ca3af;
-    min-height: 4px;
-    border-radius: 4px;
+    min-height: 0.25em;
+    border-radius: 0.25em;
 }
 
 .popup-volume scale highlight,
 .popup-music scale highlight {
     background-color: #3b82f6;
-    border-radius: 4px;
+    border-radius: 0.25em;
 }
 
 .popup-volume scale slider,
 .popup-music scale slider {
     background-color: #3b82f6;
-    min-width: 14px;
-    min-height: 14px;
-    width: 14px;
-    height: 14px;
+    min-width: 0.9em;
+    min-height: 0.9em;
+    width: 0.9em;
+    height: 0.9em;
     padding: 0;
     margin: 0;
     border-radius: 50%;
