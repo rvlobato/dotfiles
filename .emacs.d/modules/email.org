@@ -93,6 +93,8 @@
         ("authors" . "%-25s ")
         ("subject" . "%s")))
 
+(setq notmuch-address-command 'internal)
+
 (setq message-alternative-emails
       "vieira\\.lobato@gmail\\.com\\|lobato@cbpf\\.br\\|rvlobato@pm\\.me")
 
