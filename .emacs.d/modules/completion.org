@@ -53,7 +53,10 @@
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
 
   (add-hook 'prog-mode-hook (lambda () (add-to-list 'completion-at-point-functions #'cape-tex)))
-  (add-hook 'text-mode-hook (lambda () (add-to-list 'completion-at-point-functions #'cape-tex))))
+  (add-hook 'text-mode-hook
+            (lambda ()
+              (unless (derived-mode-p 'web-mode 'html-mode 'mhtml-mode)
+                (add-to-list 'completion-at-point-functions #'cape-tex)))))
 
 (my/use-package bookmark
   :ensure nil
