@@ -27,6 +27,8 @@
                                  (concat "tag:spam and folder:" (car pair)))))
       (dolist (f files)
         (when (file-exists-p f)
+          ;; 1. BOGOFILTER: Train as spam BEFORE moving the file
+          (call-process "bogofilter" f nil nil "-s")
           (let ((target (my/notmuch--spam-target f dest)))
             (make-directory (file-name-directory target) t)
             (rename-file f target t)))))))
@@ -64,6 +66,26 @@
               (when (string-match-p "finished" event)
                 (my/notmuch--refresh-buffers)
                 (message "Mail synchronized."))))))))))
+
+;; 2. BOGOFILTER: Function to train false positives (Ham)
+(defun my/notmuch-mark-ham ()
+  "Correct a false positive: train as ham, remove spam tag, and restore inbox tag."
+  (interactive)
+  (let* ((msg-id (if (eq major-mode 'notmuch-show-mode)
+                     (notmuch-show-get-message-id)
+                   (notmuch-search-find-thread-id)))
+         (files (process-lines "notmuch" "search" "--output=files" msg-id)))
+    (dolist (f files)
+      (when (file-exists-p f)
+        (call-process "bogofilter" f nil nil "-n")))
+    (notmuch-tag msg-id '("-spam" "+inbox" "+unread"))
+    (my/notmuch--refresh-buffers)
+    (message "Trained as Ham and marked for Inbox.")))
+
+;; Bind Ham training to 'H'
+(with-eval-after-load 'notmuch
+  (define-key notmuch-search-mode-map (kbd "H") #'my/notmuch-mark-ham)
+  (define-key notmuch-show-mode-map (kbd "H") #'my/notmuch-mark-ham))
 #+end_src
 
 * Tags
@@ -75,6 +97,14 @@ notmuch tag +proton -- tag:new and path:/proton\/.*/
 notmuch tag +inbox -- tag:new and path:/.*\/INBOX/
 notmuch tag +sent -inbox -unread -- tag:new and path:/.*Sent.*/
 notmuch tag +draft -- tag:new and path:/.*Drafts.*/
+
+# 3. BOGOFILTER: Scan incoming INBOX messages
+notmuch search --output=files tag:new and tag:inbox | while IFS= read -r file; do
+    if bogofilter < "$file"; then
+        notmuch tag +spam -inbox -unread -- "file:$file"
+    fi
+done
+
 notmuch tag -new -- tag:new
 #+end_src
 
