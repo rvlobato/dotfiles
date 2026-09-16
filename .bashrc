@@ -23,17 +23,53 @@ shopt -s checkwinsize
 shopt -s no_empty_cmd_completion
 
 # History
+HISTDIR="$HOME/Desktop/.bash_history"
+HISTHOST="${HOSTNAME%%.*}"
+HISTFILE="$HISTDIR/$HISTHOST.history"
 HISTSIZE=5000000
-SAVEHIST=5000000
-
-# Disable duplicate command from history
+HISTFILESIZE=5000000
 HISTCONTROL=ignoreboth:erasedups
-
-# remove commands from history
 HISTIGNORE='history:hibernate:exit:rm*:cd*:more*:ls'
+shopt -s histappend cmdhist
 
-# After each command, append to the history file and reread it
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+[[ -d $HISTDIR ]] || mkdir -p -- "$HISTDIR"
+[[ -e $HISTFILE ]] || : > "$HISTFILE"
+
+__hist_sig() {
+    stat -c '%n %s %Y' -- "$HISTDIR"/*.history 2>/dev/null
+}
+
+__hist_reload() {
+    local merged="${XDG_RUNTIME_DIR:-/tmp}/bash-history-$$"
+    local -a files=()
+    local f
+    for f in "$HISTDIR"/*.history; do
+        [[ -f $f && $f != *sync-conflict* && $f != "$HISTFILE" ]] && files+=("$f")
+    done
+    files+=("$HISTFILE")
+    cat -- "${files[@]}" | tac | awk 'NF && !seen[$0]++' | tac > "$merged"
+    history -c
+    history -r "$merged"
+    rm -f -- "$merged"
+}
+
+__hist_sync() {
+    local sig
+    sig=$(__hist_sig)
+    history -a
+    [[ $sig == "$__HIST_SIG" ]] || __hist_reload
+    __HIST_SIG=$(__hist_sig)
+}
+
+hist-compact() {
+    local tmp="${XDG_RUNTIME_DIR:-/tmp}/bash-history-compact-$$"
+    history -a
+    tac -- "$HISTFILE" | awk 'NF && !seen[$0]++' | tac > "$tmp" && cat -- "$tmp" > "$HISTFILE"
+    rm -f -- "$tmp"
+    __HIST_SIG=
+}
+
+[[ $PROMPT_COMMAND == *__hist_sync* ]] || PROMPT_COMMAND="__hist_sync${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
 #autocd
 shopt -s autocd
