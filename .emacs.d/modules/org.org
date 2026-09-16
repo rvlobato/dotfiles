@@ -10,7 +10,8 @@
     (org-agenda-files '("~/Documents/cloud/org/agenda.org"
                         "~/Documents/cloud/org/notes.org"))
     (org-agenda-tags-column -10)
-    (org-agenda-span 'day)
+    (org-agenda-span 7)
+    (org-agenda-start-day "0d")
     (org-deadline-warning-days 14)
     (org-agenda-show-all-dates t)
     (org-agenda-skip-scheduled-if-done t)
