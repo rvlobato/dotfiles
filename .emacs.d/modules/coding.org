@@ -15,7 +15,7 @@
   :hook (emacs-lisp-mode . highlight-defined-mode))
 
 (my/use-package electric-operator
-  :hook ((python-mode julia-ts-mode rust-mode go-mode c-mode) . electric-operator-mode)
+  :hook ((python-mode julia-mode rust-mode go-mode c-mode) . electric-operator-mode)
   )
 
 (my/use-package yasnippet
@@ -65,11 +65,9 @@
                       #'gofmt-before-save
                       nil t))))
 
-   (my/use-package julia-ts-mode
+   (my/use-package julia-mode
   :ensure t
-  :mode "\\.jl\\'"
-  :init
-  (setq treesit-font-lock-level 4))
+  :mode "\\.jl\\'")
 
     (my/use-package rust-mode
       :config
@@ -93,14 +91,14 @@
   :ensure t
   :pin melpa
   :demand t
-  :after (eglot julia-ts-mode)
+  :after (eglot julia-mode)
   :config
   (eglot-jl-init))
 
-(with-eval-after-load 'julia-ts-mode
+(with-eval-after-load 'julia-mode
   (require 'eglot-jl)
   (eglot-jl-init)
-  (add-hook 'julia-ts-mode-hook #'eglot-ensure))
+  (add-hook 'julia-mode-hook #'eglot-ensure))
 
 
           (my/use-package jupyter)
