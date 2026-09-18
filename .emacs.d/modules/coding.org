@@ -15,7 +15,8 @@
   :hook (emacs-lisp-mode . highlight-defined-mode))
 
 (my/use-package electric-operator
-  :hook ((python-mode julia-ts-mode rust-mode go-mode c-mode) . electric-operator-mode))
+  :hook ((python-mode julia-ts-mode rust-mode go-mode c-mode) . electric-operator-mode)
+  )
 
 (my/use-package yasnippet
   :config
@@ -63,9 +64,13 @@
             (add-hook 'before-save-hook
                       #'gofmt-before-save
                       nil t))))
-    (my/use-package julia-ts-mode
-      :ensure t
-      :mode "\\.jl$")
+
+   (my/use-package julia-ts-mode
+  :ensure t
+  :mode "\\.jl\\'"
+  :init
+  (setq treesit-font-lock-level 4))
+
     (my/use-package rust-mode
       :config
       (setq rust-format-on-save t)
@@ -78,13 +83,25 @@
     (add-hook 'perl-mode-hook (lambda () (setq perl-indent-level 4))))
     (my/use-package eglot
       :custom
+      (eglot-connect-timeout 180)
             (eglot-send-changes-idle-time 0.5)
             (eldoc-idle-delay 0.75)
             (flymake-no-changes-timeout 0.75)
-            :config
-  (add-to-list 'eglot-server-programs
-               '((julia-ts-mode :language-id "julia") .
-                 ("/home/ronaldo/.cargo/bin/julia" "-e" "using LanguageServer, SymbolServer; runserver()"))))
+  )
+
+(my/use-package eglot-jl
+  :ensure t
+  :pin melpa
+  :demand t
+  :after (eglot julia-ts-mode)
+  :config
+  (eglot-jl-init))
+
+(with-eval-after-load 'julia-ts-mode
+  (require 'eglot-jl)
+  (eglot-jl-init)
+  (add-hook 'julia-ts-mode-hook #'eglot-ensure))
+
 
           (my/use-package jupyter)
           (my/use-package polymode)
@@ -131,7 +148,6 @@
   (add-hook 'emacs-lisp-mode-hook #'turn-on-eldoc-mode)
   (add-hook 'emacs-lisp-mode-hook #'check-parens)
   (add-hook 'go-mode-hook #'eglot-ensure)
-  (add-hook 'julia-ts-mode-hook #'eglot-ensure)
   (add-hook 'rust-mode-hook #'eglot-ensure)
   (add-hook 'python-mode-hook #'eglot-ensure)
   (add-hook 'vala-mode-hook #'eglot-ensure)
