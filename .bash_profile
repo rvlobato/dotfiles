@@ -11,6 +11,8 @@ export QT_QPA_PLATFORM=wayland
 export ANKI_WAYLAND=1
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
+export NPM_CONFIG_PREFIX=$HOME/.local/
+
 export PATH="${PATH}:$HOME/.local/bin:$HOME/.cargo/bin"
 
 export HOME_LORENE="$HOME/Desktop/resrch/codes/numerical_relativity/Lorene"
