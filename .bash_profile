@@ -26,3 +26,20 @@ export SPACK_PYTHON=/usr/bin/python3.12
 export JULIA_NUM_THREADS=$(lscpu -b -p=Core,Socket | grep -v '^#' | sort -u | wc -l)
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/ronaldo/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/ronaldo/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+# Tab completion for juliaup and julia channel selection
+[ -f "/home/ronaldo/.julia/juliaup/completions/bash.sh" ] && source "/home/ronaldo/.julia/juliaup/completions/bash.sh"
+
+# <<< juliaup initialize <<<
