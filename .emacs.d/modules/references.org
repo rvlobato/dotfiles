@@ -1,9 +1,5 @@
 #+TITLE: References
-#+PROPERTY: header-args:emacs-lisp :tangle yes :results silent :comments no
-
-#+begin_src emacs-lisp
-;; -*- lexical-binding: t; -*-
-#+end_src
+#+PROPERTY: header-args:emacs-lisp :tangle yes :results silent
 
 * Citar
 #+begin_src emacs-lisp

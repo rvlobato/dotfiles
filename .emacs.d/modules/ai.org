@@ -1,9 +1,5 @@
 #+TITLE: AI
-#+PROPERTY: header-args:emacs-lisp :tangle yes :comments no
-
-#+begin_src emacs-lisp
-;; -*- lexical-binding: t; -*-
-#+end_src
+#+PROPERTY: header-args:emacs-lisp :tangle yes
 
 * AI tools
 
