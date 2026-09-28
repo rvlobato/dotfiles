@@ -1,5 +1,9 @@
 #+TITLE: Email
-#+PROPERTY: header-args:emacs-lisp :tangle yes :results silent
+#+PROPERTY: header-args:emacs-lisp :tangle yes :results silent :comments no
+
+#+begin_src emacs-lisp
+;; -*- lexical-binding: t; -*-
+#+end_src
 
 * Message Mode
 

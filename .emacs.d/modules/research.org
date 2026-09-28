@@ -1,5 +1,9 @@
 #+TITLE: Research
-#+PROPERTY: header-args:emacs-lisp :tangle yes
+#+PROPERTY: header-args:emacs-lisp :tangle yes :comments no
+
+#+begin_src emacs-lisp
+;; -*- lexical-binding: t; -*-
+#+end_src
 
 * Research workflow
 
