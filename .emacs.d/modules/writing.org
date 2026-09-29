@@ -11,14 +11,6 @@
     :config
     (setq jinx-languages "en_US"))
 
-  (my/use-package langtool
-  :bind
-  ("C-c l" . langtool-check)
-  ("C-c d l" . langtool-check-done)
-  :custom
-  (langtool-language-tool-jar
-   "~/Public/projects/languagetool/languagetool-commandline.jar"))
-
    (my/use-package synosaurus
     :bind (("C-c s" . synosaurus-choose-and-replace))
     :config
