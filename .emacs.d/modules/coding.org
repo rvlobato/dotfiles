@@ -107,25 +107,13 @@
     (sage-shell:define-alias)
     :config
     (setq sage-shell:use-prompt-toolkit nil)
-    :hook
-    ((sage-shell-mode sage-shell:sage-mode) . eldoc-mode)
-    (sage-shell-after-prompt-hook . sage-shell-view-mode))
-  (my/use-package ob-sagemath
-    :config
-    (setq org-babel-default-header-args:sage '((:session . t)
-                                               (:results . "output")))
-    (with-eval-after-load "org"
-      (define-key org-mode-map (kbd "C-c C-x s") 'ob-sagemath-execute-async)))
+    :hook ((sage-shell-mode sage-shell:sage-mode) . eldoc-mode))
   (my/use-package async
     :demand t
     :config
     (dired-async-mode 1)
     (async-bytecomp-package-mode 1))
   (my/use-package ob-async)
-          (my/use-package envrc
-            :demand t
-            :config
-            (envrc-global-mode 1))
         (my/use-package dumb-jump
           :bind (("M-g q" . dumb-jump-quick-look)
                  ("M-g ." . dumb-jump-go-other-window)
