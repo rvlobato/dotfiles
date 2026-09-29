@@ -3,10 +3,6 @@
 #+EMAIL: contact@rvlobato.com
 #+OPTIONS: toc:nil num:nil
 
-#+begin_src emacs-lisp
-;; -*- lexical-binding: t; -*-
-#+end_src
-
 * Bootstrap
 
 #+begin_src emacs-lisp
