@@ -26,17 +26,17 @@
                    (latex-mode doctex-mode) :help "Run Tectonic")))
 
   (defun my/tex-run-tectonic ()
-    "Always compile with Tectonic instantly, ignoring AUCTeX's state machine."
+    "Compile the current master document directly with Tectonic."
     (interactive)
-    (TeX-save-document (TeX-master-file))
-    (TeX-command "Tectonic" 'TeX-master-file -1))
+    (TeX-save-document #'TeX-master-file)
+    (TeX-command "Tectonic" #'TeX-master-file -1))
 
-  (add-hook 'LaTeX-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c C-c") #'my/tex-run-tectonic)
-              (local-set-key (kbd "C-c C-v") #'TeX-view)
-              (local-set-key (kbd "C-c C-m") #'TeX-command-master)))
+  (defun my/latex-mode-setup ()
+    "Set Tectonic as the default compiler and bind direct compilation."
+    (setq-local TeX-command-default "Tectonic")
+    (local-set-key (kbd "C-c T") #'my/tex-run-tectonic))
 
+  (add-hook 'LaTeX-mode-hook #'my/latex-mode-setup)
   (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
   (add-hook 'LaTeX-mode-hook #'eglot-ensure))
 
