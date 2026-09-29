@@ -41,7 +41,7 @@
         (my-apply-system-theme (car current-theme)))
     (error
      (load-theme 'modus-vivendi t)
-     (message "Warning: Could not read DBus theme at startup. Falling back to wombat.")))
+     (message "Warning: Could not read DBus theme at startup. Falling back to modus-vivendi.")))
 
   (ignore-errors
     (dbus-register-signal
@@ -58,18 +58,20 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0
       show-paren-style 'mixed
-      visible-bell 1
-      blink-cursor-mode 0)
+      visible-bell t)
+(blink-cursor-mode -1)
 #+end_src
 
 * Modeline and highlighting
 
 #+begin_src emacs-lisp
 (my/use-package mood-line
+  :demand t
   :config
   (mood-line-mode 1))
 
 (my/use-package dimmer
+  :demand t
   :config
   (dimmer-mode 1))
 
@@ -80,6 +82,7 @@
   :hook ((org-mode prog-mode text-mode) . rainbow-delimiters-mode))
 
 (my/use-package color-identifiers-mode
+  :demand t
   :config
   (global-color-identifiers-mode 1))
 #+end_src
@@ -88,14 +91,16 @@
 
 #+begin_src emacs-lisp
 (my/use-package winum
+  :demand t
+  :custom
+  (winum-auto-setup-mode-line nil)
   :config
-  (winum-mode))
+  (winum-mode 1))
 
   (global-set-key (kbd "M-1") #'winum-select-window-1)
   (global-set-key (kbd "M-2") #'winum-select-window-2)
   (global-set-key (kbd "M-3") #'winum-select-window-3)
   (global-set-key (kbd "M-4") #'winum-select-window-4)
-  (setq winum-auto-setup-mode-line nil)
 #+end_src
 
 * Shortcut Discovery
