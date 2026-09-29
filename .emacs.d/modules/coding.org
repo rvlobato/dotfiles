@@ -99,7 +99,6 @@
   (add-hook 'julia-mode-hook #'eglot-ensure))
 
 
-          (my/use-package jupyter)
           (my/use-package polymode)
           (my/use-package poly-markdown)
   (my/use-package sage-shell-mode
@@ -113,7 +112,6 @@
     :config
     (dired-async-mode 1)
     (async-bytecomp-package-mode 1))
-  (my/use-package ob-async)
         (my/use-package dumb-jump
           :bind (("M-g q" . dumb-jump-quick-look)
                  ("M-g ." . dumb-jump-go-other-window)
