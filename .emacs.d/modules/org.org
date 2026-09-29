@@ -28,6 +28,10 @@
     (org-image-actual-width 500)
     (org-html-validation-link nil)
     (org-enforce-todo-dependencies t)
+    (org-todo-keywords
+     '((sequence "TODO(t)" "IDEA(i)" "SOMEDAY(s)" "DRAFTING(p)" "WAITING(w)"
+                 "|" "DONE(d)")
+       (sequence "TO-READ(r)" "READING(R)" "|" "READ(f)")))
     (org-lowest-priority ?D)
     :config
     (global-set-key (kbd "C-c a") #'org-agenda)
@@ -83,6 +87,7 @@
 #+begin_src emacs-lisp
 (my/use-package org-super-agenda
   :after org
+  :demand t
   :config
   (setq org-super-agenda-groups
         '((:name "Today's Schedule & Deadlines"
