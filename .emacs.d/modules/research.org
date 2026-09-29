@@ -6,6 +6,18 @@
 #+begin_src emacs-lisp
 (my/use-package gnuplot)
 
+(my/use-package jupyter
+  :after org
+  :demand t
+  :init
+  (setq jupyter-org-auto-connect nil
+        org-babel-default-header-args:jupyter
+        '((:kernel . "python3") (:async . "yes"))
+        org-babel-default-header-args:jupyter-python
+        '((:kernel . "python3") (:async . "yes"))
+        org-babel-default-header-args:jupyter-julia
+        '((:kernel . "julia-1.12") (:async . "yes"))))
+
 (my/use-package ob-sagemath
   :after org
   :demand t
@@ -16,9 +28,10 @@
 
 (with-eval-after-load 'org
   (let ((available-langs '()))
-    (dolist (lang '(C emacs-lisp gnuplot julia latex org python shell R sagemath))
+    (dolist (lang '(C emacs-lisp gnuplot julia latex org python shell R sagemath jupyter))
       (if (locate-library (concat "ob-" (symbol-name lang)))
           (push (cons lang t) available-langs)
         (message "Warning: ob-%s not found, skipping Babel language." lang)))
-       (org-babel-do-load-languages 'org-babel-load-languages available-langs)))
+    (org-babel-do-load-languages 'org-babel-load-languages
+                                (nreverse available-langs))))
 #+end_src
