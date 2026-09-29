@@ -19,6 +19,7 @@
   )
 
 (my/use-package yasnippet
+  :demand t
   :config
   (yas-global-mode 1))
 #+end_src
@@ -82,6 +83,7 @@
     (my/use-package eglot
       :custom
       (eglot-connect-timeout 180)
+      (eglot-sync-connect nil)
             (eglot-send-changes-idle-time 0.5)
             (eldoc-idle-delay 0.75)
             (flymake-no-changes-timeout 0.75)
@@ -91,12 +93,8 @@
   :ensure t
   :pin melpa
   :demand t
-  :after (eglot julia-mode)
+  :after julia-mode
   :config
-  (eglot-jl-init))
-
-(with-eval-after-load 'julia-mode
-  (require 'eglot-jl)
   (eglot-jl-init)
   (add-hook 'julia-mode-hook #'eglot-ensure))
 
@@ -119,11 +117,13 @@
     (with-eval-after-load "org"
       (define-key org-mode-map (kbd "C-c C-x s") 'ob-sagemath-execute-async)))
   (my/use-package async
+    :demand t
     :config
     (dired-async-mode 1)
     (async-bytecomp-package-mode 1))
   (my/use-package ob-async)
           (my/use-package envrc
+            :demand t
             :config
             (envrc-global-mode 1))
         (my/use-package dumb-jump
@@ -144,7 +144,6 @@
 
 #+begin_src emacs-lisp
   (add-hook 'emacs-lisp-mode-hook #'turn-on-eldoc-mode)
-  (add-hook 'emacs-lisp-mode-hook #'check-parens)
   (add-hook 'go-mode-hook #'eglot-ensure)
   (add-hook 'rust-mode-hook #'eglot-ensure)
   (add-hook 'python-mode-hook #'eglot-ensure)
