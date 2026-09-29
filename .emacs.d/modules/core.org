@@ -15,7 +15,7 @@
   (declare (indent defun))
   `(use-package ,name
      ,@(unless (my/local-package-available-p name)
-         '(:ensure t :demand t))
+         '(:ensure t))
      ,@args))
 
 (setq use-package-always-defer t)
