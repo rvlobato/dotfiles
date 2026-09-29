@@ -62,6 +62,7 @@
          ("Archives"     (extension "zip" "rar" "gz" "bz2" "tar"))))))
 
   (my/use-package perspective
+    :demand t
     :init
     (setq persp-mode-prefix-key (kbd "C-c M-p"))
     :config
