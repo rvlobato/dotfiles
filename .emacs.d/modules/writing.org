@@ -26,7 +26,7 @@
     (setq synosaurus-backend 'synosaurus-backend-wordnet))
 
   (my/use-package wordnut
-    :bind (("M-!" . wordnut-search)))
+    :bind (("C-c W" . wordnut-search)))
 
   (my/use-package define-word
     :bind (("C-c D" . define-word-at-point)))
@@ -41,7 +41,9 @@
          ((text-mode LaTeX-mode org-mode markdown-mode) . flymake-mode))
          :init
   (setq flymake-languagetool-server-jar nil
-        flymake-languagetool-url "http://localhost:8081"))
+        flymake-languagetool-url "http://localhost:8081")
+  :config
+  (put 'flymake-languagetool--checker 'flymake-always-safe t))
 
   (my/use-package markdown-mode
     :mode ("README\\.md\\'" . gfm-mode)
