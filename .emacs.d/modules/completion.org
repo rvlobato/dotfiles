@@ -17,6 +17,12 @@
 
 (my/use-package marginalia
   :init
+  (when (>= emacs-major-version 31)
+    (require 'compat)
+    (unless (fboundp 'compat--seconds-to-string)
+      (load (concat (file-name-sans-extension (locate-library "marginalia"))
+                    ".el")
+            nil t t)))
   (marginalia-mode 1))
 
 (my/use-package consult
@@ -26,7 +32,7 @@
          ("C-x r b" . consult-bookmark)
          ("C-c k"   . consult-kmacro)
          ("M-y"     . consult-yank-pop)
-         ("C-c m"   . consult-mode-command)
+         ("C-c M"   . consult-mode-command)
          ("M-s G"   . consult-grep)
          ("M-s R"   . consult-ripgrep)))
 
