@@ -13,7 +13,7 @@ export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
 export NPM_CONFIG_PREFIX=$HOME/.local/
 
-export PATH="${PATH}:$HOME/.local/bin:$HOME/.cargo/bin"
+export PATH="$HOME/.local/share/flatpak/exports/bin:$HOME/.local/bin:$HOME/.cargo/bin:${PATH}"
 
 export HOME_LORENE="$HOME/Desktop/resrch/codes/numerical_relativity/Lorene"
 export PLUTO_DIR="$HOME/Desktop/resrch/codes/numerical_relativity/pluto/pluto-4.3/PLUTO"
