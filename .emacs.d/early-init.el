@@ -1,4 +1,3 @@
-;; -*- lexical-binding: t; -*-
 ;;; early-init.el --- Early startup -*- lexical-binding: t; -*-
 
 (setq gc-cons-threshold most-positive-fixnum)
