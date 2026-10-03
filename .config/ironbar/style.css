@@ -26,13 +26,6 @@ button {
     padding: 1em;
 }
 
-.popup-music box,
-.popup-music grid {
-    min-width: 0;
-    max-width: 28em;
-    overflow: hidden;
-}
-
 .popup-music label {
     min-width: 0;
     max-width: 26em;

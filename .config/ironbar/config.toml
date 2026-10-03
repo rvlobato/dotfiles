@@ -26,6 +26,18 @@ icon_size = 16
 mode = "end"
 max_length = 60
 
+[center.truncate_popup_title]
+mode = "end"
+max_length = 30
+
+[center.truncate_popup_artist]
+mode = "end"
+max_length = 30
+
+[center.truncate_popup_album]
+mode = "end"
+max_length = 30
+
 [[end]]
 type = "sys_info"
 format = [
