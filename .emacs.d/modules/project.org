@@ -69,3 +69,26 @@
       (consult-customize consult-source-buffer :hidden t :default nil)
       (add-to-list 'consult-buffer-sources 'persp-consult-source)))
 #+end_src
+
+* Terminal
+
+#+begin_src emacs-lisp
+  (my/use-package vterm
+    :commands (vterm vterm-other-window)
+    :bind (("C-c v" . vterm-other-window)
+           :map vterm-mode-map
+           ("C-q" . vterm-send-next-key))
+    :custom
+    (vterm-max-scrollback 10000)
+    (vterm-kill-buffer-on-exit t))
+
+  (defun my/project-vterm ()
+    (interactive)
+    (let* ((project (project-current t))
+           (default-directory (project-root project))
+           (vterm-buffer-name (format "*vterm %s*" (project-name project))))
+      (vterm-other-window)))
+
+  (with-eval-after-load 'project
+    (keymap-set project-prefix-map "t" #'my/project-vterm))
+#+end_src
