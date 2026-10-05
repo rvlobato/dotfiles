@@ -138,6 +138,39 @@
   (define-key notmuch-tree-mode-map (kbd "g") #'my/notmuch-sync))
 #+end_src
 
+* Quoted Text Distinction
+
+Plain-text citations ("> ") and HTML blockquotes get a distinct face; HTML blockquotes also get a left bar, stacking with nesting depth.
+
+#+begin_src emacs-lisp
+(defface my/quoted-text
+  '((t :inherit shadow :slant italic))
+  "Face for quoted text in mail.")
+
+(defconst my/quote-bar "▎ ")
+
+(defun my/shr-blockquote-bar (orig dom)
+  "Wrap `shr-tag-blockquote' so its region carries a left bar and `my/quoted-text'."
+  (let ((start (point)))
+    (funcall orig dom)
+    (let ((end (point))
+          (pos start))
+      (add-face-text-property start end 'my/quoted-text 'append)
+      (while (< pos end)
+        (let* ((next (or (next-single-property-change pos 'line-prefix nil end) end))
+               (prefix (concat my/quote-bar (get-text-property pos 'line-prefix)))
+               (prefix (propertize prefix 'face 'my/quoted-text)))
+          (put-text-property pos next 'line-prefix prefix)
+          (put-text-property pos next 'wrap-prefix prefix)
+          (setq pos next))))))
+
+(with-eval-after-load 'shr
+  (advice-add 'shr-tag-blockquote :around #'my/shr-blockquote-bar))
+
+(with-eval-after-load 'notmuch-wash
+  (set-face-attribute 'notmuch-wash-cited-text nil :inherit 'my/quoted-text))
+#+end_src
+
 * Org Integration
 
 #+begin_src emacs-lisp
