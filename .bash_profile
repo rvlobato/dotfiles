@@ -9,11 +9,10 @@ export EDITOR=emacs
 export VISUAL=emacs
 export QT_QPA_PLATFORM=wayland
 export ANKI_WAYLAND=1
-export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
 export NPM_CONFIG_PREFIX=$HOME/.local/
 
-export PATH="$HOME/.local/share/flatpak/exports/bin:$HOME/.local/bin:$HOME/.cargo/bin:${PATH}"
+export PATH="$HOME/.pixi/bin:$HOME/.local/share/flatpak/exports/bin:$HOME/.local/bin:$HOME/.cargo/bin:${PATH}"
 
 export HOME_LORENE="$HOME/Desktop/resrch/codes/numerical_relativity/Lorene"
 export PLUTO_DIR="$HOME/Desktop/resrch/codes/numerical_relativity/pluto/pluto-4.3/PLUTO"
