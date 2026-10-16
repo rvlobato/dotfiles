@@ -74,6 +74,9 @@ hist-compact() {
 #autocd
 shopt -s autocd
 
+# exit child process in shpool
+shopt -s hupoexit
+
 #------------------------------
 # Alias
 [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
