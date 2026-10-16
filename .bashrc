@@ -75,7 +75,7 @@ hist-compact() {
 shopt -s autocd
 
 # exit child process in shpool
-shopt -s hupoexit
+shopt -s huponexit
 
 #------------------------------
 # Alias
