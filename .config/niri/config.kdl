@@ -100,6 +100,8 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
+    background-color "transparent"
+
     // Set gaps around windows in logical pixels.
     gaps 8
 
@@ -266,6 +268,9 @@ spawn-at-startup "swayidle" "-w" \
     "timeout" "600" "swaylock -f" \
     "timeout" "601" "niri msg action power-off-monitors" \
     "before-sleep" "swaylock -f"
+
+spawn-at-startup "awww-daemon"
+spawn-sh-at-startup "until awww query >/dev/null 2>&1; do sleep 0.2; done; awww img ~/Pictures/PaleBlueDot-2020.jpg"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -621,4 +626,9 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+layer-rule {
+    match namespace="^awww-daemon$"
+    place-within-backdrop true
 }
