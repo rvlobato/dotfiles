@@ -4,7 +4,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export XDG_DATA_DIRS="$XDG_DATA_HOME:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
 
-export BROWSER=epiphany
+export BROWSER=firefox
 export EDITOR=emacs
 export VISUAL=emacs
 export QT_QPA_PLATFORM=wayland
@@ -31,14 +31,14 @@ export JULIA_NUM_THREADS=$(lscpu -b -p=Core,Socket | grep -v '^#' | sort -u | wc
 # !! Contents within this block are managed by juliaup !!
 
 case ":$PATH:" in
-    *:/home/ronaldo/.juliaup/bin:*)
+    *:"${HOME}/.juliaup/bin":*)
         ;;
 
     *)
-        export PATH=/home/ronaldo/.juliaup/bin${PATH:+:${PATH}}
+        export PATH="${HOME}/.juliaup/bin"${PATH:+:${PATH}}
         ;;
 esac
 # Tab completion for juliaup and julia channel selection
-[ -f "/home/ronaldo/.julia/juliaup/completions/bash.sh" ] && source "/home/ronaldo/.julia/juliaup/completions/bash.sh"
+[ -f "${HOME}/.julia/juliaup/completions/bash.sh" ] && source "${HOME}/.julia/juliaup/completions/bash.sh"
 
 # <<< juliaup initialize <<<
