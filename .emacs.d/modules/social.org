@@ -9,3 +9,24 @@
   (setq mastodon-instance-url "https://mathstodon.xyz"
         mastodon-active-user "ronaldo"))
 #+end_src
+
+* Feeds
+
+The feed list lives in =elfeed-feeds.el=, so feeds can be added without
+touching this module.  It is reloaded before each fetch.
+
+#+begin_src emacs-lisp
+(defvar my/elfeed-feeds-file
+  (expand-file-name "elfeed-feeds.el" user-emacs-directory)
+  "File that sets `elfeed-feeds'.")
+
+(defun my/elfeed-load-feeds (&rest _)
+  "Load the feed list from `my/elfeed-feeds-file'."
+  (load my/elfeed-feeds-file nil t t))
+
+(my/use-package elfeed
+  :bind (("C-c f" . elfeed))
+  :config
+  (my/elfeed-load-feeds)
+  (advice-add 'elfeed-update :before #'my/elfeed-load-feeds))
+#+end_src
