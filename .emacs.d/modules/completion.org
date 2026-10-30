@@ -17,12 +17,6 @@
 
 (my/use-package marginalia
   :init
-  (when (>= emacs-major-version 31)
-    (require 'compat)
-    (unless (fboundp 'compat--seconds-to-string)
-      (load (concat (file-name-sans-extension (locate-library "marginalia"))
-                    ".el")
-            nil t t)))
   (marginalia-mode 1))
 
 (my/use-package consult
