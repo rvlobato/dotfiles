@@ -1,12 +1,9 @@
-#alacritty
-#bat
-#eza
-#zoxide
+ast-grep
 cargo-update
 fclones
-joshuto
-juliaup
+kickoff
 kmon
-watchexec-cli
+pueue
+shpool
 sunsetr
 tectonic
