@@ -6,6 +6,13 @@
 # anything or bad things will happen !
 
 
+# SSH agent via keychain: one ssh-agent shared by all shells.
+if [[ $- == *i* ]]; then
+    eval "$(keychain --eval --quiet id_rsa)"
+else
+    eval "$(keychain --eval --quiet --noask)"
+fi
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
