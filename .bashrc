@@ -6,8 +6,13 @@
 # anything or bad things will happen !
 
 
-# SSH agent via keychain: one ssh-agent shared by all shells.
-if [[ $- == *i* ]]; then
+# SSH agent.
+# Graphical session: use gcr-ssh-agent (gnome-keyring). Its passphrases are
+# stored in the login keyring, which GDM unlocks at login, so no prompt.
+# TTY or remote login (no gcr socket): fall back to keychain.
+if [[ -S ${XDG_RUNTIME_DIR}/gcr/ssh ]]; then
+    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gcr/ssh"
+elif [[ $- == *i* ]]; then
     eval "$(keychain --eval --quiet id_rsa)"
 else
     eval "$(keychain --eval --quiet --noask)"
