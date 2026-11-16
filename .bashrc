@@ -7,16 +7,23 @@
 
 
 # SSH agent.
-# Graphical session: use gcr-ssh-agent (gnome-keyring). Its passphrases are
-# stored in the login keyring, which GDM unlocks at login, so no prompt.
-# TTY or remote login (no gcr socket): fall back to keychain.
-if [[ -S ${XDG_RUNTIME_DIR}/gcr/ssh ]]; then
-    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gcr/ssh"
+# Local graphical session: use gcr-ssh-agent (gnome-keyring). Its passphrases
+# are stored in the login keyring, which GDM unlocks at login, so no prompt.
+# Remote (SSH) login: use the forwarded agent if there is one, else keychain.
+# The gcr socket is socket-activated by systemd and exists even with no
+# graphical login (e.g. after a remote reboot), but gcr can only ask for a
+# passphrase through a GUI prompter, so it must not be used over SSH.
+_gcr_sock="${XDG_RUNTIME_DIR}/gcr/ssh"
+if [[ -n $SSH_CONNECTION && -S $SSH_AUTH_SOCK && $SSH_AUTH_SOCK != "$_gcr_sock" ]]; then
+    :   # forwarded agent (ssh -A) or keychain agent inherited from parent shell
+elif [[ -z $SSH_CONNECTION && -S $_gcr_sock && -n ${WAYLAND_DISPLAY}${DISPLAY} ]]; then
+    export SSH_AUTH_SOCK="$_gcr_sock"
 elif [[ $- == *i* ]]; then
     eval "$(keychain --eval --quiet id_rsa)"
 else
     eval "$(keychain --eval --quiet --noask)"
 fi
+unset _gcr_sock
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
@@ -27,6 +34,9 @@ if [[ $- != *i* ]] ; then
 fi
 
 # Put your fun stuff here.
+# Let gpg-agent's pinentry prompt on this terminal (needed over SSH).
+export GPG_TTY=$(tty)
+
 # Enable checkwinsize so that bash will check the terminal size when
 shopt -s checkwinsize
 
