@@ -8,3 +8,50 @@
   :bind (:map global-map
               ("C-c e" . ellama-command-map)))
 #+end_src
+
+* gptel
+
+#+begin_src emacs-lisp
+(defun my/gptel-codex-models ()
+  "Return the models the Codex CLI lists for this account, or nil.
+Read `~/.codex/models_cache.json' and keep models with visibility
+\"list\", sorted by the CLI's priority."
+  (let ((file (expand-file-name "~/.codex/models_cache.json")))
+    (when (file-readable-p file)
+      (condition-case err
+          (let* ((data (with-temp-buffer
+                         (insert-file-contents file)
+                         (json-parse-buffer :object-type 'plist
+                                            :array-type 'list)))
+                 (models (seq-filter
+                          (lambda (m) (equal (plist-get m :visibility) "list"))
+                          (plist-get data :models))))
+            (mapcar (lambda (m)
+                      (list (intern (plist-get m :slug))
+                            :description (plist-get m :display_name)))
+                    (seq-sort-by (lambda (m) (or (plist-get m :priority) 1000))
+                                 #'< models)))
+        (error (message "gptel: cannot read %s: %s" file
+                        (error-message-string err))
+               nil)))))
+
+(my/use-package gptel
+  :commands (gptel gptel-send gptel-menu gptel-rewrite gptel-add)
+  :bind (("C-c RET" . gptel-send)
+         ("C-c i"   . gptel)
+         ("C-c I"   . gptel-menu))
+  :custom
+  (gptel-default-mode 'org-mode)
+  (gptel-use-curl t)
+  :config
+  (setq gptel-backend
+        (if-let* ((models (my/gptel-codex-models)))
+            (gptel-make-openai-oauth "ChatGPT Plus" :models models)
+          (gptel-make-openai-oauth "ChatGPT Plus")))
+  (let ((models (gptel-backend-models gptel-backend)))
+    (unless (memq gptel-model models)
+      (setq gptel-model (car models)))))
+
+(with-eval-after-load 'savehist
+  (add-to-list 'savehist-additional-variables 'gptel-model))
+#+end_src
