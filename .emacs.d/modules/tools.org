@@ -12,7 +12,8 @@
 
 (defun my/notmuch--spam-target (file maildir)
   "Destination path under MAILDIR/cur for FILE, forcing the seen flag."
-  (let* ((base (file-name-nondirectory file))
+  (let* ((base (replace-regexp-in-string
+                ",U=[0-9]+" "" (file-name-nondirectory file)))
          (name (if (string-match ":2,.*\\'" base)
                    (concat (substring base 0 (match-beginning 0)) ":2,S")
                  (concat base ":2,S"))))
