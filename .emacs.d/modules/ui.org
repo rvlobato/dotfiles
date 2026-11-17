@@ -95,12 +95,14 @@
   :custom
   (winum-auto-setup-mode-line nil)
   :config
+  ;; Bind in winum-keymap (a minor-mode map) rather than globally, so the keys
+  ;; take precedence over major-mode maps such as vterm-mode-map, which
+  ;; otherwise sends M-<digit> to the terminal.
+  (dotimes (i 9)
+    (let ((n (1+ i)))
+      (keymap-set winum-keymap (format "M-%d" n)
+                  (intern (format "winum-select-window-%d" n)))))
   (winum-mode 1))
-
-  (global-set-key (kbd "M-1") #'winum-select-window-1)
-  (global-set-key (kbd "M-2") #'winum-select-window-2)
-  (global-set-key (kbd "M-3") #'winum-select-window-3)
-  (global-set-key (kbd "M-4") #'winum-select-window-4)
 #+end_src
 
 * Shortcut Discovery
