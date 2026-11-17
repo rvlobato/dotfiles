@@ -10,29 +10,51 @@
     ("proton/INBOX" . "~/.mail/proton/Spam"))
   "Alist of (SOURCE-QUERY . DEST-MAILDIR) for spam relocation.")
 
-(defun my/notmuch--spam-target (file maildir)
-  "Destination path under MAILDIR/cur for FILE, forcing the seen flag."
-  (let* ((base (replace-regexp-in-string
-                ",U=[0-9]+" "" (file-name-nondirectory file)))
-         (name (if (string-match ":2,.*\\'" base)
-                   (concat (substring base 0 (match-beginning 0)) ":2,S")
-                 (concat base ":2,S"))))
-    (expand-file-name (concat "cur/" name) maildir)))
+(defun my/notmuch--root ()
+  "Root of the notmuch mail store."
+  (car (process-lines "notmuch" "config" "get" "database.path")))
+
+(defun my/notmuch--maildir-name (file flags)
+  "Basename of FILE without the mbsync UID, with maildir FLAGS."
+  (let ((base (replace-regexp-in-string
+               ",U=[0-9]+" "" (file-name-nondirectory file))))
+    (concat (replace-regexp-in-string ":2,.*\\'" "" base) ":2," flags)))
+
+(defun my/notmuch--files-under (query dir)
+  "Existing files of messages matching QUERY that lie inside DIR.
+`notmuch search --output=files' lists every copy of a message, also
+copies in other folders, so filter by path."
+  (let ((dir (file-name-as-directory (expand-file-name dir))))
+    (seq-filter (lambda (f) (and (string-prefix-p dir f) (file-exists-p f)))
+                (process-lines "notmuch" "search" "--exclude=false" "--output=files" query))))
+
+(defun my/notmuch--tagged-p (id tag)
+  "Non-nil if message ID carries TAG."
+  (not (string= "0" (car (process-lines
+                          "notmuch" "count" "--exclude=false" (format "%s and tag:%s" id tag))))))
 
 (defun my/notmuch-move-spam ()
-  "Move messages tagged spam out of each INBOX into the account Spam folder."
+  "Move messages tagged spam out of each INBOX into the account Spam folder.
+Each message is trained once as spam in bogofilter and tagged bogo-spam,
+so `my/notmuch-mark-ham' can undo the training."
   (interactive)
-  (dolist (pair my/notmuch-spam-folders)
-    (let ((dest (expand-file-name (cdr pair)))
-          (files (process-lines "notmuch" "search" "--output=files"
-                                 (concat "tag:spam and folder:" (car pair)))))
-      (dolist (f files)
-        (when (file-exists-p f)
-          ;; 1. BOGOFILTER: Train as spam BEFORE moving the file
-          (call-process "bogofilter" f nil nil "-s")
-          (let ((target (my/notmuch--spam-target f dest)))
-            (make-directory (file-name-directory target) t)
-            (rename-file f target t)))))))
+  (let ((root (my/notmuch--root)))
+    (dolist (pair my/notmuch-spam-folders)
+      (let ((src (expand-file-name (car pair) root))
+            (dest (expand-file-name (cdr pair))))
+        (dolist (id (process-lines "notmuch" "search" "--exclude=false" "--output=messages"
+                                   (format "tag:spam and folder:\"%s\"" (car pair))))
+          (let ((files (my/notmuch--files-under id src)))
+            (when files
+              (unless (my/notmuch--tagged-p id "bogo-spam")
+                (call-process "bogofilter" (car files) nil nil "-s")
+                (call-process "notmuch" nil nil nil "tag" "+bogo-spam" "--" id))
+              (make-directory (expand-file-name "cur" dest) t)
+              (dolist (f files)
+                (rename-file f (expand-file-name
+                                (concat "cur/" (my/notmuch--maildir-name f "S"))
+                                dest)
+                             t)))))))))
 
 (defun my/notmuch--refresh-buffers ()
   "Revert all live Notmuch buffers."
@@ -49,7 +71,22 @@
   "Pull mail, push spam moves to the server, and refresh Notmuch buffers."
   (interactive)
   (unless (get-process "mail-sync")
-    (let ((buf (get-buffer-create "*mail-sync*")))
+    (let ((buf (get-buffer-create "*mail-sync*"))
+          (script (executable-find "mail-sync")))
+      (if script
+          ;; Machine with the systemd mail-sync service: reuse its script,
+          ;; which takes a lock so F6 and the hourly timer never overlap.
+          (make-process
+           :name "mail-sync"
+           :buffer buf
+           :command (list script)
+           :sentinel
+           (lambda (_proc event)
+             (when (string-match-p "finished\\|exited" event)
+               (my/notmuch--refresh-buffers)
+               (message "Mail synchronized%s."
+                        (if (string-match-p "finished" event)
+                            "" " (with errors, see *mail-sync*)")))))
       (make-process
        :name "mail-sync"
        :buffer buf
@@ -66,22 +103,49 @@
             (lambda (_proc event)
               (when (string-match-p "finished" event)
                 (my/notmuch--refresh-buffers)
-                (message "Mail synchronized."))))))))))
+                (message "Mail synchronized.")))))))))))
 
 ;; 2. BOGOFILTER: Function to train false positives (Ham)
 (defun my/notmuch-mark-ham ()
-  "Correct a false positive: train as ham, remove spam tag, and restore inbox tag."
+  "Correct a false positive.
+For each spam-tagged message in the current message (show mode) or
+thread (search mode): train bogofilter as ham (undoing the spam training
+when the message carries bogo-spam), restore the inbox and unread tags,
+and move it from the Spam folder back to the account INBOX."
   (interactive)
-  (let* ((msg-id (if (eq major-mode 'notmuch-show-mode)
-                     (notmuch-show-get-message-id)
-                   (notmuch-search-find-thread-id)))
-         (files (process-lines "notmuch" "search" "--output=files" msg-id)))
-    (dolist (f files)
-      (when (file-exists-p f)
-        (call-process "bogofilter" f nil nil "-n")))
-    (notmuch-tag msg-id '("-spam" "+inbox" "+unread"))
-    (my/notmuch--refresh-buffers)
-    (message "Trained as Ham and marked for Inbox.")))
+  (let* ((query (if (derived-mode-p 'notmuch-show-mode)
+                    (notmuch-show-get-message-id)
+                  (notmuch-search-find-thread-id)))
+         (root (my/notmuch--root))
+         (ids (process-lines "notmuch" "search" "--exclude=false" "--output=messages"
+                             (format "(%s) and tag:spam" query)))
+         (moved nil))
+    (if (null ids)
+        (message "No spam-tagged message here.")
+      (dolist (id ids)
+        (let ((file (seq-find #'file-exists-p
+                              (process-lines "notmuch" "search" "--exclude=false" "--output=files" id))))
+          (when file
+            (call-process "bogofilter" file nil nil
+                          (if (my/notmuch--tagged-p id "bogo-spam") "-Sn" "-n"))))
+        ;; Tag first: with synchronize_flags notmuch renames the files
+        ;; (drops the S flag), so query the paths afterwards.
+        (call-process "notmuch" nil nil nil "tag"
+                      "-spam" "-bogo-spam" "+inbox" "+unread" "--" id)
+        (dolist (pair my/notmuch-spam-folders)
+          (let ((inbox (expand-file-name (car pair) root)))
+            (dolist (f (my/notmuch--files-under id (cdr pair)))
+              (make-directory (expand-file-name "cur" inbox) t)
+              (rename-file f (expand-file-name
+                              (concat "cur/" (my/notmuch--maildir-name f ""))
+                              inbox)
+                           t)
+              (setq moved t)))))
+      (when moved
+        (call-process "notmuch" nil nil nil "new" "--no-hooks"))
+      (my/notmuch--refresh-buffers)
+      (message "Trained %d message(s) as ham%s."
+               (length ids) (if moved " and moved them to INBOX" "")))))
 
 ;; Bind Ham training to 'H'
 (with-eval-after-load 'notmuch
@@ -100,11 +164,21 @@ notmuch tag +sent -inbox -unread -- tag:new and path:/.*Sent.*/
 notmuch tag +draft -- tag:new and path:/.*Drafts.*/
 
 # 3. BOGOFILTER: Scan incoming INBOX messages
-notmuch search --output=files tag:new and tag:inbox | while IFS= read -r file; do
+# notmuch has no file: query prefix, so iterate over message ids.
+notmuch search --output=messages tag:new and tag:inbox | while IFS= read -r id; do
+    file=$(notmuch search --exclude=false --output=files -- "$id" | head -n 1)
+    [ -f "$file" ] || continue
     if bogofilter < "$file"; then
-        notmuch tag +spam -inbox -unread -- "file:$file"
+        notmuch tag +spam -inbox -unread -- "$id"
     fi
 done
+
+# 4. Spam moved to Junk/Spam on another machine: once no copy is left in
+# an INBOX, drop the inbox tag that this machine gave it earlier.
+notmuch tag +spam -inbox -unread -- tag:inbox and \
+    '(folder:cbpf/Junk or folder:"gmail/[Gmail]/Spam" or folder:proton/Spam)' and \
+    not folder:cbpf/INBOX and not folder:gmail/INBOX and not folder:proton/INBOX and \
+    not tag:junk-review
 
 notmuch tag -new -- tag:new
 #+end_src
