@@ -108,14 +108,18 @@ so `my/notmuch-mark-ham' can undo the training."
 ;; 2. BOGOFILTER: Function to train false positives (Ham)
 (defun my/notmuch-mark-ham ()
   "Correct a false positive.
-For each spam-tagged message in the current message (show mode) or
-thread (search mode): train bogofilter as ham (undoing the spam training
+For each spam-tagged message in the current message (show and tree
+mode) or thread (search mode): train bogofilter as ham (undoing the spam training
 when the message carries bogo-spam), restore the inbox and unread tags,
-and move it from the Spam folder back to the account INBOX."
+and move it from the Spam folder back to the account INBOX.
+Then offer to add each sender that is not yet whitelisted to the
+post-new sender whitelist."
   (interactive)
-  (let* ((query (if (derived-mode-p 'notmuch-show-mode)
-                    (notmuch-show-get-message-id)
-                  (notmuch-search-find-thread-id)))
+  (let* ((query (cond ((derived-mode-p 'notmuch-show-mode)
+                        (notmuch-show-get-message-id))
+                       ((derived-mode-p 'notmuch-tree-mode)
+                        (notmuch-tree-get-message-id))
+                       (t (notmuch-search-find-thread-id))))
          (root (my/notmuch--root))
          (ids (process-lines "notmuch" "search" "--exclude=false" "--output=messages"
                              (format "(%s) and tag:spam" query)))
@@ -144,13 +148,93 @@ and move it from the Spam folder back to the account INBOX."
       (when moved
         (call-process "notmuch" nil nil nil "new" "--no-hooks"))
       (my/notmuch--refresh-buffers)
-      (message "Trained %d message(s) as ham%s."
-               (length ids) (if moved " and moved them to INBOX" "")))))
+      (let ((added (my/notmuch--offer-whitelist ids)))
+        (message "Trained %d message(s) as ham%s%s."
+                 (length ids) (if moved " and moved them to INBOX" "")
+                 (if added
+                     (format "; whitelisted %s" (string-join added ", "))
+                   ""))))))
+
+;; Sender whitelist read by the post-new hook. The source of truth is
+;; the whitelist block in tools.org; H adds to both that block and the
+;; tangled file, so the next tangle keeps the entry.
+(defvar my/notmuch-whitelist-org
+  (expand-file-name "modules/tools.org" user-emacs-directory)
+  "Org file that holds the tangled sender whitelist block.")
+
+(defun my/notmuch--whitelist-file ()
+  "Sender whitelist file in the notmuch hook directory."
+  (expand-file-name "whitelist"
+                    (car (process-lines "notmuch" "config" "get" "database.hook_dir"))))
+
+(defun my/notmuch--whitelist-entries ()
+  "Entries of the whitelist file, lower case, without comments."
+  (let ((file (my/notmuch--whitelist-file)))
+    (when (file-exists-p file)
+      (with-temp-buffer
+        (insert-file-contents file)
+        (delete ""
+                (mapcar (lambda (line)
+                          (downcase (replace-regexp-in-string
+                                     "#.*\\|[[:space:]\"]" "" line)))
+                        (split-string (buffer-string) "\n")))))))
+
+(defun my/notmuch--whitelisted-p (addr entries)
+  "Non-nil if ADDR equals an entry of ENTRIES or lies in its domain."
+  (seq-some (lambda (e)
+              (or (string= e addr)
+                  (string-suffix-p (concat "@" e) addr)
+                  (string-suffix-p (concat "." e) addr)))
+            entries))
+
+(defun my/notmuch--sender (id)
+  "Bare sender address of message ID, lower case."
+  (let ((addr (car (process-lines "notmuch" "address" "--exclude=false"
+                                  "--output=address" "--" id))))
+    (and addr (downcase addr))))
+
+(defun my/notmuch--add-to-whitelist (addr)
+  "Append ADDR to the whitelist block in tools.org and to the hook file."
+  (let ((buf (find-file-noselect my/notmuch-whitelist-org)))
+    (with-current-buffer buf
+      (when (buffer-modified-p)
+        (user-error "Save %s first, then whitelist again"
+                    (file-name-nondirectory my/notmuch-whitelist-org)))
+      (save-excursion
+        (goto-char (point-min))
+        (unless (re-search-forward
+                 "^#\\+begin_src .*:tangle .*hooks/whitelist" nil t)
+          (user-error "No whitelist block in %s" my/notmuch-whitelist-org))
+        (re-search-forward "^#\\+end_src")
+        (beginning-of-line)
+        (insert addr "\n"))
+      (save-buffer)))
+  (let ((file (my/notmuch--whitelist-file)))
+    (with-temp-buffer
+      (when (file-exists-p file)
+        (insert-file-contents file))
+      (goto-char (point-max))
+      (unless (or (bobp) (bolp))
+        (insert "\n"))
+      (insert addr "\n")
+      (write-region nil nil file nil 'silent))))
+
+(defun my/notmuch--offer-whitelist (ids)
+  "Offer to whitelist the senders of IDS. Return the added addresses."
+  (let ((entries (my/notmuch--whitelist-entries))
+        added)
+    (dolist (addr (delete-dups (delq nil (mapcar #'my/notmuch--sender ids))))
+      (unless (my/notmuch--whitelisted-p addr entries)
+        (when (y-or-n-p (format "Whitelist sender %s? " addr))
+          (my/notmuch--add-to-whitelist addr)
+          (push addr added))))
+    (nreverse added)))
 
 ;; Bind Ham training to 'H'
 (with-eval-after-load 'notmuch
   (define-key notmuch-search-mode-map (kbd "H") #'my/notmuch-mark-ham)
-  (define-key notmuch-show-mode-map (kbd "H") #'my/notmuch-mark-ham))
+  (define-key notmuch-show-mode-map (kbd "H") #'my/notmuch-mark-ham)
+  (define-key notmuch-tree-mode-map (kbd "H") #'my/notmuch-mark-ham))
 #+end_src
 
 * Tags
@@ -164,8 +248,21 @@ notmuch tag +sent -inbox -unread -- tag:new and path:/.*Sent.*/
 notmuch tag +draft -- tag:new and path:/.*Drafts.*/
 
 # 3. BOGOFILTER: Scan incoming INBOX messages
+# Senders in the whitelist file (one address or domain per line, # for
+# comments) skip the scan, so they never land in spam.
+whitelist="$(dirname "$0")/whitelist"
+scan="tag:new and tag:inbox"
+if [ -f "$whitelist" ]; then
+    wl=""
+    while IFS= read -r addr || [ -n "$addr" ]; do
+        addr=$(printf '%s' "$addr" | sed 's/#.*//; s/[[:space:]"]//g')
+        [ -n "$addr" ] && wl="$wl or from:\"$addr\""
+    done < "$whitelist"
+    [ -n "$wl" ] && scan="$scan and not (${wl# or })"
+fi
+
 # notmuch has no file: query prefix, so iterate over message ids.
-notmuch search --output=messages tag:new and tag:inbox | while IFS= read -r id; do
+notmuch search --output=messages "$scan" | while IFS= read -r id; do
     file=$(notmuch search --exclude=false --output=files -- "$id" | head -n 1)
     [ -f "$file" ] || continue
     if bogofilter < "$file"; then
@@ -181,6 +278,17 @@ notmuch tag +spam -inbox -unread -- tag:inbox and \
     not tag:junk-review
 
 notmuch tag -new -- tag:new
+#+end_src
+
+** Sender whitelist
+
+Mail from these senders skips the bogofilter scan in =post-new=. Give one
+address (=alice@example.org=) or one domain (=example.org=) per line.
+
+#+begin_src text :tangle ~/.mail/.notmuch/hooks/whitelist
+# Senders that are never marked as spam.
+# example.org
+# alice@example.org
 #+end_src
 
 * Open PDF
