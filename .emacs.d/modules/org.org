@@ -6,9 +6,10 @@
 #+begin_src emacs-lisp
   (my/use-package org
     :custom
-    (org-directory "~/Documents/cloud/org/")
-    (org-agenda-files '("~/Documents/cloud/org/agenda.org"
-                        "~/Documents/cloud/org/notes.org"))
+    (org-directory "~/Cloud/org/")
+    (org-agenda-files '("~/Cloud/org/agenda.org"
+                        "~/Cloud/org/agenda-google.org"
+                        "~/Cloud/org/notes.org"))
     (org-agenda-tags-column -10)
     (org-agenda-span 7)
     (org-agenda-start-day "0d")
@@ -57,19 +58,191 @@
 
     ;; Scientific Capture Templates
     (setq org-capture-templates
-          '(("t" "Todo [General]" entry (file+headline "~/Documents/cloud/org/agenda.org" "Inbox")
+          '(("t" "Todo [General]" entry (file+headline "~/Cloud/org/agenda.org" "Inbox")
              "* TODO %?\n  %i\n  %a")
-            ("p" "Physics / ML Pipeline Task" entry (file+headline "~/Documents/cloud/org/agenda.org" "Research")
+            ("p" "Physics / ML Pipeline Task" entry (file+headline "~/Cloud/org/agenda.org" "Research")
              "* TODO %? :pipeline:ml:\n  %i\n  %a")
-            ("a" "CBPF Admin/Grant Task" entry (file+headline "~/Documents/cloud/org/agenda.org" "Admin")
+            ("a" "CBPF Admin/Grant Task" entry (file+headline "~/Cloud/org/agenda.org" "Admin")
              "* TODO %? :cbpf:admin:\n  SCHEDULED: %^t\n  %i\n  %a")
-            ("l" "Literature to Read" entry (file+headline "~/Documents/cloud/org/notes.org" "Literature")
+            ("l" "Literature to Read" entry (file+headline "~/Cloud/org/notes.org" "Literature")
              "* TO-READ %? :arxiv:paper:\n  %i\n  %a"))))
 
   ;; Habit Module Activation
   (with-eval-after-load 'org
     (add-to-list 'org-modules 'org-habit t)
     (require 'org-habit))
+#+end_src
+
+* Calendar feeds (read-only)
+
+Events from iCal feeds reach the agenda without any API or OAuth. Each
+feed in =my/calendar-feeds= has a name and an address:
+
+- =google=: the Google calendar's secret iCal address (Google Calendar →
+  Settings → the calendar → Integrate calendar → Secret address in iCal
+  format). It works as a password, so it lives in =~/.authinfo.gpg=:
+  #+begin_example
+  machine google-calendar-ical login ical password https://calendar.google.com/calendar/ical/.../basic.ics
+  #+end_example
+- =indico=: a public Indico category feed, so its address is here.
+
+=M-x my/calendar-fetch= downloads every feed and converts each with the
+built-in =icalendar.el= into its own diary file, which handles repeating
+events; a failed download leaves the other feeds untouched. A timer
+repeats the download every hour. =agenda-google.org= has one heading
+per feed with a sexp line, such as =%%(my/calendar-entries 'indico
+date)=, and the heading's =CATEGORY= labels the events in the agenda.
+The sync is one-way: create and edit events at the source.
+
+To add a feed, add an entry to =my/calendar-feeds= and a heading with
+its sexp line to =agenda-google.org=.
+
+#+begin_src emacs-lisp
+(defvar my/calendar-feeds
+  '((google :auth "google-calendar-ical")
+    (indico :url "https://indico.global/category/1747/events.ics"))
+  "iCal feeds shown in the agenda, as (NAME . PLIST).
+:url gives the address directly; :auth names an auth-source host
+whose password is the address, for secret addresses.")
+
+(defvar my/calendar-fetch-interval 3600
+  "Seconds between automatic downloads of the calendar feeds.")
+
+(defun my/calendar--diary (name)
+  "Diary file regenerated from feed NAME."
+  (expand-file-name (format "calendar-%s.diary" name) user-emacs-directory))
+
+(defun my/calendar--url (name)
+  "Address of feed NAME, from `my/calendar-feeds' or auth-source."
+  (let* ((feed (or (alist-get name my/calendar-feeds)
+                   (user-error "Unknown calendar feed %s" name)))
+         (host (plist-get feed :auth)))
+    (if (not host)
+        (plist-get feed :url)
+      (let ((entry (car (auth-source-search :host host :max 1))))
+        (unless entry
+          (user-error "No %s entry in ~/.authinfo.gpg" host))
+        (let ((secret (plist-get entry :secret)))
+          (if (functionp secret) (funcall secret) secret))))))
+
+(defun my/calendar--kill-file-buffer (file)
+  "Kill the buffer visiting FILE, if any, without asking."
+  (let ((buf (find-buffer-visiting file)))
+    (when buf
+      (with-current-buffer buf (set-buffer-modified-p nil))
+      (kill-buffer buf))))
+
+(defun my/calendar--repair-exdates (file)
+  "Restore the parenthesis that icalendar.el drops in FILE.
+For a repeating event with an excluded date (EXDATE), icalendar.el
+rewrites \"%%(diary-anniversary 1 27 2019)\" as
+\"%%(and (not (diary-date ...)) diary-anniversary 1 27 2019)\",
+which diary cannot evaluate. Wrap the bare call in parentheses again."
+  (with-temp-buffer
+    (let ((coding-system-for-read 'utf-8)
+          (coding-system-for-write 'utf-8))
+      (insert-file-contents file)
+      (goto-char (point-min))
+      (while (re-search-forward "^&?%%(and (not " nil t)
+        (when (re-search-forward ")) \\(diary-[a-z-]+[^()\n]*\\))"
+                                 (line-end-position) t)
+          (replace-match ")) (\\1))" t)))
+      (write-region nil nil file nil 'silent))))
+
+(defun my/calendar--import (ics diary)
+  "Replace file DIARY with the events in file ICS.
+Return non-nil if every event converted without error."
+  (require 'icalendar)
+  (let ((tmp (make-temp-file "calendar" nil ".diary"))
+        ok)
+    (unwind-protect
+        (progn
+          (with-temp-buffer
+            (let ((coding-system-for-read 'utf-8))
+              (insert-file-contents ics))
+            (setq ok (icalendar-import-buffer tmp t t)))
+          (my/calendar--kill-file-buffer tmp)
+          (my/calendar--repair-exdates tmp)
+          (my/calendar--kill-file-buffer diary)
+          (rename-file tmp diary t))
+      (when (file-exists-p tmp)
+        (delete-file tmp)))
+    ;; Org caches sexp results per date and never clears the cache.
+    (when (boundp 'org--diary-sexp-entry-cache)
+      (clrhash org--diary-sexp-entry-cache))
+    ok))
+
+(defun my/calendar--refresh-agenda ()
+  "Rebuild all live Org agenda buffers."
+  (dolist (buf (buffer-list))
+    (with-current-buffer buf
+      (when (derived-mode-p 'org-agenda-mode)
+        (org-agenda-redo t)))))
+
+(defun my/calendar--fetch-feed (name)
+  "Download feed NAME in the background and rebuild its diary file."
+  (let ((pname (format "calendar-%s" name)))
+    (unless (get-process pname)
+      (let* ((url (my/calendar--url name))
+             (ics (make-temp-file "calendar" nil ".ics"))
+             (log (format " *calendar-%s*" name))
+             ;; The URL goes to curl on stdin, so it never shows in ps.
+             (proc (make-process
+                    :name pname
+                    :buffer (get-buffer-create log)
+                    :command (list "curl" "--config" "-" "--fail" "--silent"
+                                   "--show-error" "--location"
+                                   "--max-time" "60" "--output" ics)
+                    :connection-type 'pipe
+                    :sentinel
+                    (lambda (proc _event)
+                      (unless (process-live-p proc)
+                        (unwind-protect
+                            (if (zerop (process-exit-status proc))
+                                (let ((ok (my/calendar--import
+                                           ics (my/calendar--diary name))))
+                                  (my/calendar--refresh-agenda)
+                                  (message "Calendar %s updated%s." name
+                                           (if ok "" " (some events failed, see *icalendar-errors*)")))
+                              (message "Calendar %s download failed, see buffer \"%s\"."
+                                       name log))
+                          (delete-file ics)))))))
+        (process-send-string
+         proc (format "url = \"%s\"\n"
+                      (replace-regexp-in-string "[\"\\\\]" "\\\\\\&" url)))
+        (process-send-eof proc)))))
+
+(defun my/calendar-fetch ()
+  "Download every feed in `my/calendar-feeds' and refresh the agenda."
+  (interactive)
+  (dolist (feed my/calendar-feeds)
+    (condition-case err
+        (my/calendar--fetch-feed (car feed))
+      (error (message "Calendar %s: %s" (car feed) (error-message-string err))))))
+
+(defun my/calendar-entries (name date)
+  "Events of DATE from feed NAME, for an Org sexp entry."
+  (let ((diary (my/calendar--diary name)))
+    (when (file-exists-p diary)
+      (require 'diary-lib)
+      (let ((diary-file diary)
+            (diary-list-entries-hook nil)
+            (diary-nongregorian-listing-hook nil)
+            (diary-hook nil)
+            (inhibit-message t))
+        (delq nil
+              (mapcar (lambda (entry)
+                        (let ((text (string-trim (car (split-string (cadr entry) "\n")))))
+                          (unless (string-empty-p text) text)))
+                      (diary-list-entries date 1 t)))))))
+
+(defvar my/calendar--timer nil
+  "Timer that downloads the calendar feeds.")
+
+(when (timerp my/calendar--timer)
+  (cancel-timer my/calendar--timer))
+(setq my/calendar--timer
+      (run-with-timer 60 my/calendar-fetch-interval #'my/calendar-fetch))
 #+end_src
 
 * Agenda views
