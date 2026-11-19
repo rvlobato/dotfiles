@@ -8,7 +8,7 @@
     :custom
     (org-directory "~/Cloud/org/")
     (org-agenda-files '("~/Cloud/org/agenda.org"
-                        "~/Cloud/org/agenda-google.org"
+                        "~/Cloud/org/agenda-external.org"
                         "~/Cloud/org/notes.org"))
     (org-agenda-tags-column -10)
     (org-agenda-span 7)
@@ -89,13 +89,13 @@ feed in =my/calendar-feeds= has a name and an address:
 =M-x my/calendar-fetch= downloads every feed and converts each with the
 built-in =icalendar.el= into its own diary file, which handles repeating
 events; a failed download leaves the other feeds untouched. A timer
-repeats the download every hour. =agenda-google.org= has one heading
+repeats the download every hour. =agenda-external.org= has one heading
 per feed with a sexp line, such as =%%(my/calendar-entries 'indico
 date)=, and the heading's =CATEGORY= labels the events in the agenda.
 The sync is one-way: create and edit events at the source.
 
 To add a feed, add an entry to =my/calendar-feeds= and a heading with
-its sexp line to =agenda-google.org=.
+its sexp line to =agenda-external.org=.
 
 #+begin_src emacs-lisp
 (defvar my/calendar-feeds
