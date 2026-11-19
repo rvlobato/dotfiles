@@ -85,6 +85,19 @@ feed in =my/calendar-feeds= has a name and an address:
   machine google-calendar-ical login ical password https://calendar.google.com/calendar/ical/.../basic.ics
   #+end_example
 - =indico=: a public Indico category feed, so its address is here.
+- =cbpf=: the personal calendar on the CBPF Nextcloud. Adding =?export=
+  to the CalDAV address makes Nextcloud return the whole calendar as one
+  iCal file. The address needs a login, which lives in =~/.authinfo.gpg=.
+  Use a Nextcloud app password (Settings → Security → Devices &
+  sessions), not the account password:
+  #+begin_example
+  machine cloud.cbpf.br login lobato password <app-password>
+  #+end_example
+- =rvlobato=: the personal calendar on the =cloud.rvlobato.com= Nextcloud,
+  set up the same way as =cbpf=:
+  #+begin_example
+  machine cloud.rvlobato.com login ronaldo password <app-password>
+  #+end_example
 
 =M-x my/calendar-fetch= downloads every feed and converts each with the
 built-in =icalendar.el= into its own diary file, which handles repeating
@@ -100,10 +113,16 @@ its sexp line to =agenda-external.org=.
 #+begin_src emacs-lisp
 (defvar my/calendar-feeds
   '((google :auth "google-calendar-ical")
-    (indico :url "https://indico.global/category/1747/events.ics"))
+    (indico :url "https://indico.global/category/1747/events.ics")
+    (cbpf :url "https://cloud.cbpf.br/remote.php/dav/calendars/lobato/personal/?export"
+          :login "cloud.cbpf.br")
+    (rvlobato :url "https://cloud.rvlobato.com/remote.php/dav/calendars/ronaldo/personal/?export"
+              :login "cloud.rvlobato.com"))
   "iCal feeds shown in the agenda, as (NAME . PLIST).
 :url gives the address directly; :auth names an auth-source host
-whose password is the address, for secret addresses.")
+whose password is the address, for secret addresses; :login names
+an auth-source host whose login and password are sent with HTTP
+basic authentication.")
 
 (defvar my/calendar-fetch-interval 3600
   "Seconds between automatic downloads of the calendar feeds.")
@@ -124,6 +143,23 @@ whose password is the address, for secret addresses.")
           (user-error "No %s entry in ~/.authinfo.gpg" host))
         (let ((secret (plist-get entry :secret)))
           (if (functionp secret) (funcall secret) secret))))))
+
+(defun my/calendar--credentials (name)
+  "\"LOGIN:PASSWORD\" for feed NAME, or nil if it has no :login host."
+  (let ((host (plist-get (alist-get name my/calendar-feeds) :login)))
+    (when host
+      (let ((entry (car (auth-source-search :host host :max 1
+                                            :require '(:user :secret)))))
+        (unless entry
+          (user-error "No %s entry with login and password in ~/.authinfo.gpg"
+                      host))
+        (let ((secret (plist-get entry :secret)))
+          (concat (plist-get entry :user) ":"
+                  (if (functionp secret) (funcall secret) secret)))))))
+
+(defun my/calendar--curl-quote (string)
+  "STRING quoted for a curl config file."
+  (format "\"%s\"" (replace-regexp-in-string "[\"\\\\]" "\\\\\\&" string)))
 
 (defun my/calendar--kill-file-buffer (file)
   "Kill the buffer visiting FILE, if any, without asking."
@@ -184,9 +220,11 @@ Return non-nil if every event converted without error."
   (let ((pname (format "calendar-%s" name)))
     (unless (get-process pname)
       (let* ((url (my/calendar--url name))
+             (credentials (my/calendar--credentials name))
              (ics (make-temp-file "calendar" nil ".ics"))
              (log (format " *calendar-%s*" name))
-             ;; The URL goes to curl on stdin, so it never shows in ps.
+             ;; The URL and login go to curl on stdin, so they never
+             ;; show in ps.
              (proc (make-process
                     :name pname
                     :buffer (get-buffer-create log)
@@ -208,8 +246,10 @@ Return non-nil if every event converted without error."
                                        name log))
                           (delete-file ics)))))))
         (process-send-string
-         proc (format "url = \"%s\"\n"
-                      (replace-regexp-in-string "[\"\\\\]" "\\\\\\&" url)))
+         proc (concat (format "url = %s\n" (my/calendar--curl-quote url))
+                      (when credentials
+                        (format "user = %s\n"
+                                (my/calendar--curl-quote credentials)))))
         (process-send-eof proc)))))
 
 (defun my/calendar-fetch ()
