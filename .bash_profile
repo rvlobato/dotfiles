@@ -14,13 +14,13 @@ export NPM_CONFIG_PREFIX=$HOME/.local/
 
 export PATH="$HOME/.pixi/bin:$HOME/.local/share/flatpak/exports/bin:$HOME/.local/bin:$HOME/.cargo/bin:${PATH}"
 
-export HOME_LORENE="$HOME/Desktop/resrch/codes/numerical_relativity/Lorene"
-export PLUTO_DIR="$HOME/Desktop/resrch/codes/numerical_relativity/pluto/pluto-4.3/PLUTO"
-export MESA_DIR="$HOME/Desktop/resrch/codes/mesa/mesa"
+export HOME_LORENE="$HOME/Tools/research/codes/numerical_relativity/Lorene"
+export PLUTO_DIR="$HOME/Tools/research/codes/numerical_relativity/pluto/pluto-4.3/PLUTO"
+export MESA_DIR="$HOME/Tools/research/codes/mesa/mesa"
 
 export MESON_BUILDDIR="$HOME/.local"
 export AERIE_INSTALLATION_DIR="$HOME/Projects/SWGO/aerie"
-export SPACK_PYTHON=/usr/bin/python3.12
+export SPACK_PYTHON="$HOME/.local/bin/python3.12"
 
 export JULIA_NUM_THREADS=$(lscpu -b -p=Core,Socket | grep -v '^#' | sort -u | wc -l)
 
