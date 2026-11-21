@@ -14,7 +14,10 @@
 # graphical login (e.g. after a remote reboot), but gcr can only ask for a
 # passphrase through a GUI prompter, so it must not be used over SSH.
 _gcr_sock="${XDG_RUNTIME_DIR}/gcr/ssh"
-if [[ -n $SSH_CONNECTION && -S $SSH_AUTH_SOCK && $SSH_AUTH_SOCK != "$_gcr_sock" ]]; then
+if [[ -n $SHPOOL_SESSION_NAME ]]; then
+    :   # inside shpool: SSH_AUTH_SOCK is shpool's link to the attaching client's
+        # agent; the link is created only after shell startup, so no -S test here
+elif [[ -n $SSH_CONNECTION && -S $SSH_AUTH_SOCK && $SSH_AUTH_SOCK != "$_gcr_sock" ]]; then
     :   # forwarded agent (ssh -A) or keychain agent inherited from parent shell
 elif [[ -z $SSH_CONNECTION && -S $_gcr_sock && -n ${WAYLAND_DISPLAY}${DISPLAY} ]]; then
     export SSH_AUTH_SOCK="$_gcr_sock"
