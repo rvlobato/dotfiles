@@ -55,3 +55,55 @@ Read `~/.codex/models_cache.json' and keep models with visibility
 (with-eval-after-load 'savehist
   (add-to-list 'savehist-additional-variables 'gptel-model))
 #+end_src
+
+* agent-shell
+
+=agent-shell= talks to coding agents over ACP (Agent Client Protocol).
+Gentoo installs the package and its dependencies =acp= and =shell-maker=
+in =site-lisp=, so =my/use-package= does not fetch them from ELPA.
+
+Each agent needs its ACP adapter on =PATH=, next to its CLI:
+- Claude Code: =claude-agent-acp= (=@agentclientprotocol/claude-agent-acp=).
+- Codex: =codex-acp= (=@agentclientprotocol/codex-acp=).
+- Antigravity: =agy acp=, built into the Antigravity CLI since 1.5.
+  The Gentoo package (0.88.3) still expects the old standalone
+  =agy_acp_server.par=; upstream agent-shell now runs =agy acp=, so the
+  command is set here.  Sign in once with =agy acp --login=.
+
+Both use the login from the CLI (=claude=, =codex=), so no API key is set
+here.  The agent process inherits the Emacs environment so that it finds
+=~/.local/bin=, =pixi=, =julia= and the other tools on =PATH=.
+
+#+begin_src emacs-lisp
+(my/use-package agent-shell
+  :commands (agent-shell agent-shell-toggle agent-shell-new-shell
+             agent-shell-anthropic-start-claude-code
+             agent-shell-openai-start-codex
+             agent-shell-antigravity-start-agent)
+  :bind (("C-c A a" . agent-shell)
+         ("C-c A t" . agent-shell-toggle)
+         ("C-c A n" . agent-shell-new-shell)
+         ("C-c A c" . agent-shell-anthropic-start-claude-code)
+         ("C-c A x" . agent-shell-openai-start-codex)
+         ("C-c A g" . agent-shell-antigravity-start-agent))
+  :custom
+  ;; Offer the agent picker, with Claude Code preselected.
+  (agent-shell-preferred-agent-config '(preselect . claude-code))
+  ;; Ask whether to resume a previous session or start a new one.
+  (agent-shell-session-strategy 'prompt)
+  :config
+  (setq agent-shell-anthropic-authentication
+        (agent-shell-anthropic-make-authentication :login t))
+  (setq agent-shell-openai-authentication
+        (agent-shell-openai-make-authentication :login t))
+  (setq agent-shell-anthropic-claude-environment
+        (agent-shell-make-environment-variables :inherit-env t))
+  (setq agent-shell-openai-codex-environment
+        (agent-shell-make-environment-variables :inherit-env t))
+  ;; TODO Remove when Gentoo agent-shell > 0.88.3 defaults to agy acp (see WORK.org).
+  (setq agent-shell-antigravity-acp-command '("agy" "acp"))
+  (setq agent-shell-antigravity-authentication
+        (agent-shell-antigravity-make-authentication :login t))
+  (setq agent-shell-antigravity-environment
+        (agent-shell-make-environment-variables :inherit-env t)))
+#+end_src
