@@ -76,3 +76,47 @@
   (save-place-mode 1)
   (add-hook 'before-save-hook 'whitespace-cleanup)
 #+end_src
+
+* TRAMP
+
+TRAMP searches remote programs in =tramp-remote-path=.  By default this
+holds =getconf PATH= and standard system directories, not the user's
+login =PATH=.  On remote hosts the agent CLIs and their ACP adapters
+(=claude-agent-acp=, =codex-acp=, =agy=) live in =~/.local/bin=, so
+agent-shell does not find them.  =tramp-own-remote-path= adds the
+remote login shell's =PATH=.  The value is cached per connection: run
+=M-x tramp-cleanup-connection= after changing it.
+
+Long-lived remote processes, such as the ACP agents started by
+agent-shell, use direct asynchronous processes (=ssh host command=)
+instead of a process started through TRAMP's remote shell setup.  With
+the default method, two agents started from the same Emacs on one host
+did not answer the ACP =initialize= request within 45 s; with direct
+processes, all three answered in about 2 s.  Direct processes do not
+run the remote login profile, but TRAMP still passes the =PATH= from
+=tramp-remote-path=.
+
+For ssh, TRAMP's direct processes pass =-t -t= (method parameter
+=tramp-direct-async=), which gives the remote process a pty even for
+=:connection-type 'pipe=.  The pty echoes stdin, so agent-shell received
+its own ACP =initialize= request back ("Unhandled incoming request:
+initialize") and the shell never started a session.  Setting the
+parameter to =t=, as TRAMP does for other methods, keeps direct
+processes but runs =ssh host command= without a pty.  Then no request is
+echoed.
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'tramp-sh
+  (when-let* ((param (assoc 'tramp-direct-async
+                            (cdr (assoc "ssh" tramp-methods)))))
+    (setcar (cdr param) t)))
+
+(with-eval-after-load 'tramp
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (connection-local-set-profile-variables
+   'my/tramp-direct-async
+   '((tramp-direct-async-process . t)))
+  (connection-local-set-profiles
+   '(:application tramp :protocol "ssh")
+   'my/tramp-direct-async))
+#+end_src
