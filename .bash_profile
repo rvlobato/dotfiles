@@ -15,8 +15,12 @@ export NPM_CONFIG_PREFIX=$HOME/.local/
 export PATH="$HOME/.pixi/bin:$HOME/.local/share/flatpak/exports/bin:$HOME/.local/bin:$HOME/.cargo/bin:${PATH}"
 
 export HOME_LORENE="$HOME/Tools/research/codes/numerical_relativity/Lorene"
-export PLUTO_DIR="$HOME/Tools/research/codes/numerical_relativity/pluto/pluto-4.3/PLUTO"
-export MESA_DIR="$HOME/Tools/research/codes/mesa/mesa"
+export PLUTO_DIR="$HOME/Tools/research/codes/numerical_relativity/pluto/pluto-4.4-patch4/PLUTO"
+export MESA_DIR="$HOME/Tools/research/codes/mesa/mesa-26.04.1"
+export MESASDK_ROOT="$HOME/Tools/research/codes/mesa/mesasdk-26.6.1"
+export CACTUS_DIR="$HOME/Tools/research/codes/einsteintoolkit/Cactus"
+export SPECTRE_HOME="$HOME/Tools/research/codes/spectre"
+export CHARM_ROOT="$HOME/Tools/research/codes/charm/multicore-linux-x86_64-gcc"
 
 export MESON_BUILDDIR="$HOME/.local"
 export AERIE_INSTALLATION_DIR="$HOME/Projects/SWGO/aerie"
