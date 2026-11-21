@@ -66,9 +66,7 @@ Each agent needs its ACP adapter on =PATH=, next to its CLI:
 - Claude Code: =claude-agent-acp= (=@agentclientprotocol/claude-agent-acp=).
 - Codex: =codex-acp= (=@agentclientprotocol/codex-acp=).
 - Antigravity: =agy acp=, built into the Antigravity CLI since 1.5.
-  The Gentoo package (0.88.3) still expects the old standalone
-  =agy_acp_server.par=; upstream agent-shell now runs =agy acp=, so the
-  command is set here.  Sign in once with =agy acp --login=.
+  Sign in once with =agy acp --login=.
 
 Both use the login from the CLI (=claude=, =codex=), so no API key is set
 here.  The agent process inherits the Emacs environment so that it finds
@@ -100,10 +98,89 @@ here.  The agent process inherits the Emacs environment so that it finds
         (agent-shell-make-environment-variables :inherit-env t))
   (setq agent-shell-openai-codex-environment
         (agent-shell-make-environment-variables :inherit-env t))
-  ;; TODO Remove when Gentoo agent-shell > 0.88.3 defaults to agy acp (see WORK.org).
-  (setq agent-shell-antigravity-acp-command '("agy" "acp"))
   (setq agent-shell-antigravity-authentication
         (agent-shell-antigravity-make-authentication :login t))
   (setq agent-shell-antigravity-environment
         (agent-shell-make-environment-variables :inherit-env t)))
+#+end_src
+
+** agent-shell-tramp
+
+Starting agent-shell from a TRAMP buffer runs the agent on the remote
+host (=acp.el= starts it through the TRAMP file handler).  The agent
+expects remote-local paths (=/home/...=), while Emacs uses TRAMP paths
+(=/ssh:host:/home/...=).  =agent-shell-tramp= translates between them
+and keeps transcripts of remote sessions on the local machine.  It is
+not packaged for Gentoo or MELPA.  It is a git clone in
+=site-lisp/agent-shell-tramp= (update with =git pull=).  =package-vc= is
+not used: package.el cannot see that Gentoo provides its dependencies
+=agent-shell= and =acp=, and refuses to activate it.
+
+The remote agents must be on the remote login =PATH=; see the TRAMP
+section of =modules/core.org=.
+
+#+begin_src emacs-lisp
+(use-package agent-shell-tramp
+  :load-path "site-lisp/agent-shell-tramp"
+  :demand t
+  :after agent-shell
+  :config
+  (agent-shell-tramp-mode 1))
+#+end_src
+
+** agent-shell add-ons
+
+Git clones in =site-lisp/= (update with =git pull=), like
+=agent-shell-tramp=; none is packaged for Gentoo.
+
+- =agent-shell-attention= shows =AS:n= in the mode line when agent
+  buffers wait for input or permission, and sends a desktop notification
+  when an agent finishes a turn or asks for permission.
+- =agent-shell-manager= lists all agent-shell buffers with status, mode,
+  model and pending permissions.
+
+#+begin_src emacs-lisp
+(use-package agent-shell-attention
+  :load-path "site-lisp/agent-shell-attention.el"
+  :demand t
+  :after agent-shell
+  :bind (("C-c A j" . agent-shell-attention-jump)
+         ("C-c A i" . agent-shell-attention-jump-idle))
+  :custom
+  (agent-shell-attention-render-function #'agent-shell-attention-render-active)
+  (agent-shell-attention-notify-function #'agent-shell-attention-notify-default)
+  :config
+  (agent-shell-attention-mode 1))
+
+(use-package agent-shell-manager
+  :load-path "site-lisp/agent-shell-manager"
+  :commands (agent-shell-manager-toggle)
+  :bind (("C-c A m" . agent-shell-manager-toggle)))
+#+end_src
+
+*** Math rendering
+
+=agent-shell-math-renderer= renders LaTeX math in agent replies as SVG,
+with =latex= and =dvisvgm= from the system TeX installation; its backend
+=latex-to-svg-backend= is a separate clone.  It needs agent-shell 0.93.3
+or newer and signals an error when loaded with an older one, so it is
+loaded only when =agent-shell-markdown-table-at= (added in 0.93.3)
+exists.  With the Gentoo agent-shell 0.88.3 it stays off.
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path
+             (expand-file-name "site-lisp/latex-to-svg-backend" user-emacs-directory))
+(add-to-list 'load-path
+             (expand-file-name "site-lisp/agent-shell-math-renderer" user-emacs-directory))
+
+(with-eval-after-load 'agent-shell
+  (require 'agent-shell-markdown nil t)
+  (if (not (fboundp 'agent-shell-markdown-table-at))
+      (message "agent-shell-math-renderer: off, needs agent-shell 0.93.3 or newer")
+    (require 'agent-shell-math-renderer)
+    (add-hook 'agent-shell-mode-hook #'agent-shell-math-renderer-mode)
+    (add-hook 'enable-theme-functions
+              #'agent-shell-math-renderer-on-appearance-change)
+    (add-hook 'after-setting-font-hook
+              #'agent-shell-math-renderer-on-appearance-change)))
 #+end_src
