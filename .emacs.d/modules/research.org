@@ -35,3 +35,180 @@
     (org-babel-do-load-languages 'org-babel-load-languages
                                 (nreverse available-langs))))
 #+end_src
+
+* Collaborators in notes.org → folders in ~/Research/collaborations
+
+Tangling =~/Cloud/org/notes.org= (=C-c C-v t=) also runs
+=my/research-sync-collaborators= (dry run: =C-u M-x my/research-sync-collaborators=):
+
+- every child of =Research/Collaborators= gets a folder
+  =~/Research/collaborations/<name>= (=with Carlos Cedeno= → =carlos=), unless tagged =:nofolder:=;
+  a new one gets a =README.org= with an =id:= link back, so git carries it to other machines;
+- every heading below a collaborator tagged =:project:= gets a folder inside it, with a starter
+  =WORK.org= (title, date, =id:= link back to the heading, copy of the idea's notes);
+- folder names are stored in the heading property =RESEARCH_DIR=, so renaming a heading keeps
+  its folder; an existing folder with a matching name is reused;
+- nothing is renamed, overwritten or deleted, and git is not touched: commit and push the new
+  folders from =~/Research=.  On a machine without =~/Research/collaborations= it does nothing.
+
+#+begin_src emacs-lisp
+(require 'org)
+(require 'org-id)
+(require 'subr-x)
+(require 'ucs-normalize)
+
+(defvar my/research-notes-file (expand-file-name "~/Cloud/org/notes.org")
+  "Org file whose Research/Collaborators subtree mirrors ~/Research/collaborations.")
+
+(defvar my/research-collab-olp '("Research" "Collaborators")
+  "Outline path of the heading whose children are collaborators.")
+
+(defvar my/research-collab-root (expand-file-name "~/Research/collaborations")
+  "Folder holding one subfolder per collaborator.")
+
+(defvar my/research-collab-dir-property "RESEARCH_DIR"
+  "Heading property that stores the folder name of a collaborator or idea.")
+
+(defun my/research--slug (title)
+  "Folder name for heading TITLE: ASCII, lower case, words joined by dashes."
+  (let* ((s (downcase (string-trim title)))
+         (s (ucs-normalize-NFKD-string s))
+         (s (replace-regexp-in-string "[^[:ascii:]]" "" s))
+         (s (replace-regexp-in-string "[^a-z0-9]+" "-" s))
+         (s (replace-regexp-in-string "\\`-+\\|-+\\'" "" s)))
+    (if (> (length s) 48)
+        (replace-regexp-in-string "-+\\'" "" (substring s 0 48))
+      s)))
+
+(defun my/research--collab-name (title)
+  "Folder name for collaborator heading TITLE (\"with Carlos Cedeno\" -> \"carlos\")."
+  (let ((s (replace-regexp-in-string "\\`[Ww]ith[[:space:]]+" "" (string-trim title))))
+    (my/research--slug (car (split-string s "[[:space:]]+" t)))))
+
+(defun my/research--existing-dir (parent title fallback)
+  "Folder under PARENT already matching TITLE (case-insensitively), else FALLBACK."
+  (let* ((want (list (downcase (string-trim title)) (downcase fallback)
+                     (replace-regexp-in-string "-" " " (downcase fallback))))
+         (hit (and (file-directory-p parent)
+                   (seq-find (lambda (f) (and (member (downcase f) want)
+                                              (file-directory-p (expand-file-name f parent))))
+                             (directory-files parent nil "\\`[^.]")))))
+    (or hit fallback)))
+
+(defun my/research--heading-dir (parent fallback-fn)
+  "Folder name of the heading at point under PARENT.
+Use the stored property, else an existing matching folder, else FALLBACK-FN."
+  (let* ((title (org-get-heading t t t t))
+         (stored (org-entry-get nil my/research-collab-dir-property)))
+    (or stored
+        (my/research--existing-dir parent title (funcall fallback-fn title)))))
+
+(defun my/research--subtree-body ()
+  "Text of the subtree at point without its heading line and property drawer;
+sub-headings are shifted so the first level below the heading becomes level 2."
+  (save-excursion
+    (let* ((lvl (org-current-level))
+           (beg (progn (org-end-of-meta-data t) (point)))
+           (end (progn (org-end-of-subtree t t) (point)))
+           (text (buffer-substring-no-properties beg end)))
+      (replace-regexp-in-string
+       "^\\(\\*+\\) "
+       (lambda (m)
+         (let ((n (- (length (match-string 1 m)) lvl)))
+           (concat (make-string (max 1 (1+ n)) ?*) " ")))
+       (string-trim-right text)))))
+
+(defun my/research--work-org (title collab id body)
+  "Initial WORK.org text for idea TITLE of COLLAB, linking heading ID."
+  (let ((today (format-time-string "%Y-%m-%d")))
+    (concat "#+TITLE: " title "\n"
+            "#+DATE: " today "\n\n"
+            "Collaborator: " collab "\n"
+            "Notes: [[id:" id "][notes.org: " title "]]\n\n"
+            "* Idea (copied from notes.org on " today ")\n"
+            (if (string-empty-p (string-trim body)) "" (concat body "\n"))
+            "\n* Log\n")))
+
+(defun my/research--collect ()
+  "List of (COLLAB-MARKER . IDEA-MARKERS) under the Collaborators heading."
+  (let* ((top (org-find-olp my/research-collab-olp t))
+         (top-level (save-excursion (goto-char top) (org-current-level)))
+         (out '()))
+    (save-excursion
+      (goto-char top)
+      (org-map-entries
+       (lambda ()
+         (let ((level (org-current-level)) (tags (org-get-tags nil t)))
+           (cond
+            ((= level (1+ top-level))
+             (push (list (point-marker) (member "nofolder" tags)) out))
+            ((and out (> level (1+ top-level)) (member "project" tags))
+             (nconc (car out) (list (point-marker)))))))
+       nil 'tree))
+    (mapcar (lambda (e) (cons (car e) (unless (cadr e) (cddr e))))
+            (seq-remove #'cadr (nreverse out)))))
+
+(defun my/research-sync-collaborators (&optional dry-run)
+  "Create folders for collaborators and :project: ideas.
+Folders go to `my/research-collab-root'.  Collaborators are the children
+of `my/research-collab-olp' in `my/research-notes-file' (skip one with
+the tag nofolder).  Inside a collaborator, every heading tagged
+project gets a folder with a starter WORK.org.  Existing folders are reused and
+nothing is renamed, overwritten or deleted.  With prefix argument DRY-RUN only
+report what would be created."
+  (interactive "P")
+  (let ((root my/research-collab-root) (done '()))
+    (if (not (file-directory-p root))
+        (message "research-collab: %s not found on this machine; nothing done" root)
+      (with-current-buffer (find-file-noselect my/research-notes-file)
+        (org-with-wide-buffer
+         (dolist (entry (my/research--collect))
+           (goto-char (car entry))
+           (let* ((ctitle (replace-regexp-in-string
+                           "\\`[Ww]ith[[:space:]]+" "" (org-get-heading t t t t)))
+                  (cdir (my/research--heading-dir root #'my/research--collab-name))
+                  (cpath (expand-file-name cdir root)))
+             (unless dry-run (org-entry-put nil my/research-collab-dir-property cdir))
+             (unless (file-directory-p cpath)
+               (push cpath done)
+               (unless dry-run
+                 ;; a file, so git can carry the new folder to the other machines
+                 (let ((id (org-id-get-create)))
+                   (make-directory cpath t)
+                   (with-temp-file (expand-file-name "README.org" cpath)
+                     (insert "#+TITLE: " ctitle "\n"
+                             "#+DATE: " (format-time-string "%Y-%m-%d") "\n\n"
+                             "Notes: [[id:" id "][notes.org: " ctitle "]]\n")))))
+             (dolist (m (cdr entry))
+               (goto-char m)
+               (let* ((ititle (org-get-heading t t t t))
+                      (idir (my/research--heading-dir cpath #'my/research--slug))
+                      (ipath (expand-file-name idir cpath)))
+                 (unless dry-run (org-entry-put nil my/research-collab-dir-property idir))
+                 (unless (file-directory-p ipath)
+                   (push ipath done)
+                   (unless dry-run
+                     (let ((id (org-id-get-create))
+                           (body (my/research--subtree-body))
+                           (work (expand-file-name "WORK.org" ipath)))
+                       (make-directory ipath t)
+                       (unless (file-exists-p work)
+                         (with-temp-file work
+                           (insert (my/research--work-org ititle ctitle id body)))))))
+                 (set-marker m nil)))
+             (set-marker (car entry) nil))))))
+    (let ((items (reverse done)))
+      (message "research-collab: %s %d folder(s)%s%s"
+               (if dry-run "would create" "created") (length items)
+               (if items ": " "")
+               (mapconcat (lambda (p) (file-relative-name p root)) items ", "))
+      items)))
+
+(defun my/research--sync-on-tangle ()
+  "Run `my/research-sync-collaborators' when tangling the notes file."
+  (when (and buffer-file-name
+             (file-equal-p buffer-file-name my/research-notes-file))
+    (my/research-sync-collaborators)))
+
+(add-hook 'org-babel-pre-tangle-hook #'my/research--sync-on-tangle)
+#+end_src
