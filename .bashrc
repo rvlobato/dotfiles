@@ -19,7 +19,11 @@ if [[ -n $SHPOOL_SESSION_NAME ]]; then
         # agent; the link is created only after shell startup, so no -S test here
 elif [[ -n $SSH_CONNECTION && -S $SSH_AUTH_SOCK && $SSH_AUTH_SOCK != "$_gcr_sock" ]]; then
     :   # forwarded agent (ssh -A) or keychain agent inherited from parent shell
-elif [[ -z $SSH_CONNECTION && -S $_gcr_sock && -n ${WAYLAND_DISPLAY}${DISPLAY} ]]; then
+# Graphical login: niri-session (and GDM) run a login shell *before* the
+# compositor sets WAYLAND_DISPLAY, so also accept XDG_SESSION_TYPE. Without
+# this, keychain starts an empty ssh-agent and systemctl import-environment
+# pushes it to every app (Emacs/agent-shell), hiding gcr's keys.
+elif [[ -z $SSH_CONNECTION && -S $_gcr_sock && ( -n ${WAYLAND_DISPLAY}${DISPLAY} || $XDG_SESSION_TYPE == wayland || $XDG_SESSION_TYPE == x11 ) ]]; then
     export SSH_AUTH_SOCK="$_gcr_sock"
 elif [[ $- == *i* ]]; then
     eval "$(keychain --eval --quiet id_rsa)"
