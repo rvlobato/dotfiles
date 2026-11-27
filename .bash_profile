@@ -22,10 +22,6 @@ export CACTUS_DIR="$HOME/Tools/research/codes/einsteintoolkit/Cactus"
 export SPECTRE_HOME="$HOME/Tools/research/codes/spectre"
 export CHARM_ROOT="$HOME/Tools/research/codes/charm/multicore-linux-x86_64-gcc"
 
-export MESON_BUILDDIR="$HOME/.local"
-export AERIE_INSTALLATION_DIR="$HOME/Projects/SWGO/aerie"
-export SPACK_PYTHON="$HOME/.local/bin/python3.12"
-
 export JULIA_NUM_THREADS=$(lscpu -b -p=Core,Socket | grep -v '^#' | sort -u | wc -l)
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
