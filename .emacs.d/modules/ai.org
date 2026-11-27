@@ -134,8 +134,8 @@ Git clones in =site-lisp/= (update with =git pull=), like
 =agent-shell-tramp=; none is packaged for Gentoo.
 
 - =agent-shell-attention= shows =AS:n= in the mode line when agent
-  buffers wait for input or permission, and sends a desktop notification
-  when an agent finishes a turn or asks for permission.
+  buffers wait for input or permission.  Desktop notifications are off
+  (=agent-shell-attention-notify-function= is nil).
 - =agent-shell-manager= lists all agent-shell buffers with status, mode,
   model and pending permissions.
 
@@ -148,7 +148,7 @@ Git clones in =site-lisp/= (update with =git pull=), like
          ("C-c A i" . agent-shell-attention-jump-idle))
   :custom
   (agent-shell-attention-render-function #'agent-shell-attention-render-active)
-  (agent-shell-attention-notify-function #'agent-shell-attention-notify-default)
+  (agent-shell-attention-notify-function nil)
   :config
   (agent-shell-attention-mode 1))
 
