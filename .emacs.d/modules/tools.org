@@ -235,6 +235,43 @@ post-new sender whitelist."
   (define-key notmuch-search-mode-map (kbd "H") #'my/notmuch-mark-ham)
   (define-key notmuch-show-mode-map (kbd "H") #'my/notmuch-mark-ham)
   (define-key notmuch-tree-mode-map (kbd "H") #'my/notmuch-mark-ham))
+
+;; `k k s' (reverse "Mark as spam" in the tag-jump menu) only flips tags.
+;; The file stays in the Spam folder, and step 4 of post-new tags it spam
+;; again on the next sync.  Route that key to `my/notmuch-mark-ham', so
+;; `k k s' and `H' do the same thing.
+(defvar my/notmuch--tag-jump-reverse nil
+  "Non-nil while `notmuch-tag-jump' builds its reverse menu.")
+
+(defun my/notmuch--tag-jump-note-reverse (orig reverse)
+  "Call ORIG with REVERSE, recording REVERSE for `notmuch-jump'."
+  (let ((my/notmuch--tag-jump-reverse reverse))
+    (funcall orig reverse)))
+
+(defun my/notmuch--spam-tag-keys ()
+  "Keys in `notmuch-tagging-keys' whose operations add the spam tag."
+  (delq nil
+        (mapcar (lambda (entry)
+                  (let ((ops (nth 1 entry)))
+                    (when (member "+spam" (if (symbolp ops) (symbol-value ops) ops))
+                      (car entry))))
+                notmuch-tagging-keys)))
+
+(defun my/notmuch--reverse-spam-to-ham (args)
+  "In the reverse tag-jump menu, make the spam keys run `my/notmuch-mark-ham'."
+  (if (not my/notmuch--tag-jump-reverse)
+      args
+    (let ((keys (my/notmuch--spam-tag-keys)))
+      (cons (mapcar (lambda (item)
+                      (if (member (car item) keys)
+                          (list (car item) "Not spam (H)" #'my/notmuch-mark-ham)
+                        item))
+                    (car args))
+            (cdr args)))))
+
+(with-eval-after-load 'notmuch-tag
+  (advice-add 'notmuch-tag-jump :around #'my/notmuch--tag-jump-note-reverse)
+  (advice-add 'notmuch-jump :filter-args #'my/notmuch--reverse-spam-to-ham))
 #+end_src
 
 * Tags
